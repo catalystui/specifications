@@ -1,3 +1,8 @@
 {
-    "navigation": []
+    "navigation": [
+        {
+            "title": "i18n.specifications",
+            "path": "/"
+        }
+    ]
 }
