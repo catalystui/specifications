@@ -1,5 +1,3 @@
-![The CatalystUI Logo](/images/catalyst/logo-black.png)
+# Languages Specification Index
 
-> “If we cannot define what something is, how can we know whether we have built it correctly?”
-
-## Introduction
+This is a test home page.
