@@ -13,6 +13,10 @@
                     "path": "/specifications/languages"
                 },
                 {
+                    "title": "Internationalization",
+                    "path": "/specifications/internationalization"
+                },
+                {
                     "title": "Accessibility",
                     "path": "/specifications/accessibility"
                 }
