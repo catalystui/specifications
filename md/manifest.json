@@ -1,22 +1,8 @@
 {
     "navigation": [
         {
-            "title": "Becoming CatalystUI Verified",
+            "title": "i18n.internationalization",
             "path": "/"
-        },
-        {
-            "title": "Specifications",
-            "path": "#",
-            "children": [
-                {
-                    "title": "Languages",
-                    "path": "/specifications/languages"
-                },
-                {
-                    "title": "Accessibility",
-                    "path": "/specifications/accessibility"
-                }
-            ]
         }
     ]
 }
