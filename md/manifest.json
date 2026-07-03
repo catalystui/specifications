@@ -1,8 +1,22 @@
 {
     "navigation": [
         {
-            "title": "i18n.specifications",
+            "title": "Becoming CatalystUI Verified",
             "path": "/"
+        },
+        {
+            "title": "Specifications",
+            "path": "#",
+            "children": [
+                {
+                    "title": "Languages",
+                    "path": "/specifications/languages"
+                },
+                {
+                    "title": "Accessibility",
+                    "path": "/specifications/accessibility"
+                }
+            ]
         }
     ]
 }
