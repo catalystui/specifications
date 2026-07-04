@@ -13,9 +13,9 @@
 
 ## Introduction
 
-The **Foundational Definitions Specification (FDEFSPEC)** establishes the core concepts and terminology that underpin the CatalystUI ecosystem. Its purpose is to provide a unified understanding of these concepts across all documentation and implementations, ensuring consistency, clarity, and alignment. By standardizing the meaning of key terms, Catalyst reinforces its core values of truth, clarity, and intentional design—enabling the discovery of principles that reduce complexity, preserve meaning, and guide the systems we create.
+The **Foundational Definitions Specification (FDEFSPEC)** establishes the core concepts and terminology that underpin the CatalystUI ecosystem. Its purpose is to provide a unified understanding of these concepts across documentation, specifications, implementations, and verification reviews, ensuring consistency, clarity, and alignment.
 
-This document defines the standard terminology and conceptual foundations used throughout the CatalystUI ecosystem. It establishes precise meanings for key terms and relationships, ensuring a consistent interpretation across documentation, specifications, and implementations. By formalizing these definitions, the document provides a stable reference point for developers to design, communicate, and implement higher-level specifications with clarity and coherence.
+By defining key terms and relationships in a precise and stable form, FDEFSPEC provides a common reference point for higher-level specifications. This allows developers, reviewers, and implementers to reason from the same foundation when determining whether a language, service, framework, or system can be considered within spec.
 
 > [!IMPORTANT]
 >
