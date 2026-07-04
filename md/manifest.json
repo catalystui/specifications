@@ -2,7 +2,13 @@
     "navigation": [
         {
             "title": "i18n.languages",
-            "path": "/"
+            "path": "/",
+            "children": [
+                {
+                    "title": "FDEFSPEC",
+                    "path": "/fdefspec/"
+                }
+            ]
         }
     ]
 }
