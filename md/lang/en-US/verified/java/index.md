@@ -4,7 +4,11 @@
 
 ### Overview
 
-The Java language has been verified against the FDEFSPEC (Rev. 1) specification as of July 4th, 2026. We believe in good faith that the Java programming language can reasonably represent a large portion of the concepts and provisions defined in the following specifications, and that it can be used to implement systems which are in compliance with these specifications.
+The Java programming language has been verified against the FDEFSPEC (Rev. 1) specification as of July 4th, 2026.
+
+#### Good Faith Statement
+
+We believe in good faith that the Java programming language can reasonably represent a large portion of the concepts and provisions defined in the following specifications, and that it can be used to implement systems which are in compliance with these specifications.
 
 ### Warnings
 
