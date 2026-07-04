@@ -1,4 +1,4 @@
-# Verification Details
+# Review Details
 
 ## JavaScript
 
@@ -6,9 +6,11 @@
 
 The JavaScript programming language has been reviewed against the FDEFSPEC (Rev. 1) specification as of July 4th, 2026.
 
-#### Good Faith Statement
+#### Review Statement
 
-We do not believe in good faith that the JavaScript programming language can reasonably represent a sufficient portion of the concepts and provisions defined in the following specifications without relying on fragile workarounds, host-specific APIs, array-backed representations, or custom runtime enforcement.
+While JavaScript can represent many of the required concepts through objects, typed arrays, host APIs, external libraries, and custom validation, these mechanisms are not sufficient to satisfy FDEFSPEC at the language level.
+
+Because JavaScript lacks several required fixed-width scalar numeric types and does not provide the required text encoding support as core language functionality, we do not believe JavaScript provides a stable enough foundation for FDEFSPEC-compliant implementation without significant additional infrastructure.
 
 As a result, JavaScript has not been granted CatalystUI Verified status for Programming Languages.
 

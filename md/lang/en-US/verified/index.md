@@ -13,4 +13,4 @@ Programming languages which have been reviewed for compliance with the FDEFSPEC 
 
 | Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
-| JavaScript | FDEFSPEC ❌ | July 4th, 2026 | [View Details](/verified/javascript/) |
+| JavaScript | FDEFSPEC ❌ | July 4th, 2026 | [View Details](/reviewed/javascript/) |
