@@ -1,7 +1,11 @@
 {
     "navigation": [
         {
-            "title": "i18n.languages",
+            "title": "Verified Languages",
+            "path": "/verified/"
+        },
+        {
+            "title": "Specification(s)",
             "path": "/",
             "children": [
                 {
