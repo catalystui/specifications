@@ -39,6 +39,20 @@
                     "path": "/verified/csharp/"
                 }
             ]
+        },
+        {
+            "title": "Reviewed Languages",
+            "path": "/reviewed/",
+            "children": [
+                {
+                    "title": "JavaScript",
+                    "path": "/reviewed/javascript/"
+                },
+                {
+                    "title": "Python",
+                    "path": "/reviewed/python/"
+                }
+            ]
         }
     ]
 }
