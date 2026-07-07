@@ -6,7 +6,7 @@
         },
         {
             "title": "i18n.verification-programs",
-            "path": "#",
+            "path": "/",
             "children": [
                 {
                     "title": "i18n.languages",
