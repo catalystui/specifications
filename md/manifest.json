@@ -23,6 +23,10 @@
             "path": "/verified/",
             "children": [
                 {
+                    "title": "C",
+                    "path": "/verified/c/"
+                },
+                {
                     "title": "C++",
                     "path": "/verified/cpp/"
                 },
@@ -40,10 +44,6 @@
             "title": "Reviewed Languages",
             "path": "/reviewed/",
             "children": [
-                {
-                    "title": "C",
-                    "path": "/reviewed/c/"
-                },
                 {
                     "title": "JavaScript",
                     "path": "/reviewed/javascript/"
