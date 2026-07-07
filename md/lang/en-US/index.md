@@ -2,41 +2,48 @@
 
 Welcome to the CatalystUI Verification documentation for programming languages.
 
-**CatalystUI Verified for Programming Languages** indicates that a programming language has been reviewed by the CatalystUI Team and found to provide the primitives, representations, and behavior needed to support an implementation of the CatalystUI Stack.
+**CatalystUI Verified for Programming Languages** indicates that a programming language has been reviewed by the CatalystUI Team and found to provide the foundational data representations and relational structures required to express CatalystUI-compatible systems.
 
-This verification is not a general ranking of programming languages. It does not decide whether a language is better, faster, easier, newer, or more enjoyable than another. Instead, it identifies whether the language provides a stable and practical foundation for the specifications required by CatalystUI Verification.
+This verification is not a general ranking of programming languages. It does not decide whether a language is better, faster, easier, newer, more popular, or more enjoyable than another. Instead, it identifies whether the language provides a stable and practical foundation for the specifications required by CatalystUI Verification.
+
+In simpler terms, this verification asks whether a programming language can faithfully represent the basic data and relationships CatalystUI depends on.
 
 ## Purpose
 
-Programming languages form the base of every CatalystUI implementation. Before a framework, library, runtime, or application can follow the CatalystUI Stack, the language itself must be capable of expressing the concepts the model depends on.
+Programming languages form the representational foundation beneath every CatalystUI implementation. Before a framework, library, runtime, application, or service can follow the CatalystUI Stack, the language used to build it must be capable of expressing the foundational concepts the model depends on.
 
-This includes the ability to represent data, define structures, model behavior, communicate results, interact with systems, and preserve meaning across implementation boundaries. A verified language gives developers enough clarity and control to build CatalystUI-compatible systems without relying on fragile or unclear workarounds.
+For programming languages, this primarily means two things:
 
-In simpler terms, this verification asks whether a programming language can provide the building blocks CatalystUI needs.
+1. The language must be capable of representing foundational data.
+2. The language must be capable of representing foundational relationships between data.
+
+These concerns are defined through the foundational CatalystUI specifications. FDEFSPEC defines the expected foundational data representations. FRELSPEC defines the expected foundational relations between those representations, including collections, memory relationships, operations, threading relationships, and composites.
+
+A verified programming language gives developers enough clarity and control to build CatalystUI-compatible systems without relying on fragile, unclear, or unstable workarounds for the basic concepts CatalystUI requires.
 
 ## What Verification Means
 
 A programming language becomes **CatalystUI Verified** when it is reviewed against the specifications listed in this section and found to be within spec.
 
-Each specification describes one part of the review. Some specifications may define required data representations. Others may describe expected behavior, interoperability needs, compilation concerns, runtime expectations, or other language-level requirements used by CatalystUI implementations.
+For Programming Language Verification, the review is focused on whether the language can express the foundational requirements defined by the applicable specifications. This does not mean the language itself is a CatalystUI implementation. It means the language provides a suitable foundation from which CatalystUI-compatible implementations may be built.
 
-A language does not need to satisfy these requirements in the same way as another language. Different languages use different syntax, type systems, standard libraries, compilers, runtimes, and design patterns. CatalystUI Verification allows for those differences so long as the required behavior can be expressed clearly, reliably, and consistently.
+A language does not need to satisfy these requirements in the same way as another language. Different languages use different syntax, type systems, standard libraries, compilers, runtimes, and design patterns. CatalystUI Verification allows for those differences so long as the required concepts can be expressed clearly, reliably, and consistently.
 
 ## What “Within Spec” Means
 
-When a programming language is considered **within spec**, it means the CatalystUI Team has manually reviewed the language and found it reasonable to assume that the required behavior described by the relevant specifications can be expressed within that language.
+When a programming language is considered **within spec**, it means the CatalystUI Team has manually reviewed the language and found it reasonable to conclude that the required behavior described by the applicable specifications can be expressed within that language.
 
 This does not require one rigid implementation pattern. A language may satisfy a requirement through built-in primitives, standard library features, compiler behavior, runtime behavior, documented guarantees, or another stable mechanism appropriate to that language.
 
-Verification is concerned with the practical ability to meet the specification, not whether the language uses the exact same names, structures, or internal design as the specification text.
+Verification is concerned with the practical ability to represent and preserve the meaning of the specification, not whether the language uses the exact same names, structures, syntax, or internal design as the specification text.
 
 ## Why This Verification Exists
 
-CatalystUI is designed around clarity, consistency, and the faithful representation of how humans and computers interact. Programming languages matter because they determine what developers can realistically build and how clearly those systems can be expressed.
+CatalystUI is designed around clarity, consistency, and the faithful representation of how humans and computers interact. Programming languages matter because they determine what developers can realistically express, how safely those systems can be modeled, and how clearly higher-level implementations can be built.
 
-If a language cannot provide the required base concepts in a stable way, then higher-level CatalystUI implementations become harder to trust. Developers may be pushed toward unclear abstractions, unpredictable behavior, fragile dependencies, or unnecessary rewrites simply to express ideas that should be reliable from the beginning.
+If a language cannot provide the required foundational concepts in a stable way, then higher-level CatalystUI implementations become harder to trust. Developers may be pushed toward unclear abstractions, unpredictable behavior, fragile dependencies, or unnecessary rewrites simply to express ideas that should be reliable from the beginning.
 
-Programming Language Verification exists to identify which languages provide a strong enough base for CatalystUI work. It gives developers, language designers, and organizations a clearer understanding of whether a language is suitable for CatalystUI-compatible implementations.
+Programming Language Verification exists to identify which languages provide a strong enough foundation for CatalystUI work. It gives developers, language designers, and organizations a clearer understanding of whether a language is suitable for building CatalystUI-compatible systems.
 
 ## How a Language Becomes Verified
 
@@ -44,7 +51,7 @@ To become **CatalystUI Verified for Programming Languages**, a language must be 
 
 The general process is:
 
-1. The relevant CatalystUI specifications are identified.
+1. The applicable CatalystUI specifications are identified.
 2. The language is reviewed against each required specification.
 3. The CatalystUI Team determines whether the language satisfies the intent and requirements of the specifications.
 4. If the language is found to be within spec, it may be granted CatalystUI Verification.
@@ -58,17 +65,26 @@ Compiler and runtime behavior may be considered during review when that behavior
 
 The specifications listed in this section define the requirements used for Programming Language Verification.
 
-Each specification should be understood as one part of the review. A language becomes verified by satisfying the required specifications for this category, not by satisfying only one isolated document unless that document is the only active requirement.
+For programming languages, the active foundation is currently centered on the following specification categories:
 
-As additional specifications are finalized, they may be added to this section and included in future reviews. This allows Programming Language Verification to grow with CatalystUI while keeping the review process clear and organized.
+* **FDEFSPEC**, which defines foundational data representations.
+* **FRELSPEC**, which defines foundational relations between data representations.
+
+Together, these specifications establish the minimum foundation required for a programming language to represent CatalystUI-compatible systems.
+
+Additional specifications may be introduced later for more specialized verification categories. Those specifications may define higher-level implementation, platform, accessibility, internationalization, framework, service, or runtime requirements. However, those later specifications build on the foundation rather than replacing it.
+
+A programming language becomes verified by satisfying the required specifications for this category. It is not expected to satisfy unrelated implementation-specific requirements unless those requirements are added to Programming Language Verification.
 
 ## Verification Scope
 
 CatalystUI Verification for Programming Languages applies to the programming language as reviewed.
 
-A verified language provides a suitable base for CatalystUI-compatible development. It does not guarantee that every project written in that language follows CatalystUI correctly, nor does it automatically verify the surrounding ecosystem.
+A verified language provides a suitable foundation for CatalystUI-compatible development. It does not guarantee that every project written in that language follows CatalystUI correctly, nor does it automatically verify the surrounding ecosystem.
 
-Separate tools, libraries, frameworks, runtimes, applications, or services may require their own review depending on the verification category being requested.
+Separate tools, libraries, frameworks, runtimes, applications, services, or implementations may require their own review depending on the verification category being requested.
+
+Programming Language Verification should therefore be understood as a foundation check. It confirms that the language can represent the required concepts. It does not confirm that every use of the language applies those concepts correctly.
 
 ## Verification Validity
 
@@ -76,9 +92,9 @@ CatalystUI Verification applies only to the reviewed state of a programming lang
 
 Programming languages are treated as a special case because many languages preserve compatibility across multiple versions. A language may retain its verification across later versions so long as it preserves backward compatibility with the features, primitives, representations, and behavior the original review depended on.
 
-If a future version removes, breaks, or substantially changes verified behavior, a new review may be required.
+New language features alone do not invalidate verification. A future version may require a new review only if it removes, breaks, or substantially changes the verified foundation.
 
-New language features alone do not invalidate verification. Breaking the verified base might.
+In other words, extending a language is usually fine. Breaking the verified base may require review.
 
 ## Verified Languages
 

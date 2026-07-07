@@ -1,8 +1,8 @@
 {
     "navigation": [
         {
-            "title": "Verified Languages",
-            "path": "/verified/"
+            "title": "Verification Index",
+            "path": "/index/"
         },
         {
             "title": "Specification(s)",
@@ -11,6 +11,20 @@
                 {
                     "title": "FDEFSPEC",
                     "path": "/fdefspec/"
+                }
+            ]
+        },
+        {
+            "title": "Verified Languages",
+            "path": "/verified/",
+            "children": [
+                {
+                    "title": "Java",
+                    "path": "/verified/java/"
+                },
+                {
+                    "title": "C#",
+                    "path": "/verified/csharp/"
                 }
             ]
         }
