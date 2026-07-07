@@ -4,53 +4,108 @@
 
 ### Overview
 
-The C# programming language has been verified against the FDEFSPEC (Rev. 1) specification as of July 4th, 2026.
+The C# programming language has been verified against the FDEFSPEC (Rev. 1) and FRELSPEC (Rev. 1) specifications as of July 7th, 2026.
 
 #### Good Faith Statement
 
-We believe in good faith that the C# programming language can reasonably represent a large portion of the concepts and provisions defined in the following specifications, and that it can be used to implement systems which are in compliance with these specifications.
+We believe in good faith that the C# programming language can reasonably represent the concepts and provisions defined in the following specifications, and that it can be used to implement systems which are in compliance with these specifications.
+
+#### Review Assumptions
+
+This review assumes modern C# and .NET support where version-dependent features are noted. Unsafe features may require an `unsafe` context and compiler or project authorization.
 
 ### Warnings
 
-- C# does not provide dedicated 1-bit or 4-bit numeric primitive types, which may require widening or custom representations for certain provisions.
-- CP1252 support is available through the official .NET code pages provider, but may require provider registration or an additional package depending on the target runtime.
+* C# does not provide dedicated 1-bit or 4-bit numeric primitive types, which may require widening or custom representations for certain provisions.
+* CP1252 support is available through the official .NET code pages provider, but may require provider registration or an additional package depending on the target runtime.
+* Unsafe pointer behavior may require explicit unsafe authorization.
 
 ### Failures
 
-- No known FDEFSPEC failures were found during this verification.
+* No known FDEFSPEC or FRELSPEC failures were found during this verification.
 
 ### FDEFSPEC Verification
 
 #### Numerics
 
-| Provision | Verified | Notes |
-| --------- | -------- | ----- |
-| Bit | ⚠️ | No 1-bit numeric, must be widened or otherwise represented. |
-| Nibble | ⚠️ | No 4-bit numeric, must be widened or otherwise represented. |
-| Byte | ✅ | Unsigned 8-bit numeric is supported by `byte`. |
-| Short | ✅ | Signed 16-bit numeric is supported by `short`; unsigned 16-bit numeric is supported by `ushort`. |
-| Int | ✅ | Signed 32-bit numeric is supported by `int`; unsigned 32-bit numeric is supported by `uint`. |
-| Long | ✅ | Signed 64-bit numeric is supported by `long`; unsigned 64-bit numeric is supported by `ulong`. |
-| Float | ✅ | 32-bit floating point numeric is supported by `float`. |
-| Double | ✅ | 64-bit floating point numeric is supported by `double`. |
-| Boolean | ✅ | Boolean type is supported by `bool`. |
+| Provision | Verified | Notes                                   |
+| --------- | -------- | --------------------------------------- |
+| Bit       | ⚠️       | No 1-bit numeric; widen.                |
+| Nibble    | ⚠️       | No 4-bit numeric; widen.                |
+| Byte      | ✅        | Supported through `byte` and `sbyte`.   |
+| Short     | ✅        | Supported through `short` and `ushort`. |
+| Int       | ✅        | Supported through `int` and `uint`.     |
+| Long      | ✅        | Supported through `long` and `ulong`.   |
+| Float     | ✅        | Supported through `float`.              |
+| Double    | ✅        | Supported through `double`.             |
+| Boolean   | ✅        | Supported through `bool`.               |
 
 #### Text Encoding
 
-| Provision | Verified | Notes |
-| --------- | -------- | ----- |
-| Codepoint | ✅ | Representation of Unicode codepoints is supported through numeric types; Unicode scalar values are also supported through `System.Text.Rune`. |
-| ASCII | ✅ | ASCII text encoding is supported. |
-| CP1252 | ⚠️ | CP1252 can be supported through the official .NET code pages provider, but may require provider registration or an additional package depending on the target runtime. |
-| UTF-8 | ✅ | UTF-8 text encoding is supported. |
-| UTF-16LE | ✅ | UTF-16LE text encoding is supported. |
+| Provision | Verified | Notes                                  |
+| --------- | -------- | -------------------------------------- |
+| Codepoint | ✅        | Supported through numerics and `Rune`. |
+| ASCII     | ✅        | Supported through `Encoding.ASCII`.    |
+| CP1252    | ⚠️       | Requires code pages provider.          |
+| UTF-8     | ✅        | Supported through `Encoding.UTF8`.     |
+| UTF-16LE  | ✅        | Supported through `Encoding.Unicode`.  |
 
 #### Operation Status
 
-| Provision | Verified | Notes |
-| --------- | -------- | ----- |
-| Status | ✅ | Can be represented by a custom type which distinguishes `Success`, `Warning`, `Error`, and `Fatal`. |
-| Context | ✅ | Can be represented by a custom type or value which provides additional operation-specific context. |
-| Operation | ✅ | Can be represented by a custom type or value which identifies the operation being reported. |
-| Detail | ✅ | Can be represented by a custom type or value which provides additional result information. |
-| Result | ✅ | Can be represented by one custom returnable type containing status, context, operation, and detail, with support for any status level. |
+| Provision | Verified | Notes                                       |
+| --------- | -------- | ------------------------------------------- |
+| Status    | ✅        | Can be represented by a custom type.        |
+| Context   | ✅        | Can be represented by a custom value.       |
+| Operation | ✅        | Can be represented by a custom value.       |
+| Detail    | ✅        | Can be represented by a custom value.       |
+| Result    | ✅        | Can be represented by a custom return type. |
+
+### FRELSPEC Verification
+
+#### Collections
+
+| Provision | Verified | Notes                                        |
+| --------- | -------- | -------------------------------------------- |
+| Set       | ✅        | Supported through `HashSet<T>`.              |
+| Map       | ✅        | Supported through `Dictionary<TKey,TValue>`. |
+| Array     | ✅        | Native arrays are supported.                 |
+| File      | ✅        | Supported through file APIs.                 |
+| Stream    | ✅        | Supported through `Stream`.                  |
+
+#### Memory
+
+| Provision | Verified | Notes                                      |
+| --------- | -------- | ------------------------------------------ |
+| Address   | ✅        | Supported through references and pointers. |
+| Pointer   | ✅        | Supported through unsafe pointers.         |
+| Variable  | ✅        | Variables are supported.                   |
+| Constant  | ✅        | Supported through `const` and `readonly`.  |
+
+#### Operations
+
+| Provision   | Verified | Notes                                  |
+| ----------- | -------- | -------------------------------------- |
+| Instruction | ✅        | Represented through IL and operations. |
+| Procedure   | ✅        | Supported through `void` methods.      |
+| Function    | ✅        | Supported through returning methods.   |
+
+#### Threading
+
+| Provision  | Verified | Notes                                             |
+| ---------- | -------- | ------------------------------------------------- |
+| Process    | ✅        | Supported through application and `Process` APIs. |
+| Thread     | ✅        | Supported through `Thread`.                       |
+| Dispatcher | ✅        | Supported through tasks and schedulers.           |
+
+#### Composites
+
+| Provision | Verified | Notes                              |
+| --------- | -------- | ---------------------------------- |
+| Member    | ✅        | Type members are supported.        |
+| Object    | ✅        | Objects are supported.             |
+| Field     | ✅        | Fields are supported.              |
+| Method    | ✅        | Methods are supported.             |
+| Property  | ✅        | Properties are natively supported. |
+| Structure | ✅        | Structures are natively supported. |
+| Class     | ✅        | Classes are supported.             |
+| Interface | ✅        | Interfaces are supported.          |

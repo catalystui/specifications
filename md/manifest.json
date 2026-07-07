@@ -11,6 +11,10 @@
                 {
                     "title": "FDEFSPEC",
                     "path": "/fdefspec/"
+                },
+                {
+                    "title": "FRELSPEC",
+                    "path": "/frelspec/"
                 }
             ]
         },

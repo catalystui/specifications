@@ -62,12 +62,14 @@ By defining relationships between foundational concepts in a precise and stable 
       - [Object(k)](#objectk)
     - [Field](#field)
       - [Field(k)](#fieldk)
+    - [Method](#method)
+      - [Method(k)](#methodk)
     - [Property](#property)
       - [Property(k)](#propertyk)
       - [Get(k)](#getk)
       - [Set(k)](#setk)
-    - [Struct](#struct)
-      - [Struct(k)](#structk)
+    - [Structure](#structure)
+      - [Structure(k)](#structurek)
     - [Class](#class)
       - [Class(a)](#classa)
     - [Interface](#interface)
@@ -244,6 +246,20 @@ A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
 
+### Method
+
+A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where the method represents a keyed executable member of an object.
+
+#### Method(k)
+
+> Let $o = (a,K,f_o)$ be an object.
+>
+> Let $k \in K$ be a key.
+>
+> Let $m \in M$ be a member such that $f_o(k) = m$.
+>
+> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+
 ### Property
 
 A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = { \mathrm{Get}, \mathrm{Set} }$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
@@ -278,16 +294,15 @@ A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A
 >
 > $\mathrm{Set}(k)$ is the application of $s$.
 
-### Struct
+### Structure
 
-A struct is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
 
-#### Struct(k)
+#### Structure(k)
 
-> Let $s = (a,K,f_s)$ be a struct.
+> Let $s = (a,K,f_s)$ be a structure.
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Struct}(s,k) = f_s(k) = m$
-
+> $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 

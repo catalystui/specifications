@@ -4,64 +4,126 @@
 
 ### Overview
 
-The JavaScript programming language has been reviewed against the FDEFSPEC (Rev. 1) specification as of July 4th, 2026.
+The JavaScript programming language has been reviewed against the FDEFSPEC (Rev. 1) and FRELSPEC (Rev. 1) specifications as of July 7th, 2026.
 
 #### Review Statement
 
-While JavaScript can represent many of the required concepts through objects, typed arrays, host APIs, external libraries, and custom validation, these mechanisms are not sufficient to satisfy FDEFSPEC at the language level.
+While JavaScript can represent some required concepts through objects, functions, arrays, and built-in language behavior, these mechanisms are not sufficient to satisfy the applicable CatalystUI specifications at the language level.
 
-Because JavaScript lacks several required fixed-width scalar numeric types and does not provide the required text encoding support as core language functionality, we do not believe JavaScript provides a stable enough foundation for FDEFSPEC-compliant implementation without significant additional infrastructure.
+This review evaluates JavaScript itself, not the surrounding JavaScript ecosystem. Browser APIs, Node.js APIs, Deno APIs, Bun APIs, Web APIs, TypeScript, WebAssembly, external libraries, and custom validation are not treated as language-level support.
+
+Because JavaScript lacks many required fixed-width scalar numeric types, does not provide required text encodings as language features, and does not define several required system, memory, threading, and composite constructs, we do not believe JavaScript provides a stable enough foundation for CatalystUI-compliant implementation without significant additional infrastructure.
 
 As a result, JavaScript has not been granted CatalystUI Verified status for Programming Languages.
 
+#### Review Assumptions
+
+This review applies a strict language-level standard. If a provision is not explicitly supported by JavaScript itself, it is marked as not verified.
+
+Host-provided APIs, implementation-specific behavior, external libraries, transpilers, type systems, and custom runtime validation are excluded from verification.
+
 ### Warnings
 
-- JavaScript can represent many numeric values through `Number`, but `Number` is a 64-bit floating point numeric type rather than a family of fixed-width integer types.
-- JavaScript provides `BigInt`, but `BigInt` is arbitrary-width and is not equivalent to a fixed-width signed or unsigned integer primitive.
-- JavaScript provides typed arrays such as `Uint8Array`, `Int16Array`, `Uint32Array`, `Float32Array`, and `BigUint64Array`, but these are array-backed binary storage views rather than standalone scalar language types.
-- JavaScript strings are based on UTF-16 code units, but this does not provide full language-level support for explicit text encoding and decoding behavior required by the specification.
-- Some JavaScript environments provide `TextEncoder` and `TextDecoder`, but these are host APIs rather than core language primitives, and encoding support is limited.
+* JavaScript can represent many numeric values through `Number`, but `Number` is a 64-bit floating point numeric type.
+* JavaScript provides `BigInt`, but `BigInt` is arbitrary-width.
+* Typed arrays provide binary storage views, not scalar language types.
+* JavaScript strings use UTF-16 code units, not explicit text encoding values.
+* `const` protects bindings, not object values.
 
 ### Failures
 
-- JavaScript does not provide dedicated scalar numeric types for most fixed-width numeric provisions required by FDEFSPEC.
-- JavaScript does not provide a dedicated 32-bit floating point scalar type.
-- JavaScript does not provide language-level support for ASCII, CP1252, or UTF-16LE encoding as explicit text encodings.
-- JavaScript cannot reliably satisfy the FDEFSPEC text encoding provisions without relying on host-specific APIs, external libraries, or custom implementations.
-- JavaScript does not provide strong language-level guarantees for custom status/result types without relying on runtime validation or external type systems.
+* JavaScript does not provide most required fixed-width scalar numeric types.
+* JavaScript does not provide a dedicated scalar 32-bit floating point type.
+* JavaScript does not provide ASCII, CP1252, UTF-8, or UTF-16LE as language-level text encodings.
+* JavaScript does not provide language-level file or stream constructs.
+* JavaScript does not provide language-level address or pointer constructs.
+* JavaScript does not provide language-level process, thread, or dispatcher constructs.
+* JavaScript does not provide Catalyst-compatible properties.
+* JavaScript does not provide structures or interfaces.
 
 ### FDEFSPEC Verification
 
 #### Numerics
 
-| Provision | Verified | Notes |
-| --------- | -------- | ----- |
-| Bit | ❌ | No 1-bit numeric type is provided. Can only be represented through `boolean`, `Number`, bitwise operations, or custom handling. |
-| Nibble | ❌ | No 4-bit numeric type is provided. Can only be represented through `Number`, masking, typed arrays, or custom handling. |
-| Byte | ❌ | No scalar unsigned 8-bit numeric type is provided. `Uint8Array` can store unsigned 8-bit values, but this is an array-backed representation rather than a scalar language type. |
-| Short | ❌ | No scalar signed or unsigned 16-bit numeric type is provided. `Int16Array` and `Uint16Array` can store 16-bit values, but they are array-backed representations rather than scalar language types. |
-| Int | ❌ | No scalar signed or unsigned 32-bit integer type is provided. JavaScript bitwise operations coerce values into 32-bit forms, and typed arrays can store 32-bit values, but JavaScript does not provide fixed-width integer primitives. |
-| Long | ❌ | No scalar signed or unsigned 64-bit integer type is provided. `BigInt` is arbitrary-width, and `BigInt64Array` / `BigUint64Array` are array-backed representations rather than scalar language types. |
-| Float | ❌ | No scalar 32-bit floating point numeric type is provided. `Float32Array` can store 32-bit floating point values, but JavaScript values are still exposed through `Number`. |
-| Double | ✅ | 64-bit floating point numeric is supported through `Number`. |
-| Boolean | ✅ | Boolean type is supported through `boolean`. |
+| Provision | Verified | Notes                          |
+| --------- | -------- | ------------------------------ |
+| Bit       | ❌        | No 1-bit numeric type.         |
+| Nibble    | ❌        | No 4-bit numeric type.         |
+| Byte      | ❌        | No scalar 8-bit integer type.  |
+| Short     | ❌        | No scalar 16-bit integer type. |
+| Int       | ❌        | No scalar 32-bit integer type. |
+| Long      | ❌        | No scalar 64-bit integer type. |
+| Float     | ❌        | No scalar 32-bit float type.   |
+| Double    | ✅        | Supported through `Number`.    |
+| Boolean   | ✅        | Supported through `boolean`.   |
 
 #### Text Encoding
 
-| Provision | Verified | Notes |
-| --------- | -------- | ----- |
-| Codepoint | ⚠️ | Unicode codepoints can be represented numerically and processed through string APIs, but JavaScript does not provide a dedicated codepoint type. |
-| ASCII | ❌ | ASCII is not provided as a core language-level text encoding. Host APIs or custom handling are required. |
-| CP1252 | ❌ | CP1252 is not provided as a core language-level text encoding. Some environments may decode Windows-1252 through host APIs, but this is not sufficient for language-level verification. |
-| UTF-8 | ⚠️ | UTF-8 encoding is commonly available through `TextEncoder`, but this is a host API rather than a core ECMAScript language feature. |
-| UTF-16LE | ❌ | JavaScript strings use UTF-16 code units internally, but the language does not provide explicit UTF-16LE text encoding support as required by the specification. Host APIs or custom handling are required. |
+| Provision | Verified | Notes                        |
+| --------- | -------- | ---------------------------- |
+| Codepoint | ❌        | No dedicated codepoint type. |
+| ASCII     | ❌        | Not language-level.          |
+| CP1252    | ❌        | Not language-level.          |
+| UTF-8     | ❌        | Not language-level.          |
+| UTF-16LE  | ❌        | Not language-level.          |
 
 #### Operation Status
 
-| Provision | Verified | Notes |
-| --------- | -------- | ----- |
-| Status | ✅ | Can be represented by a custom object, class, enum-like object, or numeric value which distinguishes `Success`, `Warning`, `Error`, and `Fatal`. |
-| Context | ✅ | Can be represented by a custom object property or numeric value which provides additional operation-specific context. |
-| Operation | ✅ | Can be represented by a custom object property or numeric value which identifies the operation being reported. |
-| Detail | ✅ | Can be represented by a custom object property or numeric value which provides additional result information. |
-| Result | ⚠️ | Can be represented by one custom returnable object containing status, context, operation, and detail, but JavaScript cannot strongly enforce the structure without runtime validation or an external type system. |
+| Provision | Verified | Notes                           |
+| --------- | -------- | ------------------------------- |
+| Status    | ⚠️       | Representable, not enforceable. |
+| Context   | ⚠️       | Representable, not enforceable. |
+| Operation | ⚠️       | Representable, not enforceable. |
+| Detail    | ⚠️       | Representable, not enforceable. |
+| Result    | ⚠️       | Requires runtime validation.    |
+
+### FRELSPEC Verification
+
+#### Collections
+
+| Provision | Verified | Notes                    |
+| --------- | -------- | ------------------------ |
+| Set       | ✅        | Supported through `Set`. |
+| Map       | ✅        | Supported through `Map`. |
+| Array     | ✅        | Arrays are supported.    |
+| File      | ❌        | Not language-level.      |
+| Stream    | ❌        | Not language-level.      |
+
+#### Memory
+
+| Provision | Verified | Notes                           |
+| --------- | -------- | ------------------------------- |
+| Address   | ❌        | No address support.             |
+| Pointer   | ❌        | No pointer support.             |
+| Variable  | ✅        | Variables are supported.        |
+| Constant  | ⚠️       | `const` protects bindings only. |
+
+#### Operations
+
+| Provision   | Verified | Notes                            |
+| ----------- | -------- | -------------------------------- |
+| Instruction | ❌        | No defined instruction type.     |
+| Procedure   | ❌        | Functions always return a value. |
+| Function    | ✅        | Functions are supported.         |
+
+#### Threading
+
+| Provision  | Verified | Notes                       |
+| ---------- | -------- | --------------------------- |
+| Process    | ❌        | Not language-level.         |
+| Thread     | ⚠️        | Represented through agents. |
+| Dispatcher | ❌        | Requires host scheduling.   |
+
+
+#### Composites
+
+| Provision | Verified | Notes                                 |
+| --------- | -------- | ------------------------------------- |
+| Member    | ✅        | Object members are supported.         |
+| Object    | ✅        | Objects are supported.                |
+| Field     | ✅        | Data properties can represent fields. |
+| Method    | ✅        | Methods are supported.                |
+| Property  | ❌        | Not Catalyst-compatible.              |
+| Structure | ❌        | No structure support.                 |
+| Class     | ✅        | Class syntax is supported.            |
+| Interface | ❌        | No interface support.                 |
