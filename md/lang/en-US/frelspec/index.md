@@ -17,7 +17,6 @@ The **Foundational Relations Specification (FRELSPEC)** establishes the core rel
 
 By defining relationships between foundational concepts in a precise and stable form, FRELSPEC provides a common reference point for higher-level specifications. This allows developers, reviewers, and implementers to reason from the same foundation when determining whether a language, service, framework, or system can represent the relational constructs required to be considered within spec.
 
-
 > [!IMPORTANT]
 >
 > We express definitions using a derived form of [set theory](https://en.wikipedia.org/wiki/Set_theory) notation. This approach provides precise, unambiguous definitions while maintaining clarity and conciseness. We structure these definitions to support easy reference, clear interpretation, and a consistent conceptual hierarchy.
@@ -51,7 +50,14 @@ By defining relationships between foundational concepts in a precise and stable 
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
+  - [Threading](#threading)
+    - [Process](#process)
+    - [Thread](#thread)
+      - [Thread(p)](#threadp)
+    - [Dispatcher](#dispatcher)
+      - [Dispatcher(t)](#dispatchert)
   - [Composites](#composites)
+    - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
@@ -182,11 +188,47 @@ A function is any procedure $f_{func} : {k} \to B$ such that $k$ is a key and $B
 >
 > $\mathrm{Function}(k) = b_r$
 
+## Threading
+
+### Process
+
+A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, where the process represents a distinct unit of transformation within a system.
+
+### Thread
+
+A thread is any flow of execution contained within a process, where the thread provides one path by which ordered sequences of instructions belonging to that process may be executed.
+
+#### Thread(p)
+
+> Let $p$ be a process.
+>
+> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+>
+> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+
+### Dispatcher
+
+A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+
+#### Dispatcher(t)
+
+> Let $t$ be a thread.
+>
+> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+>
+> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+>
+> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+
 ## Composites
+
+### Member
+
+A member is any element $m \in M$ such that $M$ is a set of members, where a member is a value which may be assigned to a key within the member map of an object.
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members and each member may be a variable, procedure, function, or object, allowing an object to represent an addressable composite value whose named members may themselves be evaluated, executed, called, or further resolved.
+An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
 
 #### Object(k)
 
