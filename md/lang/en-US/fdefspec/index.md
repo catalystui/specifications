@@ -159,16 +159,7 @@ The following definition conforms to the IEEE 754 standard for single-precision 
 >
 > Let $f = \sum_{i=9}^{31} b_i 2^{31-i}$
 >
-> $$
-> \mathrm{Single}(b_0,\dots,b_{31}) =
-> \begin{cases}
-> \quad(-1)^s \cdot \left(1 + \dfrac{f}{2^{23}}\right) \cdot 2^{e-127} & 0 < e < 255 \\
-> \quad(-1)^s \cdot \left(\dfrac{f}{2^{23}}\right) \cdot 2^{-126} & e = 0 \land f \neq 0 \\
-> \quad(-1)^s \cdot 0 & e = 0 \land f = 0 \\
-> \quad(-1)^s \cdot \infty & e = 255 \land f = 0 \\
-> \quad\mathrm{NaN} & e = 255 \land f \neq 0
-> \end{cases}
-> $$
+> $\displaystyle \mathrm{Single}(b_0,\dots,b_{31}) = \begin{cases} \quad(-1)^s \cdot \left(1 + \dfrac{f}{2^{23}}\right) \cdot 2^{e-127} & 0 < e < 255 \\ \quad(-1)^s \cdot \left(\dfrac{f}{2^{23}}\right) \cdot 2^{-126} & e = 0 \land f \neq 0 \\ \quad(-1)^s \cdot 0 & e = 0 \land f = 0 \\ \quad(-1)^s \cdot \infty & e = 255 \land f = 0 \\ \quad\mathrm{NaN} & e = 255 \land f \neq 0 \end{cases}$
 
 ### Double
 
@@ -184,16 +175,7 @@ The following definition conforms to the IEEE 754 standard for double-precision 
 >
 > Let $f = \sum_{i=12}^{63} b_i 2^{63-i}$
 >
-> $$
-> \mathrm{Double}(b_0,\dots,b_{63}) =
-> \begin{cases}
-> \quad(-1)^s \cdot \left(1 + \dfrac{f}{2^{52}}\right) \cdot 2^{e-1023} & 0 < e < 2047 \\
-> \quad(-1)^s \cdot \left(\dfrac{f}{2^{52}}\right) \cdot 2^{-1022} & e = 0 \land f \neq 0 \\
-> \quad(-1)^s \cdot 0 & e = 0 \land f = 0 \\
-> \quad(-1)^s \cdot \infty & e = 2047 \land f = 0 \\
-> \quad\mathrm{NaN} & e = 2047 \land f \neq 0
-> \end{cases}
-> $$
+> $\displaystyle \mathrm{Double}(b_0,\dots,b_{63}) = \begin{cases} \quad(-1)^s \cdot \left(1 + \dfrac{f}{2^{52}}\right) \cdot 2^{e-1023} & 0 < e < 2047 \\ \quad(-1)^s \cdot \left(\dfrac{f}{2^{52}}\right) \cdot 2^{-1022} & e = 0 \land f \neq 0 \\ \quad(-1)^s \cdot 0 & e = 0 \land f = 0 \\ \quad(-1)^s \cdot \infty & e = 2047 \land f = 0 \\ \quad\mathrm{NaN} & e = 2047 \land f \neq 0 \end{cases}$
 
 ### Boolean
 
@@ -201,14 +183,7 @@ A boolean is any $b \in \{0,1\}$.
 
 #### Boolean()
 
-> $$
-> \mathrm{Boolean}(b) =
-> \begin{cases}
-> \quad\mathrm{False} & b = 0 \\
-> \quad\mathrm{True} & b = 1
-> \end{cases}
-> \quad \text{where } b \in \mathrm{Bit}
-> $$
+> $\displaystyle \mathrm{Boolean}(b) = \begin{cases} \quad\mathrm{False} & b = 0 \\ \quad\mathrm{True} & b = 1 \end{cases} \quad \text{where } b \in \mathrm{Bit}$
 
 ## Text Encoding
 
@@ -216,22 +191,11 @@ A boolean is any $b \in \{0,1\}$.
 
 A text encoding is defined as the following set:
 
-$$
-\quad\mathrm{Text\ Encoding} = \{\, \mathrm{Unknown}, \mathrm{ASCII}, \mathrm{CP1252}, \mathrm{UTF\text{-}8}, \mathrm{UTF\text{-}16LE} \,\}
-$$
+$\displaystyle \quad\mathrm{Text\ Encoding} = \{\, \mathrm{Unknown}, \mathrm{ASCII}, \mathrm{CP1252}, \mathrm{UTF\text{-}8}, \mathrm{UTF\text{-}16LE} \,\}$
 
 #### Text Encoding()
 
-> $$
-> \mathrm{Text\ Encoding}(e) =
-> \begin{cases}
-> \mathrm{Nibble}(0,0,0,0) & e = \mathrm{Unknown} \\
-> \mathrm{Nibble}(0,0,0,1) & e = \mathrm{ASCII} \\
-> \mathrm{Nibble}(0,0,1,0) & e = \mathrm{CP1252} \\
-> \mathrm{Nibble}(0,0,1,1) & e = \mathrm{UTF\text{-}8} \\
-> \mathrm{Nibble}(0,1,0,0) & e = \mathrm{UTF\text{-}16LE}
-> \end{cases}
-> $$
+> $\displaystyle \mathrm{Text\ Encoding}(e) = \begin{cases} \mathrm{Nibble}(0,0,0,0) & e = \mathrm{Unknown} \\ \mathrm{Nibble}(0,0,0,1) & e = \mathrm{ASCII} \\ \mathrm{Nibble}(0,0,1,0) & e = \mathrm{CP1252} \\ \mathrm{Nibble}(0,0,1,1) & e = \mathrm{UTF\text{-}8} \\ \mathrm{Nibble}(0,1,0,0) & e = \mathrm{UTF\text{-}16LE} \end{cases}$
 
 ### Codepoint
 
@@ -329,9 +293,7 @@ A status code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$, 
 
 A status code level is defined as the following set:
 
-$$
-\quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathrm{Warning}, \mathrm{Error}, \mathrm{Fatal} \,\}
-$$
+$\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathrm{Warning}, \mathrm{Error}, \mathrm{Fatal} \,\}$
 
 #### Status Code()
 
@@ -343,15 +305,7 @@ The set of status code values is the range $[0, 255]$, which is partitioned into
 
 > Let $s = \mathrm{Status\ Code}(b_0,\dots,b_7)$
 >
-> $$
-> \mathrm{Status\ Code\ Level}(s) =
-> \begin{cases}
-> \quad\mathrm{Success} & 0 \leq s \leq 63 \\
-> \quad\mathrm{Warning} & 64 \leq s \leq 127 \\
-> \quad\mathrm{Error} & 128 \leq s \leq 191 \\
-> \quad\mathrm{Fatal} & 192 \leq s \leq 255
-> \end{cases}
-> $$
+> $\displaystyle \mathrm{Status\ Code\ Level}(s) = \begin{cases} \quad\mathrm{Success} & 0 \leq s \leq 63 \\ \quad\mathrm{Warning} & 64 \leq s \leq 127 \\ \quad\mathrm{Error} & 128 \leq s \leq 191 \\ \quad\mathrm{Fatal} & 192 \leq s \leq 255 \end{cases}$
 
 #### Status Code Definition()
 
