@@ -38,7 +38,7 @@ Host-provided APIs, implementation-specific behavior, external libraries, transp
 * JavaScript does not provide language-level file or stream constructs.
 * JavaScript does not provide language-level address or pointer constructs.
 * JavaScript does not provide language-level process, thread, or dispatcher constructs.
-* JavaScript does not provide Catalyst-compatible properties.
+* JavaScript properties do not provide an explicit keyed member backed by a required Get/Set accessor map.
 * JavaScript does not provide structures or interfaces.
 
 ### FDEFSPEC Verification
@@ -123,7 +123,7 @@ Host-provided APIs, implementation-specific behavior, external libraries, transp
 | Object    | ✅        | Objects are supported.                |
 | Field     | ✅        | Data properties can represent fields. |
 | Method    | ✅        | Methods are supported.                |
-| Property  | ❌        | Not Catalyst-compatible.              |
+| Property  | ❌        | No explicit accessor map.             |
 | Structure | ❌        | No structure support.                 |
 | Class     | ✅        | Class syntax is supported.            |
 | Interface | ❌        | No interface support.                 |

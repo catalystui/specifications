@@ -23,6 +23,7 @@ This review assumes modern Java language support where version-dependent feature
 ### Failures
 
 * Java does not provide CP1252 as a guaranteed standard charset, requiring implementation-specific support, additional libraries, or custom handling for full compliance.
+* Java properties do not provide an explicit keyed member backed by a required Get/Set accessor map.
 
 ### FDEFSPEC Verification
 
@@ -105,7 +106,7 @@ This review assumes modern Java language support where version-dependent feature
 | Object    | ✅        | Objects are supported.                 |
 | Field     | ✅        | Fields are supported.                  |
 | Method    | ✅        | Methods are supported.                 |
-| Property  | ⚠️       | No native syntax; use getters/setters. |
+| Property  | ❌        | No explicit accessor map.              |
 | Structure | ✅        | Supported through records; Java 16+.   |
 | Class     | ✅        | Classes are supported.                 |
 | Interface | ✅        | Interfaces are supported.              |
