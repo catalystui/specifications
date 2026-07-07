@@ -2,6 +2,133 @@
 
 Welcome to the CatalystUI Verification documentation for accessibility.
 
-This section will provide the specifications, requirements, and review guidelines used to determine whether a service, framework, application, library, or system can be considered **CatalystUI Verified for Accessibility**. A verified implementation is one that remains reasonably usable when one of the three primary senses—sight, sound, or touch—is individually unavailable, using the remaining sensory domains to preserve access to its full functionality.
+**CatalystUI Verified for Accessibility** indicates that a service, framework, application, library, or system has been reviewed by the CatalystUI Team and found to remain reasonably usable when one of the three primary senses involved in user-interface interaction is individually unavailable.
 
-This page is currently a placeholder. More information will be added as the related specifications are finalized.
+For this verification, CatalystUI identifies the three primary accessibility senses as **sight**, **sound**, and **touch**. A verified system must preserve reasonable access to its essential functionality when any one of these senses is unavailable by relying on the remaining available sensory domains.
+
+In simpler terms, this verification asks whether a user can still meaningfully understand, navigate, and operate the essential parts of a system if they cannot rely on sight, sound, or touch individually.
+
+## Purpose
+
+Accessibility matters because a user interface should not depend entirely on one sensory pathway when the same essential meaning can reasonably be communicated through another.
+
+CatalystUI is designed around the faithful movement of data between systems and human perception. If important information is only visible, only audible, or only available through touch, then the system may become unusable for users who cannot rely on that sense. Accessibility Verification exists to identify systems that preserve access by allowing essential information and interaction to continue through alternate sensory routes.
+
+The goal is not to require every possible interaction method, every assistive technology, or every specialized accommodation. The goal is to determine whether the essential system remains meaningfully usable when sight, sound, or touch is individually unavailable.
+
+## What Verification Means
+
+A system becomes **CatalystUI Verified for Accessibility** when it is reviewed against the requirements listed in this section and found to be within spec.
+
+To be verified, a system must remain reasonably usable in each of the following cases:
+
+| Unavailable Sense | Required Accessibility Behavior                                   |
+| ----------------- | ----------------------------------------------------------------- |
+| Sight             | The system must remain reasonably usable through sound and touch. |
+| Sound             | The system must remain reasonably usable through sight and touch. |
+| Touch             | The system must remain reasonably usable through sight and sound. |
+
+A system does not need to provide identical experiences across every sensory path. A non-visual experience may be slower than a visual one. A sound-free experience may require captions, visual indicators, or other substitutions. A touch-free experience may require alternate controls, voice interaction, keyboard navigation, pointer navigation, or other non-touch methods.
+
+What matters is whether the essential functionality remains accessible, understandable, and operable without requiring the unavailable sense.
+
+## Essential Functionality
+
+For Accessibility Verification, **essential functionality** refers to the parts of a system that a user reasonably needs in order to understand, navigate, configure, and operate the system.
+
+Essential functionality may include:
+
+* primary navigation
+* core workflows
+* required controls
+* important warnings
+* important errors
+* required confirmation messages
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* any interaction required for normal use
+
+A system may still be within spec if decorative, redundant, optional, or nonessential features are not equally available through every sensory path. However, the user must still be able to use the essential system without being blocked by the missing sense.
+
+## Sight Unavailable
+
+When sight is unavailable, the system should remain reasonably usable through sound and touch.
+
+This may include spoken output, screen-reader-compatible structure, meaningful focus order, tactile controls, keyboard access, haptic confirmation, audio descriptions, or another reasonable non-visual method of communicating essential information.
+
+A system should not rely exclusively on visual position, color, shape, animation, icons, or layout when that information is required to understand or operate essential functionality.
+
+## Sound Unavailable
+
+When sound is unavailable, the system should remain reasonably usable through sight and touch.
+
+This may include captions, transcripts, visual alerts, text equivalents, progress indicators, visible status messages, haptic feedback, or another reasonable non-auditory method of communicating essential information.
+
+A system should not rely exclusively on sound effects, spoken instructions, alerts, alarms, music cues, or audio-only prompts when that information is required to understand or operate essential functionality.
+
+## Touch Unavailable
+
+When touch is unavailable, the system should remain reasonably usable through sight and sound.
+
+This may include voice control, keyboard navigation, pointer alternatives, remote controls, gaze-compatible interaction, switch-compatible interaction, spoken prompts, visual confirmation, or another reasonable method that does not require touch-based interaction or tactile perception.
+
+A system should not rely exclusively on touch gestures, haptic feedback, physical texture, vibration, force, pressure, or touch-only controls when those interactions are required to understand or operate essential functionality.
+
+## Additional Sensory Domains
+
+CatalystUI also recognizes **taste** and **smell** as sensory domains. These domains may be considered during accessibility review when they are meaningfully used by the system.
+
+Taste and smell are **inclusive** for verification, meaning they may strengthen or support an accessibility review when they provide meaningful alternate access or additional context.
+
+Taste and smell are not currently **exclusive** for failure, meaning a system does not fail Accessibility Verification simply because it does not provide taste-based or smell-based interaction.
+
+CatalystUI Accessibility Verification is primarily concerned with whether the system remains reasonably usable when sight, sound, or touch is individually unavailable.
+
+## What “Within Spec” Means
+
+When a system is considered **within spec**, it means the CatalystUI Team has manually reviewed the system and found it reasonable to conclude that it satisfies the accessibility requirements described by this verification category.
+
+This does not require one rigid implementation pattern. A system may satisfy accessibility requirements through native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration, or another stable mechanism appropriate to the system.
+
+Verification is concerned with the practical ability of users to access the essential system when one primary sense is unavailable, not whether the system uses one specific accessibility architecture.
+
+## What Verification Does Not Mean
+
+CatalystUI Verified for Accessibility does not guarantee that every possible disability, device, assistive technology, medical condition, legal requirement, regional standard, or specialized use case has been fully reviewed.
+
+It also does not automatically verify internationalization, translation quality, typography, localization, regional compliance, or general design quality unless those concerns are included in the reviewed accessibility scope.
+
+A system may be reasonably accessible under CatalystUI’s accessibility model and still require separate review for legal compliance, platform certification, specialized assistive technology support, or other accessibility standards.
+
+## Why This Verification Exists
+
+A user interface is only successful when users can actually use it.
+
+Many systems treat accessibility as an afterthought, a checklist, or a narrow technical requirement instead of a fundamental part of human-computer interaction. CatalystUI takes a simpler and more direct approach: if a system depends on human perception, then the system should preserve essential meaning when one primary sensory path is unavailable.
+
+Accessibility Verification exists to identify systems that take this responsibility seriously. It recognizes systems that provide meaningful alternate access, preserve essential functionality, and avoid trapping users behind a single required sense.
+
+## Verification Scope
+
+CatalystUI Verification for Accessibility applies to the reviewed system, service, framework, application, library, or implementation as it existed at the time verification was issued.
+
+A verified system provides reasonable accessibility for its essential functionality under the reviewed conditions. It does not guarantee that every future page, feature, release, plugin, extension, third-party integration, device, or platform-specific version is automatically within spec.
+
+Separate products, modules, services, major revisions, or platform-specific builds may require their own review depending on the verification category being requested.
+
+## Verification Validity
+
+CatalystUI Verification applies only to the reviewed state of the system at the time verification is issued.
+
+A system may retain its verification across later updates so long as it preserves the verified accessibility foundation. Minor wording changes, visual refinements, performance improvements, and ordinary content updates do not automatically invalidate verification.
+
+A new review may be required if a system removes alternate access paths, breaks assistive-technology support, substantially changes essential navigation, removes required accessibility settings, or changes interaction behavior in a way that affects the verified accessibility foundation.
+
+In other words, improving accessibility is usually fine. Breaking the verified access model may require review.
+
+## Verified Systems
+
+Known systems verified for accessibility are listed separately on the appropriate CatalystUI Verified page.
