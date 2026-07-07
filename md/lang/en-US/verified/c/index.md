@@ -1,0 +1,118 @@
+# Verification Details
+
+## C
+
+### Overview
+
+The C programming language has been verified against the FDEFSPEC (Rev. 1) and FRELSPEC (Rev. 1) specifications as of July 7th, 2026.
+
+#### Good Faith Statement
+
+We believe in good faith that the C programming language can reasonably represent the concepts and provisions defined in the following specifications, and that it can be used to implement systems which are in compliance with these specifications.
+
+#### Review Assumptions
+
+This review assumes modern standard C support where version-dependent features are noted. Exact-width integer support assumes the corresponding `<stdint.h>` types are provided by the implementation.
+
+This review treats C as a low-level representation language. Byte-exact encodings may be represented directly through byte arrays, lookup tables, and explicit parsing logic when no named standard codec is provided.
+
+### Warnings
+
+* Exact-width integer types depend on implementation support.
+* CP1252 can be represented byte-for-byte, but no named standard codec is provided.
+* UTF-16LE serialization requires explicit byte-order handling.
+* Standard threads may be omitted by some C implementations.
+* Object-oriented patterns may be manually emulated, but are not native language constructs.
+
+### Failures
+
+* C does not provide native method members.
+* C does not provide native properties.
+* C does not provide native classes.
+* C does not provide native interfaces.
+
+### FDEFSPEC Verification
+
+#### Numerics
+
+| Provision | Verified | Notes                                       |
+| --------- | -------- | ------------------------------------------- |
+| Bit       | ⚠️       | Use bit-fields or masks.                    |
+| Nibble    | ⚠️       | Use bit-fields or masks.                    |
+| Byte      | ✅        | Supported through `unsigned char`.          |
+| Short     | ✅        | Supported through `int16_t` and `uint16_t`. |
+| Int       | ✅        | Supported through `int32_t` and `uint32_t`. |
+| Long      | ✅        | Supported through `int64_t` and `uint64_t`. |
+| Float     | ✅        | Supported through `float`.                  |
+| Double    | ✅        | Supported through `double`.                 |
+| Boolean   | ✅        | Supported through `bool`; C99+.             |
+
+#### Text Encoding
+
+| Provision | Verified | Notes                                   |
+| --------- | -------- | --------------------------------------- |
+| Codepoint | ✅        | Supported through `char32_t`; C11+.     |
+| ASCII     | ✅        | Representable as byte values.           |
+| CP1252    | ⚠️        | Requires explicit byte mapping.         |
+| UTF-8     | ✅        | Supported through UTF-8 literals; C11+. |
+| UTF-16LE  | ⚠️        | Requires byte-order handling.           |
+
+#### Operation Status
+
+| Provision | Verified | Notes                           |
+| --------- | -------- | ------------------------------- |
+| Status    | ✅        | Can be represented by an enum.  |
+| Context   | ✅        | Can be represented by a value.  |
+| Operation | ✅        | Can be represented by a value.  |
+| Detail    | ✅        | Can be represented by a value.  |
+| Result    | ✅        | Can be represented by a struct. |
+
+### FRELSPEC Verification
+
+#### Collections
+
+| Provision | Verified | Notes                          |
+| --------- | -------- | ------------------------------ |
+| Set       | ✅        | Can be represented by structs. |
+| Map       | ✅        | Can be represented by structs. |
+| Array     | ✅        | Native arrays are supported.   |
+| File      | ✅        | Supported through file APIs.   |
+| Stream    | ✅        | Supported through stream APIs. |
+
+#### Memory
+
+| Provision | Verified | Notes                      |
+| --------- | -------- | -------------------------- |
+| Address   | ✅        | Addresses are supported.   |
+| Pointer   | ✅        | Pointers are supported.    |
+| Variable  | ✅        | Variables are supported.   |
+| Constant  | ✅        | Supported through `const`. |
+
+#### Operations
+
+| Provision   | Verified | Notes                                   |
+| ----------- | -------- | --------------------------------------- |
+| Instruction | ✅        | Represented through machine operations. |
+| Procedure   | ✅        | Supported through `void` functions.     |
+| Function    | ✅        | Supported through returning functions.  |
+
+#### Threading
+
+| Provision  | Verified | Notes                                  |
+| ---------- | -------- | -------------------------------------- |
+| Process    | ✅        | Supported through hosted environments. |
+| Thread     | ⚠️        | Supported through `<threads.h>`; C11+. |
+| Dispatcher | ✅        | Can be represented directly.           |
+
+#### Composites
+
+| Provision | Verified | Notes                                    |
+| --------- | -------- | ---------------------------------------- |
+| Member    | ✅        | Struct members are supported.            |
+| Object    | ✅        | Structs can form addressable composites. |
+| Field     | ✅        | Struct fields are supported.             |
+| Method    | ❌        | No native method members.                |
+| Property  | ❌        | No explicit Get/Set accessor map.        |
+| Structure | ✅        | Structures are natively supported.       |
+| Class     | ❌        | No native class construct.               |
+| Interface | ❌        | No native interface construct.           |
