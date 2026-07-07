@@ -12,11 +12,10 @@ We believe in good faith that the C# programming language can reasonably represe
 
 #### Review Assumptions
 
-This review assumes modern C# and .NET support where version-dependent features are noted. Unsafe features may require an `unsafe` context and compiler or project authorization.
+This review assumes modern C# and .NET support where version-dependent features are noted.
 
 ### Warnings
 
-* C# does not provide dedicated 1-bit or 4-bit numeric primitive types, which may require widening or custom representations for certain provisions.
 * CP1252 support is available through the official .NET code pages provider, but may require provider registration or an additional package depending on the target runtime.
 * Unsafe pointer behavior may require explicit unsafe authorization.
 
