@@ -1,14 +1,24 @@
-# Verification Details
+# Review Details
 
 ## C
 
 ### Overview
 
-The C programming language has been verified against the FDEFSPEC (Rev. 1) and FRELSPEC (Rev. 1) specifications as of July 7th, 2026.
+The C programming language has been verified against the FDEFSPEC (Rev. 1) specification as of July 7th, 2026.
+
+The C programming language has also been reviewed against the FRELSPEC (Rev. 1) specification as of July 7th, 2026, but has not been validated against FRELSPEC.
 
 #### Good Faith Statement
 
-We believe in good faith that the C programming language can reasonably represent the concepts and provisions defined in the following specifications, and that it can be used to implement systems which are in compliance with these specifications.
+We believe in good faith that the C programming language can reasonably represent the concepts and provisions defined by FDEFSPEC, and that it can be used to implement systems which are in compliance with FDEFSPEC.
+
+#### Review Statement
+
+While C provides strong low-level support for foundational data representation, memory access, files, streams, procedures, functions, and structures, these mechanisms are not sufficient to satisfy FRELSPEC as a whole.
+
+C can manually emulate several object-oriented and composite patterns through structs, function pointers, and disciplined conventions. However, these patterns are not native language constructs. Because FRELSPEC defines methods, properties, classes, and interfaces as foundational composite relations, we do not believe C provides a stable enough foundation for FRELSPEC-compliant implementation without significant additional infrastructure.
+
+As a result, C has been validated against FDEFSPEC, but has not been granted full CatalystUI Verified status for Programming Languages.
 
 #### Review Assumptions
 
@@ -26,6 +36,7 @@ This review treats C as a low-level representation language. Byte-exact encoding
 
 ### Failures
 
+* C has not been validated against FRELSPEC.
 * C does not provide native method members.
 * C does not provide native properties.
 * C does not provide native classes.

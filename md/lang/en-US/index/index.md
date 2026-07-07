@@ -6,7 +6,6 @@ Programming languages which have been verified to meet the FDEFSPEC specificatio
 
 | Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
-| [C](https://www.c-language.org/) | FDEFSPEC ✅<br/>FRELSPEC ✅ | July 7th, 2026 | [View Details](/verified/c/) |
 | [C++](https://isocpp.org/) | FDEFSPEC ✅<br/>FRELSPEC ✅ | July 7th, 2026 | [View Details](/verified/cpp/) |
 | [Java](https://www.java.com/en/) | FDEFSPEC ✅<br/>FRELSPEC ✅ | July 7th, 2026 | [View Details](/verified/java/) |
 | [C#](https://dotnet.microsoft.com/en-us/languages/csharp) | FDEFSPEC ✅<br/>FRELSPEC ✅ | July 7th, 2026 | [View Details](/verified/csharp/) |
@@ -17,5 +16,6 @@ Programming languages which have been reviewed for compliance with the FDEFSPEC 
 
 | Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
-| Python | FDEFSPEC ❌<br/>FRELSPEC ❌ | July 7th, 2026 | [View Details](/reviewed/python/) |
-| JavaScript | FDEFSPEC ❌<br/>FRELSPEC ❌ | July 7th, 2026 | [View Details](/reviewed/javascript/) |
+| [C](https://www.c-language.org/) | FDEFSPEC ✅<br/>FRELSPEC ❌ | July 7th, 2026 | [View Details](/reviewed/c/) |
+| [Python](https://www.python.org/) | FDEFSPEC ❌<br/>FRELSPEC ❌ | July 7th, 2026 | [View Details](/reviewed/python/) |
+| [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | FDEFSPEC ❌<br/>FRELSPEC ❌ | July 7th, 2026 | [View Details](/reviewed/javascript/) |
