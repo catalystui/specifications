@@ -123,7 +123,7 @@ An address is any element $a \in A$ such that $A$ is a set of addresses, where e
 
 ### Pointer
 
-A pointer is any function $f_p : {a} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
+A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
 
 #### Pointer()
 
@@ -133,19 +133,19 @@ A pointer is any function $f_p : {a} \to B$ such that $a \in A$ is an address an
 
 ### Variable
 
-A variable is any function $f_v : {k} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
+A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
 
 #### Variable(k)
 
-> Let $f_b : {k} \to {a}$ be the variable’s binding function.
+> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
 >
-> Let $f_p : {a} \to B$ be a pointer.
+> Let $f_p : \{a\} \to B$ be a pointer.
 >
 > $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
 
 ### Constant
 
-A constant is any variable $f_c : {k} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
+A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
 
 #### Constant(k)
 
@@ -162,25 +162,25 @@ An instruction is any array of bytes $i \in B$ such that $B$ is a set of byte ar
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : {k} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
 
 #### Procedure(k)
 
 > Let $b \in B$ such that $f_{proc}(k) = b$.
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in {0,\dots,n}, i_j$ is an instruction.
+> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
 >
 > $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
 
 ### Function
 
-A function is any procedure $f_{func} : {k} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
 
 #### Function(k)
 
 > Let $b \in B$ such that $f_{func}(k) = b$.
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in {0,\dots,n}, i_j$ is an instruction.
+> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
 >
 > Let $a_r \in A$ be an address assigned after execution is completed.
 >
@@ -262,7 +262,7 @@ A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where 
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = { \mathrm{Get}, \mathrm{Set} }$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
 
 #### Property(k)
 
@@ -270,7 +270,7 @@ A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A
 >
 > Let $m = (A,f_a)$ be an accessor map.
 >
-> Let $A = { \mathrm{Get}, \mathrm{Set} }$.
+> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
 >
 > $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
 >
