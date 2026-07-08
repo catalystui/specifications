@@ -1,3 +1,5 @@
+![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+
 # CatalystUI Verified for Internationalization
 
 Welcome to the CatalystUI Verification documentation for internationalization.
