@@ -1,0 +1,261 @@
+name: Request Accessibility Verification
+description: Request CatalystUI review for accessibility verification.
+title: "[Accessibility Verification] "
+labels:
+  - "CAT: Accessibility"
+  - "ATN: Needs Attention"
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for requesting CatalystUI Accessibility Verification.
+
+        This form is used to request review of a service, framework, application, library, system, or implementation for accessibility support.
+
+        Accessibility verifications are handled through the CatalystUI Specifications repository. Each verification should be submitted through the standard GitHub review process.
+
+        CatalystUI Accessibility Verification reviews whether the submitted system remains reasonably usable when one of the three primary accessibility senses is individually unavailable: sight, sound, or touch.
+
+        Payment is a review and processing fee. Payment does not guarantee verification, approval, endorsement, or publication. Verification is granted only after CatalystUI determines, in good faith, that the submitted system satisfies the applicable requirements at the time of review.
+  - type: input
+    id: submission-name
+    attributes:
+      label: Submission Name
+      description: The name of the service, framework, application, library, system, or implementation being submitted for verification.
+      placeholder: "Example: ExampleApp, ExampleUI, ExampleService"
+    validations:
+      required: true
+  - type: textarea
+    id: verification-scope
+    attributes:
+      label: Verification Scope
+      description: Describe exactly what system, features, workflows, platforms, pages, modules, or functionality are being submitted for review.
+      placeholder: |
+        Example:
+        This request covers the public web application and its essential user workflows.
+
+        Included:
+        - account access
+        - primary navigation
+        - settings
+        - payment flow
+        - required confirmation messages
+        - important warnings and errors
+
+        Not included:
+        - administrative dashboard
+        - experimental beta features
+        - third-party embedded widgets
+    validations:
+      required: true
+  - type: input
+    id: pull-request
+    attributes:
+      label: Pull Request
+      description: Link the pull request for this verification, if one has already been opened.
+      placeholder: "Example: https://github.com/CatalystUI/Specifications/pull/42"
+    validations:
+      required: false
+  - type: input
+    id: official-url
+    attributes:
+      label: Official URL
+      description: Provide the official website, documentation, repository, release page, or reference for the submitted system.
+      placeholder: "Example: https://example.com"
+    validations:
+      required: true
+  - type: input
+    id: source-or-documentation-url
+    attributes:
+      label: Source / Documentation URL
+      description: Provide source code, accessibility documentation, conformance notes, test results, or reference material if separate from the official URL.
+      placeholder: "Example: https://github.com/example/project"
+    validations:
+      required: false
+  - type: textarea
+    id: essential-functionality
+    attributes:
+      label: Essential Functionality
+      description: List the essential functionality that must remain accessible, understandable, and operable during review.
+      placeholder: |
+        Example:
+        - primary navigation
+        - account sign-in
+        - account settings
+        - language/accessibility settings
+        - payment or checkout flow
+        - required controls
+        - important warnings
+        - important errors
+        - required confirmation messages
+        - user-facing status information
+    validations:
+      required: true
+  - type: textarea
+    id: sight-unavailable
+    attributes:
+      label: Sight Unavailable
+      description: Explain how the submitted system remains reasonably usable when sight is unavailable.
+      placeholder: |
+        Example:
+        - screen-reader-compatible structure
+        - meaningful focus order
+        - keyboard access
+        - spoken output
+        - non-visual status messages
+        - audio descriptions
+        - tactile or keyboard-based controls
+        - essential information is not conveyed only through visual position, color, shape, animation, icons, or layout
+    validations:
+      required: true
+  - type: textarea
+    id: sound-unavailable
+    attributes:
+      label: Sound Unavailable
+      description: Explain how the submitted system remains reasonably usable when sound is unavailable.
+      placeholder: |
+        Example:
+        - captions
+        - transcripts
+        - visual alerts
+        - visible status messages
+        - text equivalents
+        - progress indicators
+        - haptic feedback where appropriate
+        - essential information is not conveyed only through sound effects, spoken instructions, alerts, alarms, music cues, or audio-only prompts
+    validations:
+      required: true
+  - type: textarea
+    id: touch-unavailable
+    attributes:
+      label: Touch Unavailable
+      description: Explain how the submitted system remains reasonably usable when touch is unavailable.
+      placeholder: |
+        Example:
+        - keyboard navigation
+        - pointer alternatives
+        - voice control
+        - switch-compatible interaction
+        - gaze-compatible interaction
+        - remote control support
+        - spoken prompts
+        - visual confirmation
+        - essential functionality does not require touch gestures, haptic feedback, physical texture, vibration, force, pressure, or touch-only controls
+    validations:
+      required: true
+  - type: checkboxes
+    id: required-sense-checks
+    attributes:
+      label: Required Sense Checks
+      description: Confirm that the submitted system has been checked against all three required accessibility senses.
+      options:
+        - label: Sight unavailable — essential functionality remains reasonably usable through sound and touch.
+          required: true
+        - label: Sound unavailable — essential functionality remains reasonably usable through sight and touch.
+          required: true
+        - label: Touch unavailable — essential functionality remains reasonably usable through sight and sound.
+          required: true
+    validations:
+      required: true
+  - type: textarea
+    id: supporting-evidence
+    attributes:
+      label: Supporting Evidence
+      description: Provide links, notes, tests, documentation, examples, screenshots, videos, tables, or other material which supports this accessibility verification request.
+      placeholder: |
+        Example:
+        - accessibility documentation:
+        - keyboard navigation notes:
+        - screen reader testing notes:
+        - caption/transcript examples:
+        - alternate input support:
+        - alternate output support:
+        - assistive technology notes:
+        - platform accessibility API support:
+        - known warnings:
+        - known failures:
+    validations:
+      required: true
+  - type: textarea
+    id: known-limitations
+    attributes:
+      label: Known Limitations
+      description: List any known warnings, failures, unsupported accessibility paths, incomplete workflows, assistive technology issues, platform differences, or compatibility concerns.
+      placeholder: |
+        Example:
+        - Some nonessential decorative animations do not include audio descriptions.
+        - Touch-free navigation is supported through keyboard, but not through voice control.
+        - Third-party embedded widgets are outside the submitted verification scope.
+    validations:
+      required: false
+  - type: dropdown
+    id: previous-verification
+    attributes:
+      label: Previous CatalystUI Verification
+      description: Has this submission, or a previous state of this submission, already been verified by CatalystUI?
+      options:
+        - "No"
+        - "Yes"
+        - "Unsure"
+    validations:
+      required: true
+  - type: input
+    id: previous-verification-link
+    attributes:
+      label: Previous Verification Link
+      description: If this submission has been verified before, provide the previous verification page, issue, or pull request.
+      placeholder: "Example: https://github.com/CatalystUI/Specifications/pull/12"
+    validations:
+      required: false
+  - type: input
+    id: submitter-name
+    attributes:
+      label: Submitter Name
+      description: The name of the individual submitting this request.
+      placeholder: "Example: Jane Doe"
+    validations:
+      required: true
+  - type: input
+    id: submitter-organization
+    attributes:
+      label: Organization / Company
+      description: The organization, company, project, or group associated with this request, if applicable.
+      placeholder: "Example: ExampleSoft LLC"
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        ## Payment Coordination
+        Payment is handled privately outside of this public issue.
+
+        To complete the payment process or discuss payment options, contact [contact@catalystui.org](mailto:contact@catalystui.org) and include a link to this issue.
+
+        CatalystUI will associate the payment with this verification request after payment has been received and confirmed.
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      description: Please confirm each statement before submitting.
+      options:
+        - label: I understand that this request does not begin formal review until the required review fee has been paid.
+          required: true
+        - label: I understand that payment is a review and processing fee and does not guarantee verification.
+          required: true
+        - label: I understand that CatalystUI Accessibility Verification is only valid for the submitted system, essential functionality, accessibility scope, and reviewed state.
+          required: true
+        - label: I understand that major accessibility, navigation, interaction, assistive-technology, platform, or specification changes may require resubmission or reverification.
+          required: true
+        - label: I understand that submitted information may be used to create a public verification page if approved.
+          required: true
+        - label: I understand that I must contact CatalystUI at contact@catalystui.org with a link to this issue to complete the payment process or discuss payment options.
+          required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Add anything else CatalystUI should know before review.
+      placeholder: "N/A"
+    validations:
+      required: false

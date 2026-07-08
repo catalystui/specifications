@@ -1,0 +1,289 @@
+name: Request Internationalization Verification
+description: Request CatalystUI review for internationalization verification.
+title: "[Internationalization Verification] "
+labels:
+  - "CAT: Internationalization"
+  - "ATN: Needs Attention"
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for requesting CatalystUI Internationalization Verification.
+
+        This form is used to request review of a system, service, framework, application, library, or implementation for internationalization support.
+
+        Internationalization verifications are handled through the CatalystUI Specifications repository. Each verification should be submitted through the standard GitHub review process.
+
+        CatalystUI Internationalization Verification reviews whether the submitted system provides sufficient essential translation coverage for the required CatalystUI internationalization language set, and whether users are given a reasonable way to choose the language they understand.
+
+        Payment is a review and processing fee. Payment does not guarantee verification, approval, endorsement, or publication. Verification is granted only after CatalystUI determines, in good faith, that the submitted system satisfies the applicable requirements at the time of review.
+  - type: input
+    id: submission-name
+    attributes:
+      label: Submission Name
+      description: The name of the system, service, framework, application, library, or implementation being submitted for verification.
+      placeholder: "Example: ExampleApp, ExampleUI, ExampleService"
+    validations:
+      required: true
+  - type: textarea
+    id: verification-scope
+    attributes:
+      label: Verification Scope
+      description: Describe exactly what system, features, workflows, platforms, pages, modules, language packs, or functionality are being submitted for review.
+      placeholder: |
+        Example:
+        This request covers the public web application and its essential user-facing workflows.
+
+        Included:
+        - primary navigation
+        - account access
+        - settings and preferences
+        - language selection
+        - required controls
+        - important warnings and errors
+        - confirmation messages
+        - core documentation pages
+
+        Not included:
+        - administrative dashboard
+        - experimental beta features
+        - third-party embedded widgets
+    validations:
+      required: true
+  - type: input
+    id: pull-request
+    attributes:
+      label: Pull Request
+      description: Link the pull request for this verification, if one has already been opened.
+      placeholder: "Example: https://github.com/CatalystUI/Specifications/pull/42"
+    validations:
+      required: false
+  - type: input
+    id: official-url
+    attributes:
+      label: Official URL
+      description: Provide the official website, documentation, repository, release page, or reference for the submitted system.
+      placeholder: "Example: https://example.com"
+    validations:
+      required: true
+  - type: input
+    id: source-or-documentation-url
+    attributes:
+      label: Source / Documentation URL
+      description: Provide source code, internationalization documentation, localization files, translation resources, test results, or reference material if separate from the official URL.
+      placeholder: "Example: https://github.com/example/project"
+    validations:
+      required: false
+  - type: textarea
+    id: essential-translation-coverage
+    attributes:
+      label: Essential Translation Coverage
+      description: Explain how the submitted system provides more than 75% translation coverage for essential user-facing content in each required language.
+      placeholder: |
+        Example:
+        Essential translated content includes:
+        - primary navigation
+        - core screens and views
+        - settings and preferences
+        - user-facing labels
+        - user-facing controls
+        - required instructions
+        - important warnings
+        - important errors
+        - essential prompts
+        - required confirmation messages
+        - language selection controls
+        - core workflows needed for normal use
+
+        Estimated essential translation coverage:
+        - ar-SA: 90%
+        - bn-BD: 88%
+        - de-DE: 95%
+        - en-US: 100%
+    validations:
+      required: true
+  - type: textarea
+    id: language-selection
+    attributes:
+      label: Language Selection
+      description: Explain how end-users can change the active language without technical knowledge.
+      placeholder: |
+        Example:
+        Users can change the active language from the Settings page under Language.
+        The language selector is available before sign-in and after sign-in.
+        Each language option displays the native language name, English language name, and locale code where appropriate.
+    validations:
+      required: true
+  - type: checkboxes
+    id: required-language-checks
+    attributes:
+      label: Required Language Checks
+      description: Confirm that the submitted system provides sufficient essential translation coverage for each required CatalystUI internationalization locale.
+      options:
+        - label: ar-SA — Arabic (Saudi Arabia)
+          required: true
+        - label: bn-BD — Bengali (Bangladesh)
+          required: true
+        - label: de-DE — German (Germany)
+          required: true
+        - label: en-GB — English (United Kingdom)
+          required: true
+        - label: en-IN — English (India)
+          required: true
+        - label: en-US — English (United States)
+          required: true
+        - label: es-ES — Spanish (Spain)
+          required: true
+        - label: es-MX — Spanish (Mexico)
+          required: true
+        - label: fa-IR — Persian (Iran)
+          required: true
+        - label: fr-FR — French (France)
+          required: true
+        - label: hi-IN — Hindi (India)
+          required: true
+        - label: id-ID — Indonesian (Indonesia)
+          required: true
+        - label: it-IT — Italian (Italy)
+          required: true
+        - label: ja-JP — Japanese (Japan)
+          required: true
+        - label: ko-KR — Korean (South Korea)
+          required: true
+        - label: nl-NL — Dutch (Netherlands)
+          required: true
+        - label: pl-PL — Polish (Poland)
+          required: true
+        - label: pt-BR — Portuguese (Brazil)
+          required: true
+        - label: ru-RU — Russian (Russia)
+          required: true
+        - label: tl-PH — Tagalog (Philippines)
+          required: true
+        - label: tr-TR — Turkish (Turkey)
+          required: true
+        - label: uk-UA — Ukrainian (Ukraine)
+          required: true
+        - label: ur-PK — Urdu (Pakistan)
+          required: true
+        - label: vi-VN — Vietnamese (Vietnam)
+          required: true
+        - label: zh-CN — Chinese (China)
+          required: true
+        - label: zh-Hans — Chinese (Simplified)
+          required: true
+  - type: textarea
+    id: regional-variant-notes
+    attributes:
+      label: Regional Variant Notes
+      description: Explain any regional variant handling, shared translations, fallback behavior, or locale flexibility used by the submitted system.
+      placeholder: |
+        Example:
+        - en-GB and en-IN currently share the en-US translation base with region-specific terminology reviewed separately.
+        - zh-CN and zh-Hans use the same Simplified Chinese translation resources.
+        - es-ES and es-MX have separate translations for regionally distinct terminology.
+    validations:
+      required: false
+  - type: textarea
+    id: supporting-evidence
+    attributes:
+      label: Supporting Evidence
+      description: Provide links, notes, tests, documentation, examples, screenshots, tables, or other material which supports this internationalization verification request.
+      placeholder: |
+        Example:
+        - localization files:
+        - supported locale list:
+        - language selector screenshots:
+        - translation coverage table:
+        - fallback behavior documentation:
+        - locale routing documentation:
+        - resource file structure:
+        - translation review notes:
+        - known warnings:
+        - known failures:
+    validations:
+      required: true
+  - type: textarea
+    id: known-limitations
+    attributes:
+      label: Known Limitations
+      description: List any known warnings, failures, unsupported language behavior, incomplete translations, fallback issues, language selection issues, or compatibility concerns.
+      placeholder: |
+        Example:
+        - Some nonessential documentation pages are not yet translated.
+        - Regional English variants share one translation base.
+        - Locale fallback currently defaults to en-US.
+        - Some third-party embedded widgets are outside the submitted verification scope.
+    validations:
+      required: false
+  - type: dropdown
+    id: previous-verification
+    attributes:
+      label: Previous CatalystUI Verification
+      description: Has this submission, or a previous state of this submission, already been verified by CatalystUI?
+      options:
+        - "No"
+        - "Yes"
+        - "Unsure"
+    validations:
+      required: true
+  - type: input
+    id: previous-verification-link
+    attributes:
+      label: Previous Verification Link
+      description: If this submission has been verified before, provide the previous verification page, issue, or pull request.
+      placeholder: "Example: https://github.com/CatalystUI/Specifications/pull/12"
+    validations:
+      required: false
+  - type: input
+    id: submitter-name
+    attributes:
+      label: Submitter Name
+      description: The name of the individual submitting this request.
+      placeholder: "Example: Jane Doe"
+    validations:
+      required: true
+  - type: input
+    id: submitter-organization
+    attributes:
+      label: Organization / Company
+      description: The organization, company, project, or group associated with this request, if applicable.
+      placeholder: "Example: ExampleSoft LLC"
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        ## Payment Coordination
+        Payment is handled privately outside of this public issue.
+
+        To complete the payment process or discuss payment options, contact [contact@catalystui.org](mailto:contact@catalystui.org) and include a link to this issue.
+
+        CatalystUI will associate the payment with this verification request after payment has been received and confirmed.
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      description: Please confirm each statement before submitting.
+      options:
+        - label: I understand that this request does not begin formal review until the required review fee has been paid.
+          required: true
+        - label: I understand that payment is a review and processing fee and does not guarantee verification.
+          required: true
+        - label: I understand that CatalystUI Internationalization Verification is only valid for the submitted system, essential translation coverage, required language set, internationalization scope, and reviewed state.
+          required: true
+        - label: I understand that major translation, language selection, fallback behavior, locale support, internationalization architecture, or specification changes may require resubmission or reverification.
+          required: true
+        - label: I understand that submitted information may be used to create a public verification page if approved.
+          required: true
+        - label: I understand that I must contact CatalystUI at contact@catalystui.org with a link to this issue to complete the payment process or discuss payment options.
+          required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Add anything else CatalystUI should know before review.
+      placeholder: "N/A"
+    validations:
+      required: false
