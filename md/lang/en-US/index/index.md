@@ -2,7 +2,7 @@
 
 ## Verified Languages
 
-Programming languages which have been verified to meet the FDEFSPEC specification are listed below. These languages have undergone the necessary testing and validation to ensure compliance with the defined standards.
+Programming languages which have been verified to meet the specification(s) are listed below. These languages have undergone the necessary testing and validation to ensure compliance with the defined standards.
 
 | Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
@@ -13,7 +13,7 @@ Programming languages which have been verified to meet the FDEFSPEC specificatio
 
 ## Reviewed Languages
 
-Programming languages which have been reviewed for compliance with the FDEFSPEC specification are listed below. These languages have undergone an initial review process, but may not yet be fully verified or were found to have issues that may or may not be able to be resolved. Further testing and validation may be required to achieve full compliance.
+Programming languages which have been reviewed for compliance with the specification(s) are listed below. These languages have undergone an initial review process, but may not yet be fully verified or were found to have issues that may or may not be able to be resolved. Further testing and validation may be required to achieve full compliance.
 
 | Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
