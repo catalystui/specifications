@@ -1,3 +1,5 @@
+![Verified Indicator](https://www.catalystui.org/images/verification/verified-logo-generic.png)
+
 # CatalystUI Verified Asset Guidelines
 
 The CatalystUI Verified mark indicates that a specific product, service, language, specification, implementation, or other asset has completed a CatalystUI verification review.
