@@ -1,0 +1,167 @@
+name: Request Language Verification
+description: Request CatalystUI review for a programming language verification.
+title: "[Language Verification]: "
+labels:
+  - verification
+  - language
+  - awaiting-contact
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for requesting CatalystUI Language Verification.
+
+        This form is used to request review of a programming language against one or more CatalystUI specifications.
+
+        Language verifications are handled through the CatalystUI Specifications repository. Each verification should be submitted through a dedicated branch and reviewed through the standard GitHub review process.
+
+        Payment is a review and processing fee. Payment does not guarantee verification, approval, endorsement, or publication. Verification is granted only after CatalystUI determines, in good faith, that the submitted language satisfies the applicable requirements at the time of review.
+  - type: input
+    id: language-name
+    attributes:
+      label: Programming Language
+      description: The name of the programming language being submitted for verification.
+      placeholder: "Example: C#, Java, Rust"
+    validations:
+      required: true
+  - type: input
+    id: language-version
+    attributes:
+      label: Language Version
+      description: The exact language version, release, standard, or revision being submitted for review.
+      placeholder: "Example: Java 25, C# 14, Rust 1.88"
+    validations:
+      required: true
+  - type: input
+    id: pull-request
+    attributes:
+      label: Pull Request
+      description: Link the pull request for this verification, if one has already been opened.
+      placeholder: "Example: https://github.com/CatalystUI/Specifications/pull/42"
+    validations:
+      required: false
+  - type: input
+    id: official-language-url
+    attributes:
+      label: Official Language URL
+      description: Provide the official website, documentation, standard, or reference for the programming language.
+      placeholder: "Example: https://dotnet.microsoft.com/languages/csharp"
+    validations:
+      required: true
+  - type: input
+    id: source-or-standard-url
+    attributes:
+      label: Source / Standard URL
+      description: Provide a language specification, standards document, compiler source, or official reference material if separate from the official language URL.
+      placeholder: "Example: https://docs.oracle.com/javase/specs/"
+    validations:
+      required: false
+  - type: textarea
+    id: review-summary
+    attributes:
+      label: Review Summary
+      description: Briefly explain why this language is being submitted for CatalystUI Verification.
+      placeholder: |
+        Example:
+        This request submits Java 25 for review against FDEFSPEC Revision 1.
+        The language appears to support the required numeric representations, text encodings, and operation status concepts with the warnings documented in the verification branch.
+    validations:
+      required: true
+  - type: textarea
+    id: supporting-evidence
+    attributes:
+      label: Supporting Evidence
+      description: Provide links, notes, tests, documentation, examples, or tables which support this language verification request.
+      placeholder: |
+        Example:
+        - Numeric type documentation:
+        - Text encoding documentation:
+        - Boolean representation:
+        - Status/result representation:
+        - Test project:
+        - Known warnings:
+        - Known failures:
+    validations:
+      required: true
+  - type: textarea
+    id: known-limitations
+    attributes:
+      label: Known Limitations
+      description: List any known warnings, failures, unsupported features, edge cases, or compatibility issues.
+      placeholder: |
+        Example:
+        - Does not natively support unsigned integer types.
+        - Requires an additional package for CP1252 support.
+    validations:
+      required: false
+  - type: dropdown
+    id: previous-verification
+    attributes:
+      label: Previous CatalystUI Verification
+      description: Has this language, or a previous version of this language, already been verified by CatalystUI?
+      options:
+        - "No"
+        - "Yes"
+        - "Unsure"
+    validations:
+      required: true
+  - type: input
+    id: previous-verification-link
+    attributes:
+      label: Previous Verification Link
+      description: If this language has been verified before, provide the previous verification page, issue, or pull request.
+      placeholder: "Example: https://github.com/CatalystUI/Specifications/pull/12"
+    validations:
+      required: false
+  - type: input
+    id: submitter-name
+    attributes:
+      label: Submitter Name
+      description: The name of the individual submitting this request.
+      placeholder: "Example: Jane Doe"
+    validations:
+      required: true
+  - type: input
+    id: submitter-organization
+    attributes:
+      label: Organization / Company
+      description: The organization, company, project, or group associated with this request, if applicable.
+      placeholder: "Example: ExampleSoft LLC"
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        ## Payment Coordination
+        Payment is handled privately outside of this public issue.
+
+        To complete the payment process or discuss payment options, contact [contact@catalystui.org](mailto:contact@catalystui.org) and include a link to this issue.
+
+        CatalystUI will associate the payment with this verification request after payment has been received and confirmed.
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      description: Please confirm each statement before submitting.
+      options:
+        - label: I understand that this request does not begin formal review until the required review fee has been paid.
+          required: true
+        - label: I understand that payment is a review and processing fee and does not guarantee verification.
+          required: true
+        - label: I understand that CatalystUI Language Verification is only valid for the submitted language version, release, standard, or revision reviewed.
+          required: true
+        - label: I understand that major language, compiler, specification, or documentation changes may require resubmission or reverification.
+          required: true
+        - label: I understand that submitted information may be used to create a public verification page if approved.
+          required: true
+        - label: I understand that I must contact CatalystUI at contact@catalystui.org with a link to this issue to complete the payment process or discuss payment options.
+          required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Add anything else CatalystUI should know before review.
+      placeholder: "N/A"
+    validations:
+      required: false
