@@ -1,6 +1,8 @@
 <!-- এই অনুবাদটি ChatGPT দ্বারা তৈরি করা হয়েছে এবং একজন মানব অনুবাদকের দ্বারা পর্যালোচনা করা উচিত। -->
 <!-- অনুবাদটি যাচাই হওয়ার পরে একটি pull request-এ এই লাইনগুলো সরিয়ে ফেলুন। -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # Programming Languages-এর জন্য CatalystUI Verified
 
 programming languages-এর জন্য CatalystUI Verification documentation-এ স্বাগতম।

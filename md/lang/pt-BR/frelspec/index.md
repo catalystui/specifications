@@ -114,7 +114,7 @@ Um stream é qualquer função $f_s$ tal que cada aplicação de $f_s$ produz o 
 
 #### Stream()
 
-> Seja $c_k : I_k \to B$ o bloco retornado pela $k$-th application of $f_s$.
+> Seja $c_k : I_k \to B$ o bloco retornado pela $k\text{-th}$ application of $f_s$.
 >
 > $\forall k \in \mathbb{N}, f_s() = c_k$ na $k$-ésima aplicação.
 

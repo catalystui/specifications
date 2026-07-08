@@ -1,6 +1,8 @@
 <!-- 이 번역은 ChatGPT가 생성한 것이며 인간 번역자의 검토가 필요합니다. -->
 <!-- 번역이 확인된 후 pull request에서 이 줄들을 제거하십시오. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # 프로그래밍 언어용 CatalystUI Verified
 
 프로그래밍 언어를 위한 CatalystUI Verification 문서에 오신 것을 환영합니다.

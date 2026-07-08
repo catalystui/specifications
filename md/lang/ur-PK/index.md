@@ -1,6 +1,8 @@
 <!-- یہ ترجمہ ChatGPT کے ذریعے بنایا گیا ہے اور اسے ایک انسانی مترجم سے جائزہ لینا چاہیے۔ -->
 <!-- ترجمہ کی تصدیق کے بعد ان سطروں کو pull request میں ہٹا دیں۔ -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # پروگرامنگ زبانوں کے لیے CatalystUI Verified
 
 پروگرامنگ زبانوں کے لیے CatalystUI Verification دستاویزات میں خوش آمدید۔

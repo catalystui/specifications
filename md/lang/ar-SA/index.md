@@ -1,6 +1,8 @@
 <!-- تم إنشاء هذه الترجمة بواسطة ChatGPT ويجب أن يراجعها مترجم بشري. -->
 <!-- أزل هذه الأسطر في طلب سحب بعد التحقق من الترجمة. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # اعتماد CatalystUI للغات البرمجة
 
 مرحبًا بك في وثائق تحقق CatalystUI الخاصة بلغات البرمجة.

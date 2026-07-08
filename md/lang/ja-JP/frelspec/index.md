@@ -116,7 +116,7 @@ stream は任意の function $f_s$ であり、$f_s$ を適用するたびに by
 
 > $c_k : I_k \to B$ を、$f_s$ の $k$ 番目の適用によって返される chunk とします。
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k$-th application.
+> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
 
 ## メモリ
 

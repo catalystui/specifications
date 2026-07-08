@@ -114,9 +114,9 @@ $\forall i \in I, \exists b \in B : f_f(i) = b$
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k$-th application of $f_s$.
+> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k$-th application.
+> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
 
 ## حافظه
 

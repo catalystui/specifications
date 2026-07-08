@@ -2,6 +2,8 @@
 
 # 在翻译经验证后，请在拉取请求中删除这些行。
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # CatalystUI 编程语言认证
 
 欢迎阅读 CatalystUI 面向编程语言的认证文档。

@@ -1,6 +1,8 @@
 <!-- Bản dịch này được tạo bởi ChatGPT và nên được một người dịch xem xét lại. -->
 <!-- Hãy xóa các dòng này trong pull request sau khi bản dịch đã được xác minh. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # CatalystUI Verified cho ngôn ngữ lập trình
 
 Chào mừng bạn đến với tài liệu CatalystUI Verification dành cho ngôn ngữ lập trình.

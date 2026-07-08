@@ -1,6 +1,8 @@
 <!-- Цей переклад було створено ChatGPT, і його має перевірити людина-перекладач. -->
 <!-- Видаліть ці рядки в pull request після перевірки перекладу. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # CatalystUI Verified для мов програмування
 
 Ласкаво просимо до документації CatalystUI Verification для мов програмування.

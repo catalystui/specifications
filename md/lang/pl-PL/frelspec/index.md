@@ -114,9 +114,9 @@ A stream is any function $f_s$ takie, że each application of $f_s$ yields the n
 
 #### Strumień()
 
-> Niech $c_k : I_k \to B$ be the chunk returned by the $k$-th application of $f_s$.
+> Niech $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k$-th application.
+> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
 
 ## Pamięć
 

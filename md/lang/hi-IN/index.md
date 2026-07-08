@@ -1,6 +1,8 @@
 <!-- यह अनुवाद ChatGPT द्वारा जनरेट किया गया था और किसी मानव अनुवादक द्वारा इसकी समीक्षा की जानी चाहिए। -->
 <!-- अनुवाद सत्यापित हो जाने के बाद पुल रिक्वेस्ट में इन पंक्तियों को हटा दें। -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # Programming Languages के लिए CatalystUI Verified
 
 Programming languages के लिए CatalystUI Verification दस्तावेज़ों में आपका स्वागत है।

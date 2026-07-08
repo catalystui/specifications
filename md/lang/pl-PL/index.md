@@ -1,6 +1,8 @@
 <!-- To tłumaczenie zostało wygenerowane przez ChatGPT i powinno zostać sprawdzone przez tłumacza-człowieka. -->
 <!-- Usuń te wiersze w pull requeście po zweryfikowaniu tłumaczenia. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # CatalystUI Verified dla języków programowania
 
 Witamy w dokumentacji weryfikacji CatalystUI dla języków programowania.

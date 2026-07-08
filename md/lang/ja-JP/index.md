@@ -1,6 +1,8 @@
 <!-- この翻訳は ChatGPT によって生成されたものであり、人間の翻訳者による確認が必要です。 -->
 <!-- 翻訳が検証された後、プルリクエストでこれらの行を削除してください。 -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # プログラミング言語向け CatalystUI Verified
 
 プログラミング言語向け CatalystUI Verification ドキュメントへようこそ。

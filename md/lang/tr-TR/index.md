@@ -1,6 +1,8 @@
 <!-- Bu çeviri ChatGPT tarafından oluşturulmuştur ve bir insan çevirmen tarafından gözden geçirilmelidir. -->
 <!-- Çeviri doğrulandıktan sonra bu satırları bir pull request içinde kaldırın. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # Programlama Dilleri için CatalystUI Verified
 
 Programlama dilleri için CatalystUI Verification belgelerine hoş geldiniz.

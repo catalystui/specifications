@@ -114,7 +114,7 @@ stream은 $f_s$를 적용할 때마다 byte sequence 안의 다음 chunk $f_c : 
 
 #### Stream()
 
-> $c_k : I_k \to B$를 the chunk returned by the $k$-th application of $f_s$라고 합니다.
+> $c_k : I_k \to B$를 the chunk returned by the $k\text{-th}$ application of $f_s$라고 합니다.
 >
 > $\forall k \in \mathbb{N}, f_s() = c_k$이며, 이는 $k$번째 적용에서 성립합니다.
 

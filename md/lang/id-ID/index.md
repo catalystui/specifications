@@ -1,6 +1,8 @@
 <!-- Terjemahan ini dibuat oleh ChatGPT dan harus ditinjau oleh penerjemah manusia. -->
 <!-- Hapus baris-baris ini dalam pull request setelah terjemahan diverifikasi. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # CatalystUI Verified untuk Bahasa Pemrograman
 
 Selamat datang di dokumentasi CatalystUI Verification untuk bahasa pemrograman.

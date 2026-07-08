@@ -1,6 +1,8 @@
 <!-- Deze vertaling is gegenereerd door ChatGPT en moet door een menselijke vertaler worden beoordeeld. -->
 <!-- Verwijder deze regels in een pull request nadat de vertaling is geverifieerd. -->
 
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # CatalystUI Verified voor programmeertalen
 
 Welkom bij de CatalystUI Verification-documentatie voor programmeertalen.
