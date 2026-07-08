@@ -1,32 +1,32 @@
 {
     "navigation": [
         {
-            "title": "Request Verification",
+            "title": "i18n.request-verification",
             "path": "https://github.com/catalystui/specifications/issues/new/choose"
         },
         {
-            "title": "Verification Index",
+            "title": "i18n.verification-index",
             "path": "/index/"
         },
         {
-            "title": "Specification(s)",
+            "title": "i18n.specifications",
             "path": "/",
             "children": [
                 {
-                    "title": "A11YSPEC",
+                    "title": "i18n.a11yspec",
                     "path": "/a11yspec/"
                 }
             ]
         },
         {
-            "title": "Verified Services",
+            "title": "i18n.verified-services",
             "path": "/verified/",
             "children": [
 
             ]
         },
         {
-            "title": "Reviewed Services",
+            "title": "i18n.reviewed-services",
             "path": "/reviewed/",
             "children": [
 
