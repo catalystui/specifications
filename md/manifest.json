@@ -5,8 +5,26 @@
             "path": "https://github.com/catalystui/specifications/issues/new/choose"
         },
         {
-            "title": "i18n.internationalization",
+            "title": "Verification Index",
+            "path": "/index/"
+        },
+        {
+            "title": "Specification(s)",
             "path": "/"
+        },
+        {
+            "title": "Verified Services",
+            "path": "/verified/",
+            "children": [
+
+            ]
+        },
+        {
+            "title": "Reviewed Services",
+            "path": "/reviewed/",
+            "children": [
+
+            ]
         }
     ]
 }
