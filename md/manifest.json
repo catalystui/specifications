@@ -6,7 +6,7 @@
         },
         {
             "title": "i18n.verification-programs",
-            "path": "/",
+            "path": "/programs/",
             "children": [
                 {
                     "title": "i18n.languages",
@@ -21,6 +21,10 @@
                     "path": "/specifications/accessibility"
                 }
             ]
+        },
+        {
+            "title": "i18n.verification-assets",
+            "path": "/assets/"
         }
     ]
 }
