@@ -1,59 +1,59 @@
 {
     "navigation": [
         {
-            "title": "Request Verification",
+            "title": "i18n.request-verification",
             "path": "https://github.com/catalystui/specifications/issues/new/choose"
         },
         {
-            "title": "Verification Index",
+            "title": "i18n.verification-index",
             "path": "/index/"
         },
         {
-            "title": "Specification(s)",
+            "title": "i18n.specifications",
             "path": "/",
             "children": [
                 {
-                    "title": "FDEFSPEC",
+                    "title": "i18n.fdefspec",
                     "path": "/fdefspec/"
                 },
                 {
-                    "title": "FRELSPEC",
+                    "title": "i18n.frelspec",
                     "path": "/frelspec/"
                 }
             ]
         },
         {
-            "title": "Verified Languages",
+            "title": "i18n.verified-languages",
             "path": "/verified/",
             "children": [
                 {
-                    "title": "C",
+                    "title": "i18n.language-c",
                     "path": "/verified/c/"
                 },
                 {
-                    "title": "C++",
+                    "title": "i18n.language-cpp",
                     "path": "/verified/cpp/"
                 },
                 {
-                    "title": "Java",
+                    "title": "i18n.language-java",
                     "path": "/verified/java/"
                 },
                 {
-                    "title": "C#",
+                    "title": "i18n.language-csharp",
                     "path": "/verified/csharp/"
                 }
             ]
         },
         {
-            "title": "Reviewed Languages",
+            "title": "i18n.reviewed-languages",
             "path": "/reviewed/",
             "children": [
                 {
-                    "title": "JavaScript",
+                    "title": "i18n.language-javascript",
                     "path": "/reviewed/javascript/"
                 },
                 {
-                    "title": "Python",
+                    "title": "i18n.language-python",
                     "path": "/reviewed/python/"
                 }
             ]
