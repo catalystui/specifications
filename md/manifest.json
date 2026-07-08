@@ -10,7 +10,13 @@
         },
         {
             "title": "Specification(s)",
-            "path": "/"
+            "path": "/",
+            "children": [
+                {
+                    "title": "I18NSPEC",
+                    "path": "/i18nspec/"
+                }
+            ]
         },
         {
             "title": "Verified Services",
