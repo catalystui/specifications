@@ -10,7 +10,13 @@
         },
         {
             "title": "Specification(s)",
-            "path": "/"
+            "path": "/",
+            "children": [
+                {
+                    "title": "A11YSPEC",
+                    "path": "/a11yspec/"
+                }
+            ]
         },
         {
             "title": "Verified Services",
