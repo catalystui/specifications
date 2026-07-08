@@ -1,3 +1,5 @@
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
+
 # CatalystUI Verified for Accessibility
 
 Welcome to the CatalystUI Verification documentation for accessibility.
