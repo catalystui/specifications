@@ -4,6 +4,8 @@
 
 ### Overview
 
+![Verified Indicator](https://www.catalystui.org/images/verification/verified-logo-generic.png)
+
 The C# programming language has been verified against the FDEFSPEC (Rev. 1) and FRELSPEC (Rev. 1) specifications as of July 7th, 2026.
 
 #### Good Faith Statement

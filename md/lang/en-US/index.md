@@ -1,3 +1,5 @@
+![CatalystUI Verified for Programming Languages](/images/verification/verified-logo-languages.png)
+
 # CatalystUI Verified for Programming Languages
 
 Welcome to the CatalystUI Verification documentation for programming languages.
