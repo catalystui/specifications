@@ -1,6 +1,10 @@
 {
     "navigation": [
         {
+            "title": "Request Verification",
+            "path": "https://github.com/catalystui/specifications/issues/new/choose"
+        },
+        {
             "title": "Verification Index",
             "path": "/index/"
         },
