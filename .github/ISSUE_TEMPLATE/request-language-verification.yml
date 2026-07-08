@@ -1,10 +1,9 @@
 name: Request Language Verification
 description: Request CatalystUI review for a programming language verification.
-title: "[Language Verification]: "
+title: "[Language Verification] "
 labels:
-  - verification
-  - language
-  - awaiting-contact
+  - "CAT: Languages"
+  - "ATN: Needs Attention"
 assignees: []
 body:
   - type: markdown
@@ -149,9 +148,7 @@ body:
           required: true
         - label: I understand that payment is a review and processing fee and does not guarantee verification.
           required: true
-        - label: I understand that CatalystUI Language Verification is only valid for the submitted language version, release, standard, or revision reviewed.
-          required: true
-        - label: I understand that major language, compiler, specification, or documentation changes may require resubmission or reverification.
+        - label: I understand that major language, compiler, or specification changes may require resubmission or reverification.
           required: true
         - label: I understand that submitted information may be used to create a public verification page if approved.
           required: true
