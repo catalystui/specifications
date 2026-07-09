@@ -1,21 +1,19 @@
-<!-- Questa traduzione è stata generata da ChatGPT e deve essere rivista da un traduttore umano. -->
+<!-- Questa traduzione è stata generata da ChatGPT e deve essere revisionata da un traduttore umano. -->
 
-<!-- Rimuovi queste righe in una pull request dopo che la traduzione è stata verificata. -->
+<!-- Rimuovere queste righe in una pull request dopo che la traduzione è stata verificata. -->
 
-# Indice delle verifiche
+# Verification Index
 
-<a id="verified-services"></a>
-## Servizi verificati
+## Verified Services
 
-I servizi che sono stati verificati come conformi alle specifiche sono elencati di seguito. Questi servizi hanno sostenuto i test e la validazione necessari per garantire la conformità agli standard definiti.
+I services che sono stati verificati come conformi alle specification(s) sono elencati di seguito. Questi services hanno completato i testing e la validation necessari per garantire compliance con gli standards definiti.
 
-| Lingua | Specifiche | Data | |
-| ------ | ---------- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |
 
-<a id="reviewed-services"></a>
-## Servizi esaminati
+## Reviewed Services
 
-I servizi che sono stati esaminati per la conformità alle specifiche sono elencati di seguito. Questi servizi hanno sostenuto un processo di revisione iniziale, ma potrebbero non essere ancora completamente verificati oppure potrebbero avere problemi che possono o non possono essere risolti. Ulteriori test e validazioni possono essere necessari per raggiungere la piena conformità.
+I services che sono stati esaminati per compliance con le specification(s) sono elencati di seguito. Questi services hanno completato un initial review process, ma potrebbero non essere ancora fully verified oppure potrebbero avere issues che possono o non possono essere risolti. Ulteriori testing e validation possono essere necessari per ottenere full compliance.
 
-| Lingua | Specifiche | Data | |
-| ------ | ---------- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |

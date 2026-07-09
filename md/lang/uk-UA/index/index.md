@@ -1,21 +1,19 @@
-<!-- Цей переклад було створено ChatGPT, і його має переглянути перекладач-людина. -->
+<!-- Цей переклад створено ChatGPT, і його має перевірити людина-перекладач. -->
 
-<!-- Видаліть ці рядки у pull request після перевірки перекладу. -->
+<!-- Видаліть ці рядки в pull request після перевірки перекладу. -->
 
-# Індекс Verification
+# Verification Index
 
-<a id="verified-services"></a>
 ## Verified Services
 
-Services, які були verified на відповідність specification(s), наведено нижче. Ці services пройшли необхідне testing and validation, щоб забезпечити compliance з defined standards.
+Services, які було verified як такі, що відповідають specification(s), наведено нижче. Ці services пройшли необхідні testing і validation, щоб ensure compliance з defined standards.
 
-| Мова | Specification(s) | Дата | |
+| Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
 
-<a id="reviewed-services"></a>
 ## Reviewed Services
 
-Services, які були reviewed на compliance зі specification(s), наведено нижче. Ці services пройшли initial review process, але можуть ще не бути fully verified або мали issues, які можуть або не можуть бути resolved. Для досягнення full compliance можуть знадобитися further testing and validation.
+Services, які було reviewed щодо compliance зі specification(s), наведено нижче. Ці services пройшли initial review process, але можуть ще не бути fully verified або могли мати issues, які можуть або не можуть бути resolved. Further testing і validation можуть бути required для досягнення full compliance.
 
-| Мова | Specification(s) | Дата | |
+| Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |

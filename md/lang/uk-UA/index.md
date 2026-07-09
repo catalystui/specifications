@@ -1,173 +1,140 @@
-<!-- Цей переклад було створено ChatGPT, і його має переглянути перекладач-людина. -->
+<!-- Цей переклад створено ChatGPT, і його має перевірити людина-перекладач. -->
 
-<!-- Видаліть ці рядки у pull request після перевірки перекладу. -->
+<!-- Видаліть ці рядки в pull request після перевірки перекладу. -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# CatalystUI Verified для інтернаціоналізації
+# CatalystUI Verified for Accessibility
 
-Ласкаво просимо до документації CatalystUI Verification для інтернаціоналізації.
+Ласкаво просимо до документації CatalystUI Verification щодо accessibility.
 
-**CatalystUI Verified for Internationalization** означає, що система, сервіс, фреймворк, застосунок або implementation були розглянуті CatalystUI Team і визнані такими, що надають достатню багатомовну підтримку для required CatalystUI internationalization language set.
+**CatalystUI Verified for Accessibility** означає, що service, framework, application, library або system було переглянуто CatalystUI Team і визнано таким, що залишається reasonably usable, коли один із трьох primary senses, залучених до user-interface interaction, окремо недоступний.
 
-Ця verification не є загальним рейтингом якості перекладу, стилю письма, глибини локалізації або культурної адаптації. Натомість вона визначає, чи надає reviewed system стабільну й практичну основу, щоб користувачі могли отримувати доступ до essential functionality усіма required supported languages.
+Для цієї verification CatalystUI визначає три primary accessibility senses як **зір**, **звук** і **дотик**. Verified system має зберігати reasonable access до своєї essential functionality, коли будь-яке одне з цих чуттів недоступне, спираючись на решту available sensory domains.
 
-Простіше кажучи, ця verification запитує, чи можуть користувачі осмислено користуватися essential parts системи required languages, і чи надано їм розумний спосіб вибрати мову, яку вони розуміють.
+Простіше кажучи, ця verification запитує, чи може user і далі meaningful understand, navigate і operate essential parts системи, якщо він окремо не може покладатися на зір, звук або дотик.
 
-<a id="purpose"></a>
 ## Мета
 
-Інтернаціоналізація важлива, бо system не може вважатися broadly accessible, якщо її essential meaning заблоковано за однією мовою.
+Accessibility важлива, тому що user interface не має повністю залежати від одного sensory pathway, коли той самий essential meaning можна розумно передати іншим шляхом.
 
-CatalystUI розроблено навколо clarity, consistency і faithful representation взаємодії людини з компʼютером. Мова є частиною цієї interaction. Якщо користувач не може зрозуміти labels, instructions, warnings, controls, settings або essential content системи, тоді система не змогла комунікувати ясно, навіть якщо underlying functionality технічно працює.
+CatalystUI спроєктовано навколо точного руху data між systems і human perception. Якщо важлива інформація лише видима, лише чутна або доступна лише через дотик, system може стати unusable для users, які не можуть покладатися на це чуття. Accessibility Verification існує, щоб визначати systems, які зберігають access, дозволяючи essential information та interaction продовжуватися через alternate sensory routes.
 
-Internationalization Verification існує, щоб визначати системи, які надають достатню translated support для користувачів у межах required CatalystUI language set. Мета не в тому, щоб вимагати ідеального перекладу кожного optional word, hidden developer message або nonessential page. Мета — визначити, чи можуть люди кожною required language зрозуміти й використовувати essential parts системи.
+Мета полягає не в тому, щоб вимагати кожен можливий interaction method, кожну assistive technology або кожне specialized accommodation. Мета — визначити, чи essential system залишається meaningfully usable, коли зір, звук або дотик окремо unavailable.
 
-<a id="what-verification-means"></a>
 ## Що означає Verification
 
-Система стає **CatalystUI Verified for Internationalization**, коли її review виконано за вимогами, наведеними в цьому розділі, і її визнано within spec.
+System стає **CatalystUI Verified for Accessibility**, коли її переглянуто відповідно до requirements, перелічених у цьому розділі, і визнано within spec.
 
-Щоб бути verified, система має надати переклади більш ніж для 75% essential user-facing parts системи кожною required language. Вона також має надати розумний end-user mechanism для зміни active language.
+Щоб бути verified, system має залишатися reasonably usable у кожному з таких випадків:
 
-Система не повинна перекладати кожен internal identifier, developer-facing implementation detail, debug string, optional marketing page або nonessential support text. Однак user-facing portions, потрібні для розуміння й роботи з essential system, мають бути доступні кожною required language.
+| Недоступне чуття | Обов’язкова Accessibility Behavior |
+| ---------------- | ---------------------------------- |
+| Зір              | System має залишатися reasonably usable через звук і дотик. |
+| Звук             | System має залишатися reasonably usable через зір і дотик. |
+| Дотик            | System має залишатися reasonably usable через зір і звук. |
 
-<a id="required-languages"></a>
-## Обовʼязкові мови
+System не зобов’язана надавати identical experiences через кожен sensory path. Non-visual experience може бути повільнішим за visual. Sound-free experience може потребувати captions, visual indicators або інших substitutions. Touch-free experience може потребувати alternate controls, voice interaction, keyboard navigation, pointer navigation або інших non-touch methods.
 
-Поточний CatalystUI internationalization language set було вибрано на основі практичного review мов, які часто потрібні в технологічних контекстах, зокрема з урахуванням global speaker reach, common online usage, multilingual software expectations і broad regional accessibility needs.
+Важливо те, чи essential functionality залишається accessible, understandable і operable без вимоги unavailable sense.
 
-Цей language set не призначений представляти кожну мову, кожен діалект або кожен regional variant. Натомість він установлює практичний baseline для систем, які прагнуть broad international usability серед багатьох найпоширеніших technology-facing language groups світу.
+## Essential Functionality
 
-Поточний CatalystUI internationalization language set включає такі locales:
+Для Accessibility Verification **essential functionality** означає частини system, які user розумно потребує, щоб understand, navigate, configure і operate system.
 
-| Locale    | Мова                     |
-| --------- | ------------------------ |
-| `ar-SA`   | Арабська (Саудівська Аравія) |
-| `bn-BD`   | Бенгальська (Бангладеш)  |
-| `de-DE`   | Німецька (Німеччина)     |
-| `en-GB`   | Англійська (Велика Британія) |
-| `en-IN`   | Англійська (Індія)       |
-| `en-US`   | Англійська (США)         |
-| `es-ES`   | Іспанська (Іспанія)      |
-| `es-MX`   | Іспанська (Мексика)      |
-| `fa-IR`   | Перська (Іран)           |
-| `fr-FR`   | Французька (Франція)     |
-| `hi-IN`   | Гінді (Індія)            |
-| `id-ID`   | Індонезійська (Індонезія) |
-| `it-IT`   | Італійська (Італія)      |
-| `ja-JP`   | Японська (Японія)        |
-| `ko-KR`   | Корейська (Південна Корея) |
-| `nl-NL`   | Нідерландська (Нідерланди) |
-| `pl-PL`   | Польська (Польща)        |
-| `pt-BR`   | Португальська (Бразилія) |
-| `ru-RU`   | Російська (Росія)        |
-| `tl-PH`   | Тагальська (Філіппіни)   |
-| `tr-TR`   | Турецька (Туреччина)     |
-| `uk-UA`   | Українська (Україна)     |
-| `ur-PK`   | Урду (Пакистан)          |
-| `vi-VN`   | Вʼєтнамська (Вʼєтнам)    |
-| `zh-CN`   | Китайська (Китай)        |
-| `zh-Hans` | Китайська (спрощена)     |
-
-Система має забезпечити достатню essential translation coverage для кожної зазначеної language group, щоб вважатися within spec.
-
-Однак regional variants можуть розглядатися з розумною гнучкістю, коли відмінності між variant є незначними й не впливають суттєво на здатність користувача зрозуміти або використовувати систему. Наприклад, система все ще може бути eligible for verification, якщо вона надає один сильний англійський переклад, але не перекладає окремо кожен English regional variant, доки essential meaning, navigation, instructions, warnings і controls залишаються зрозумілими для користувачів missing variants.
-
-Ця гнучкість не застосовується, коли missing variant створює meaningful confusion, пропускає regionally important terminology, порушує locale-sensitive behavior або заважає користувачам зрозуміти essential parts системи.
-
-<a id="essential-translation-coverage"></a>
-## Покриття essential translation
-
-Для Internationalization Verification **essential translation coverage** означає частини system, які користувачу обґрунтовано потрібні, щоб зрозуміти, навігувати, налаштовувати й використовувати system.
-
-Essential parts можуть включати:
+Essential functionality може включати:
 
 * primary navigation
-* core screens and views
-* settings and preferences
-* user-facing labels
-* user-facing controls
-* required instructions
+* core workflows
+* required controls
 * important warnings
 * important errors
-* essential prompts
 * required confirmation messages
-* language selection controls
-* core workflows needed for normal use
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* будь-яку interaction, required для нормального використання
 
-Система вважається такою, що виконує translation coverage requirement, коли понад 75% її essential user-facing content доступні кожною required language.
+System може й надалі бути within spec, якщо decorative, redundant, optional або nonessential features не однаково available через кожен sensory path. Однак user все одно має мати змогу використовувати essential system без блокування через missing sense.
 
-Цей threshold існує тому, що internationalization work може бути великою, тривалою й залежною від контексту. Система все ще може бути within spec, навіть якщо частина nonessential або lower-priority content залишається неперекладеною. Однак essential experience має бути meaningfully available кожною required language.
+## Коли зір недоступний
 
-<a id="language-selection"></a>
-## Вибір мови
+Коли зір unavailable, system має залишатися reasonably usable через звук і дотик.
 
-Verified system має надати розумний спосіб, щоб end-user міг змінити active language.
+Це може включати spoken output, screen-reader-compatible structure, meaningful focus order, tactile controls, keyboard access, haptic confirmation, audio descriptions або інший reasonable non-visual method передавання essential information.
 
-Language selection mechanism має бути легко знайти, легко зрозуміти, і він має бути доступним без потреби в технічних знаннях. Користувачам не має бути потрібно редагувати configuration files, змінювати source code, встановлювати developer tools або покладатися на undocumented behavior лише для зміни мови.
+System не має покладатися виключно на visual position, color, shape, animation, icons або layout, коли ця information required для understanding або operation essential functionality.
 
-Під час показу language options system має визначати кожну мову так, щоб це було зрозуміло і користувачам, які говорять цією мовою, і користувачам, які зараз використовують іншу selected language.
+## Коли звук недоступний
 
-Наприклад, language option може відображатися так:
+Коли звук unavailable, system має залишатися reasonably usable через зір і дотик.
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+Це може включати captions, transcripts, visual alerts, text equivalents, progress indicators, visible status messages, haptic feedback або інший reasonable non-auditory method передавання essential information.
 
-Точне formatting може відрізнятися, але intent має залишатися тим самим: користувачі мають могти впізнати власну мову, за можливості зрозуміти назву мови, яка зараз відображається, і визначити associated locale code.
+System не має покладатися виключно на sound effects, spoken instructions, alerts, alarms, music cues або audio-only prompts, коли ця information required для understanding або operation essential functionality.
 
-<a id="what-within-spec-means"></a>
+## Коли дотик недоступний
+
+Коли дотик unavailable, system має залишатися reasonably usable через зір і звук.
+
+Це може включати voice control, keyboard navigation, pointer alternatives, remote controls, gaze-compatible interaction, switch-compatible interaction, spoken prompts, visual confirmation або інший reasonable method, що не потребує touch-based interaction чи tactile perception.
+
+System не має покладатися виключно на touch gestures, haptic feedback, physical texture, vibration, force, pressure або touch-only controls, коли ці interactions required для understanding або operation essential functionality.
+
+## Додаткові Sensory Domains
+
+CatalystUI також визнає **смак** і **нюх** як sensory domains. Ці domains можуть розглядатися під час accessibility review, коли system використовує їх meaningful.
+
+Смак і нюх є **inclusive** для verification, тобто вони можуть посилювати або підтримувати accessibility review, коли надають meaningful alternate access або додатковий context.
+
+Смак і нюх наразі не є **exclusive** для failure, тобто system не провалює Accessibility Verification лише тому, що не надає taste-based або smell-based interaction.
+
+CatalystUI Accessibility Verification насамперед стосується того, чи system залишається reasonably usable, коли зір, звук або дотик окремо unavailable.
+
 ## Що означає “Within Spec”
 
-Коли система вважається **within spec**, це означає, що CatalystUI Team вручну review систему й визнала розумним висновок, що вона задовольняє internationalization requirements, описані цією verification category.
+Коли system вважається **within spec**, це означає, що CatalystUI Team вручну переглянула system і визнала reasonable зробити висновок, що вона задовольняє accessibility requirements, описані цією verification category.
 
-Це не вимагає одного rigid implementation pattern. Система може виконати requirement через resource files, translation tables, locale-aware routing, compiled language assets, database-backed translations, runtime language packs або інший stable mechanism, придатний для system.
+Це не вимагає одного жорсткого implementation pattern. System може задовольняти accessibility requirements через native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration або інший stable mechanism, appropriate to the system.
 
-Verification стосується практичної здатності користувачів отримувати доступ до essential system required languages, а не того, чи system використовує одну specific translation architecture.
+Verification стосується практичної здатності users отримувати access до essential system, коли один primary sense unavailable, а не того, чи system використовує одну specific accessibility architecture.
 
-<a id="what-verification-does-not-mean"></a>
 ## Чого Verification не означає
 
-CatalystUI Verified for Internationalization не гарантує, що кожен переклад є ідеальним, літературним, ідіоматичним, культурно повним або юридично достатнім для кожного region.
+CatalystUI Verified for Accessibility не гарантує, що кожну можливу disability, device, assistive technology, medical condition, legal requirement, regional standard або specialized use case було повністю reviewed.
 
-Вона також не підтверджує автоматично accessibility, typography, right-to-left layout, locale-specific formatting, currency formatting, date formatting, legal compliance або regional business requirements, якщо ці питання не включені до reviewed internationalization scope.
+Вона також автоматично не verify internationalization, translation quality, typography, localization, regional compliance або general design quality, якщо ці concerns не входять до reviewed accessibility scope.
 
-Система може мати сильне translation coverage і все одно потребувати окремого review для accessibility, localization quality, regional compliance або інших specialized concerns.
+System може бути reasonably accessible за accessibility model CatalystUI і все одно потребувати separate review для legal compliance, platform certification, specialized assistive technology support або інших accessibility standards.
 
-<a id="why-this-verification-exists"></a>
 ## Чому ця Verification існує
 
-User interface корисний лише тоді, коли користувач може зрозуміти, що він повідомляє.
+User interface успішний лише тоді, коли users справді можуть ним користуватися.
 
-Багато систем заявляють language support, перекладаючи лише невелику частину experience, приховуючи language selection, пропускаючи important messages або залишаючи essential workflows частково неперекладеними. Це створює confusion і заважає користувачам довіряти system.
+Багато systems ставляться до accessibility як до afterthought, checklist або вузького technical requirement, а не як до fundamental частини human-computer interaction. CatalystUI застосовує простіший і пряміший approach: якщо system залежить від human perception, вона має зберігати essential meaning, коли один primary sensory path unavailable.
 
-Internationalization Verification існує, щоб установити чіткіший standard. Вона визначає systems, які роблять серйозні й практичні зусилля для підтримки користувачів у межах required CatalystUI language set і надають розумний спосіб вибрати потрібну мову.
+Accessibility Verification існує, щоб визначати systems, які серйозно ставляться до цієї responsibility. Вона визнає systems, які надають meaningful alternate access, зберігають essential functionality і не замикають users за одним required sense.
 
-<a id="verification-scope"></a>
-## Scope Verification
+## Verification Scope
 
-CatalystUI Verification for Internationalization застосовується до reviewed system, service, framework, application або implementation у тому стані, у якому вони існували на момент issued verification.
+CatalystUI Verification for Accessibility застосовується до reviewed system, service, framework, application, library або implementation у тому стані, в якому вона існувала на момент видання verification.
 
-Verified system надає достатню essential translation coverage для required languages. Це не гарантує, що кожна future page, feature, release, plugin, extension або third-party integration автоматично within spec.
+Verified system надає reasonable accessibility для своєї essential functionality у reviewed conditions. Це не гарантує, що кожна future page, feature, release, plugin, extension, third-party integration, device або platform-specific version автоматично within spec.
 
-Окремі products, modules, services, language packs або major revisions можуть вимагати власного review залежно від verification category, яку запитують.
+Separate products, modules, services, major revisions або platform-specific builds можуть потребувати власного review залежно від requested verification category.
 
-<a id="verification-validity"></a>
-## Чинність Verification
+## Verification Validity
 
-CatalystUI Verification застосовується лише до reviewed state системи на момент issued verification.
+CatalystUI Verification застосовується лише до reviewed state system на момент видання verification.
 
-Система може зберігати verification після later updates, доки вона зберігає verified internationalization foundation. Minor wording changes, added translations і ordinary content updates не invalidates verification автоматично.
+System може зберігати verification під час later updates, доки вона зберігає verified accessibility foundation. Minor wording changes, visual refinements, performance improvements і ordinary content updates не invalidates verification automatically.
 
-Новий review може знадобитися, якщо система видаляє required language support, ламає language selection, суттєво зменшує essential translation coverage або змінює internationalization architecture так, що це впливає на verified behavior.
+Новий review може бути required, якщо system removes alternate access paths, breaks assistive-technology support, substantially changes essential navigation, removes required accessibility settings або changes interaction behavior у спосіб, що affects verified accessibility foundation.
 
-Інакше кажучи, покращувати translation support зазвичай нормально. Ламання verified multilingual base може вимагати review.
+Іншими словами, improving accessibility зазвичай нормально. Breaking the verified access model може require review.
 
-<a id="verified-systems"></a>
 ## Verified Systems
 
-Відомі systems, verified for internationalization, наведено окремо на відповідній сторінці CatalystUI Verified.
+Known systems, verified for accessibility, listed separately on the appropriate CatalystUI Verified page.

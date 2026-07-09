@@ -1,162 +1,140 @@
 <!-- এই অনুবাদটি ChatGPT দ্বারা তৈরি করা হয়েছে এবং একজন মানব অনুবাদক দ্বারা পর্যালোচনা করা উচিত। -->
 
-<!-- অনুবাদ যাচাই হয়ে গেলে pull request-এ এই লাইনগুলো সরিয়ে ফেলুন। -->
+<!-- অনুবাদ যাচাই হয়ে গেলে একটি pull request-এ এই লাইনগুলো সরিয়ে দিন। -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# CatalystUI Verified for Internationalization
+# CatalystUI অ্যাক্সেসিবিলিটির জন্য যাচাইকৃত
 
-CatalystUI-এর internationalization যাচাইকরণ ডকুমেন্টেশনে স্বাগতম।
+CatalystUI অ্যাক্সেসিবিলিটি যাচাইকরণ ডকুমেন্টেশনে স্বাগতম।
 
-**CatalystUI Verified for Internationalization** নির্দেশ করে যে কোনো system, service, framework, application, অথবা implementation CatalystUI Team দ্বারা পর্যালোচিত হয়েছে এবং CatalystUI-এর প্রয়োজনীয় internationalization language set-এর জন্য যথেষ্ট বহুভাষিক সহায়তা প্রদান করে বলে পাওয়া গেছে।
+**CatalystUI অ্যাক্সেসিবিলিটির জন্য যাচাইকৃত** নির্দেশ করে যে একটি পরিষেবা, ফ্রেমওয়ার্ক, অ্যাপ্লিকেশন, লাইব্রেরি, বা সিস্টেম CatalystUI Team দ্বারা পর্যালোচিত হয়েছে এবং দেখা গেছে যে ব্যবহারকারী-ইন্টারফেস মিথস্ক্রিয়ায় জড়িত তিনটি প্রধান ইন্দ্রিয়ের মধ্যে কোনো একটি আলাদাভাবে অনুপলব্ধ থাকলেও সেটি যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকে।
 
-এই যাচাইকরণ অনুবাদের গুণমান, লেখার ধরন, localization-এর গভীরতা, অথবা সাংস্কৃতিক অভিযোজনের সাধারণ র‍্যাঙ্কিং নয়। এর পরিবর্তে, এটি নির্ধারণ করে পর্যালোচিত system ব্যবহারকারীদের জন্য প্রয়োজনীয় সমর্থিত ভাষাগুলিতে তার essential functionality-তে প্রবেশের জন্য স্থিতিশীল ও ব্যবহারিক ভিত্তি প্রদান করে কি না।
+এই যাচাইকরণের জন্য CatalystUI তিনটি প্রধান অ্যাক্সেসিবিলিটি ইন্দ্রিয় হিসেবে **দৃষ্টি**, **শব্দ**, এবং **স্পর্শ** শনাক্ত করে। একটি যাচাইকৃত সিস্টেমকে এই ইন্দ্রিয়গুলোর যেকোনো একটি অনুপলব্ধ হলে বাকি উপলব্ধ সংবেদী ডোমেইন ব্যবহার করে তার মৌলিক কার্যকারিতায় যুক্তিসঙ্গত প্রবেশাধিকার বজায় রাখতে হবে।
 
-সহজভাবে বললে, এই যাচাইকরণ জিজ্ঞেস করে ব্যবহারকারীরা প্রয়োজনীয় ভাষাগুলিতে কোনো system-এর essential অংশগুলি অর্থপূর্ণভাবে ব্যবহার করতে পারে কি না, এবং তারা যে ভাষা বোঝে সেটি বেছে নেওয়ার জন্য একটি যুক্তিসঙ্গত উপায় পায় কি না।
+সহজভাবে বলতে গেলে, এই যাচাইকরণ জিজ্ঞাসা করে: একজন ব্যবহারকারী যদি দৃষ্টি, শব্দ, বা স্পর্শের ওপর আলাদাভাবে নির্ভর করতে না পারেন, তবে তিনি কি এখনো সিস্টেমের মৌলিক অংশগুলো অর্থপূর্ণভাবে বুঝতে, নেভিগেট করতে, এবং পরিচালনা করতে পারেন?
 
 ## উদ্দেশ্য
 
-Internationalization গুরুত্বপূর্ণ, কারণ কোনো system-এর essential meaning যদি এক ভাষার ভিতর আটকে থাকে, তবে সেটিকে বিস্তৃতভাবে accessible বলা যায় না।
+অ্যাক্সেসিবিলিটি গুরুত্বপূর্ণ, কারণ একই মৌলিক অর্থ যুক্তিসঙ্গতভাবে অন্য একটি সংবেদী পথ দিয়ে জানানো সম্ভব হলে একটি ব্যবহারকারী ইন্টারফেসের সম্পূর্ণভাবে একটিমাত্র সংবেদী পথের ওপর নির্ভর করা উচিত নয়।
 
-CatalystUI নির্মিত হয়েছে clarity, consistency, এবং human-computer interaction-এর faithful representation ঘিরে। ভাষা সেই interaction-এর অংশ। কোনো user যদি system-এর labels, instructions, warnings, controls, settings, অথবা essential content বুঝতে না পারে, তবে underlying functionality প্রযুক্তিগতভাবে কাজ করলেও systemটি স্পষ্টভাবে যোগাযোগ করতে ব্যর্থ হয়েছে।
+CatalystUI সিস্টেম ও মানব উপলব্ধির মধ্যে ডেটার বিশ্বস্ত চলাচলের ওপর ভিত্তি করে তৈরি। গুরুত্বপূর্ণ তথ্য যদি কেবল দৃশ্যমান হয়, কেবল শোনা যায়, বা কেবল স্পর্শের মাধ্যমে পাওয়া যায়, তবে যারা সেই ইন্দ্রিয়ের ওপর নির্ভর করতে পারেন না তাদের জন্য সিস্টেমটি অচল হয়ে যেতে পারে। অ্যাক্সেসিবিলিটি যাচাইকরণ এমন সিস্টেমগুলো শনাক্ত করতে আছে, যেগুলো বিকল্প সংবেদী পথে মৌলিক তথ্য ও মিথস্ক্রিয়া চালিয়ে যেতে দিয়ে প্রবেশাধিকার রক্ষা করে।
 
-Internationalization Verification এমন systems চিহ্নিত করার জন্য আছে যা CatalystUI-এর required language set জুড়ে users-দের জন্য যথেষ্ট translated support দেয়। উদ্দেশ্য হলো প্রতিটি optional word, hidden developer message, অথবা nonessential page-এর নিখুঁত অনুবাদ দাবি করা নয়। উদ্দেশ্য হলো নির্ধারণ করা যে প্রতিটি required language-এ system-এর essential অংশগুলি মানুষ বুঝতে ও ব্যবহার করতে পারে কি না।
+লক্ষ্য প্রতিটি সম্ভাব্য মিথস্ক্রিয়া পদ্ধতি, প্রতিটি সহায়ক প্রযুক্তি, বা প্রতিটি বিশেষায়িত সুবিধা বাধ্যতামূলক করা নয়। লক্ষ্য হলো নির্ধারণ করা যে দৃষ্টি, শব্দ, বা স্পর্শ আলাদাভাবে অনুপলব্ধ হলে মৌলিক সিস্টেমটি অর্থপূর্ণভাবে ব্যবহারযোগ্য থাকে কি না।
 
 ## যাচাইকরণের অর্থ
 
-এই section-এ তালিকাভুক্ত requirements-এর বিরুদ্ধে review করা হয়ে systemটি within spec পাওয়া গেলে systemটি **CatalystUI Verified for Internationalization** হয়।
+এই অংশে তালিকাভুক্ত প্রয়োজনীয়তার বিপরীতে পর্যালোচনা করা হলে এবং স্পেসিফিকেশনের মধ্যে রয়েছে বলে পাওয়া গেলে একটি সিস্টেম **CatalystUI অ্যাক্সেসিবিলিটির জন্য যাচাইকৃত** হয়।
 
-যাচাইকৃত হতে হলে একটি system-কে প্রতিটি required language-এ essential user-facing অংশের 75%-এর বেশি অংশের translation প্রদান করতে হবে। active language পরিবর্তনের জন্য end-user-এর কাছে একটি reasonable mechanism-ও থাকতে হবে।
+যাচাইকৃত হতে একটি সিস্টেমকে নিচের প্রতিটি অবস্থায় যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকতে হবে:
 
-একটি system-এর প্রতিটি internal identifier, developer-facing implementation detail, debug string, optional marketing page, অথবা nonessential support text অনুবাদ করার প্রয়োজন নেই। তবে essential system বুঝতে ও চালাতে প্রয়োজনীয় user-facing অংশগুলি প্রতিটি required language-এ available থাকতে হবে।
+| অনুপলব্ধ ইন্দ্রিয় | প্রয়োজনীয় অ্যাক্সেসিবিলিটি আচরণ |
+| ----------------- | ----------------------------------------------------------------- |
+| দৃষ্টি             | সিস্টেমটি শব্দ ও স্পর্শের মাধ্যমে যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকতে হবে। |
+| শব্দ               | সিস্টেমটি দৃষ্টি ও স্পর্শের মাধ্যমে যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকতে হবে। |
+| স্পর্শ             | সিস্টেমটি দৃষ্টি ও শব্দের মাধ্যমে যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকতে হবে। |
 
-## প্রয়োজনীয় ভাষা
+প্রতিটি সংবেদী পথে সিস্টেমকে অভিন্ন অভিজ্ঞতা দিতে হবে না। অদৃশ্য অভিজ্ঞতা দৃশ্যমান অভিজ্ঞতার তুলনায় ধীর হতে পারে। শব্দহীন অভিজ্ঞতার জন্য ক্যাপশন, দৃশ্যমান নির্দেশক, বা অন্য প্রতিস্থাপন প্রয়োজন হতে পারে। স্পর্শহীন অভিজ্ঞতার জন্য বিকল্প নিয়ন্ত্রণ, ভয়েস ইন্টারঅ্যাকশন, কীবোর্ড নেভিগেশন, পয়েন্টার নেভিগেশন, বা অন্য স্পর্শ-বিহীন পদ্ধতি প্রয়োজন হতে পারে।
 
-বর্তমান CatalystUI internationalization language set নির্বাচন করা হয়েছে technology context-এ সাধারণভাবে প্রয়োজনীয় ভাষার ব্যবহারিক review থেকে; এর মধ্যে global speaker reach, common online usage, multilingual software expectations, এবং broad regional accessibility needs অন্তর্ভুক্ত।
+মূল বিষয় হলো মৌলিক কার্যকারিতা অনুপলব্ধ ইন্দ্রিয় ছাড়াই প্রবেশযোগ্য, বোধ্য, এবং পরিচালনাযোগ্য থাকে কি না।
 
-এই language set প্রতিটি ভাষা, প্রতিটি dialect, অথবা প্রতিটি regional variant উপস্থাপন করার উদ্দেশ্যে নয়। এর পরিবর্তে, এটি বিশ্বের অনেক common technology-facing language group জুড়ে broad international usability চাওয়া systems-এর জন্য একটি practical baseline স্থাপন করে।
+## মৌলিক কার্যকারিতা
 
-বর্তমান CatalystUI internationalization language set-এ নিম্নলিখিত locales অন্তর্ভুক্ত:
+অ্যাক্সেসিবিলিটি যাচাইকরণের ক্ষেত্রে, **মৌলিক কার্যকারিতা** বলতে সিস্টেমের সেই অংশগুলো বোঝায় যা একজন ব্যবহারকারীর যুক্তিসঙ্গতভাবে দরকার হয় সিস্টেমটি বুঝতে, নেভিগেট করতে, কনফিগার করতে, এবং পরিচালনা করতে।
 
-| Locale    | Language                 |
-| --------- | ------------------------ |
-| `ar-SA`   | Arabic (Saudi Arabia)    |
-| `bn-BD`   | Bengali (Bangladesh)     |
-| `de-DE`   | German (Germany)         |
-| `en-GB`   | English (United Kingdom) |
-| `en-IN`   | English (India)          |
-| `en-US`   | English (United States)  |
-| `es-ES`   | Spanish (Spain)          |
-| `es-MX`   | Spanish (Mexico)         |
-| `fa-IR`   | Persian (Iran)           |
-| `fr-FR`   | French (France)          |
-| `hi-IN`   | Hindi (India)            |
-| `id-ID`   | Indonesian (Indonesia)   |
-| `it-IT`   | Italian (Italy)          |
-| `ja-JP`   | Japanese (Japan)         |
-| `ko-KR`   | Korean (South Korea)     |
-| `nl-NL`   | Dutch (Netherlands)      |
-| `pl-PL`   | Polish (Poland)          |
-| `pt-BR`   | Portuguese (Brazil)      |
-| `ru-RU`   | Russian (Russia)         |
-| `tl-PH`   | Tagalog (Philippines)    |
-| `tr-TR`   | Turkish (Turkey)         |
-| `uk-UA`   | Ukrainian (Ukraine)      |
-| `ur-PK`   | Urdu (Pakistan)          |
-| `vi-VN`   | Vietnamese (Vietnam)     |
-| `zh-CN`   | Chinese (China)          |
-| `zh-Hans` | Chinese (Simplified)     |
+মৌলিক কার্যকারিতার মধ্যে থাকতে পারে:
 
-within spec বিবেচিত হতে প্রতিটি তালিকাভুক্ত language group-এর জন্য system-কে যথেষ্ট essential translation coverage প্রদান করতে হবে।
+* প্রধান নেভিগেশন
+* মূল কর্মপ্রবাহ
+* প্রয়োজনীয় নিয়ন্ত্রণ
+* গুরুত্বপূর্ণ সতর্কতা
+* গুরুত্বপূর্ণ ত্রুটি
+* প্রয়োজনীয় নিশ্চিতকরণ বার্তা
+* অ্যাকাউন্ট বা সেশন অ্যাক্সেস
+* সেটিংস ও পছন্দসমূহ
+* ভাষা বা অ্যাক্সেসিবিলিটি কনফিগারেশন
+* মৌলিক নির্দেশনা
+* ব্যবহারকারীমুখী অবস্থা-তথ্য
+* স্বাভাবিক ব্যবহারের জন্য প্রয়োজনীয় যেকোনো মিথস্ক্রিয়া
 
-তবে regional variants যুক্তিসঙ্গত নমনীয়তার সঙ্গে review করা যেতে পারে যখন variants-এর পার্থক্য সামান্য এবং user-এর system বোঝা বা চালানোর সক্ষমতাকে তা materially affect করে না। উদাহরণস্বরূপ, কোনো system একটি strong English translation প্রদান করলেও আলাদা করে প্রতিটি English regional variant অনুবাদ না করলে verification-এর যোগ্য থাকতে পারে, যদি essential meaning, navigation, instructions, warnings, এবং controls missing variants-এর users-দের কাছে clear থাকে।
+সাজসজ্জামূলক, পুনরাবৃত্ত, ঐচ্ছিক, বা অমৌলিক বৈশিষ্ট্য প্রতিটি সংবেদী পথে সমানভাবে উপলব্ধ না হলেও একটি সিস্টেম স্পেসিফিকেশনের মধ্যে থাকতে পারে। তবে ব্যবহারকারীকে অনুপস্থিত ইন্দ্রিয়ের কারণে আটকে না থেকে মৌলিক সিস্টেমটি ব্যবহার করতে সক্ষম হতে হবে।
 
-এই flexibility প্রযোজ্য নয় যখন missing variant meaningful confusion তৈরি করবে, regionally important terminology বাদ দেবে, locale-sensitive behavior ভেঙে দেবে, অথবা users-দের system-এর essential অংশ বোঝা থেকে আটকাবে।
+## দৃষ্টি অনুপলব্ধ
 
-## Essential Translation Coverage
+দৃষ্টি অনুপলব্ধ হলে সিস্টেমটি শব্দ ও স্পর্শের মাধ্যমে যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকা উচিত।
 
-Internationalization Verification-এর ক্ষেত্রে, **essential translation coverage** বলতে system-এর সেই অংশগুলি বোঝায় যা একজন user যুক্তিসঙ্গতভাবে system বুঝতে, navigate করতে, configure করতে এবং operate করতে প্রয়োজন করে।
+এর মধ্যে থাকতে পারে কথ্য আউটপুট, স্ক্রিন-রিডার-সামঞ্জস্যপূর্ণ কাঠামো, অর্থবহ ফোকাস ক্রম, স্পর্শনীয় নিয়ন্ত্রণ, কীবোর্ড অ্যাক্সেস, হ্যাপটিক নিশ্চিতকরণ, অডিও বর্ণনা, অথবা মৌলিক তথ্য জানানোর আরেকটি যুক্তিসঙ্গত অদৃশ্য পদ্ধতি।
 
-Essential অংশগুলির মধ্যে থাকতে পারে:
+মৌলিক কার্যকারিতা বোঝা বা পরিচালনার জন্য প্রয়োজন হলে সিস্টেমের দৃশ্যমান অবস্থান, রং, আকৃতি, অ্যানিমেশন, আইকন, বা লেআউটের ওপর একচেটিয়াভাবে নির্ভর করা উচিত নয়।
 
-* primary navigation
-* core screens and views
-* settings and preferences
-* user-facing labels
-* user-facing controls
-* required instructions
-* important warnings
-* important errors
-* essential prompts
-* required confirmation messages
-* language selection controls
-* core workflows needed for normal use
+## শব্দ অনুপলব্ধ
 
-প্রতিটি required language-এ essential user-facing content-এর 75%-এর বেশি available থাকলে systemটি translation coverage requirement পূরণ করে বলে বিবেচিত হয়।
+শব্দ অনুপলব্ধ হলে সিস্টেমটি দৃষ্টি ও স্পর্শের মাধ্যমে যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকা উচিত।
 
-এই threshold আছে কারণ internationalization work বড়, চলমান, এবং context-dependent হতে পারে। কিছু nonessential বা lower-priority content untranslated থাকলেও system within spec থাকতে পারে। তবে essential experience প্রতিটি required language-এ meaningfully available থাকতে হবে।
+এর মধ্যে থাকতে পারে ক্যাপশন, ট্রান্সক্রিপ্ট, দৃশ্যমান সতর্কতা, টেক্সট-সমতুল্য, অগ্রগতি নির্দেশক, দৃশ্যমান অবস্থা বার্তা, হ্যাপটিক প্রতিক্রিয়া, অথবা মৌলিক তথ্য জানানোর আরেকটি যুক্তিসঙ্গত অশ্রাব্য পদ্ধতি।
 
-## ভাষা নির্বাচন
+মৌলিক কার্যকারিতা বোঝা বা পরিচালনার জন্য প্রয়োজন হলে সিস্টেমের শব্দপ্রভাব, কথ্য নির্দেশনা, সতর্কতা, অ্যালার্ম, সঙ্গীত সংকেত, বা কেবল অডিও প্রম্পটের ওপর একচেটিয়াভাবে নির্ভর করা উচিত নয়।
 
-একটি verified system-কে end-user-এর active language পরিবর্তনের জন্য একটি reasonable way প্রদান করতে হবে।
+## স্পর্শ অনুপলব্ধ
 
-language selection mechanism সহজে খুঁজে পাওয়া যায়, বোঝা যায়, এবং technical knowledge ছাড়াই ব্যবহারযোগ্য হওয়া উচিত। শুধু language পরিবর্তন করার জন্য users-দের configuration files edit করা, source code modify করা, developer tools install করা, অথবা undocumented behavior-এর ওপর নির্ভর করা উচিত নয়।
+স্পর্শ অনুপলব্ধ হলে সিস্টেমটি দৃষ্টি ও শব্দের মাধ্যমে যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকা উচিত।
 
-language options প্রদর্শনের সময়, system-এর উচিত প্রতিটি language এমনভাবে চিহ্নিত করা যা সেই language-ভাষী users এবং বর্তমানে অন্য selected language ব্যবহার করা users—উভয়ের কাছেই বোধ্য।
+এর মধ্যে থাকতে পারে ভয়েস নিয়ন্ত্রণ, কীবোর্ড নেভিগেশন, পয়েন্টার বিকল্প, রিমোট নিয়ন্ত্রণ, দৃষ্টি-ট্র্যাকিং-সামঞ্জস্যপূর্ণ মিথস্ক্রিয়া, সুইচ-সামঞ্জস্যপূর্ণ মিথস্ক্রিয়া, কথ্য প্রম্পট, দৃশ্যমান নিশ্চিতকরণ, অথবা স্পর্শভিত্তিক মিথস্ক্রিয়া বা স্পর্শীয় উপলব্ধি প্রয়োজন হয় না এমন অন্য কোনো যুক্তিসঙ্গত পদ্ধতি।
 
-উদাহরণস্বরূপ, একটি language option এভাবে প্রদর্শিত হতে পারে:
+মৌলিক কার্যকারিতা বোঝা বা পরিচালনার জন্য প্রয়োজন হলে সিস্টেমের স্পর্শ অঙ্গভঙ্গি, হ্যাপটিক প্রতিক্রিয়া, শারীরিক টেক্সচার, কম্পন, বল, চাপ, বা কেবল স্পর্শ-নিয়ন্ত্রণের ওপর একচেটিয়াভাবে নির্ভর করা উচিত নয়।
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+## অতিরিক্ত সংবেদী ডোমেইন
 
-নির্দিষ্ট formatting ভিন্ন হতে পারে, কিন্তু intent একই থাকা উচিত: users যেন নিজের language চিনতে পারে, সম্ভব হলে বর্তমানে প্রদর্শিত language name বুঝতে পারে, এবং সংশ্লিষ্ট locale code শনাক্ত করতে পারে।
+CatalystUI **স্বাদ** এবং **গন্ধ**-কেও সংবেদী ডোমেইন হিসেবে স্বীকার করে। সিস্টেম এগুলো অর্থপূর্ণভাবে ব্যবহার করলে অ্যাক্সেসিবিলিটি পর্যালোচনায় এগুলো বিবেচিত হতে পারে।
 
-## “Within Spec” এর অর্থ
+যাচাইকরণের জন্য স্বাদ ও গন্ধ **অন্তর্ভুক্তিমূলক**, অর্থাৎ এগুলো অর্থপূর্ণ বিকল্প প্রবেশাধিকার বা অতিরিক্ত প্রেক্ষাপট দিলে অ্যাক্সেসিবিলিটি পর্যালোচনাকে শক্তিশালী বা সমর্থন করতে পারে।
 
-যখন কোনো system **within spec** বিবেচিত হয়, তার অর্থ CatalystUI Team systemটি manually reviewed করেছে এবং এই verification category-তে বর্ণিত internationalization requirements পূরণ করে বলে reasonable conclusion পাওয়া গেছে।
+স্বাদ ও গন্ধ বর্তমানে ব্যর্থতার জন্য **একচেটিয়া** নয়, অর্থাৎ কোনো সিস্টেম স্বাদ-ভিত্তিক বা গন্ধ-ভিত্তিক মিথস্ক্রিয়া না দিলেই অ্যাক্সেসিবিলিটি যাচাইকরণে ব্যর্থ হয় না।
 
-এর জন্য একটি rigid implementation pattern প্রয়োজন নেই। একটি system resource files, translation tables, locale-aware routing, compiled language assets, database-backed translations, runtime language packs, অথবা system-এর জন্য উপযুক্ত অন্য কোনো stable mechanism-এর মাধ্যমে requirement পূরণ করতে পারে।
+CatalystUI অ্যাক্সেসিবিলিটি যাচাইকরণ মূলত দৃষ্টি, শব্দ, বা স্পর্শ আলাদাভাবে অনুপলব্ধ হলে সিস্টেমটি যুক্তিসঙ্গতভাবে ব্যবহারযোগ্য থাকে কি না তা নিয়ে concerned।
 
-Verification-এর বিষয় হলো required languages-এ users-এর essential system access করার practical ability; system একটি নির্দিষ্ট translation architecture ব্যবহার করছে কি না তা নয়।
+## “স্পেসিফিকেশনের মধ্যে” অর্থ
 
-## যাচাইকরণের অর্থ নয় যা
+কোনো সিস্টেমকে **স্পেসিফিকেশনের মধ্যে** বলা হলে এর অর্থ CatalystUI Team সিস্টেমটি হাতে পর্যালোচনা করেছে এবং যুক্তিসঙ্গতভাবে সিদ্ধান্তে পৌঁছেছে যে এটি এই যাচাইকরণ বিভাগের অ্যাক্সেসিবিলিটি প্রয়োজনীয়তা পূরণ করে।
 
-CatalystUI Verified for Internationalization নিশ্চয়তা দেয় না যে প্রতিটি translation perfect, literary, idiomatic, culturally complete, অথবা প্রতিটি region-এর জন্য legally sufficient।
+এর জন্য একটিমাত্র কঠোর বাস্তবায়ন প্যাটার্ন দরকার নেই। একটি সিস্টেম native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration, অথবা সিস্টেমের জন্য উপযুক্ত অন্য কোনো stable mechanism-এর মাধ্যমে অ্যাক্সেসিবিলিটি প্রয়োজনীয়তা পূরণ করতে পারে।
 
-এটি accessibility, typography, right-to-left layout, locale-specific formatting, currency formatting, date formatting, legal compliance, অথবা regional business requirements-ও automatically verify করে না, যদি না সেই concerns reviewed internationalization scope-এর মধ্যে অন্তর্ভুক্ত থাকে।
+যাচাইকরণ একটি প্রধান ইন্দ্রিয় অনুপলব্ধ হলে ব্যবহারকারীরা বাস্তবে মৌলিক সিস্টেমে প্রবেশ করতে পারে কি না তা নিয়ে concerned; সিস্টেমটি কোনো নির্দিষ্ট accessibility architecture ব্যবহার করছে কি না তা নিয়ে নয়।
 
-একটি system strong translation coverage প্রদান করলেও accessibility, localization quality, regional compliance, অথবা অন্যান্য specialized concerns-এর জন্য আলাদা review প্রয়োজন হতে পারে।
+## যাচাইকরণের অর্থ যা নয়
+
+CatalystUI অ্যাক্সেসিবিলিটির জন্য যাচাইকৃত হওয়া এই নিশ্চয়তা দেয় না যে প্রতিটি সম্ভাব্য disability, device, assistive technology, medical condition, legal requirement, regional standard, অথবা specialized use case সম্পূর্ণভাবে পর্যালোচিত হয়েছে।
+
+এটি স্বয়ংক্রিয়ভাবে internationalization, translation quality, typography, localization, regional compliance, বা general design quality যাচাই করে না, যদি না সেগুলো পর্যালোচিত অ্যাক্সেসিবিলিটি scope-এ অন্তর্ভুক্ত থাকে।
+
+CatalystUI-এর অ্যাক্সেসিবিলিটি মডেলের অধীনে একটি সিস্টেম যুক্তিসঙ্গতভাবে accessible হতে পারে, কিন্তু legal compliance, platform certification, specialized assistive technology support, বা অন্যান্য accessibility standards-এর জন্য আলাদা পর্যালোচনার প্রয়োজন থাকতে পারে।
 
 ## এই যাচাইকরণ কেন আছে
 
-User interface তখনই useful যখন user বুঝতে পারে সেটি কী communicate করছে।
+ব্যবহারকারী ইন্টারফেস তখনই সফল, যখন ব্যবহারকারীরা সেটি সত্যিই ব্যবহার করতে পারে।
 
-অনেক system language support দাবি করে, কিন্তু experience-এর ছোট অংশ অনুবাদ করে, language selection লুকায়, important messages বাদ দেয়, অথবা essential workflows আংশিক untranslated রাখে। এতে confusion তৈরি হয় এবং users system-কে trust করতে পারে না।
+অনেক সিস্টেম অ্যাক্সেসিবিলিটিকে human-computer interaction-এর মৌলিক অংশ হিসেবে না দেখে পরবর্তী চিন্তা, চেকলিস্ট, বা সংকীর্ণ প্রযুক্তিগত প্রয়োজনীয়তা হিসেবে দেখে। CatalystUI সহজ ও সরাসরি পথ নেয়: যদি কোনো সিস্টেম মানব উপলব্ধির ওপর নির্ভর করে, তবে একটি প্রধান সংবেদী পথ অনুপলব্ধ হলে সিস্টেমটির মৌলিক অর্থ সংরক্ষণ করা উচিত।
 
-Internationalization Verification একটি clearer standard স্থাপনের জন্য আছে। এটি এমন systems চিহ্নিত করে যা required CatalystUI language set জুড়ে users-দের support করার serious, practical effort করে এবং users-দের প্রয়োজনীয় language select করার reasonable way প্রদান করে।
+অ্যাক্সেসিবিলিটি যাচাইকরণ আছে এমন সিস্টেম শনাক্ত করতে, যেগুলো এই দায়িত্বকে গুরুত্ব দেয়। এটি এমন সিস্টেমকে স্বীকৃতি দেয় যা অর্থপূর্ণ বিকল্প প্রবেশাধিকার দেয়, মৌলিক কার্যকারিতা সংরক্ষণ করে, এবং ব্যবহারকারীদের একটিমাত্র প্রয়োজনীয় ইন্দ্রিয়ের পেছনে আটকে রাখে না।
 
 ## যাচাইকরণের পরিসর
 
-CatalystUI Verification for Internationalization review করা system, service, framework, application, অথবা implementation-এর সেই অবস্থায় প্রযোজ্য, যে অবস্থায় verification issued হয়েছিল।
+CatalystUI অ্যাক্সেসিবিলিটি যাচাইকরণ সেই পর্যালোচিত সিস্টেম, পরিষেবা, ফ্রেমওয়ার্ক, অ্যাপ্লিকেশন, লাইব্রেরি, বা বাস্তবায়নের ক্ষেত্রে প্রযোজ্য, যা যাচাইকরণ জারির সময় যেমন ছিল।
 
-একটি verified system required languages-এর জন্য sufficient essential translation coverage প্রদান করে। এটি নিশ্চয়তা দেয় না যে ভবিষ্যতের প্রতিটি page, feature, release, plugin, extension, অথবা third-party integration automatically within spec।
+একটি যাচাইকৃত সিস্টেম পর্যালোচিত শর্তে তার মৌলিক কার্যকারিতার জন্য যুক্তিসঙ্গত অ্যাক্সেসিবিলিটি দেয়। এটি নিশ্চয়তা দেয় না যে ভবিষ্যতের প্রতিটি পৃষ্ঠা, বৈশিষ্ট্য, রিলিজ, প্লাগইন, এক্সটেনশন, তৃতীয়-পক্ষ ইন্টেগ্রেশন, ডিভাইস, বা প্ল্যাটফর্ম-নির্দিষ্ট সংস্করণ স্বয়ংক্রিয়ভাবে স্পেসিফিকেশনের মধ্যে থাকবে।
 
-Separate products, modules, services, language packs, অথবা major revisions requested verification category অনুযায়ী নিজস্ব review প্রয়োজন করতে পারে।
+পৃথক পণ্য, মডিউল, পরিষেবা, বড় সংস্করণ, বা প্ল্যাটফর্ম-নির্দিষ্ট বিল্ডের জন্য অনুরোধ করা যাচাইকরণ বিভাগের ওপর নির্ভর করে নিজস্ব পর্যালোচনা প্রয়োজন হতে পারে।
 
 ## যাচাইকরণের বৈধতা
 
-CatalystUI Verification কেবল system-এর reviewed state-এ প্রযোজ্য, verification issued হওয়ার সময়।
+CatalystUI যাচাইকরণ শুধুমাত্র যাচাইকরণ জারির সময় সিস্টেমের পর্যালোচিত অবস্থার ক্ষেত্রে প্রযোজ্য।
 
-systemটি পরবর্তী updates জুড়ে verification ধরে রাখতে পারে, যদি verified internationalization foundation সংরক্ষণ করে। Minor wording changes, added translations, এবং ordinary content updates automatically verification invalid করে না।
+একটি সিস্টেম পরবর্তী আপডেটেও যাচাইকরণ ধরে রাখতে পারে, যতক্ষণ এটি যাচাইকৃত অ্যাক্সেসিবিলিটি ভিত্তি সংরক্ষণ করে। ছোটখাটো ভাষাগত পরিবর্তন, দৃশ্যমান পরিমার্জন, পারফরম্যান্স উন্নতি, এবং সাধারণ কনটেন্ট আপডেট স্বয়ংক্রিয়ভাবে যাচাইকরণ বাতিল করে না।
 
-নতুন review প্রয়োজন হতে পারে যদি system required language support সরিয়ে দেয়, language selection ভেঙে দেয়, essential translation coverage উল্লেখযোগ্যভাবে কমায়, অথবা verified behavior-কে affect করে এমনভাবে internationalization architecture পরিবর্তন করে।
+নতুন পর্যালোচনা প্রয়োজন হতে পারে যদি কোনো সিস্টেম বিকল্প প্রবেশাধিকার পথ সরিয়ে দেয়, সহায়ক প্রযুক্তি সমর্থন ভেঙে দেয়, মৌলিক নেভিগেশন বড়ভাবে পরিবর্তন করে, প্রয়োজনীয় অ্যাক্সেসিবিলিটি সেটিংস সরিয়ে দেয়, অথবা যাচাইকৃত অ্যাক্সেসিবিলিটি ভিত্তিকে প্রভাবিত করে এমনভাবে মিথস্ক্রিয়া আচরণ বদলে দেয়।
 
-অন্যভাবে বললে, translation support উন্নত করা সাধারণত ঠিক আছে। verified multilingual base ভেঙে দিলে review প্রয়োজন হতে পারে।
+অন্যভাবে বললে, অ্যাক্সেসিবিলিটি উন্নত করা সাধারণত ঠিক। যাচাইকৃত access model ভেঙে দিলে পর্যালোচনা প্রয়োজন হতে পারে।
 
 ## যাচাইকৃত সিস্টেম
 
-Internationalization-এর জন্য পরিচিত verified systems উপযুক্ত CatalystUI Verified page-এ আলাদাভাবে তালিকাভুক্ত করা হয়েছে।
+অ্যাক্সেসিবিলিটির জন্য যাচাইকৃত পরিচিত সিস্টেমগুলো উপযুক্ত CatalystUI Verified পৃষ্ঠায় আলাদাভাবে তালিকাভুক্ত করা হয়।

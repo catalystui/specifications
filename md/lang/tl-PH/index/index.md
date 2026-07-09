@@ -6,14 +6,14 @@
 
 ## Verified Services
 
-Ang mga serbisyong na-verify na tumutugon sa specification(s) ay nakalista sa ibaba. Ang mga serbisyong ito ay dumaan sa kinakailangang testing at validation upang matiyak ang pagsunod sa mga tinukoy na pamantayan.
+Nakalista sa ibaba ang mga service na na-verify upang matugunan ang specification(s). Dumaan ang mga service na ito sa kinakailangang testing at validation upang matiyak ang compliance sa defined standards.
 
 | Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
 
 ## Reviewed Services
 
-Ang mga serbisyong na-review para sa pagsunod sa specification(s) ay nakalista sa ibaba. Ang mga serbisyong ito ay dumaan sa paunang review process, ngunit maaaring hindi pa ganap na verified o maaaring natagpuang may mga issue na maaari o hindi maaaring maresolba. Maaaring kailanganin ang karagdagang testing at validation upang makamit ang ganap na compliance.
+Nakalista sa ibaba ang mga service na narepaso para sa compliance sa specification(s). Dumaan ang mga service na ito sa initial review process, ngunit maaaring hindi pa ganap na verified o may mga issue na maaaring maayos o hindi. Maaaring kailanganin ang karagdagang testing at validation upang makamit ang full compliance.
 
 | Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |

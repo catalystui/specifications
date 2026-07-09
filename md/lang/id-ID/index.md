@@ -2,172 +2,139 @@
 
 <!-- Hapus baris-baris ini dalam pull request setelah terjemahan diverifikasi. -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# CatalystUI Verified for Internationalization
+# CatalystUI Verified for Accessibility
 
-Selamat datang di dokumentasi CatalystUI Verification untuk internasionalisasi.
+Selamat datang di dokumentasi CatalystUI Verification untuk aksesibilitas.
 
-**CatalystUI Verified for Internationalization** menunjukkan bahwa suatu sistem, layanan, framework, aplikasi, atau implementasi telah ditinjau oleh Tim CatalystUI dan dinilai menyediakan dukungan multibahasa yang memadai untuk kumpulan bahasa internasionalisasi CatalystUI yang diwajibkan.
+**CatalystUI Verified for Accessibility** menunjukkan bahwa suatu service, framework, application, library, atau system telah ditinjau oleh CatalystUI Team dan dinilai tetap cukup dapat digunakan ketika salah satu dari tiga indra utama yang terlibat dalam interaksi antarmuka pengguna tidak tersedia secara terpisah.
 
-Verifikasi ini bukan peringkat umum atas kualitas terjemahan, gaya penulisan, kedalaman lokalisasi, atau adaptasi budaya. Sebaliknya, verifikasi ini mengidentifikasi apakah sistem yang ditinjau menyediakan fondasi yang stabil dan praktis agar pengguna dapat mengakses fungsionalitas esensialnya dalam bahasa-bahasa yang diwajibkan.
+Untuk verifikasi ini, CatalystUI mengidentifikasi tiga indra aksesibilitas utama sebagai **sight**, **sound**, dan **touch**. System yang terverifikasi harus mempertahankan akses yang wajar ke essential functionality ketika salah satu indra ini tidak tersedia, dengan mengandalkan sensory domains lain yang masih tersedia.
 
-Dengan kata yang lebih sederhana, verifikasi ini menanyakan apakah pengguna dapat menggunakan bagian-bagian esensial dari suatu sistem secara bermakna dalam bahasa yang diwajibkan, dan apakah mereka diberi cara yang masuk akal untuk memilih bahasa yang mereka pahami.
+Secara sederhana, verifikasi ini menanyakan apakah user masih dapat memahami, menavigasi, dan mengoperasikan bagian-bagian essential dari suatu system secara bermakna ketika mereka tidak dapat mengandalkan sight, sound, atau touch secara terpisah.
 
-<a id="purpose"></a>
 ## Tujuan
 
-Internasionalisasi penting karena suatu sistem tidak dapat dianggap dapat diakses secara luas jika makna esensialnya terkunci di balik satu bahasa saja.
+Aksesibilitas penting karena user interface tidak seharusnya bergantung sepenuhnya pada satu sensory pathway ketika makna essential yang sama dapat dikomunikasikan secara wajar melalui pathway lain.
 
-CatalystUI dirancang di sekitar kejelasan, konsistensi, dan representasi yang setia atas interaksi manusia-komputer. Bahasa adalah bagian dari interaksi itu. Jika pengguna tidak dapat memahami label, instruksi, peringatan, kontrol, pengaturan, atau konten esensial dari suatu sistem, maka sistem tersebut gagal berkomunikasi dengan jelas, sekalipun fungsionalitas dasarnya secara teknis bekerja.
+CatalystUI dirancang di sekitar perpindahan data yang setia antara system dan persepsi manusia. Jika informasi penting hanya terlihat, hanya terdengar, atau hanya tersedia melalui touch, maka system dapat menjadi tidak dapat digunakan oleh user yang tidak dapat mengandalkan indra tersebut. Accessibility Verification ada untuk mengidentifikasi system yang mempertahankan akses dengan memungkinkan informasi dan interaksi essential tetap berlanjut melalui rute sensory alternatif.
 
-Internationalization Verification ada untuk mengidentifikasi sistem yang menyediakan dukungan terjemahan yang cukup bagi pengguna di seluruh kumpulan bahasa CatalystUI yang diwajibkan. Tujuannya bukan menuntut terjemahan sempurna untuk setiap kata opsional, pesan tersembunyi bagi pengembang, atau halaman nonesensial. Tujuannya adalah menentukan apakah bagian-bagian esensial dari sistem dapat dipahami dan digunakan oleh orang-orang dalam setiap bahasa yang diwajibkan.
+Tujuannya bukan untuk mewajibkan setiap kemungkinan metode interaksi, setiap assistive technology, atau setiap akomodasi khusus. Tujuannya adalah menentukan apakah essential system tetap meaningfully usable ketika sight, sound, atau touch tidak tersedia secara terpisah.
 
-<a id="what-verification-means"></a>
-## Arti Verifikasi
+## Arti Verification
 
-Suatu sistem menjadi **CatalystUI Verified for Internationalization** ketika sistem tersebut ditinjau berdasarkan persyaratan yang tercantum dalam bagian ini dan dinyatakan within spec.
+Suatu system menjadi **CatalystUI Verified for Accessibility** ketika ditinjau terhadap requirements yang tercantum di bagian ini dan dinyatakan within spec.
 
-Agar dapat diverifikasi, suatu sistem harus menyediakan terjemahan untuk lebih dari 75% bagian esensial yang ditujukan kepada pengguna dalam setiap bahasa yang diwajibkan. Sistem tersebut juga harus menyediakan mekanisme yang masuk akal bagi pengguna akhir untuk mengubah bahasa aktif.
+Agar terverifikasi, suatu system harus tetap cukup dapat digunakan dalam setiap kasus berikut:
 
-Suatu sistem tidak perlu menerjemahkan setiap pengenal internal, detail implementasi yang ditujukan kepada pengembang, string debug, halaman pemasaran opsional, atau teks dukungan nonesensial. Namun, bagian yang ditujukan kepada pengguna dan diperlukan untuk memahami serta mengoperasikan sistem esensial harus tersedia dalam setiap bahasa yang diwajibkan.
+| Unavailable Sense | Required Accessibility Behavior |
+| ----------------- | ----------------------------------------------------------------- |
+| Sight             | System harus tetap cukup dapat digunakan melalui sound dan touch. |
+| Sound             | System harus tetap cukup dapat digunakan melalui sight dan touch. |
+| Touch             | System harus tetap cukup dapat digunakan melalui sight dan sound. |
 
-<a id="required-languages"></a>
-## Bahasa yang Diwajibkan
+System tidak perlu memberikan pengalaman yang identik di setiap sensory path. Pengalaman non-visual dapat lebih lambat daripada pengalaman visual. Pengalaman tanpa sound dapat memerlukan captions, visual indicators, atau substitusi lain. Pengalaman tanpa touch dapat memerlukan alternate controls, voice interaction, keyboard navigation, pointer navigation, atau metode non-touch lain.
 
-Kumpulan bahasa internasionalisasi CatalystUI saat ini dipilih melalui tinjauan praktis terhadap bahasa yang umum dibutuhkan dalam konteks teknologi, termasuk jangkauan penutur global, penggunaan daring yang umum, ekspektasi perangkat lunak multibahasa, dan kebutuhan aksesibilitas regional yang luas.
+Yang penting adalah apakah essential functionality tetap accessible, understandable, dan operable tanpa mewajibkan indra yang tidak tersedia.
 
-Kumpulan bahasa ini tidak dimaksudkan untuk mewakili setiap bahasa, setiap dialek, atau setiap varian regional. Sebaliknya, kumpulan ini menetapkan dasar praktis bagi sistem yang mencari kegunaan internasional yang luas di banyak kelompok bahasa paling umum di dunia teknologi.
+## Essential Functionality
 
-Kumpulan bahasa internasionalisasi CatalystUI saat ini mencakup locale berikut:
+Untuk Accessibility Verification, **essential functionality** merujuk pada bagian-bagian system yang secara wajar dibutuhkan user untuk memahami, menavigasi, mengonfigurasi, dan mengoperasikan system.
 
-| Locale    | Bahasa                   |
-| --------- | ------------------------ |
-| `ar-SA`   | Arab (Arab Saudi)        |
-| `bn-BD`   | Bengali (Bangladesh)     |
-| `de-DE`   | Jerman (Jerman)          |
-| `en-GB`   | Inggris (Britania Raya)  |
-| `en-IN`   | Inggris (India)          |
-| `en-US`   | Inggris (Amerika Serikat) |
-| `es-ES`   | Spanyol (Spanyol)        |
-| `es-MX`   | Spanyol (Meksiko)        |
-| `fa-IR`   | Persia (Iran)            |
-| `fr-FR`   | Prancis (Prancis)        |
-| `hi-IN`   | Hindi (India)            |
-| `id-ID`   | Indonesia (Indonesia)    |
-| `it-IT`   | Italia (Italia)          |
-| `ja-JP`   | Jepang (Jepang)          |
-| `ko-KR`   | Korea (Korea Selatan)    |
-| `nl-NL`   | Belanda (Belanda)        |
-| `pl-PL`   | Polandia (Polandia)      |
-| `pt-BR`   | Portugis (Brasil)        |
-| `ru-RU`   | Rusia (Rusia)            |
-| `tl-PH`   | Tagalog (Filipina)       |
-| `tr-TR`   | Turki (Turki)            |
-| `uk-UA`   | Ukraina (Ukraina)        |
-| `ur-PK`   | Urdu (Pakistan)          |
-| `vi-VN`   | Vietnam (Vietnam)        |
-| `zh-CN`   | Tionghoa (Tiongkok)      |
-| `zh-Hans` | Tionghoa (Sederhana)     |
+Essential functionality dapat mencakup:
 
-Suatu sistem harus menyediakan cakupan terjemahan esensial yang memadai untuk setiap kelompok bahasa yang tercantum agar dapat dianggap within spec.
+* primary navigation
+* core workflows
+* required controls
+* important warnings
+* important errors
+* required confirmation messages
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* interaksi apa pun yang diperlukan untuk penggunaan normal
 
-Namun, varian regional dapat ditinjau dengan fleksibilitas yang wajar ketika perbedaan antarvarian kecil dan tidak secara material memengaruhi kemampuan pengguna untuk memahami atau mengoperasikan sistem. Misalnya, suatu sistem masih dapat memenuhi syarat untuk verifikasi jika menyediakan satu terjemahan bahasa Inggris yang kuat tetapi tidak menerjemahkan setiap varian regional bahasa Inggris secara terpisah, selama makna esensial, navigasi, instruksi, peringatan, dan kontrol tetap jelas bagi pengguna varian yang belum tersedia.
+System masih dapat within spec jika fitur dekoratif, redundant, optional, atau nonessential tidak tersedia secara setara melalui setiap sensory path. Namun, user tetap harus dapat menggunakan essential system tanpa terhalang oleh indra yang hilang.
 
-Fleksibilitas ini tidak berlaku ketika varian yang hilang akan menimbulkan kebingungan bermakna, menghilangkan terminologi regional yang penting, merusak perilaku yang sensitif terhadap locale, atau mencegah pengguna memahami bagian esensial dari sistem.
+## Sight Unavailable
 
-<a id="essential-translation-coverage"></a>
-## Cakupan Terjemahan Esensial
+Ketika sight tidak tersedia, system harus tetap cukup dapat digunakan melalui sound dan touch.
 
-Untuk Internationalization Verification, **cakupan terjemahan esensial** merujuk pada bagian-bagian sistem yang secara wajar dibutuhkan pengguna untuk memahami, menavigasi, mengonfigurasi, dan mengoperasikan sistem.
+Ini dapat mencakup spoken output, screen-reader-compatible structure, meaningful focus order, tactile controls, keyboard access, haptic confirmation, audio descriptions, atau metode non-visual lain yang wajar untuk mengomunikasikan essential information.
 
-Bagian esensial dapat mencakup:
+System tidak seharusnya bergantung secara eksklusif pada visual position, color, shape, animation, icons, atau layout ketika informasi tersebut diperlukan untuk memahami atau mengoperasikan essential functionality.
 
-* navigasi utama
-* layar dan tampilan inti
-* pengaturan dan preferensi
-* label yang ditujukan kepada pengguna
-* kontrol yang ditujukan kepada pengguna
-* instruksi yang diwajibkan
-* peringatan penting
-* kesalahan penting
-* prompt esensial
-* pesan konfirmasi yang diwajibkan
-* kontrol pemilihan bahasa
-* alur kerja inti yang dibutuhkan untuk penggunaan normal
+## Sound Unavailable
 
-Suatu sistem dianggap memenuhi persyaratan cakupan terjemahan ketika lebih dari 75% konten esensial yang ditujukan kepada pengguna tersedia dalam setiap bahasa yang diwajibkan.
+Ketika sound tidak tersedia, system harus tetap cukup dapat digunakan melalui sight dan touch.
 
-Ambang ini ada karena pekerjaan internasionalisasi dapat besar, berkelanjutan, dan bergantung pada konteks. Suatu sistem masih dapat berada within spec meskipun sebagian konten nonesensial atau berprioritas lebih rendah belum diterjemahkan. Namun, pengalaman esensial harus tersedia secara bermakna dalam setiap bahasa yang diwajibkan.
+Ini dapat mencakup captions, transcripts, visual alerts, text equivalents, progress indicators, visible status messages, haptic feedback, atau metode non-auditory lain yang wajar untuk mengomunikasikan essential information.
 
-<a id="language-selection"></a>
-## Pemilihan Bahasa
+System tidak seharusnya bergantung secara eksklusif pada sound effects, spoken instructions, alerts, alarms, music cues, atau audio-only prompts ketika informasi tersebut diperlukan untuk memahami atau mengoperasikan essential functionality.
 
-Sistem yang diverifikasi harus menyediakan cara yang masuk akal bagi pengguna akhir untuk mengubah bahasa aktif.
+## Touch Unavailable
 
-Mekanisme pemilihan bahasa harus mudah ditemukan, dapat dipahami, dan tersedia tanpa memerlukan pengetahuan teknis. Pengguna seharusnya tidak perlu mengedit berkas konfigurasi, mengubah kode sumber, memasang alat pengembang, atau bergantung pada perilaku yang tidak terdokumentasi hanya untuk mengubah bahasa.
+Ketika touch tidak tersedia, system harus tetap cukup dapat digunakan melalui sight dan sound.
 
-Saat menampilkan opsi bahasa, sistem harus mengidentifikasi setiap bahasa dengan cara yang dapat dipahami baik oleh pengguna yang berbicara bahasa tersebut maupun pengguna yang sedang memakai bahasa lain yang dipilih.
+Ini dapat mencakup voice control, keyboard navigation, pointer alternatives, remote controls, gaze-compatible interaction, switch-compatible interaction, spoken prompts, visual confirmation, atau metode wajar lain yang tidak memerlukan touch-based interaction atau tactile perception.
 
-Misalnya, opsi bahasa dapat ditampilkan menggunakan:
+System tidak seharusnya bergantung secara eksklusif pada touch gestures, haptic feedback, physical texture, vibration, force, pressure, atau touch-only controls ketika interaksi tersebut diperlukan untuk memahami atau mengoperasikan essential functionality.
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+## Additional Sensory Domains
 
-Format yang tepat dapat bervariasi, tetapi maksudnya harus tetap sama: pengguna harus dapat mengenali bahasa mereka sendiri, memahami nama bahasa yang sedang ditampilkan bila memungkinkan, dan mengidentifikasi kode locale terkait.
+CatalystUI juga mengenali **taste** dan **smell** sebagai sensory domains. Domain ini dapat dipertimbangkan selama accessibility review ketika digunakan secara bermakna oleh system.
 
-<a id="what-within-spec-means"></a>
+Taste dan smell bersifat **inclusive** untuk verification, artinya keduanya dapat memperkuat atau mendukung accessibility review ketika menyediakan alternate access yang bermakna atau additional context.
+
+Taste dan smell saat ini tidak bersifat **exclusive** untuk failure, artinya system tidak gagal Accessibility Verification hanya karena tidak menyediakan interaksi berbasis taste atau smell.
+
+CatalystUI Accessibility Verification terutama berkaitan dengan apakah system tetap cukup dapat digunakan ketika sight, sound, atau touch tidak tersedia secara terpisah.
+
 ## Arti “Within Spec”
 
-Ketika suatu sistem dianggap **within spec**, artinya Tim CatalystUI telah meninjau sistem tersebut secara manual dan menilai bahwa secara wajar sistem itu memenuhi persyaratan internasionalisasi yang dijelaskan oleh kategori verifikasi ini.
+Ketika suatu system dianggap **within spec**, artinya CatalystUI Team telah meninjau system secara manual dan menilai wajar untuk menyimpulkan bahwa system tersebut memenuhi accessibility requirements yang dijelaskan oleh kategori verification ini.
 
-Hal ini tidak mengharuskan satu pola implementasi yang kaku. Suatu sistem dapat memenuhi persyaratan melalui berkas resource, tabel terjemahan, routing sadar-locale, aset bahasa terkompilasi, terjemahan berbasis database, paket bahasa runtime, atau mekanisme stabil lain yang sesuai dengan sistem.
+Ini tidak memerlukan satu pola implementasi yang kaku. System dapat memenuhi accessibility requirements melalui native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration, atau stable mechanism lain yang sesuai untuk system tersebut.
 
-Verifikasi berfokus pada kemampuan praktis pengguna untuk mengakses sistem esensial dalam bahasa yang diwajibkan, bukan pada apakah sistem menggunakan satu arsitektur terjemahan tertentu.
+Verification berkaitan dengan kemampuan praktis user untuk mengakses essential system ketika satu primary sense tidak tersedia, bukan apakah system menggunakan satu arsitektur aksesibilitas tertentu.
 
-<a id="what-verification-does-not-mean"></a>
-## Hal yang Tidak Dimaksud oleh Verifikasi
+## Yang Tidak Dimaksud oleh Verification
 
-CatalystUI Verified for Internationalization tidak menjamin bahwa setiap terjemahan sempurna, sastrawi, idiomatis, lengkap secara budaya, atau cukup secara hukum untuk setiap wilayah.
+CatalystUI Verified for Accessibility tidak menjamin bahwa setiap kemungkinan disability, device, assistive technology, medical condition, legal requirement, regional standard, atau specialized use case telah ditinjau sepenuhnya.
 
-Verifikasi ini juga tidak secara otomatis memverifikasi aksesibilitas, tipografi, tata letak kanan-ke-kiri, pemformatan khusus locale, pemformatan mata uang, pemformatan tanggal, kepatuhan hukum, atau persyaratan bisnis regional kecuali hal-hal tersebut termasuk dalam cakupan internasionalisasi yang ditinjau.
+Ini juga tidak secara otomatis memverifikasi internationalization, translation quality, typography, localization, regional compliance, atau general design quality kecuali hal-hal tersebut termasuk dalam reviewed accessibility scope.
 
-Suatu sistem dapat menyediakan cakupan terjemahan yang kuat dan tetap memerlukan tinjauan terpisah untuk aksesibilitas, kualitas lokalisasi, kepatuhan regional, atau perhatian khusus lainnya.
+System dapat cukup accessible menurut accessibility model CatalystUI dan tetap memerlukan review terpisah untuk legal compliance, platform certification, specialized assistive technology support, atau accessibility standards lain.
 
-<a id="why-this-verification-exists"></a>
-## Mengapa Verifikasi Ini Ada
+## Mengapa Verification Ini Ada
 
-User interface hanya berguna ketika pengguna dapat memahami apa yang dikomunikasikannya.
+User interface hanya berhasil ketika user benar-benar dapat menggunakannya.
 
-Banyak sistem mengklaim dukungan bahasa sementara hanya menerjemahkan sebagian kecil dari pengalaman, menyembunyikan pemilihan bahasa, menghilangkan pesan penting, atau membiarkan alur kerja esensial hanya diterjemahkan sebagian. Ini menciptakan kebingungan dan mencegah pengguna memercayai sistem.
+Banyak system memperlakukan accessibility sebagai afterthought, checklist, atau technical requirement yang sempit, bukan sebagai bagian fundamental dari human-computer interaction. CatalystUI mengambil pendekatan yang lebih sederhana dan langsung: jika system bergantung pada human perception, maka system harus mempertahankan essential meaning ketika satu primary sensory path tidak tersedia.
 
-Internationalization Verification ada untuk menetapkan standar yang lebih jelas. Verifikasi ini mengidentifikasi sistem yang melakukan upaya serius dan praktis untuk mendukung pengguna di seluruh kumpulan bahasa CatalystUI yang diwajibkan dan yang menyediakan cara yang masuk akal bagi pengguna untuk memilih bahasa yang mereka butuhkan.
+Accessibility Verification ada untuk mengidentifikasi system yang menjalankan tanggung jawab ini dengan serius. Ini mengenali system yang menyediakan alternate access yang bermakna, mempertahankan essential functionality, dan menghindari menjebak user di balik satu indra yang wajib.
 
-<a id="verification-scope"></a>
-## Cakupan Verifikasi
+## Verification Scope
 
-CatalystUI Verification for Internationalization berlaku untuk sistem, layanan, framework, aplikasi, atau implementasi yang ditinjau sebagaimana adanya pada saat verifikasi diterbitkan.
+CatalystUI Verification for Accessibility berlaku untuk system, service, framework, application, library, atau implementation yang ditinjau sebagaimana adanya pada saat verification diterbitkan.
 
-Sistem yang diverifikasi menyediakan cakupan terjemahan esensial yang memadai untuk bahasa-bahasa yang diwajibkan. Hal ini tidak menjamin bahwa setiap halaman, fitur, rilis, plugin, ekstensi, atau integrasi pihak ketiga di masa mendatang otomatis berada within spec.
+System yang terverifikasi menyediakan aksesibilitas yang wajar untuk essential functionality-nya dalam kondisi yang ditinjau. Ini tidak menjamin bahwa setiap future page, feature, release, plugin, extension, third-party integration, device, atau platform-specific version otomatis within spec.
 
-Produk, modul, layanan, paket bahasa, atau revisi besar yang terpisah mungkin memerlukan tinjauan mereka sendiri tergantung pada kategori verifikasi yang diminta.
+Produk, modules, services, major revisions, atau platform-specific builds yang terpisah dapat memerlukan review sendiri tergantung kategori verification yang diminta.
 
-<a id="verification-validity"></a>
-## Validitas Verifikasi
+## Verification Validity
 
-CatalystUI Verification hanya berlaku untuk keadaan sistem yang ditinjau pada saat verifikasi diterbitkan.
+CatalystUI Verification hanya berlaku untuk reviewed state system pada saat verification diterbitkan.
 
-Suatu sistem dapat mempertahankan verifikasinya dalam pembaruan berikutnya selama mempertahankan fondasi internasionalisasi yang telah diverifikasi. Perubahan kata kecil, tambahan terjemahan, dan pembaruan konten biasa tidak secara otomatis membatalkan verifikasi.
+System dapat mempertahankan verification-nya dalam update berikutnya selama mempertahankan verified accessibility foundation. Perubahan wording kecil, visual refinements, performance improvements, dan ordinary content updates tidak otomatis membatalkan verification.
 
-Tinjauan baru mungkin diperlukan jika suatu sistem menghapus dukungan bahasa yang diwajibkan, merusak pemilihan bahasa, secara substansial mengurangi cakupan terjemahan esensial, atau mengubah arsitektur internasionalisasinya dengan cara yang memengaruhi perilaku yang telah diverifikasi.
+Review baru dapat diperlukan jika system menghapus alternate access paths, merusak assistive-technology support, mengubah essential navigation secara substansial, menghapus required accessibility settings, atau mengubah interaction behavior dengan cara yang memengaruhi verified accessibility foundation.
 
-Dengan kata lain, meningkatkan dukungan terjemahan biasanya tidak masalah. Merusak dasar multibahasa yang telah diverifikasi mungkin memerlukan tinjauan.
+Dengan kata lain, meningkatkan aksesibilitas biasanya baik-baik saja. Merusak verified access model dapat memerlukan review.
 
-<a id="verified-systems"></a>
-## Sistem Terverifikasi
+## Verified Systems
 
-Sistem yang diketahui telah diverifikasi untuk internasionalisasi dicantumkan secara terpisah pada halaman CatalystUI Verified yang sesuai.
+System yang diketahui verified for accessibility dicantumkan secara terpisah pada halaman CatalystUI Verified yang sesuai.

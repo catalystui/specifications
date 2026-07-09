@@ -4,4 +4,4 @@
 
 # Reviewed Services
 
-Pumili ng serbisyo sa navigation view upang makita ang review status ng serbisyong iyon.
+Pumili ng service sa navigation view upang makita ang review status ng service na iyon.

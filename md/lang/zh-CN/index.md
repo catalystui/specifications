@@ -1,173 +1,140 @@
 <!-- 此翻译由 ChatGPT 生成，应由人工译者审阅。 -->
 
-<!-- 翻译通过验证后，请在 pull request 中删除这些行。 -->
+<!-- 翻译经过验证后，请在 pull request 中移除这些行。 -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# CatalystUI 国际化验证
+# CatalystUI Verified for Accessibility
 
-欢迎阅读 CatalystUI 国际化验证文档。
+欢迎阅读 CatalystUI Verification 的 accessibility 文档。
 
-**CatalystUI 国际化验证**表示某个系统、服务、框架、应用程序或实现已经由 CatalystUI Team 评审，并被认为为 CatalystUI 必需的国际化语言集合提供了足够的多语言支持。
+**CatalystUI Verified for Accessibility** 表示某个 service、framework、application、library 或 system 已由 CatalystUI Team 审核，并被认为在 user-interface interaction 所涉及的三个 primary senses 中任意一个单独 unavailable 时，仍能保持合理可用。
 
-此验证不是对翻译质量、写作风格、本地化深度或文化适配的总体排名。相反，它用于识别被评审系统是否提供了稳定且实用的基础，使用户能够以必需支持语言访问其基本功能。
+在此 verification 中，CatalystUI 将三个 primary accessibility senses 定义为 **sight**、**sound** 和 **touch**。经过 verified 的 system 必须在其中任一 sense unavailable 时，通过依靠剩余可用的 sensory domains，保持对其 essential functionality 的合理访问。
 
-更简单地说，此验证询问用户是否能够以必需语言有意义地使用系统的基本部分，以及他们是否获得了合理方式来选择自己理解的语言。
+简单来说，此 verification 询问的是：如果 user 不能分别依赖 sight、sound 或 touch，是否仍能 meaningful 地理解、navigate 并 operate system 的 essential parts。
 
-<a id="purpose"></a>
 ## 目的
 
-国际化很重要，因为如果系统的基本含义被锁定在一种语言之后，该系统就不能被视为具有广泛可访问性。
+Accessibility 很重要，因为当同样的 essential meaning 可以通过另一条路径合理传达时，user interface 不应完全依赖单一 sensory pathway。
 
-CatalystUI 围绕清晰性、一致性以及对人机交互的忠实表示而设计。语言是这种交互的一部分。如果用户无法理解系统的标签、说明、警告、控件、设置或基本内容，那么即使底层功能在技术上能够运行，该系统也没有清楚地沟通。
+CatalystUI 围绕 systems 与 human perception 之间 data 的 faithful movement 而设计。如果 important information 只能被看见、只能被听见，或只能通过 touch 获得，那么对无法依赖该 sense 的 users 来说，system 可能变得 unusable。Accessibility Verification 的存在，是为了识别那些通过 alternate sensory routes 保持 essential information 和 interaction 继续可用的 systems。
 
-Internationalization Verification 的存在，是为了识别那些在 CatalystUI 必需语言集合中为用户提供足够翻译支持的系统。目标不是要求每个可选词语、隐藏开发者消息或非基本页面都被完美翻译。目标是判断系统的基本部分是否能被每种必需语言的用户理解和使用。
+目标不是要求每一种 possible interaction method、每一种 assistive technology 或每一种 specialized accommodation。目标是确定当 sight、sound 或 touch 分别 unavailable 时，essential system 是否仍然 meaningfully usable。
 
-<a id="what-verification-means"></a>
-## 验证的含义
+## Verification 的含义
 
-当系统按照本节列出的要求进行评审，并被认为符合规范时，它即成为 **CatalystUI 国际化验证**系统。
+当 system 根据本节 listed requirements 进行 review 并被认定为 within spec 时，它就成为 **CatalystUI Verified for Accessibility**。
 
-要获得验证，系统必须在每种必需语言中为超过 75% 的基本面向用户部分提供翻译。它还必须为最终用户提供合理机制，以更改当前活动语言。
+要获得 verified，system 必须在以下每种情况中保持 reasonably usable：
 
-系统不需要翻译每个内部标识符、面向开发者的实现细节、调试字符串、可选营销页面或非基本支持文本。但是，用于理解和操作基本系统的面向用户部分必须在每种必需语言中可用。
+| Unavailable Sense | Required Accessibility Behavior |
+| ----------------- | -------------------------------- |
+| Sight             | System 必须通过 sound 和 touch 保持 reasonably usable。 |
+| Sound             | System 必须通过 sight 和 touch 保持 reasonably usable。 |
+| Touch             | System 必须通过 sight 和 sound 保持 reasonably usable。 |
 
-<a id="required-languages"></a>
-## 必需语言
+System 不需要在每条 sensory path 上提供完全相同的 experiences。Non-visual experience 可能比 visual one 更慢。Sound-free experience 可能需要 captions、visual indicators 或其他 substitutions。Touch-free experience 可能需要 alternate controls、voice interaction、keyboard navigation、pointer navigation 或其他 non-touch methods。
 
-当前 CatalystUI 国际化语言集合是根据技术环境中常见语言的实际评审选择的，其中包括全球使用者覆盖范围、常见在线使用情况、多语言软件预期以及广泛的区域可访问性需求。
+关键是 essential functionality 在不 require unavailable sense 的情况下仍然 accessible、understandable 且 operable。
 
-此语言集合并不旨在代表所有语言、所有方言或所有区域变体。相反，它为寻求广泛国际可用性的系统建立了一个实用基线，覆盖世界上许多最常见的技术场景语言群体。
+## Essential Functionality
 
-当前 CatalystUI 国际化语言集合包括以下 locale：
+对于 Accessibility Verification，**essential functionality** 指 user 为了 understand、navigate、configure 和 operate system 而合理需要的部分。
 
-| Locale    | 语言                     |
-| --------- | ------------------------ |
-| `ar-SA`   | 阿拉伯语（沙特阿拉伯）   |
-| `bn-BD`   | 孟加拉语（孟加拉国）     |
-| `de-DE`   | 德语（德国）             |
-| `en-GB`   | 英语（英国）             |
-| `en-IN`   | 英语（印度）             |
-| `en-US`   | 英语（美国）             |
-| `es-ES`   | 西班牙语（西班牙）       |
-| `es-MX`   | 西班牙语（墨西哥）       |
-| `fa-IR`   | 波斯语（伊朗）           |
-| `fr-FR`   | 法语（法国）             |
-| `hi-IN`   | 印地语（印度）           |
-| `id-ID`   | 印度尼西亚语（印度尼西亚） |
-| `it-IT`   | 意大利语（意大利）       |
-| `ja-JP`   | 日语（日本）             |
-| `ko-KR`   | 韩语（韩国）             |
-| `nl-NL`   | 荷兰语（荷兰）           |
-| `pl-PL`   | 波兰语（波兰）           |
-| `pt-BR`   | 葡萄牙语（巴西）         |
-| `ru-RU`   | 俄语（俄罗斯）           |
-| `tl-PH`   | 他加禄语（菲律宾）       |
-| `tr-TR`   | 土耳其语（土耳其）       |
-| `uk-UA`   | 乌克兰语（乌克兰）       |
-| `ur-PK`   | 乌尔都语（巴基斯坦）     |
-| `vi-VN`   | 越南语（越南）           |
-| `zh-CN`   | 中文（中国）             |
-| `zh-Hans` | 中文（简体）             |
+Essential functionality 可以包括：
 
-系统必须为列出的每个语言群体提供足够的基本翻译覆盖率，才可被视为符合规范。
+* primary navigation
+* core workflows
+* required controls
+* important warnings
+* important errors
+* required confirmation messages
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* normal use 所 required 的任何 interaction
 
-但是，当区域变体之间的差异较小，并且不会实质影响用户理解或操作系统时，可以在评审中给予合理灵活性。例如，如果系统提供了一份强健的英文翻译，但没有分别翻译每个英文区域变体，只要基本含义、导航、说明、警告和控件对缺失变体的用户仍然清楚，该系统仍可能有资格获得验证。
+如果 decorative、redundant、optional 或 nonessential features 没有通过每条 sensory path 同等 available，system 仍可能 within spec。但是，user 不得因为 missing sense 而被阻止使用 essential system。
 
-当缺失某个变体会造成有意义的混淆、遗漏区域重要术语、破坏 locale 敏感行为或阻止用户理解系统的基本部分时，此灵活性不适用。
+## Sight Unavailable
 
-<a id="essential-translation-coverage"></a>
-## 基本翻译覆盖率
+当 sight unavailable 时，system 应通过 sound 和 touch 保持 reasonably usable。
 
-对于 Internationalization Verification，**基本翻译覆盖率**指用户为了理解、导航、配置和操作系统而合理需要的系统部分。
+这可能包括 spoken output、screen-reader-compatible structure、meaningful focus order、tactile controls、keyboard access、haptic confirmation、audio descriptions，或另一种传达 essential information 的合理 non-visual method。
 
-基本部分可以包括：
+当某些 information 对 understand 或 operate essential functionality 是 required 时，system 不应 exclusively rely on visual position、color、shape、animation、icons 或 layout。
 
-* 主导航
-* 核心屏幕和视图
-* 设置和偏好
-* 面向用户的标签
-* 面向用户的控件
-* 必需说明
-* 重要警告
-* 重要错误
-* 基本提示
-* 必需确认消息
-* 语言选择控件
-* 正常使用所需的核心工作流程
+## Sound Unavailable
 
-当系统在每种必需语言中提供了超过 75% 的基本面向用户内容时，即被视为满足翻译覆盖率要求。
+当 sound unavailable 时，system 应通过 sight 和 touch 保持 reasonably usable。
 
-设置这一阈值，是因为国际化工作可能规模很大、持续进行，并且依赖上下文。即使某些非基本或较低优先级内容仍未翻译，系统仍可能符合规范。但是，基本体验必须在每种必需语言中都有意义地可用。
+这可能包括 captions、transcripts、visual alerts、text equivalents、progress indicators、visible status messages、haptic feedback，或另一种传达 essential information 的合理 non-auditory method。
 
-<a id="language-selection"></a>
-## 语言选择
+当某些 information 对 understand 或 operate essential functionality 是 required 时，system 不应 exclusively rely on sound effects、spoken instructions、alerts、alarms、music cues 或 audio-only prompts。
 
-已验证系统必须为最终用户提供合理方式来更改当前活动语言。
+## Touch Unavailable
 
-语言选择机制应易于找到、易于理解，并且无需技术知识即可使用。用户不应仅为了更改语言，就必须编辑配置文件、修改源代码、安装开发者工具或依赖未记录的行为。
+当 touch unavailable 时，system 应通过 sight 和 sound 保持 reasonably usable。
 
-在显示语言选项时，系统应以使用该语言的用户和当前使用另一种已选语言的用户都能理解的方式标识每种语言。
+这可能包括 voice control、keyboard navigation、pointer alternatives、remote controls、gaze-compatible interaction、switch-compatible interaction、spoken prompts、visual confirmation，或另一种不 require touch-based interaction 或 tactile perception 的 reasonable method。
 
-例如，语言选项可以显示为：
+当这些 interactions 对 understand 或 operate essential functionality 是 required 时，system 不应 exclusively rely on touch gestures、haptic feedback、physical texture、vibration、force、pressure 或 touch-only controls。
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+## Additional Sensory Domains
 
-具体格式可以有所不同，但意图应保持一致：用户应能够识别自己的语言，在可能时理解当前显示的语言名称，并识别相关的 locale 代码。
+CatalystUI 也将 **taste** 和 **smell** 识别为 sensory domains。当 system meaningful 地使用它们时，这些 domains 可在 accessibility review 中被考虑。
 
-<a id="what-within-spec-means"></a>
-## “符合规范”的含义
+Taste 和 smell 对 verification 是 **inclusive** 的，这意味着当它们提供 meaningful alternate access 或 additional context 时，可以 strengthen 或 support accessibility review。
 
-当系统被视为**符合规范**时，意味着 CatalystUI Team 已手动评审该系统，并认为可以合理得出它满足此验证类别所描述的国际化要求的结论。
+Taste 和 smell 当前并不是 failure 的 **exclusive** 条件，也就是说，system 不会仅仅因为没有提供 taste-based 或 smell-based interaction 而 fail Accessibility Verification。
 
-这并不要求某一种僵硬的实现模式。系统可以通过资源文件、翻译表、locale 感知路由、已编译语言资源、基于数据库的翻译、运行时语言包或其他适合系统的稳定机制来满足要求。
+CatalystUI Accessibility Verification 主要判断 system 在 sight、sound 或 touch individually unavailable 时是否仍然 reasonably usable。
 
-验证关注的是用户以必需语言访问基本系统的实际能力，而不是系统是否使用某一种特定翻译架构。
+## “Within Spec” 的含义
 
-<a id="what-verification-does-not-mean"></a>
-## 验证不代表什么
+当 system 被认为 **within spec** 时，意味着 CatalystUI Team 已经 manually review system，并认为可以合理推断它满足此 verification category 所描述的 accessibility requirements。
 
-CatalystUI 国际化验证并不保证每个翻译都是完美的、文学化的、地道的、文化上完整的，或对每个地区都具有法律充分性。
+这并不 require 某种 rigid implementation pattern。System 可以通过 native platform accessibility APIs、semantic structure、alternate input methods、alternate output methods、assistive-technology support、built-in accessibility settings、device-level integration，或其他适合 system 的 stable mechanism 来满足 accessibility requirements。
 
-它也不会自动验证无障碍性、排版、从右到左布局、locale 特定格式、货币格式、日期格式、法律合规或区域业务要求，除非这些关注点包含在被评审的国际化范围内。
+Verification 关注的是当一个 primary sense unavailable 时，users 是否能够 practical 地 access essential system，而不是 system 是否使用某一种特定 accessibility architecture。
 
-系统可能提供强健的翻译覆盖率，但仍需要针对无障碍、本地化质量、区域合规或其他专门问题进行单独评审。
+## Verification 不意味着什么
 
-<a id="why-this-verification-exists"></a>
-## 此验证存在的原因
+CatalystUI Verified for Accessibility 不保证每一种 possible disability、device、assistive technology、medical condition、legal requirement、regional standard 或 specialized use case 都已被完整 review。
 
-用户界面只有在用户能够理解其传达内容时才有用。
+它也不会 automatically verify internationalization、translation quality、typography、localization、regional compliance 或 general design quality，除非这些内容包含在 reviewed accessibility scope 中。
 
-许多系统声称支持语言，却只翻译体验中的一小部分，隐藏语言选择，遗漏重要消息，或让基本工作流程处于部分未翻译状态。这会造成困惑，并阻止用户信任该系统。
+System 可以在 CatalystUI accessibility model 下 reasonably accessible，但仍需要针对 legal compliance、platform certification、specialized assistive technology support 或 other accessibility standards 进行 separate review。
 
-Internationalization Verification 的存在是为了建立更清晰的标准。它识别那些认真且务实地努力支持 CatalystUI 必需语言集合中用户的系统，并确认这些系统提供了合理方式让用户选择他们需要的语言。
+## 此 Verification 存在的原因
 
-<a id="verification-scope"></a>
-## 验证范围
+User interface 只有在 users 真正能够使用时才算成功。
 
-CatalystUI 国际化验证适用于被评审系统、服务、框架、应用程序或实现，在验证签发时所处的状态。
+许多 systems 将 accessibility 视为 afterthought、checklist 或 narrow technical requirement，而不是 human-computer interaction 的 fundamental 部分。CatalystUI 的 approach 更简单、更直接：如果 system 依赖 human perception，它就必须在 primary sensory path unavailable 时 preserve essential meaning。
 
-已验证系统为必需语言提供足够的基本翻译覆盖率。这并不保证未来的每个页面、功能、版本、插件、扩展或第三方集成都自动符合规范。
+Accessibility Verification 的存在，是为了识别认真对待这项 responsibility 的 systems。它认可那些提供 meaningful alternate access、preserve essential functionality，并避免将 users 锁在一个 required sense 之后的 systems。
 
-单独的产品、模块、服务、语言包或重大修订可能需要根据所请求的验证类别进行自己的评审。
+## Verification Scope
 
-<a id="verification-validity"></a>
-## 验证有效性
+CatalystUI Verification for Accessibility 适用于 reviewed system、service、framework、application、library 或 implementation 在 verification issued 时的状态。
 
-CatalystUI Verification 只适用于系统在验证签发时被评审的状态。
+Verified system 在 reviewed conditions 下为其 essential functionality 提供 reasonable accessibility。这并不保证每个 future page、feature、release、plugin、extension、third-party integration、device 或 platform-specific version 都 automatically within spec。
 
-只要系统保留已验证的国际化基础，它就可以在后续更新中保持验证。轻微措辞变更、新增翻译和普通内容更新不会自动使验证失效。
+Separate products、modules、services、major revisions 或 platform-specific builds 可能需要自己的 review，具体取决于 requested verification category。
 
-如果系统移除必需语言支持、破坏语言选择、大幅降低基本翻译覆盖率，或以影响已验证行为的方式改变其国际化架构，则可能需要新的评审。
+## Verification Validity
 
-换句话说，改进翻译支持通常是可以的。破坏已验证的多语言基础可能需要重新评审。
+CatalystUI Verification 只适用于 verification issued 时 system 的 reviewed state。
 
-<a id="verified-systems"></a>
-## 已验证系统
+只要 system preserves verified accessibility foundation，它可以在 later updates 中 retain verification。Minor wording changes、visual refinements、performance improvements 和 ordinary content updates 不会 automatically invalidate verification。
 
-已知通过国际化验证的系统会单独列在相应的 CatalystUI Verified 页面上。
+如果 system removes alternate access paths、breaks assistive-technology support、substantially changes essential navigation、removes required accessibility settings，或 changes interaction behavior 以至于 affects verified accessibility foundation，则可能需要 new review。
+
+换句话说，improving accessibility 通常没有问题。Breaking the verified access model 可能 require review。
+
+## Verified Systems
+
+已知通过 accessibility verified 的 systems 会 separately listed 在相应的 CatalystUI Verified page 上。

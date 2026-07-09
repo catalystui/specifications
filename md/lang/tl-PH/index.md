@@ -2,172 +2,139 @@
 
 <!-- Alisin ang mga linyang ito sa isang pull request pagkatapos ma-verify ang salin. -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# CatalystUI Verified para sa Internasyonalisasyon
+# CatalystUI Verified for Accessibility
 
-Maligayang pagdating sa CatalystUI Verification documentation para sa internasyonalisasyon.
+Maligayang pagdating sa dokumentasyon ng CatalystUI Verification para sa accessibility.
 
-Ang **CatalystUI Verified for Internationalization** ay nagpapahiwatig na ang isang system, serbisyo, framework, application, o implementation ay na-review ng CatalystUI Team at napatunayang nagbibigay ng sapat na multilingual support para sa required CatalystUI internationalization language set.
+Ipinapahiwatig ng **CatalystUI Verified for Accessibility** na ang isang service, framework, application, library, o system ay nirepaso ng CatalystUI Team at napatunayang nananatiling makatwirang nagagamit kapag ang isa sa tatlong pangunahing pandamang kasangkot sa user-interface interaction ay hindi available nang paisa-isa.
 
-Ang verification na ito ay hindi pangkalahatang ranggo ng kalidad ng salin, istilo ng pagsulat, lalim ng localization, o cultural adaptation. Sa halip, tinutukoy nito kung ang reviewed system ay nagbibigay ng stable at praktikal na foundation para ma-access ng mga user ang essential functionality nito sa mga required supported languages.
+Para sa verification na ito, tinutukoy ng CatalystUI ang tatlong pangunahing accessibility senses bilang **paningin**, **tunog**, at **haplos**. Dapat mapanatili ng isang verified system ang makatwirang access sa essential functionality nito kapag alinman sa mga pandamang ito ay hindi available, sa pamamagitan ng pag-asa sa natitirang available sensory domains.
 
-Sa mas simpleng salita, tinatanong ng verification na ito kung makahulugang magagamit ng mga user ang mahahalagang bahagi ng isang system sa mga required language, at kung binibigyan sila ng makatwirang paraan upang piliin ang wikang nauunawaan nila.
+Sa mas simpleng salita, tinatanong ng verification na ito kung ang isang user ay maaari pa ring makahulugang makaunawa, makapag-navigate, at makapagpatakbo ng mahahalagang bahagi ng isang system kung hindi siya makaaasa sa paningin, tunog, o haplos nang paisa-isa.
 
-<a id="purpose"></a>
 ## Layunin
 
-Mahalaga ang internasyonalisasyon dahil hindi maituturing na broadly accessible ang isang system kung ang mahalagang kahulugan nito ay nakakandado sa iisang wika.
+Mahalaga ang accessibility dahil ang user interface ay hindi dapat lubos na nakadepende sa isang sensory pathway kapag ang parehong essential meaning ay makatwirang maipapahayag sa ibang paraan.
 
-Dinisenyo ang CatalystUI sa paligid ng clarity, consistency, at tapat na representation ng human-computer interaction. Bahagi ng interaction na iyon ang wika. Kung hindi nauunawaan ng user ang labels, instructions, warnings, controls, settings, o essential content ng isang system, nabigo ang system na makipagkomunikasyon nang malinaw, kahit gumagana ang underlying functionality sa teknikal na paraan.
+Idinisenyo ang CatalystUI sa tapat na paggalaw ng data sa pagitan ng systems at human perception. Kung ang mahalagang impormasyon ay nakikita lamang, naririnig lamang, o available lamang sa pamamagitan ng haplos, maaaring maging unusable ang system para sa mga user na hindi makaaasa sa pandamang iyon. Umiiral ang Accessibility Verification upang tukuyin ang mga system na nagpapanatili ng access sa pamamagitan ng pagpapahintulot sa essential information at interaction na magpatuloy sa alternate sensory routes.
 
-Umiiral ang Internationalization Verification upang tukuyin ang mga system na nagbibigay ng sapat na translated support para sa mga user sa required CatalystUI language set. Hindi layunin na hingin ang perpektong salin ng bawat optional word, hidden developer message, o nonessential page. Ang layunin ay matukoy kung mauunawaan at magagamit ng mga tao sa bawat required language ang essential parts ng system.
+Ang layunin ay hindi ang i-require ang bawat posibleng interaction method, bawat assistive technology, o bawat specialized accommodation. Ang layunin ay tukuyin kung nananatiling meaningfully usable ang essential system kapag ang paningin, tunog, o haplos ay hindi available nang paisa-isa.
 
-<a id="what-verification-means"></a>
-## Ano ang Kahulugan ng Verification
+## Ano ang Ibig Sabihin ng Verification
 
-Nagiging **CatalystUI Verified for Internationalization** ang isang system kapag na-review ito laban sa mga kinakailangan na nakalista sa seksyong ito at napatunayang within spec.
+Nagiging **CatalystUI Verified for Accessibility** ang isang system kapag nirepaso ito laban sa requirements na nakalista sa seksyong ito at napatunayang within spec.
 
-Upang ma-verify, dapat magbigay ang isang system ng mga salin para sa higit sa 75% ng essential user-facing parts ng system sa bawat required language. Dapat din itong magbigay ng makatwirang end-user mechanism para baguhin ang active language.
+Upang ma-verify, dapat manatiling makatwirang nagagamit ang isang system sa bawat sumusunod na kaso:
 
-Hindi kailangang isalin ng system ang bawat internal identifier, developer-facing implementation detail, debug string, optional marketing page, o nonessential support text. Gayunman, ang user-facing portions na kailangan upang maunawaan at mapatakbo ang essential system ay dapat maging available sa bawat required language.
+| Hindi Available na Pandama | Kinakailangang Accessibility Behavior |
+| -------------------------- | ------------------------------------- |
+| Paningin                   | Dapat manatiling makatwirang nagagamit ang system sa pamamagitan ng tunog at haplos. |
+| Tunog                      | Dapat manatiling makatwirang nagagamit ang system sa pamamagitan ng paningin at haplos. |
+| Haplos                     | Dapat manatiling makatwirang nagagamit ang system sa pamamagitan ng paningin at tunog. |
 
-<a id="required-languages"></a>
-## Mga Required Language
+Hindi kailangang magbigay ang isang system ng magkakaparehong experiences sa bawat sensory path. Maaaring mas mabagal ang non-visual experience kaysa sa visual. Maaaring mangailangan ang sound-free experience ng captions, visual indicators, o iba pang substitutions. Maaaring mangailangan ang touch-free experience ng alternate controls, voice interaction, keyboard navigation, pointer navigation, o iba pang non-touch methods.
 
-Pinili ang kasalukuyang CatalystUI internationalization language set mula sa praktikal na review ng mga wikang karaniwang kailangan sa technology contexts, kabilang ang global speaker reach, common online usage, multilingual software expectations, at broad regional accessibility needs.
+Ang mahalaga ay kung nananatiling accessible, understandable, at operable ang essential functionality nang hindi nire-require ang unavailable sense.
 
-Hindi nilalayon ng language set na ito na katawanin ang bawat wika, bawat dayalekto, o bawat regional variant. Sa halip, nagtatatag ito ng praktikal na baseline para sa mga system na naghahangad ng malawak na international usability sa maraming pinakakaraniwang technology-facing language group sa mundo.
+## Essential Functionality
 
-Kasama sa kasalukuyang CatalystUI internationalization language set ang mga sumusunod na locale:
+Para sa Accessibility Verification, ang **essential functionality** ay tumutukoy sa mga bahagi ng isang system na makatwirang kailangan ng user upang maunawaan, ma-navigate, ma-configure, at mapatakbo ang system.
 
-| Locale    | Wika                     |
-| --------- | ------------------------ |
-| `ar-SA`   | Arabic (Saudi Arabia)    |
-| `bn-BD`   | Bengali (Bangladesh)     |
-| `de-DE`   | German (Germany)         |
-| `en-GB`   | English (United Kingdom) |
-| `en-IN`   | English (India)          |
-| `en-US`   | English (United States)  |
-| `es-ES`   | Spanish (Spain)          |
-| `es-MX`   | Spanish (Mexico)         |
-| `fa-IR`   | Persian (Iran)           |
-| `fr-FR`   | French (France)          |
-| `hi-IN`   | Hindi (India)            |
-| `id-ID`   | Indonesian (Indonesia)   |
-| `it-IT`   | Italian (Italy)          |
-| `ja-JP`   | Japanese (Japan)         |
-| `ko-KR`   | Korean (South Korea)     |
-| `nl-NL`   | Dutch (Netherlands)      |
-| `pl-PL`   | Polish (Poland)          |
-| `pt-BR`   | Portuguese (Brazil)      |
-| `ru-RU`   | Russian (Russia)         |
-| `tl-PH`   | Tagalog (Philippines)    |
-| `tr-TR`   | Turkish (Turkey)         |
-| `uk-UA`   | Ukrainian (Ukraine)      |
-| `ur-PK`   | Urdu (Pakistan)          |
-| `vi-VN`   | Vietnamese (Vietnam)     |
-| `zh-CN`   | Chinese (China)          |
-| `zh-Hans` | Chinese (Simplified)     |
-
-Dapat magbigay ang isang system ng sapat na essential translation coverage para sa bawat nakalistang language group upang maituring na within spec.
-
-Gayunman, maaaring i-review ang regional variants nang may makatwirang flexibility kapag maliit ang pagkakaiba ng variants at hindi materyal na nakakaapekto sa kakayahan ng user na maunawaan o mapatakbo ang system. Halimbawa, maaari pa ring maging eligible para sa verification ang isang system kung nagbibigay ito ng isang malakas na English translation ngunit hindi hiwalay na isinasalin ang bawat English regional variant, basta nananatiling malinaw sa users ng missing variants ang essential meaning, navigation, instructions, warnings, at controls.
-
-Hindi nalalapat ang flexibility na ito kapag ang missing variant ay lilikha ng makabuluhang kalituhan, mag-iiwan ng mahalagang regional terminology, sisira sa locale-sensitive behavior, o pipigil sa users na maunawaan ang essential parts ng system.
-
-<a id="essential-translation-coverage"></a>
-## Mahalagang Coverage ng Salin
-
-Para sa Internationalization Verification, tumutukoy ang **essential translation coverage** sa mga bahagi ng isang system na makatuwirang kailangan ng user upang maunawaan, ma-navigate, ma-configure, at mapatakbo ang system.
-
-Maaaring kabilang sa essential parts ang:
+Maaaring kabilang sa essential functionality ang:
 
 * primary navigation
-* core screens and views
-* settings and preferences
-* user-facing labels
-* user-facing controls
-* required instructions
+* core workflows
+* required controls
 * important warnings
 * important errors
-* essential prompts
 * required confirmation messages
-* language selection controls
-* core workflows needed for normal use
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* anumang interaction na kailangan para sa normal na paggamit
 
-Itinuturing na natutugunan ng system ang translation coverage requirement kapag higit sa 75% ng essential user-facing content nito ay available sa bawat required language.
+Maaaring within spec pa rin ang isang system kung ang decorative, redundant, optional, o nonessential features ay hindi pantay na available sa bawat sensory path. Gayunpaman, dapat pa ring magamit ng user ang essential system nang hindi nahaharangan ng nawawalang pandama.
 
-Umiiral ang threshold na ito dahil maaaring malaki, tuloy-tuloy, at nakadepende sa konteksto ang internationalization work. Maaari pa ring within spec ang isang system kahit may ilang nonessential o lower-priority content na nananatiling hindi naisalin. Gayunman, dapat makahulugang available ang essential experience sa bawat required language.
+## Hindi Available ang Paningin
 
-<a id="language-selection"></a>
-## Pagpili ng Wika
+Kapag hindi available ang paningin, dapat manatiling makatwirang nagagamit ang system sa pamamagitan ng tunog at haplos.
 
-Dapat magbigay ang verified system ng makatwirang paraan para baguhin ng end-user ang active language.
+Maaaring kabilang dito ang spoken output, screen-reader-compatible structure, meaningful focus order, tactile controls, keyboard access, haptic confirmation, audio descriptions, o ibang makatwirang non-visual method para ipahayag ang essential information.
 
-Dapat madaling mahanap, maunawaan, at magamit ang language selection mechanism nang hindi nangangailangan ng technical knowledge. Hindi dapat kailanganin ng mga user na mag-edit ng configuration files, magbago ng source code, mag-install ng developer tools, o umasa sa undocumented behavior para lang palitan ang wika.
+Hindi dapat umasa nang eksklusibo ang isang system sa visual position, color, shape, animation, icons, o layout kapag kailangan ang impormasyong iyon upang maunawaan o mapatakbo ang essential functionality.
 
-Kapag ipinapakita ang language options, dapat tukuyin ng system ang bawat wika sa paraang nauunawaan kapwa ng users na nagsasalita ng wikang iyon at ng users na kasalukuyang gumagamit ng ibang selected language.
+## Hindi Available ang Tunog
 
-Halimbawa, maaaring ipakita ang language option gamit ang:
+Kapag hindi available ang tunog, dapat manatiling makatwirang nagagamit ang system sa pamamagitan ng paningin at haplos.
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+Maaaring kabilang dito ang captions, transcripts, visual alerts, text equivalents, progress indicators, visible status messages, haptic feedback, o ibang makatwirang non-auditory method para ipahayag ang essential information.
 
-Maaaring mag-iba ang eksaktong formatting, ngunit dapat manatili ang layunin: dapat makilala ng users ang kanilang sariling wika, maunawaan ang kasalukuyang ipinapakitang pangalan ng wika kapag maaari, at matukoy ang kaugnay na locale code.
+Hindi dapat umasa nang eksklusibo ang isang system sa sound effects, spoken instructions, alerts, alarms, music cues, o audio-only prompts kapag kailangan ang impormasyong iyon upang maunawaan o mapatakbo ang essential functionality.
 
-<a id="what-within-spec-means"></a>
+## Hindi Available ang Haplos
+
+Kapag hindi available ang haplos, dapat manatiling makatwirang nagagamit ang system sa pamamagitan ng paningin at tunog.
+
+Maaaring kabilang dito ang voice control, keyboard navigation, pointer alternatives, remote controls, gaze-compatible interaction, switch-compatible interaction, spoken prompts, visual confirmation, o ibang makatwirang method na hindi nangangailangan ng touch-based interaction o tactile perception.
+
+Hindi dapat umasa nang eksklusibo ang isang system sa touch gestures, haptic feedback, physical texture, vibration, force, pressure, o touch-only controls kapag kailangan ang mga interaction na iyon upang maunawaan o mapatakbo ang essential functionality.
+
+## Karagdagang Sensory Domains
+
+Kinikilala rin ng CatalystUI ang **panlasa** at **pang-amoy** bilang sensory domains. Maaaring isaalang-alang ang mga domain na ito sa accessibility review kapag makahulugan ang paggamit ng system sa kanila.
+
+Ang panlasa at pang-amoy ay **inclusive** para sa verification, ibig sabihin maaari nilang palakasin o suportahan ang accessibility review kapag nagbibigay sila ng meaningful alternate access o karagdagang context.
+
+Ang panlasa at pang-amoy ay hindi kasalukuyang **exclusive** para sa failure, ibig sabihin hindi bumabagsak ang isang system sa Accessibility Verification dahil lamang hindi ito nagbibigay ng taste-based o smell-based interaction.
+
+Pangunahing inaalam ng CatalystUI Accessibility Verification kung nananatiling makatwirang nagagamit ang system kapag ang paningin, tunog, o haplos ay hindi available nang paisa-isa.
+
 ## Ano ang Ibig Sabihin ng “Within Spec”
 
-Kapag itinuturing na **within spec** ang isang system, ibig sabihin ay mano-manong na-review ng CatalystUI Team ang system at makatuwirang napagpasyahang natutugunan nito ang internationalization requirements na inilalarawan ng verification category na ito.
+Kapag ang isang system ay itinuturing na **within spec**, nangangahulugan ito na manu-manong nirepaso ng CatalystUI Team ang system at napatunayang makatwirang ipalagay na natutugunan nito ang accessibility requirements na inilalarawan ng verification category na ito.
 
-Hindi nito kailangan ang iisang mahigpit na implementation pattern. Maaaring matugunan ng system ang requirement sa pamamagitan ng resource files, translation tables, locale-aware routing, compiled language assets, database-backed translations, runtime language packs, o iba pang stable mechanism na angkop sa system.
+Hindi nito nire-require ang isang matigas na implementation pattern. Maaaring matugunan ng isang system ang accessibility requirements sa pamamagitan ng native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration, o ibang stable mechanism na angkop sa system.
 
-Nakatuon ang verification sa praktikal na kakayahan ng users na ma-access ang essential system sa required languages, hindi kung gumagamit ang system ng iisang partikular na translation architecture.
+Nakatuon ang verification sa praktikal na kakayahan ng users na ma-access ang essential system kapag ang isang primary sense ay hindi available, hindi sa kung gumagamit ang system ng isang partikular na accessibility architecture.
 
-<a id="what-verification-does-not-mean"></a>
 ## Ano ang Hindi Ibig Sabihin ng Verification
 
-Hindi ginagarantiya ng CatalystUI Verified for Internationalization na perpekto, literary, idiomatic, culturally complete, o legally sufficient para sa bawat rehiyon ang bawat salin.
+Hindi ginagarantiyahan ng CatalystUI Verified for Accessibility na ang bawat posibleng disability, device, assistive technology, medical condition, legal requirement, regional standard, o specialized use case ay ganap nang narepaso.
 
-Hindi rin nito awtomatikong vine-verify ang accessibility, typography, right-to-left layout, locale-specific formatting, currency formatting, date formatting, legal compliance, o regional business requirements maliban kung kasama ang mga concern na iyon sa reviewed internationalization scope.
+Hindi rin nito awtomatikong bine-verify ang internationalization, translation quality, typography, localization, regional compliance, o general design quality maliban kung kasama ang mga iyon sa reviewed accessibility scope.
 
-Maaaring magbigay ang system ng malakas na translation coverage at kailangan pa rin ng hiwalay na review para sa accessibility, localization quality, regional compliance, o iba pang specialized concerns.
+Maaaring maging makatwirang accessible ang isang system sa ilalim ng accessibility model ng CatalystUI at kailangan pa rin ng hiwalay na review para sa legal compliance, platform certification, specialized assistive technology support, o iba pang accessibility standards.
 
-<a id="why-this-verification-exists"></a>
 ## Bakit Umiiral ang Verification na Ito
 
-Kapaki-pakinabang lamang ang user interface kapag nauunawaan ng user ang ipinapahayag nito.
+Nagiging matagumpay lamang ang user interface kapag talagang nagagamit ito ng users.
 
-Maraming system ang nagsasabing may language support habang maliit na bahagi lamang ng experience ang isinasalin, nakatago ang language selection, nawawala ang mahahalagang messages, o bahagyang hindi naisalin ang essential workflows. Lumilikha ito ng kalituhan at pumipigil sa users na magtiwala sa system.
+Maraming system ang tumuturing sa accessibility bilang afterthought, checklist, o makitid na technical requirement sa halip na fundamental na bahagi ng human-computer interaction. Mas simple at mas direkta ang approach ng CatalystUI: kung ang isang system ay nakadepende sa human perception, dapat nitong panatilihin ang essential meaning kapag ang isang primary sensory path ay hindi available.
 
-Umiiral ang Internationalization Verification upang magtakda ng mas malinaw na pamantayan. Tinutukoy nito ang mga system na gumagawa ng seryoso at praktikal na pagsisikap na suportahan ang users sa required CatalystUI language set at nagbibigay ng makatwirang paraan para piliin ng users ang wikang kailangan nila.
+Umiiral ang Accessibility Verification upang tukuyin ang mga system na seryosong tinatrato ang responsibilidad na ito. Kinikilala nito ang mga system na nagbibigay ng meaningful alternate access, nagpapanatili ng essential functionality, at umiiwas na ikulong ang users sa likod ng isang required sense.
 
-<a id="verification-scope"></a>
 ## Saklaw ng Verification
 
-Nalalapat ang CatalystUI Verification for Internationalization sa reviewed system, service, framework, application, o implementation ayon sa estado nito noong ibinigay ang verification.
+Nalalapat ang CatalystUI Verification for Accessibility sa reviewed system, service, framework, application, library, o implementation ayon sa kalagayan nito noong inilabas ang verification.
 
-Ang verified system ay nagbibigay ng sapat na essential translation coverage para sa required languages. Hindi nito ginagarantiya na ang bawat future page, feature, release, plugin, extension, o third-party integration ay awtomatikong within spec.
+Nagbibigay ang verified system ng reasonable accessibility para sa essential functionality nito sa ilalim ng reviewed conditions. Hindi nito ginagarantiyahan na bawat future page, feature, release, plugin, extension, third-party integration, device, o platform-specific version ay awtomatikong within spec.
 
-Maaaring kailanganin ng hiwalay na review ang separate products, modules, services, language packs, o major revisions depende sa verification category na hinihiling.
+Maaaring mangailangan ng sariling review ang hiwalay na products, modules, services, major revisions, o platform-specific builds depende sa verification category na hinihiling.
 
-<a id="verification-validity"></a>
-## Validity ng Verification
+## Bisa ng Verification
 
-Nalalapat lamang ang CatalystUI Verification sa reviewed state ng system sa oras na ibinigay ang verification.
+Nalalapat lamang ang CatalystUI Verification sa reviewed state ng system sa oras na inilabas ang verification.
 
-Maaaring mapanatili ng system ang verification nito sa mga susunod na update hangga’t pinapanatili nito ang verified internationalization foundation. Hindi awtomatikong ini-invalidate ng minor wording changes, added translations, at ordinary content updates ang verification.
+Maaaring panatilihin ng isang system ang verification nito sa mga susunod na updates hangga't pinapanatili nito ang verified accessibility foundation. Hindi awtomatikong nagpapawalang-bisa sa verification ang minor wording changes, visual refinements, performance improvements, at ordinary content updates.
 
-Maaaring kailanganin ang bagong review kung ang system ay nag-aalis ng required language support, sumisira sa language selection, malaking binabawasan ang essential translation coverage, o nagbabago ng internationalization architecture sa paraang nakakaapekto sa verified behavior.
+Maaaring kailanganin ang bagong review kung nag-aalis ang system ng alternate access paths, sinisira ang assistive-technology support, malaki ang pagbabago sa essential navigation, inaalis ang required accessibility settings, o binabago ang interaction behavior sa paraang nakaaapekto sa verified accessibility foundation.
 
-Sa madaling salita, karaniwang ayos lang ang pagpapabuti ng translation support. Ang pagsira sa verified multilingual base ay maaaring mangailangan ng review.
+Sa madaling salita, karaniwang ayos lang ang pagpapahusay ng accessibility. Ang pagsira sa verified access model ay maaaring mangailangan ng review.
 
-<a id="verified-systems"></a>
 ## Verified Systems
 
-Ang mga kilalang system na verified para sa internationalization ay nakalista nang hiwalay sa naaangkop na CatalystUI Verified page.
+Ang mga kilalang system na verified para sa accessibility ay nakalista nang hiwalay sa angkop na CatalystUI Verified page.

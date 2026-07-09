@@ -4,4 +4,4 @@
 
 # Services examinés
 
-Sélectionnez un service dans la vue de navigation pour voir l’état d’examen de ce service.
+Sélectionnez un service dans la vue de navigation pour consulter l’état d’examen de ce service.

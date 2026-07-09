@@ -1,4 +1,4 @@
-<!-- To tłumaczenie zostało wygenerowane przez ChatGPT i powinno zostać sprawdzone przez tłumacza. -->
+<!-- To tłumaczenie zostało wygenerowane przez ChatGPT i powinno zostać sprawdzone przez tłumacza-człowieka. -->
 
 <!-- Usuń te wiersze w pull request po zweryfikowaniu tłumaczenia. -->
 
@@ -6,14 +6,14 @@
 
 ## Zweryfikowane usługi
 
-Usługi, które zostały zweryfikowane jako spełniające specyfikację/specyfikacje, są wymienione poniżej. Usługi te przeszły niezbędne testy i walidację, aby zapewnić zgodność ze zdefiniowanymi standardami.
+Usługi, które zostały zweryfikowane jako spełniające specification(s), są wymienione poniżej. Te usługi przeszły wymagane testing i validation, aby potwierdzić compliance ze zdefiniowanymi standards.
 
-| Język | Specyfikacja/specyfikacje | Data | |
-| ----- | ------------------------- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |
 
 ## Sprawdzone usługi
 
-Usługi, które zostały sprawdzone pod kątem zgodności ze specyfikacją/specyfikacjami, są wymienione poniżej. Usługi te przeszły wstępny proces przeglądu, ale mogą jeszcze nie być w pełni zweryfikowane albo mogły mieć problemy, które mogą, lecz nie muszą, być możliwe do rozwiązania. Dalsze testy i walidacja mogą być wymagane do osiągnięcia pełnej zgodności.
+Usługi, które zostały sprawdzone pod kątem compliance ze specification(s), są wymienione poniżej. Te usługi przeszły initial review process, ale mogą nie być jeszcze w pełni verified albo mogły mieć issues, które mogą lub nie mogą zostać rozwiązane. Dalsze testing i validation mogą być wymagane, aby osiągnąć full compliance.
 
-| Język | Specyfikacja/specyfikacje | Data | |
-| ----- | ------------------------- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |

@@ -4,4 +4,4 @@
 
 # Verified Services
 
-Bu hizmetin verification status'unu görmek için navigation view içinde bir hizmet seçin.
+Bu service’in verification status bilgisini görmek için navigation view içinde bir service seçin.

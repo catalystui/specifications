@@ -1,7 +1,7 @@
-<!-- Deze vertaling is gegenereerd door ChatGPT en moet door een menselijke vertaler worden beoordeeld. -->
+<!-- Deze vertaling is gegenereerd door ChatGPT en moet door een menselijke vertaler worden gecontroleerd. -->
 
 <!-- Verwijder deze regels in een pull request nadat de vertaling is geverifieerd. -->
 
-# Beoordeelde diensten
+# Reviewed Services
 
-Selecteer een dienst in de navigatieweergave om de reviewstatus van die dienst te bekijken.
+Selecteer een service in de navigatieweergave om de reviewstatus van die service te bekijken.

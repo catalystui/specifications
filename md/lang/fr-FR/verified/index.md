@@ -4,4 +4,4 @@
 
 # Services vérifiés
 
-Sélectionnez un service dans la vue de navigation pour voir l’état de vérification de ce service.
+Sélectionnez un service dans la vue de navigation pour consulter l’état de vérification de ce service.

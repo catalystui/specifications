@@ -4,4 +4,4 @@
 
 # Reviewed Services
 
-Bu hizmetin review status'unu görmek için navigation view içinde bir hizmet seçin.
+Bu service’in review status bilgisini görmek için navigation view içinde bir service seçin.

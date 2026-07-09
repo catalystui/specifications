@@ -1,19 +1,19 @@
-<!-- Deze vertaling is gegenereerd door ChatGPT en moet door een menselijke vertaler worden beoordeeld. -->
+<!-- Deze vertaling is gegenereerd door ChatGPT en moet door een menselijke vertaler worden gecontroleerd. -->
 
 <!-- Verwijder deze regels in een pull request nadat de vertaling is geverifieerd. -->
 
-# Verificatie-index
+# Verification Index
 
-## Geverifieerde diensten
+## Verified Services
 
-Diensten die zijn geverifieerd om aan de specificatie(s) te voldoen, worden hieronder vermeld. Deze diensten hebben de noodzakelijke tests en validatie ondergaan om naleving van de gedefinieerde standaarden te waarborgen.
+Services die zijn geverifieerd als voldoend aan de specification(s) worden hieronder vermeld. Deze services hebben de nodige testing en validation ondergaan om compliance met de gedefinieerde standards te waarborgen.
 
-| Taal | Specificatie(s) | Datum | |
-| ---- | ---------------- | ----- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |
 
-## Beoordeelde diensten
+## Reviewed Services
 
-Diensten die zijn beoordeeld op naleving van de specificatie(s) worden hieronder vermeld. Deze diensten hebben een eerste reviewproces ondergaan, maar zijn mogelijk nog niet volledig geverifieerd of er zijn problemen gevonden die al dan niet kunnen worden opgelost. Verdere tests en validatie kunnen nodig zijn om volledige naleving te bereiken.
+Services die zijn beoordeeld op compliance met de specification(s) worden hieronder vermeld. Deze services hebben een initial review process ondergaan, maar zijn mogelijk nog niet volledig verified, of er zijn issues gevonden die mogelijk wel of niet kunnen worden opgelost. Verdere testing en validation kunnen nodig zijn om volledige compliance te bereiken.
 
-| Taal | Specificatie(s) | Datum | |
-| ---- | ---------------- | ----- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |

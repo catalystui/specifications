@@ -2,6 +2,6 @@
 
 <!-- Entfernen Sie diese Zeilen in einem Pull Request, nachdem die Übersetzung verifiziert wurde. -->
 
-# Überprüfte Dienste
+# Geprüfte Dienste
 
-Wählen Sie in der Navigationsansicht einen Dienst aus, um den Überprüfungsstatus dieses Dienstes anzuzeigen.
+Wähle einen Dienst in der Navigationsansicht aus, um den Prüfstatus dieses Dienstes zu sehen.

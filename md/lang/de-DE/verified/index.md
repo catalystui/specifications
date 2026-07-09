@@ -4,4 +4,4 @@
 
 # Verifizierte Dienste
 
-Wählen Sie in der Navigationsansicht einen Dienst aus, um den Verifizierungsstatus dieses Dienstes anzuzeigen.
+Wähle einen Dienst in der Navigationsansicht aus, um den Verifizierungsstatus dieses Dienstes zu sehen.

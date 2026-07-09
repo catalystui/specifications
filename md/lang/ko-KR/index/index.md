@@ -1,21 +1,19 @@
-<!-- 이 번역은 ChatGPT로 생성되었으며 인간 번역가의 검토가 필요합니다. -->
+<!-- 이 번역은 ChatGPT에 의해 생성되었으며 사람 번역자의 검토가 필요합니다. -->
 
-<!-- 번역이 검증된 후 풀 리퀘스트에서 이 줄들을 제거하세요. -->
+<!-- 번역이 확인된 후 pull request에서 이 줄들을 삭제하세요. -->
 
-# 검증 인덱스
+# Verification Index
 
-<a id="verified-services"></a>
-## 검증된 서비스
+## Verified Services
 
-명세를 충족하는 것으로 검증된 서비스가 아래에 나열되어 있습니다. 이러한 서비스는 정의된 표준을 준수하는지 확인하기 위해 필요한 테스트와 검증을 거쳤습니다.
+specification(s) 을 충족하는 것으로 verified 된 services 는 아래에 나열됩니다. 이 services 는 정의된 standards 에 대한 compliance 를 보장하기 위해 필요한 testing 및 validation 을 거쳤습니다.
 
-| 언어 | 명세 | 날짜 | |
-| ---- | ---- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |
 
-<a id="reviewed-services"></a>
-## 검토된 서비스
+## Reviewed Services
 
-명세 준수 여부가 검토된 서비스가 아래에 나열되어 있습니다. 이러한 서비스는 초기 검토 과정을 거쳤지만 아직 완전히 검증되지 않았거나, 해결 가능 여부와 관계없이 문제가 발견되었을 수 있습니다. 완전한 준수를 달성하려면 추가 테스트와 검증이 필요할 수 있습니다.
+specification(s) 에 대한 compliance 를 위해 reviewed 된 services 는 아래에 나열됩니다. 이 services 는 initial review process 를 거쳤지만 아직 완전히 verified 되지 않았거나, 해결될 수도 있고 아닐 수도 있는 issues 가 발견되었을 수 있습니다. full compliance 를 달성하려면 추가 testing 및 validation 이 필요할 수 있습니다.
 
-| 언어 | 명세 | 날짜 | |
-| ---- | ---- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |

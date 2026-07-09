@@ -1,173 +1,140 @@
-<!-- 이 번역은 ChatGPT로 생성되었으며 인간 번역가의 검토가 필요합니다. -->
+<!-- 이 번역은 ChatGPT에 의해 생성되었으며 사람 번역자의 검토가 필요합니다. -->
 
-<!-- 번역이 검증된 후 풀 리퀘스트에서 이 줄들을 제거하세요. -->
+<!-- 번역이 확인된 후 pull request에서 이 줄들을 삭제하세요. -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# CatalystUI Verified for Internationalization
+# CatalystUI Verified for Accessibility
 
-국제화에 대한 CatalystUI Verification 문서에 오신 것을 환영합니다.
+CatalystUI 접근성 검증 문서에 오신 것을 환영합니다.
 
-**CatalystUI Verified for Internationalization** 은 시스템, 서비스, 프레임워크, 애플리케이션 또는 구현이 CatalystUI Team 의 검토를 받았으며, 필수 CatalystUI 국제화 언어 세트에 대해 충분한 다국어 지원을 제공하는 것으로 판단되었음을 나타냅니다.
+**CatalystUI Verified for Accessibility** 는 service, framework, application, library 또는 system 이 CatalystUI Team 의 검토를 받았으며, user-interface interaction 에 관여하는 세 가지 주요 감각 중 하나가 개별적으로 사용할 수 없는 상태에서도 합리적으로 사용할 수 있다고 판단되었음을 나타냅니다.
 
-이 검증은 번역 품질, 문체, 현지화의 깊이 또는 문화적 적응에 대한 일반적인 순위가 아닙니다. 대신 검토 대상 시스템이 필수 지원 언어 전반에서 사용자가 핵심 기능에 접근할 수 있는 안정적이고 실용적인 기반을 제공하는지 식별합니다.
+이 검증에서 CatalystUI 는 세 가지 primary accessibility senses 를 **sight**, **sound**, **touch** 로 식별합니다. verified system 은 이 중 어느 하나가 사용할 수 없을 때에도 남아 있는 sensory domains 를 통해 essential functionality 에 대한 reasonable access 를 보존해야 합니다.
 
-더 쉽게 말하면, 이 검증은 사용자가 필수 언어로 시스템의 핵심 부분을 의미 있게 사용할 수 있는지, 그리고 사용자가 이해하는 언어를 선택할 수 있는 합리적인 방법이 제공되는지를 묻습니다.
+더 쉽게 말하면, 이 검증은 user 가 sight, sound, touch 중 하나에 개별적으로 의존할 수 없을 때에도 system 의 essential parts 를 의미 있게 이해하고, 탐색하고, 조작할 수 있는지를 묻습니다.
 
-<a id="purpose"></a>
-## 목적
+## Purpose
 
-국제화가 중요한 이유는 시스템의 핵심 의미가 한 언어 뒤에 잠겨 있다면 그 시스템을 널리 접근 가능하다고 볼 수 없기 때문입니다.
+Accessibility 가 중요한 이유는, 동일한 essential meaning 을 다른 sensory pathway 로 합리적으로 전달할 수 있다면 user interface 가 하나의 sensory pathway 에 전적으로 의존해서는 안 되기 때문입니다.
 
-CatalystUI 는 명확성, 일관성, 그리고 인간-컴퓨터 상호작용의 충실한 표현을 중심으로 설계되었습니다. 언어는 그 상호작용의 일부입니다. 사용자가 시스템의 레이블, 지침, 경고, 컨트롤, 설정 또는 핵심 콘텐츠를 이해할 수 없다면, 기본 기능이 기술적으로 동작하더라도 그 시스템은 명확하게 소통하지 못한 것입니다.
+CatalystUI 는 systems 와 human perception 사이에서 data 가 충실하게 이동하는 것을 중심으로 설계되었습니다. 중요한 information 이 오직 visible 하거나, 오직 audible 하거나, 오직 touch 를 통해서만 제공된다면, 그 sense 에 의존할 수 없는 users 에게 system 은 사용할 수 없게 될 수 있습니다. Accessibility Verification 은 essential information 과 interaction 이 alternate sensory routes 를 통해 계속될 수 있도록 access 를 보존하는 systems 를 식별하기 위해 존재합니다.
 
-Internationalization Verification 은 필수 CatalystUI 언어 세트 전반에서 사용자에게 충분한 번역 지원을 제공하는 시스템을 식별하기 위해 존재합니다. 목표는 모든 선택적 단어, 숨겨진 개발자 메시지 또는 비핵심 페이지의 완벽한 번역을 요구하는 것이 아닙니다. 목표는 시스템의 핵심 부분이 각 필수 언어로 이해되고 사용될 수 있는지 판단하는 것입니다.
+목표는 모든 possible interaction method, 모든 assistive technology, 모든 specialized accommodation 을 요구하는 것이 아닙니다. 목표는 sight, sound, touch 중 하나가 개별적으로 사용할 수 없을 때에도 essential system 이 meaningfully usable 한 상태로 남는지를 판단하는 것입니다.
 
-<a id="what-verification-means"></a>
-## 검증의 의미
+## What Verification Means
 
-시스템은 이 섹션에 나열된 요구 사항에 따라 검토되고 명세 범위 안에 있는 것으로 판단될 때 **CatalystUI Verified for Internationalization** 이 됩니다.
+system 은 이 section 에 나열된 requirements 에 따라 review 되고 within spec 으로 판단될 때 **CatalystUI Verified for Accessibility** 가 됩니다.
 
-검증을 받으려면 시스템은 각 필수 언어에서 핵심 사용자 대상 부분의 75%를 초과하는 번역을 제공해야 합니다. 또한 최종 사용자가 활성 언어를 변경할 수 있는 합리적인 메커니즘도 제공해야 합니다.
+검증을 받으려면 system 은 다음 각 경우에 합리적으로 usable 해야 합니다.
 
-시스템은 모든 내부 식별자, 개발자 대상 구현 세부 정보, 디버그 문자열, 선택적 마케팅 페이지 또는 비핵심 지원 텍스트를 번역할 필요는 없습니다. 그러나 핵심 시스템을 이해하고 운용하는 데 필요한 사용자 대상 부분은 각 필수 언어로 제공되어야 합니다.
+| Unavailable Sense | Required Accessibility Behavior                                   |
+| ----------------- | ----------------------------------------------------------------- |
+| Sight             | system 은 sound 와 touch 를 통해 reasonable usable 상태를 유지해야 합니다. |
+| Sound             | system 은 sight 와 touch 를 통해 reasonable usable 상태를 유지해야 합니다. |
+| Touch             | system 은 sight 와 sound 를 통해 reasonable usable 상태를 유지해야 합니다. |
 
-<a id="required-languages"></a>
-## 필수 언어
+system 이 모든 sensory path 에서 동일한 experiences 를 제공할 필요는 없습니다. non-visual experience 는 visual one 보다 느릴 수 있습니다. sound-free experience 는 captions, visual indicators 또는 다른 substitutions 를 요구할 수 있습니다. touch-free experience 는 alternate controls, voice interaction, keyboard navigation, pointer navigation 또는 다른 non-touch methods 를 요구할 수 있습니다.
 
-현재 CatalystUI 국제화 언어 세트는 기술 맥락에서 일반적으로 필요한 언어를 실용적으로 검토하여 선택되었으며, 전 세계 화자 범위, 일반적인 온라인 사용, 다국어 소프트웨어에 대한 기대, 폭넓은 지역 접근성 요구를 포함합니다.
+중요한 것은 essential functionality 가 unavailable sense 를 요구하지 않고도 accessible, understandable, operable 한 상태로 남는지입니다.
 
-이 언어 세트는 모든 언어, 모든 방언 또는 모든 지역 변형을 대표하려는 것이 아닙니다. 대신 세계에서 가장 흔한 기술 대상 언어 그룹 중 다수에 대해 넓은 국제적 사용성을 추구하는 시스템을 위한 실용적 기준을 마련합니다.
+## Essential Functionality
 
-현재 CatalystUI 국제화 언어 세트에는 다음 로케일이 포함됩니다.
+Accessibility Verification 에서 **essential functionality** 는 user 가 system 을 이해하고, 탐색하고, 설정하고, 조작하기 위해 합리적으로 필요한 부분을 의미합니다.
 
-| 로케일    | 언어                     |
-| --------- | ------------------------ |
-| `ar-SA`   | 아랍어 (사우디아라비아)  |
-| `bn-BD`   | 벵골어 (방글라데시)      |
-| `de-DE`   | 독일어 (독일)            |
-| `en-GB`   | 영어 (영국)              |
-| `en-IN`   | 영어 (인도)              |
-| `en-US`   | 영어 (미국)              |
-| `es-ES`   | 스페인어 (스페인)        |
-| `es-MX`   | 스페인어 (멕시코)        |
-| `fa-IR`   | 페르시아어 (이란)        |
-| `fr-FR`   | 프랑스어 (프랑스)        |
-| `hi-IN`   | 힌디어 (인도)            |
-| `id-ID`   | 인도네시아어 (인도네시아) |
-| `it-IT`   | 이탈리아어 (이탈리아)    |
-| `ja-JP`   | 일본어 (일본)            |
-| `ko-KR`   | 한국어 (대한민국)        |
-| `nl-NL`   | 네덜란드어 (네덜란드)    |
-| `pl-PL`   | 폴란드어 (폴란드)        |
-| `pt-BR`   | 포르투갈어 (브라질)      |
-| `ru-RU`   | 러시아어 (러시아)        |
-| `tl-PH`   | 타갈로그어 (필리핀)      |
-| `tr-TR`   | 터키어 (튀르키예)        |
-| `uk-UA`   | 우크라이나어 (우크라이나) |
-| `ur-PK`   | 우르두어 (파키스탄)      |
-| `vi-VN`   | 베트남어 (베트남)        |
-| `zh-CN`   | 중국어 (중국)            |
-| `zh-Hans` | 중국어 (간체)            |
+Essential functionality 에는 다음이 포함될 수 있습니다.
 
-시스템이 명세 범위 안에 있다고 간주되려면 나열된 각 언어 그룹에 대해 충분한 핵심 번역 범위를 제공해야 합니다.
+* primary navigation
+* core workflows
+* required controls
+* important warnings
+* important errors
+* required confirmation messages
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* normal use 에 필요한 interaction
 
-그러나 지역 변형 간 차이가 작고 사용자가 시스템을 이해하거나 운용하는 능력에 실질적인 영향을 주지 않는 경우, 지역 변형은 합리적인 유연성을 가지고 검토될 수 있습니다. 예를 들어 핵심 의미, 탐색, 지침, 경고 및 컨트롤이 누락된 변형의 사용자에게도 명확하다면, 시스템은 모든 영어 지역 변형을 별도로 번역하지 않아도 하나의 강력한 영어 번역으로 검증 대상이 될 수 있습니다.
+decorative, redundant, optional 또는 nonessential features 가 모든 sensory path 에서 동등하게 제공되지 않더라도 system 은 within spec 일 수 있습니다. 그러나 user 가 missing sense 때문에 essential system 을 사용할 수 없게 막혀서는 안 됩니다.
 
-누락된 변형이 의미 있는 혼란을 만들거나, 지역적으로 중요한 용어를 생략하거나, 로케일에 민감한 동작을 깨뜨리거나, 사용자가 시스템의 핵심 부분을 이해하지 못하게 한다면 이 유연성은 적용되지 않습니다.
+## Sight Unavailable
 
-<a id="essential-translation-coverage"></a>
-## 핵심 번역 범위
+sight 를 사용할 수 없을 때 system 은 sound 와 touch 를 통해 합리적으로 usable 해야 합니다.
 
-Internationalization Verification 에서 **핵심 번역 범위** 는 사용자가 시스템을 이해하고, 탐색하고, 구성하고, 운용하기 위해 합리적으로 필요로 하는 부분을 의미합니다.
+여기에는 spoken output, screen-reader-compatible structure, meaningful focus order, tactile controls, keyboard access, haptic confirmation, audio descriptions 또는 essential information 을 전달하기 위한 다른 reasonable non-visual method 가 포함될 수 있습니다.
 
-핵심 부분에는 다음이 포함될 수 있습니다.
+essential functionality 를 이해하거나 조작하는 데 필요한 information 에 대해 system 은 visual position, color, shape, animation, icons 또는 layout 에만 의존해서는 안 됩니다.
 
-* 기본 탐색
-* 핵심 화면과 보기
-* 설정과 환경 설정
-* 사용자 대상 레이블
-* 사용자 대상 컨트롤
-* 필수 지침
-* 중요한 경고
-* 중요한 오류
-* 핵심 프롬프트
-* 필수 확인 메시지
-* 언어 선택 컨트롤
-* 일반적인 사용에 필요한 핵심 워크플로
+## Sound Unavailable
 
-시스템은 핵심 사용자 대상 콘텐츠의 75%를 초과하는 부분이 각 필수 언어로 제공될 때 번역 범위 요구 사항을 충족하는 것으로 간주됩니다.
+sound 를 사용할 수 없을 때 system 은 sight 와 touch 를 통해 합리적으로 usable 해야 합니다.
 
-이 기준이 존재하는 이유는 국제화 작업이 크고, 지속적이며, 맥락에 의존할 수 있기 때문입니다. 일부 비핵심 또는 낮은 우선순위 콘텐츠가 번역되지 않은 상태로 남아 있어도 시스템은 명세 범위 안에 있을 수 있습니다. 그러나 핵심 경험은 모든 필수 언어에서 의미 있게 제공되어야 합니다.
+여기에는 captions, transcripts, visual alerts, text equivalents, progress indicators, visible status messages, haptic feedback 또는 essential information 을 전달하기 위한 다른 reasonable non-auditory method 가 포함될 수 있습니다.
 
-<a id="language-selection"></a>
-## 언어 선택
+essential functionality 를 이해하거나 조작하는 데 필요한 information 에 대해 system 은 sound effects, spoken instructions, alerts, alarms, music cues 또는 audio-only prompts 에만 의존해서는 안 됩니다.
 
-검증된 시스템은 최종 사용자가 활성 언어를 변경할 수 있는 합리적인 방법을 제공해야 합니다.
+## Touch Unavailable
 
-언어 선택 메커니즘은 찾기 쉽고, 이해 가능하며, 기술 지식을 요구하지 않고 사용할 수 있어야 합니다. 사용자는 단순히 언어를 변경하기 위해 구성 파일을 편집하거나, 소스 코드를 수정하거나, 개발자 도구를 설치하거나, 문서화되지 않은 동작에 의존할 필요가 없어야 합니다.
+touch 를 사용할 수 없을 때 system 은 sight 와 sound 를 통해 합리적으로 usable 해야 합니다.
 
-언어 옵션을 표시할 때 시스템은 그 언어를 말하는 사용자와 현재 다른 선택 언어를 사용 중인 사용자 모두가 이해할 수 있는 방식으로 각 언어를 식별해야 합니다.
+여기에는 voice control, keyboard navigation, pointer alternatives, remote controls, gaze-compatible interaction, switch-compatible interaction, spoken prompts, visual confirmation 또는 touch-based interaction 이나 tactile perception 을 요구하지 않는 다른 reasonable method 가 포함될 수 있습니다.
 
-예를 들어 언어 옵션은 다음과 같이 표시될 수 있습니다.
+essential functionality 를 이해하거나 조작하는 데 필요한 interactions 에 대해 system 은 touch gestures, haptic feedback, physical texture, vibration, force, pressure 또는 touch-only controls 에만 의존해서는 안 됩니다.
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+## Additional Sensory Domains
 
-정확한 형식은 달라질 수 있지만 의도는 동일해야 합니다. 사용자는 자신의 언어를 알아볼 수 있어야 하고, 가능하다면 현재 표시된 언어 이름을 이해할 수 있어야 하며, 관련 로케일 코드를 식별할 수 있어야 합니다.
+CatalystUI 는 **taste** 와 **smell** 도 sensory domains 로 인식합니다. system 이 이 domains 를 의미 있게 사용할 때 accessibility review 에서 고려될 수 있습니다.
 
-<a id="what-within-spec-means"></a>
-## “명세 범위 안”의 의미
+taste 와 smell 은 verification 에서 **inclusive** 입니다. 즉, meaningful alternate access 또는 additional context 를 제공할 때 accessibility review 를 강화하거나 지원할 수 있습니다.
 
-시스템이 **명세 범위 안** 으로 간주된다는 것은 CatalystUI Team 이 시스템을 수동으로 검토했고, 이 검증 범주에서 설명하는 국제화 요구 사항을 만족한다고 합리적으로 결론 내렸다는 뜻입니다.
+taste 와 smell 은 현재 failure 에 대해 **exclusive** 하지 않습니다. 즉 system 이 taste-based 또는 smell-based interaction 을 제공하지 않는다는 이유만으로 Accessibility Verification 에 실패하지 않습니다.
 
-이는 하나의 엄격한 구현 패턴을 요구하지 않습니다. 시스템은 리소스 파일, 번역 테이블, 로케일 인식 라우팅, 컴파일된 언어 자산, 데이터베이스 기반 번역, 런타임 언어 팩 또는 시스템에 적합한 다른 안정적인 메커니즘을 통해 요구 사항을 충족할 수 있습니다.
+CatalystUI Accessibility Verification 은 주로 sight, sound, touch 중 하나가 개별적으로 unavailable 할 때 system 이 reasonably usable 한지에 관심을 둡니다.
 
-검증은 시스템이 특정 번역 아키텍처를 사용하는지 여부가 아니라, 사용자가 필수 언어로 핵심 시스템에 실제로 접근할 수 있는 능력에 관심을 둡니다.
+## What “Within Spec” Means
 
-<a id="what-verification-does-not-mean"></a>
-## 검증이 의미하지 않는 것
+system 이 **within spec** 으로 간주된다는 것은 CatalystUI Team 이 system 을 수동으로 review 했고, 이 verification category 가 설명하는 accessibility requirements 를 만족한다고 합리적으로 결론 내렸다는 뜻입니다.
 
-CatalystUI Verified for Internationalization 은 모든 번역이 완벽하거나, 문학적이거나, 자연스러운 관용 표현을 사용하거나, 문화적으로 완전하거나, 모든 지역에서 법적으로 충분하다는 것을 보장하지 않습니다.
+이는 하나의 rigid implementation pattern 을 요구하지 않습니다. system 은 native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration 또는 system 에 적합한 다른 stable mechanism 을 통해 accessibility requirements 를 만족할 수 있습니다.
 
-또한 검토된 국제화 범위에 포함되지 않는 한 접근성, 타이포그래피, 오른쪽에서 왼쪽 레이아웃, 로케일별 형식, 통화 형식, 날짜 형식, 법적 준수 또는 지역별 비즈니스 요구 사항을 자동으로 검증하지도 않습니다.
+verification 은 system 이 특정 accessibility architecture 를 사용하는지보다, one primary sense 가 unavailable 할 때 users 가 essential system 에 practical access 할 수 있는지에 관심을 둡니다.
 
-시스템은 강력한 번역 범위를 제공하더라도 접근성, 현지화 품질, 지역 준수 또는 다른 전문적 우려에 대해 별도 검토가 필요할 수 있습니다.
+## What Verification Does Not Mean
 
-<a id="why-this-verification-exists"></a>
-## 이 검증이 존재하는 이유
+CatalystUI Verified for Accessibility 는 가능한 모든 disability, device, assistive technology, medical condition, legal requirement, regional standard 또는 specialized use case 가 완전히 review 되었다는 것을 보장하지 않습니다.
 
-사용자 인터페이스는 사용자가 그것이 전달하는 내용을 이해할 수 있을 때에만 유용합니다.
+또한 reviewed accessibility scope 에 포함되지 않는 한 internationalization, translation quality, typography, localization, regional compliance 또는 general design quality 를 자동으로 검증하지 않습니다.
 
-많은 시스템은 경험의 작은 부분만 번역하면서 언어 지원을 주장하거나, 언어 선택을 숨기거나, 중요한 메시지를 누락하거나, 핵심 워크플로를 부분적으로 번역되지 않은 상태로 남겨 둡니다. 이는 혼란을 만들고 사용자가 시스템을 신뢰하지 못하게 합니다.
+system 은 CatalystUI 의 accessibility model 아래에서 reasonably accessible 할 수 있지만, legal compliance, platform certification, specialized assistive technology support 또는 다른 accessibility standards 를 위해 별도 review 가 필요할 수 있습니다.
 
-Internationalization Verification 은 더 명확한 기준을 세우기 위해 존재합니다. 이는 필수 CatalystUI 언어 세트 전반에서 사용자를 지원하기 위해 진지하고 실용적인 노력을 기울이고, 사용자가 필요한 언어를 선택할 수 있는 합리적인 방법을 제공하는 시스템을 식별합니다.
+## Why This Verification Exists
 
-<a id="verification-scope"></a>
-## 검증 범위
+user interface 는 users 가 실제로 사용할 수 있을 때에만 성공합니다.
 
-CatalystUI Verification for Internationalization 은 검증이 발행된 시점에 존재하던 검토 대상 시스템, 서비스, 프레임워크, 애플리케이션 또는 구현에 적용됩니다.
+많은 systems 는 accessibility 를 human-computer interaction 의 fundamental part 가 아니라 사후 처리, checklist 또는 좁은 technical requirement 로 취급합니다. CatalystUI 는 더 단순하고 직접적인 approach 를 취합니다. system 이 human perception 에 의존한다면, one primary sensory path 가 unavailable 할 때에도 essential meaning 을 보존해야 합니다.
 
-검증된 시스템은 필수 언어에 대해 충분한 핵심 번역 범위를 제공합니다. 모든 미래 페이지, 기능, 릴리스, 플러그인, 확장 또는 타사 통합이 자동으로 명세 범위 안에 있음을 보장하지 않습니다.
+Accessibility Verification 은 이 책임을 진지하게 받아들이는 systems 를 식별하기 위해 존재합니다. meaningful alternate access 를 제공하고, essential functionality 를 보존하며, users 를 하나의 required sense 뒤에 가두지 않는 systems 를 인정합니다.
 
-별도 제품, 모듈, 서비스, 언어 팩 또는 주요 개정은 요청되는 검증 범주에 따라 자체 검토가 필요할 수 있습니다.
+## Verification Scope
 
-<a id="verification-validity"></a>
-## 검증 유효성
+CatalystUI Verification for Accessibility 는 verification 이 issued 되었을 때 존재했던 reviewed system, service, framework, application, library 또는 implementation 에 적용됩니다.
 
-CatalystUI Verification 은 검증이 발행된 시점에 검토된 시스템 상태에만 적용됩니다.
+verified system 은 reviewed conditions 아래에서 essential functionality 에 대해 reasonable accessibility 를 제공합니다. 이것은 모든 future page, feature, release, plugin, extension, third-party integration, device 또는 platform-specific version 이 자동으로 within spec 이라는 뜻이 아닙니다.
 
-시스템은 검증된 국제화 기반을 보존하는 한 이후 업데이트에서도 검증을 유지할 수 있습니다. 사소한 문구 변경, 추가 번역 및 일반적인 콘텐츠 업데이트는 자동으로 검증을 무효화하지 않습니다.
+Separate products, modules, services, major revisions 또는 platform-specific builds 는 requested verification category 에 따라 별도 review 를 필요로 할 수 있습니다.
 
-시스템이 필수 언어 지원을 제거하거나, 언어 선택을 깨뜨리거나, 핵심 번역 범위를 실질적으로 줄이거나, 검증된 동작에 영향을 주는 방식으로 국제화 아키텍처를 변경하는 경우 새 검토가 필요할 수 있습니다.
+## Verification Validity
 
-다시 말해, 번역 지원을 개선하는 것은 보통 문제가 없습니다. 검증된 다국어 기반을 깨뜨리는 경우 검토가 필요할 수 있습니다.
+CatalystUI Verification 은 verification 이 issued 되었을 때 system 의 reviewed state 에만 적용됩니다.
 
-<a id="verified-systems"></a>
-## 검증된 시스템
+system 은 verified accessibility foundation 을 보존하는 한 later updates 에서도 verification 을 유지할 수 있습니다. minor wording changes, visual refinements, performance improvements 및 ordinary content updates 는 verification 을 자동으로 invalidate 하지 않습니다.
 
-국제화에 대해 검증된 알려진 시스템은 적절한 CatalystUI Verified 페이지에 별도로 나열됩니다.
+system 이 alternate access paths 를 제거하거나, assistive-technology support 를 깨뜨리거나, essential navigation 을 크게 변경하거나, required accessibility settings 를 제거하거나, verified accessibility foundation 에 영향을 주는 방식으로 interaction behavior 를 변경하면 new review 가 필요할 수 있습니다.
+
+다시 말해, accessibility 를 개선하는 것은 보통 괜찮습니다. verified access model 을 깨뜨리는 것은 review 를 필요로 할 수 있습니다.
+
+## Verified Systems
+
+accessibility 에 대해 verified 된 알려진 systems 는 적절한 CatalystUI Verified page 에 별도로 나열됩니다.

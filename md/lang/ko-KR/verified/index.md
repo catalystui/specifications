@@ -1,7 +1,7 @@
-<!-- 이 번역은 ChatGPT로 생성되었으며 인간 번역가의 검토가 필요합니다. -->
+<!-- 이 번역은 ChatGPT에 의해 생성되었으며 사람 번역자의 검토가 필요합니다. -->
 
-<!-- 번역이 검증된 후 풀 리퀘스트에서 이 줄들을 제거하세요. -->
+<!-- 번역이 확인된 후 pull request에서 이 줄들을 삭제하세요. -->
 
-# 검증된 서비스
+# Verified Services
 
-서비스의 검증 상태를 보려면 탐색 보기에서 서비스를 선택하세요.
+해당 service 의 verification status 를 보려면 navigation view 에서 service 를 선택하세요.

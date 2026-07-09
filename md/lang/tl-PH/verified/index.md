@@ -4,4 +4,4 @@
 
 # Verified Services
 
-Pumili ng serbisyo sa navigation view upang makita ang verification status ng serbisyong iyon.
+Pumili ng service sa navigation view upang makita ang verification status ng service na iyon.

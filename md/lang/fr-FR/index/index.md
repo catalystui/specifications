@@ -6,14 +6,14 @@
 
 ## Services vérifiés
 
-Les services qui ont été vérifiés comme respectant la ou les spécifications sont listés ci-dessous. Ces services ont subi les tests et validations nécessaires pour assurer leur conformité aux standards définis.
+Les services qui ont été vérifiés comme répondant à la ou aux spécifications sont listés ci-dessous. Ces services ont fait l’objet des tests et validations nécessaires afin d’assurer leur conformité aux normes définies.
 
 | Langue | Spécification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
 
 ## Services examinés
 
-Les services qui ont été examinés pour leur conformité à la ou aux spécifications sont listés ci-dessous. Ces services ont subi un processus d’examen initial, mais ils peuvent ne pas encore être entièrement vérifiés ou présenter des problèmes qui peuvent ou non être résolus. Des tests et validations supplémentaires peuvent être nécessaires pour atteindre une conformité complète.
+Les services qui ont été examinés pour leur conformité à la ou aux spécifications sont listés ci-dessous. Ces services ont fait l’objet d’un processus d’examen initial, mais peuvent ne pas encore être entièrement vérifiés, ou des problèmes ont pu être constatés et peuvent ou non être résolus. Des tests et validations supplémentaires peuvent être requis pour obtenir une conformité complète.
 
 | Langue | Spécification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |

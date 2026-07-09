@@ -1,7 +1,7 @@
-<!-- Bản dịch này được tạo bởi ChatGPT và nên được một dịch giả con người xem xét. -->
+<!-- Bản dịch này được tạo bởi ChatGPT và nên được một biên dịch viên con người xem xét lại. -->
 
-<!-- Xóa các dòng này trong pull request sau khi bản dịch đã được xác minh. -->
+<!-- Hãy xóa các dòng này trong pull request sau khi bản dịch đã được xác minh. -->
 
-# Dịch vụ đã được đánh giá
+# Reviewed Services
 
-Chọn một dịch vụ trong chế độ xem điều hướng để xem trạng thái đánh giá của dịch vụ đó.
+Chọn một service trong navigation view để xem review status của service đó.

@@ -1,21 +1,19 @@
 <!-- 此翻译由 ChatGPT 生成，应由人工译者审阅。 -->
 
-<!-- 翻译通过验证后，请在 pull request 中删除这些行。 -->
+<!-- 翻译经过验证后，请在 pull request 中移除这些行。 -->
 
-# 验证索引
+# Verification Index
 
-<a id="verified-services"></a>
-## 已验证服务
+## Verified Services
 
-已验证符合规范的服务列在下方。这些服务已经经过必要的测试和验证，以确保符合已定义的标准。
+已被 verified 为满足 specification(s) 的 services 如下所列。这些 services 已完成必要的 testing 和 validation，以确保符合 defined standards。
 
-| 语言 | 规范 | 日期 | |
-| ---- | ---- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |
 
-<a id="reviewed-services"></a>
-## 已评审服务
+## Reviewed Services
 
-已评审其规范符合性的服务列在下方。这些服务已经经过初步评审流程，但可能尚未完全验证，或被发现存在可能能够解决也可能无法解决的问题。可能需要进一步测试和验证才能达到完全符合。
+已针对 specification(s) compliance 进行 reviewed 的 services 如下所列。这些 services 已经过 initial review process，但可能尚未 fully verified，或被发现存在可能能够或不能够 resolved 的 issues。可能需要 additional testing 和 validation 才能实现 full compliance。
 
-| 语言 | 规范 | 日期 | |
-| ---- | ---- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |

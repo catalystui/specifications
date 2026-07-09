@@ -1,173 +1,140 @@
-<!-- Deze vertaling is gegenereerd door ChatGPT en moet door een menselijke vertaler worden beoordeeld. -->
+<!-- Deze vertaling is gegenereerd door ChatGPT en moet door een menselijke vertaler worden gecontroleerd. -->
 
 <!-- Verwijder deze regels in een pull request nadat de vertaling is geverifieerd. -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# CatalystUI Verified for Internationalization
+# CatalystUI Verified for Accessibility
 
-Welkom bij de CatalystUI-verificatiedocumentatie voor internationalisatie.
+Welkom bij de CatalystUI Verification-documentatie voor toegankelijkheid.
 
-**CatalystUI Verified for Internationalization** geeft aan dat een systeem, dienst, framework, applicatie of implementatie door het CatalystUI Team is beoordeeld en voldoende meertalige ondersteuning biedt voor de vereiste CatalystUI-taalset voor internationalisatie.
+**CatalystUI Verified for Accessibility** geeft aan dat een service, framework, applicatie, library of systeem is beoordeeld door het CatalystUI Team en redelijk bruikbaar blijft wanneer één van de drie primaire zintuigen die betrokken zijn bij user-interface interaction afzonderlijk niet beschikbaar is.
 
-Deze verificatie is geen algemene rangschikking van vertaalkwaliteit, schrijfstijl, lokalisatiediepte of culturele aanpassing. In plaats daarvan stelt zij vast of het beoordeelde systeem een stabiele en praktische basis biedt waarmee gebruikers toegang hebben tot de essentiële functionaliteit in de vereiste ondersteunde talen.
+Voor deze verificatie identificeert CatalystUI de drie primaire toegankelijkheidszintuigen als **zicht**, **geluid** en **aanraking**. Een geverifieerd systeem moet redelijke toegang tot zijn essentiële functionaliteit behouden wanneer één van deze zintuigen niet beschikbaar is, door te vertrouwen op de overige beschikbare sensory domains.
 
-Eenvoudiger gezegd vraagt deze verificatie of gebruikers de essentiële delen van een systeem zinvol kunnen gebruiken in de vereiste talen, en of zij een redelijke manier krijgen om de taal te kiezen die zij begrijpen.
+Eenvoudiger gezegd vraagt deze verificatie of een gebruiker de essentiële delen van een systeem nog steeds betekenisvol kan begrijpen, navigeren en bedienen als die gebruiker afzonderlijk niet op zicht, geluid of aanraking kan vertrouwen.
 
-<a id="purpose"></a>
-## Doel
+## Purpose
 
-Internationalisatie is belangrijk omdat een systeem niet breed toegankelijk kan worden genoemd als zijn essentiële betekenis achter één taal is opgesloten.
+Toegankelijkheid is belangrijk omdat een user interface niet volledig afhankelijk zou moeten zijn van één zintuiglijk pad wanneer dezelfde essentiële betekenis redelijkerwijs via een ander pad kan worden gecommuniceerd.
 
-CatalystUI is ontworpen rond duidelijkheid, consistentie en de getrouwe weergave van mens-computerinteractie. Taal maakt deel uit van die interactie. Als een gebruiker de labels, instructies, waarschuwingen, bedieningselementen, instellingen of essentiële inhoud van een systeem niet kan begrijpen, dan communiceert het systeem niet duidelijk, zelfs als de onderliggende functionaliteit technisch werkt.
+CatalystUI is ontworpen rond de trouwe verplaatsing van data tussen systemen en menselijke waarneming. Als belangrijke informatie alleen zichtbaar, alleen hoorbaar of alleen via aanraking beschikbaar is, kan het systeem onbruikbaar worden voor gebruikers die niet op dat zintuig kunnen vertrouwen. Accessibility Verification bestaat om systemen te identificeren die toegang behouden door essentiële informatie en interactie via alternatieve zintuiglijke routes voort te zetten.
 
-Internationalization Verification bestaat om systemen te identificeren die genoeg vertaalde ondersteuning bieden voor gebruikers in de vereiste CatalystUI-taalset. Het doel is niet om perfecte vertaling te eisen van elk optioneel woord, elk verborgen ontwikkelaarsbericht of elke niet-essentiële pagina. Het doel is vast te stellen of de essentiële delen van het systeem door mensen in elke vereiste taal kunnen worden begrepen en gebruikt.
+Het doel is niet om elke mogelijke interaction method, elke assistive technology of elke gespecialiseerde accommodation te eisen. Het doel is om te bepalen of het essentiële systeem betekenisvol bruikbaar blijft wanneer zicht, geluid of aanraking afzonderlijk niet beschikbaar is.
 
-<a id="what-verification-means"></a>
-## Wat verificatie betekent
+## What Verification Means
 
-Een systeem wordt **CatalystUI Verified for Internationalization** wanneer het wordt beoordeeld tegen de vereisten in deze sectie en binnen de specificatie wordt bevonden.
+Een systeem wordt **CatalystUI Verified for Accessibility** wanneer het is beoordeeld volgens de eisen in deze sectie en within spec is bevonden.
 
-Om geverifieerd te worden, moet een systeem vertalingen bieden voor meer dan 75% van de essentiële gebruikersgerichte delen van het systeem in elke vereiste taal. Het moet ook een redelijk eindgebruikersmechanisme bieden om de actieve taal te wijzigen.
+Om geverifieerd te worden, moet een systeem redelijk bruikbaar blijven in elk van de volgende gevallen:
 
-Een systeem hoeft niet elke interne identificatie, elk ontwikkelaarsgericht implementatiedetail, elke debugstring, elke optionele marketingpagina of elke niet-essentiële ondersteuningstekst te vertalen. De gebruikersgerichte delen die nodig zijn om het essentiële systeem te begrijpen en te bedienen, moeten echter in elke vereiste taal beschikbaar zijn.
+| Unavailable Sense | Required Accessibility Behavior                                   |
+| ----------------- | ----------------------------------------------------------------- |
+| Zicht             | Het systeem moet redelijk bruikbaar blijven via geluid en aanraking. |
+| Geluid            | Het systeem moet redelijk bruikbaar blijven via zicht en aanraking. |
+| Aanraking         | Het systeem moet redelijk bruikbaar blijven via zicht en geluid. |
 
-<a id="required-languages"></a>
-## Vereiste talen
+Een systeem hoeft geen identieke ervaringen te bieden via elk sensory path. Een non-visual experience kan langzamer zijn dan een visuele. Een sound-free experience kan captions, visual indicators of andere vervangingen vereisen. Een touch-free experience kan alternate controls, voice interaction, keyboard navigation, pointer navigation of andere non-touch methods vereisen.
 
-De huidige CatalystUI-taalset voor internationalisatie is geselecteerd op basis van een praktische beoordeling van talen die vaak nodig zijn in technologische contexten, waaronder wereldwijd sprekersbereik, algemeen onlinegebruik, verwachtingen voor meertalige software en brede regionale toegankelijkheidsbehoeften.
+Waar het om gaat, is of de essentiële functionaliteit toegankelijk, begrijpelijk en bedienbaar blijft zonder het unavailable sense te vereisen.
 
-Deze taalset is niet bedoeld om elke taal, elk dialect of elke regionale variant te vertegenwoordigen. In plaats daarvan stelt zij een praktische basis vast voor systemen die brede internationale bruikbaarheid zoeken in veel van 's werelds meest voorkomende technologiegerichte taalgroepen.
+## Essential Functionality
 
-De huidige CatalystUI-taalset voor internationalisatie bevat de volgende locales:
+Voor Accessibility Verification verwijst **essential functionality** naar de delen van een systeem die een gebruiker redelijkerwijs nodig heeft om het systeem te begrijpen, te navigeren, te configureren en te bedienen.
 
-| Locale    | Taal                     |
-| --------- | ------------------------ |
-| `ar-SA`   | Arabisch (Saoedi-Arabië) |
-| `bn-BD`   | Bengaals (Bangladesh)    |
-| `de-DE`   | Duits (Duitsland)        |
-| `en-GB`   | Engels (Verenigd Koninkrijk) |
-| `en-IN`   | Engels (India)           |
-| `en-US`   | Engels (Verenigde Staten) |
-| `es-ES`   | Spaans (Spanje)          |
-| `es-MX`   | Spaans (Mexico)          |
-| `fa-IR`   | Perzisch (Iran)          |
-| `fr-FR`   | Frans (Frankrijk)        |
-| `hi-IN`   | Hindi (India)            |
-| `id-ID`   | Indonesisch (Indonesië)  |
-| `it-IT`   | Italiaans (Italië)       |
-| `ja-JP`   | Japans (Japan)           |
-| `ko-KR`   | Koreaans (Zuid-Korea)    |
-| `nl-NL`   | Nederlands (Nederland)   |
-| `pl-PL`   | Pools (Polen)            |
-| `pt-BR`   | Portugees (Brazilië)     |
-| `ru-RU`   | Russisch (Rusland)       |
-| `tl-PH`   | Tagalog (Filipijnen)     |
-| `tr-TR`   | Turks (Turkije)          |
-| `uk-UA`   | Oekraïens (Oekraïne)     |
-| `ur-PK`   | Urdu (Pakistan)          |
-| `vi-VN`   | Vietnamees (Vietnam)     |
-| `zh-CN`   | Chinees (China)          |
-| `zh-Hans` | Chinees (Vereenvoudigd)  |
+Essential functionality kan onder meer omvatten:
 
-Een systeem moet voor elke vermelde taalgroep voldoende essentiële vertaaldekking bieden om als binnen de specificatie te worden beschouwd.
+* primary navigation
+* core workflows
+* required controls
+* important warnings
+* important errors
+* required confirmation messages
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* elke interactie die nodig is voor normaal gebruik
 
-Regionale varianten kunnen echter met redelijke flexibiliteit worden beoordeeld wanneer de verschillen tussen varianten klein zijn en de mogelijkheid van de gebruiker om het systeem te begrijpen of te bedienen niet wezenlijk beïnvloeden. Een systeem kan bijvoorbeeld nog steeds in aanmerking komen voor verificatie als het één sterke Engelse vertaling biedt maar niet elke Engelse regionale variant afzonderlijk vertaalt, zolang essentiële betekenis, navigatie, instructies, waarschuwingen en bedieningselementen duidelijk blijven voor gebruikers van de ontbrekende varianten.
+Een systeem kan nog steeds within spec zijn als decoratieve, redundante, optionele of niet-essentiële functies niet via elk sensory path gelijk beschikbaar zijn. De gebruiker mag echter niet worden geblokkeerd in het gebruik van het essentiële systeem door het ontbrekende zintuig.
 
-Deze flexibiliteit geldt niet wanneer een ontbrekende variant betekenisvolle verwarring zou veroorzaken, regionaal belangrijke terminologie zou weglaten, locale-gevoelig gedrag zou breken of gebruikers zou verhinderen essentiële delen van het systeem te begrijpen.
+## Sight Unavailable
 
-<a id="essential-translation-coverage"></a>
-## Essentiële vertaaldekking
+Wanneer zicht niet beschikbaar is, moet het systeem redelijk bruikbaar blijven via geluid en aanraking.
 
-Voor Internationalization Verification verwijst **essentiële vertaaldekking** naar de delen van een systeem die een gebruiker redelijkerwijs nodig heeft om het systeem te begrijpen, erin te navigeren, het te configureren en het te bedienen.
+Dit kan spoken output, screen-reader-compatible structure, meaningful focus order, tactile controls, keyboard access, haptic confirmation, audio descriptions of een andere redelijke non-visual method omvatten om essentiële informatie te communiceren.
 
-Essentiële delen kunnen onder meer omvatten:
+Een systeem mag niet uitsluitend vertrouwen op visual position, color, shape, animation, icons of layout wanneer die informatie nodig is om essentiële functionaliteit te begrijpen of te bedienen.
 
-* primaire navigatie
-* kernschermen en weergaven
-* instellingen en voorkeuren
-* gebruikersgerichte labels
-* gebruikersgerichte bedieningselementen
-* vereiste instructies
-* belangrijke waarschuwingen
-* belangrijke fouten
-* essentiële prompts
-* vereiste bevestigingsberichten
-* bedieningselementen voor taalselectie
-* kernwerkstromen die nodig zijn voor normaal gebruik
+## Sound Unavailable
 
-Een systeem wordt geacht aan de vertaaldekkingsvereiste te voldoen wanneer meer dan 75% van zijn essentiële gebruikersgerichte inhoud in elke vereiste taal beschikbaar is.
+Wanneer geluid niet beschikbaar is, moet het systeem redelijk bruikbaar blijven via zicht en aanraking.
 
-Deze drempel bestaat omdat internationalisatiewerk groot, doorlopend en contextafhankelijk kan zijn. Een systeem kan nog steeds binnen de specificatie zijn, zelfs als sommige niet-essentiële of lagere-prioriteitsinhoud onvertaald blijft. De essentiële ervaring moet echter betekenisvol beschikbaar zijn in elke vereiste taal.
+Dit kan captions, transcripts, visual alerts, text equivalents, progress indicators, visible status messages, haptic feedback of een andere redelijke non-auditory method omvatten om essentiële informatie te communiceren.
 
-<a id="language-selection"></a>
-## Taalselectie
+Een systeem mag niet uitsluitend vertrouwen op sound effects, spoken instructions, alerts, alarms, music cues of audio-only prompts wanneer die informatie nodig is om essentiële functionaliteit te begrijpen of te bedienen.
 
-Een geverifieerd systeem moet een redelijke manier bieden waarop de eindgebruiker de actieve taal kan wijzigen.
+## Touch Unavailable
 
-Het mechanisme voor taalselectie moet gemakkelijk te vinden, begrijpelijk en beschikbaar zijn zonder technische kennis te vereisen. Gebruikers zouden geen configuratiebestanden moeten hoeven bewerken, broncode wijzigen, ontwikkelaarstools installeren of vertrouwen op ongedocumenteerd gedrag om eenvoudig de taal te veranderen.
+Wanneer aanraking niet beschikbaar is, moet het systeem redelijk bruikbaar blijven via zicht en geluid.
 
-Wanneer taalopties worden weergegeven, moet het systeem elke taal identificeren op een manier die begrijpelijk is voor zowel gebruikers die die taal spreken als gebruikers die momenteel een andere geselecteerde taal gebruiken.
+Dit kan voice control, keyboard navigation, pointer alternatives, remote controls, gaze-compatible interaction, switch-compatible interaction, spoken prompts, visual confirmation of een andere redelijke methode omvatten die geen touch-based interaction of tactile perception vereist.
 
-Een taaloptie kan bijvoorbeeld zo worden weergegeven:
+Een systeem mag niet uitsluitend vertrouwen op touch gestures, haptic feedback, physical texture, vibration, force, pressure of touch-only controls wanneer die interacties nodig zijn om essentiële functionaliteit te begrijpen of te bedienen.
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+## Additional Sensory Domains
 
-De exacte opmaak kan variëren, maar de bedoeling moet hetzelfde blijven: gebruikers moeten hun eigen taal kunnen herkennen, de momenteel weergegeven taalnaam waar mogelijk kunnen begrijpen en de bijbehorende locale-code kunnen identificeren.
+CatalystUI herkent ook **taste** en **smell** als sensory domains. Deze domains kunnen worden meegenomen in toegankelijkheidsbeoordeling wanneer ze betekenisvol door het systeem worden gebruikt.
 
-<a id="what-within-spec-means"></a>
-## Wat “binnen de specificatie” betekent
+Taste en smell zijn **inclusive** voor verificatie, wat betekent dat ze een accessibility review kunnen versterken of ondersteunen wanneer ze betekenisvolle alternatieve toegang of extra context bieden.
 
-Wanneer een systeem als **binnen de specificatie** wordt beschouwd, betekent dit dat het CatalystUI Team het systeem handmatig heeft beoordeeld en het redelijk vindt te concluderen dat het voldoet aan de internationalisatievereisten die door deze verificatiecategorie worden beschreven.
+Taste en smell zijn momenteel niet **exclusive** voor falen, wat betekent dat een systeem niet faalt voor Accessibility Verification alleen omdat het geen taste-based of smell-based interaction biedt.
 
-Dit vereist geen star implementatiepatroon. Een systeem kan aan de vereiste voldoen via resourcebestanden, vertaaltabellen, locale-bewuste routing, gecompileerde taalbronnen, database-ondersteunde vertalingen, runtime-taalpakketten of een ander stabiel mechanisme dat passend is voor het systeem.
+CatalystUI Accessibility Verification richt zich vooral op de vraag of het systeem redelijk bruikbaar blijft wanneer zicht, geluid of aanraking afzonderlijk niet beschikbaar is.
 
-Verificatie gaat over het praktische vermogen van gebruikers om het essentiële systeem in de vereiste talen te bereiken, niet over de vraag of het systeem één specifieke vertaalarchitectuur gebruikt.
+## What “Within Spec” Means
 
-<a id="what-verification-does-not-mean"></a>
-## Wat verificatie niet betekent
+Wanneer een systeem als **within spec** wordt beschouwd, betekent dit dat het CatalystUI Team het systeem handmatig heeft beoordeeld en redelijkerwijs heeft geconcludeerd dat het voldoet aan de accessibility requirements die door deze verificatiecategorie worden beschreven.
 
-CatalystUI Verified for Internationalization garandeert niet dat elke vertaling perfect, literair, idiomatisch, cultureel volledig of juridisch voldoende is voor elke regio.
+Dit vereist geen enkel strak implementation pattern. Een systeem kan accessibility requirements vervullen via native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration of een ander stabiel mechanisme dat passend is voor het systeem.
 
-Het verifieert ook niet automatisch toegankelijkheid, typografie, rechts-naar-links-lay-out, locale-specifieke opmaak, valutaopmaak, datumopmaak, wettelijke naleving of regionale bedrijfsvereisten, tenzij die punten zijn opgenomen in de beoordeelde internationalisatiescope.
+Verification gaat over het praktische vermogen van gebruikers om toegang te krijgen tot het essentiële systeem wanneer één primary sense niet beschikbaar is, niet over het gebruik van één specifieke accessibility architecture.
 
-Een systeem kan sterke vertaaldekking bieden en toch afzonderlijke review vereisen voor toegankelijkheid, lokalisatiekwaliteit, regionale naleving of andere gespecialiseerde aandachtspunten.
+## What Verification Does Not Mean
 
-<a id="why-this-verification-exists"></a>
-## Waarom deze verificatie bestaat
+CatalystUI Verified for Accessibility garandeert niet dat elke mogelijke disability, device, assistive technology, medical condition, legal requirement, regional standard of specialized use case volledig is beoordeeld.
 
-Een gebruikersinterface is alleen nuttig wanneer de gebruiker begrijpt wat zij communiceert.
+Het verifieert ook niet automatisch internationalization, translation quality, typography, localization, regional compliance of algemene design quality, tenzij die onderwerpen zijn opgenomen in de reviewed accessibility scope.
 
-Veel systemen claimen taalondersteuning terwijl slechts een klein deel van de ervaring is vertaald, taalselectie verborgen is, belangrijke berichten ontbreken of essentiële werkstromen gedeeltelijk onvertaald blijven. Dit veroorzaakt verwarring en voorkomt dat gebruikers het systeem vertrouwen.
+Een systeem kan redelijk toegankelijk zijn onder CatalystUI’s accessibility model en toch afzonderlijke beoordeling nodig hebben voor legal compliance, platform certification, specialized assistive technology support of andere accessibility standards.
 
-Internationalization Verification bestaat om een duidelijkere standaard te stellen. Zij identificeert systemen die een serieuze, praktische inspanning leveren om gebruikers in de vereiste CatalystUI-taalset te ondersteunen en een redelijke manier bieden waarop gebruikers de taal kunnen selecteren die zij nodig hebben.
+## Why This Verification Exists
 
-<a id="verification-scope"></a>
-## Verificatiescope
+Een user interface is alleen succesvol wanneer gebruikers deze daadwerkelijk kunnen gebruiken.
 
-CatalystUI Verification for Internationalization geldt voor het beoordeelde systeem, de dienst, het framework, de applicatie of de implementatie zoals die bestond op het moment dat de verificatie werd afgegeven.
+Veel systemen behandelen toegankelijkheid als een bijzaak, checklist of smalle technische eis in plaats van als fundamenteel onderdeel van human-computer interaction. CatalystUI kiest een eenvoudigere en directere benadering: als een systeem afhankelijk is van menselijke waarneming, moet het essentiële betekenis behouden wanneer één primair zintuiglijk pad niet beschikbaar is.
 
-Een geverifieerd systeem biedt voldoende essentiële vertaaldekking voor de vereiste talen. Het garandeert niet dat elke toekomstige pagina, functie, release, plugin, extensie of integratie van derden automatisch binnen de specificatie valt.
+Accessibility Verification bestaat om systemen te herkennen die deze verantwoordelijkheid serieus nemen. Het erkent systemen die betekenisvolle alternatieve toegang bieden, essentiële functionaliteit behouden en gebruikers niet opsluiten achter één vereist zintuig.
 
-Afzonderlijke producten, modules, diensten, taalpakketten of grote revisies kunnen hun eigen review vereisen, afhankelijk van de aangevraagde verificatiecategorie.
+## Verification Scope
 
-<a id="verification-validity"></a>
-## Geldigheid van verificatie
+CatalystUI Verification for Accessibility is van toepassing op het beoordeelde systeem, de service, het framework, de applicatie, library of implementatie zoals die bestond op het moment waarop verificatie werd afgegeven.
 
-CatalystUI Verification geldt alleen voor de beoordeelde staat van het systeem op het moment dat de verificatie wordt afgegeven.
+Een geverifieerd systeem biedt redelijke toegankelijkheid voor zijn essentiële functionaliteit onder de beoordeelde omstandigheden. Dit garandeert niet dat elke toekomstige pagina, feature, release, plugin, extension, third-party integration, device of platform-specific version automatisch within spec is.
 
-Een systeem kan zijn verificatie behouden bij latere updates zolang het de geverifieerde internationalisatiebasis behoudt. Kleine tekstwijzigingen, toegevoegde vertalingen en gewone inhoudsupdates maken verificatie niet automatisch ongeldig.
+Afzonderlijke producten, modules, services, major revisions of platform-specific builds kunnen hun eigen review vereisen, afhankelijk van de aangevraagde verificatiecategorie.
 
-Een nieuwe review kan vereist zijn als een systeem vereiste taalondersteuning verwijdert, taalselectie breekt, essentiële vertaaldekking aanzienlijk vermindert of zijn internationalisatiearchitectuur wijzigt op een manier die het geverifieerde gedrag beïnvloedt.
+## Verification Validity
 
-Met andere woorden: het verbeteren van vertaalondersteuning is meestal prima. Het breken van de geverifieerde meertalige basis kan review vereisen.
+CatalystUI Verification geldt alleen voor de beoordeelde staat van het systeem op het moment waarop verificatie wordt afgegeven.
 
-<a id="verified-systems"></a>
-## Geverifieerde systemen
+Een systeem kan zijn verificatie behouden bij latere updates zolang het de verified accessibility foundation bewaart. Kleine woordwijzigingen, visuele verfijningen, performance improvements en gewone content updates maken verification niet automatisch ongeldig.
 
-Bekende systemen die voor internationalisatie zijn geverifieerd, worden afzonderlijk vermeld op de juiste CatalystUI Verified-pagina.
+Een nieuwe review kan vereist zijn als een systeem alternate access paths verwijdert, assistive-technology support breekt, essential navigation substantieel wijzigt, required accessibility settings verwijdert of interaction behavior verandert op een manier die de verified accessibility foundation beïnvloedt.
+
+Met andere woorden: toegankelijkheid verbeteren is meestal prima. Het verified access model breken kan review vereisen.
+
+## Verified Systems
+
+Bekende systemen die zijn verified voor toegankelijkheid worden afzonderlijk vermeld op de passende CatalystUI Verified-pagina.

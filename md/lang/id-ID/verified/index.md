@@ -2,6 +2,6 @@
 
 <!-- Hapus baris-baris ini dalam pull request setelah terjemahan diverifikasi. -->
 
-# Layanan Terverifikasi
+# Verified Services
 
-Pilih layanan di tampilan navigasi untuk melihat status verifikasi layanan tersebut.
+Pilih service di navigation view untuk melihat status verification service tersebut.

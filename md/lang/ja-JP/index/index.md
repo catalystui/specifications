@@ -1,21 +1,19 @@
-<!-- この翻訳はChatGPTによって生成されたものであり、人間の翻訳者による確認が必要です。 -->
+<!-- この翻訳は ChatGPT によって生成されたものであり、人間の翻訳者による確認が必要です。 -->
 
-<!-- 翻訳が検証された後、プルリクエストでこれらの行を削除してください。 -->
+<!-- 翻訳が確認された後、pull request でこれらの行を削除してください。 -->
 
-# 検証インデックス
+# Verification Index
 
-<a id="verified-services"></a>
-## 検証済みサービス
+## Verified Services
 
-仕様を満たすことが検証されたサービスを以下に示します。これらのサービスは、定義された標準への適合を確認するために必要なテストと検証を受けています。
+specification(s) を満たすことが verified された services は下に一覧表示されています。これらの services は、定義された standards への compliance を確認するために必要な testing と validation を受けています。
 
-| 言語 | 仕様 | 日付 | |
-| ---- | ---- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |
 
-<a id="reviewed-services"></a>
-## レビュー済みサービス
+## Reviewed Services
 
-仕様への適合についてレビューされたサービスを以下に示します。これらのサービスは初期レビューを受けていますが、まだ完全には検証されていない場合や、解決可能かどうかにかかわらず問題が見つかった場合があります。完全な適合を達成するには、追加のテストと検証が必要になる場合があります。
+specification(s) への compliance について reviewed された services は下に一覧表示されています。これらの services は initial review process を受けていますが、まだ完全に verified されていない場合や、解決できる場合もできない場合もある issues が見つかっている場合があります。full compliance を達成するには、追加の testing と validation が必要になることがあります。
 
-| 言語 | 仕様 | 日付 | |
-| ---- | ---- | ---- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |

@@ -2,20 +2,18 @@
 
 <!-- Hapus baris-baris ini dalam pull request setelah terjemahan diverifikasi. -->
 
-# Indeks Verifikasi
+# Verification Index
 
-<a id="verified-services"></a>
-## Layanan Terverifikasi
+## Verified Services
 
-Layanan yang telah diverifikasi memenuhi spesifikasi dicantumkan di bawah ini. Layanan ini telah menjalani pengujian dan validasi yang diperlukan untuk memastikan kepatuhan terhadap standar yang ditetapkan.
+Services yang telah diverifikasi memenuhi specification(s) dicantumkan di bawah ini. Services ini telah menjalani testing dan validation yang diperlukan untuk memastikan compliance terhadap standards yang ditetapkan.
 
-| Bahasa | Spesifikasi | Tanggal | |
-| ------ | ----------- | ------- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |
 
-<a id="reviewed-services"></a>
-## Layanan yang Ditinjau
+## Reviewed Services
 
-Layanan yang telah ditinjau untuk kepatuhan terhadap spesifikasi dicantumkan di bawah ini. Layanan ini telah menjalani proses tinjauan awal, tetapi mungkin belum sepenuhnya diverifikasi atau ditemukan memiliki masalah yang mungkin dapat atau tidak dapat diselesaikan. Pengujian dan validasi lebih lanjut mungkin diperlukan untuk mencapai kepatuhan penuh.
+Services yang telah ditinjau untuk compliance terhadap specification(s) dicantumkan di bawah ini. Services ini telah menjalani proses review awal, tetapi mungkin belum sepenuhnya verified, atau ditemukan issues yang mungkin dapat atau tidak dapat diselesaikan. Testing dan validation tambahan mungkin diperlukan untuk mencapai compliance penuh.
 
-| Bahasa | Spesifikasi | Tanggal | |
-| ------ | ----------- | ------- | ---- |
+| Language | Specification(s) | Date | |
+| -------- | ---------------- | ---- | ---- |

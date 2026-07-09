@@ -2,6 +2,6 @@
 
 <!-- Hapus baris-baris ini dalam pull request setelah terjemahan diverifikasi. -->
 
-# Layanan yang Ditinjau
+# Reviewed Services
 
-Pilih layanan di tampilan navigasi untuk melihat status tinjauan layanan tersebut.
+Pilih service di navigation view untuk melihat status review service tersebut.

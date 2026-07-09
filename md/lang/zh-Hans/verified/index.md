@@ -1,7 +1,7 @@
 <!-- 此翻译由 ChatGPT 生成，应由人工译者审阅。 -->
 
-<!-- 翻译通过验证后，请在 pull request 中删除这些行。 -->
+<!-- 翻译经过验证后，请在 pull request 中移除这些行。 -->
 
-# 已验证服务
+# Verified Services
 
-请在导航视图中选择一个服务，以查看该服务的验证状态。
+请在 navigation view 中选择一个 service，以查看该 service 的 verification status。

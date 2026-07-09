@@ -2,172 +2,139 @@
 
 <!-- Çeviri doğrulandıktan sonra bu satırları bir pull request içinde kaldırın. -->
 
-![CatalystUI Verified for Internationalization](/images/verification/verified-logo-internationalization.png)
+![CatalystUI Verified for Accessibility](/images/verification/verified-logo-accessibility.png)
 
-# Internationalization için CatalystUI Verified
+# CatalystUI Verified for Accessibility
 
-Internationalization için CatalystUI Verification documentation'a hoş geldiniz.
+CatalystUI Verification belgelerinin accessibility bölümüne hoş geldiniz.
 
-**CatalystUI Verified for Internationalization**, bir sistemin, hizmetin, framework'ün, uygulamanın veya implementation'ın CatalystUI Team tarafından incelendiğini ve required CatalystUI internationalization language set için yeterli multilingual support sağladığının bulunduğunu belirtir.
+**CatalystUI Verified for Accessibility**, bir service, framework, application, library veya system’ın CatalystUI Team tarafından incelendiğini ve user-interface interaction içinde yer alan üç temel duyudan biri tek başına kullanılamadığında makul ölçüde kullanılabilir kalmaya devam ettiğinin belirlendiğini gösterir.
 
-Bu verification, çeviri kalitesi, yazım üslubu, localization depth veya cultural adaptation için genel bir sıralama değildir. Bunun yerine, reviewed system'in kullanıcıların essential functionality'ye required supported languages genelinde erişebilmesi için kararlı ve pratik bir foundation sağlayıp sağlamadığını belirler.
+Bu verification için CatalystUI üç primary accessibility senses öğesini **görme**, **ses** ve **dokunma** olarak tanımlar. Verified system, bu duyulardan herhangi biri kullanılamadığında, kalan available sensory domains üzerinden essential functionality için reasonable access sağlamalıdır.
 
-Daha basit ifadeyle, bu verification kullanıcıların bir sistemin essential parts'ını required languages içinde anlamlı biçimde kullanıp kullanamadığını ve anladıkları dili seçmeleri için makul bir yol sağlanıp sağlanmadığını sorar.
+Daha basit şekilde, bu verification bir user’ın görme, ses veya dokunmaya tek tek güvenemediği durumda system’ın essential parts bölümünü hâlâ anlamlı biçimde anlayıp anlayamadığını, gezip gezemediğini ve çalıştırıp çalıştıramadığını sorar.
 
-<a id="purpose"></a>
 ## Amaç
 
-Uluslararasılaştırma önemlidir çünkü bir system, essential meaning'i tek bir dilin arkasında kilitliyse broadly accessible kabul edilemez.
+Accessibility önemlidir, çünkü bir user interface aynı essential meaning makul şekilde başka bir yolla iletilebiliyorsa tek bir sensory pathway’e tamamen bağlı olmamalıdır.
 
-CatalystUI clarity, consistency ve human-computer interaction'ın faithful representation'ı etrafında tasarlanmıştır. Dil bu interaction'ın bir parçasıdır. Bir kullanıcı sistemin labels, instructions, warnings, controls, settings veya essential content'ini anlayamıyorsa, underlying functionality teknik olarak çalışsa bile sistem açık iletişim kuramamış olur.
+CatalystUI, data’nın systems ile human perception arasında sadık biçimde hareket etmesi üzerine tasarlanmıştır. Önemli bilgi yalnızca görünür, yalnızca duyulur veya yalnızca dokunma yoluyla available ise, system o duyuya güvenemeyen users için unusable hâle gelebilir. Accessibility Verification, essential information ve interaction’ın alternate sensory routes üzerinden devam etmesine izin vererek access’i koruyan systems’ı belirlemek için vardır.
 
-Internationalization Verification, required CatalystUI language set genelinde kullanıcılar için yeterli translated support sağlayan sistemleri belirlemek için vardır. Amaç her optional word, hidden developer message veya nonessential page için mükemmel çeviri talep etmek değildir. Amaç, sistemin essential parts'ının her required language içindeki insanlar tarafından anlaşılıp kullanılabildiğini belirlemektir.
+Amaç her olası interaction method, her assistive technology veya her specialized accommodation’ı zorunlu kılmak değildir. Amaç, görme, ses veya dokunma tek tek unavailable olduğunda essential system’ın meaningfully usable kalıp kalmadığını belirlemektir.
 
-<a id="what-verification-means"></a>
 ## Verification Ne Anlama Gelir
 
-Bir sistem, bu bölümde listelenen gereksinimlere göre review edildiğinde ve within spec bulunduğunda **CatalystUI Verified for Internationalization** olur.
+Bir system, bu bölümde listelenen requirements’a göre incelenip within spec bulunduğunda **CatalystUI Verified for Accessibility** olur.
 
-Verified olmak için bir sistem, her required language içinde sistemin essential user-facing parts'ının %75'inden fazlası için çeviri sağlamalıdır. Ayrıca active language'i değiştirmek için makul bir end-user mechanism sağlamalıdır.
+Verified olmak için bir system aşağıdaki durumların her birinde makul ölçüde kullanılabilir kalmalıdır:
 
-Bir sistemin her internal identifier'ı, developer-facing implementation detail'i, debug string'i, optional marketing page'i veya nonessential support text'i çevirmesi gerekmez. Ancak essential system'i anlamak ve kullanmak için gereken user-facing portions her required language içinde mevcut olmalıdır.
+| Kullanılamayan Duyu | Gerekli Accessibility Behavior |
+| ------------------- | ------------------------------ |
+| Görme               | System ses ve dokunma yoluyla makul ölçüde kullanılabilir kalmalıdır. |
+| Ses                 | System görme ve dokunma yoluyla makul ölçüde kullanılabilir kalmalıdır. |
+| Dokunma             | System görme ve ses yoluyla makul ölçüde kullanılabilir kalmalıdır. |
 
-<a id="required-languages"></a>
-## Required Languages
+Bir system’ın her sensory path üzerinde identical experiences sağlaması gerekmez. Non-visual experience, visual olandan daha yavaş olabilir. Sound-free experience captions, visual indicators veya diğer substitutions gerektirebilir. Touch-free experience alternate controls, voice interaction, keyboard navigation, pointer navigation veya diğer non-touch methods gerektirebilir.
 
-Mevcut CatalystUI internationalization language set, global speaker reach, common online usage, multilingual software expectations ve broad regional accessibility needs dahil olmak üzere teknoloji bağlamlarında yaygın olarak ihtiyaç duyulan dillerin pratik review'undan seçilmiştir.
+Önemli olan, essential functionality’nin unavailable sense gerektirmeden accessible, understandable ve operable kalıp kalmadığıdır.
 
-Bu language set her dili, her lehçeyi veya her regional variant'ı temsil etmeyi amaçlamaz. Bunun yerine, dünyanın en yaygın technology-facing language groups'ının çoğunda geniş international usability isteyen sistemler için pratik bir baseline oluşturur.
+## Essential Functionality
 
-Mevcut CatalystUI internationalization language set şu locale'leri içerir:
+Accessibility Verification için **essential functionality**, bir user’ın system’ı anlamak, navigate etmek, configure etmek ve operate etmek için makul olarak ihtiyaç duyduğu bölümleri ifade eder.
 
-| Locale    | Dil                      |
-| --------- | ------------------------ |
-| `ar-SA`   | Arapça (Suudi Arabistan) |
-| `bn-BD`   | Bengalce (Bangladeş)     |
-| `de-DE`   | Almanca (Almanya)        |
-| `en-GB`   | İngilizce (Birleşik Krallık) |
-| `en-IN`   | İngilizce (Hindistan)    |
-| `en-US`   | İngilizce (Amerika Birleşik Devletleri) |
-| `es-ES`   | İspanyolca (İspanya)     |
-| `es-MX`   | İspanyolca (Meksika)     |
-| `fa-IR`   | Farsça (İran)            |
-| `fr-FR`   | Fransızca (Fransa)       |
-| `hi-IN`   | Hintçe (Hindistan)       |
-| `id-ID`   | Endonezce (Endonezya)    |
-| `it-IT`   | İtalyanca (İtalya)       |
-| `ja-JP`   | Japonca (Japonya)        |
-| `ko-KR`   | Korece (Güney Kore)      |
-| `nl-NL`   | Felemenkçe (Hollanda)    |
-| `pl-PL`   | Lehçe (Polonya)          |
-| `pt-BR`   | Portekizce (Brezilya)    |
-| `ru-RU`   | Rusça (Rusya)            |
-| `tl-PH`   | Tagalogca (Filipinler)   |
-| `tr-TR`   | Türkçe (Türkiye)         |
-| `uk-UA`   | Ukraynaca (Ukrayna)      |
-| `ur-PK`   | Urduca (Pakistan)        |
-| `vi-VN`   | Vietnamca (Vietnam)      |
-| `zh-CN`   | Çince (Çin)              |
-| `zh-Hans` | Çince (Basitleştirilmiş) |
-
-Bir sistemin within spec kabul edilebilmesi için listelenen her language group için yeterli essential translation coverage sağlaması gerekir.
-
-Ancak regional variants arasındaki farklar küçük olduğunda ve kullanıcının sistemi anlama veya kullanma yeteneğini materially affect etmediğinde review sırasında makul flexibility uygulanabilir. Örneğin, bir sistem tek bir güçlü English translation sağlıyor ancak her English regional variant'ı ayrı ayrı çevirmiyorsa, essential meaning, navigation, instructions, warnings ve controls missing variants kullanıcıları için açık kaldığı sürece verification için yine de eligible olabilir.
-
-Bu flexibility, missing variant anlamlı karışıklık yaratacaksa, regionally important terminology'i atlayacaksa, locale-sensitive behavior'ı bozacaksa veya kullanıcıların system'in essential parts'ını anlamasını engelleyecekse uygulanmaz.
-
-<a id="essential-translation-coverage"></a>
-## Temel Çeviri Kapsamı
-
-Internationalization Verification için **essential translation coverage**, kullanıcının sistemi anlaması, içinde gezinmesi, yapılandırması ve kullanması için makul biçimde ihtiyaç duyduğu bölümleri ifade eder.
-
-Essential parts şunları içerebilir:
+Essential functionality şunları içerebilir:
 
 * primary navigation
-* core screens and views
-* settings and preferences
-* user-facing labels
-* user-facing controls
-* required instructions
+* core workflows
+* required controls
 * important warnings
 * important errors
-* essential prompts
 * required confirmation messages
-* language selection controls
-* core workflows needed for normal use
+* account or session access
+* settings and preferences
+* language or accessibility configuration
+* essential instructions
+* user-facing status information
+* normal kullanım için required olan herhangi bir interaction
 
-Bir system, essential user-facing content'inin %75'inden fazlası her required language içinde mevcut olduğunda translation coverage requirement'ı karşılıyor kabul edilir.
+Decorative, redundant, optional veya nonessential features her sensory path üzerinden eşit şekilde available değilse bir system yine within spec olabilir. Ancak user, missing sense nedeniyle essential system’ı kullanmaktan engellenmemelidir.
 
-Bu eşik vardır çünkü internationalization work büyük, sürekli ve context-dependent olabilir. Bazı nonessential veya lower-priority content çevrilmeden kalsa bile bir system within spec olabilir. Ancak essential experience her required language içinde anlamlı biçimde mevcut olmalıdır.
+## Görme Kullanılamadığında
 
-<a id="language-selection"></a>
-## Dil Seçimi
+Görme unavailable olduğunda system ses ve dokunma yoluyla makul ölçüde kullanılabilir kalmalıdır.
 
-Verified system, end-user'ın active language'i değiştirmesi için makul bir yol sağlamalıdır.
+Bu spoken output, screen-reader-compatible structure, meaningful focus order, tactile controls, keyboard access, haptic confirmation, audio descriptions veya essential information’ı ileten başka bir reasonable non-visual method içerebilir.
 
-Language selection mechanism kolay bulunabilir, anlaşılır ve technical knowledge gerektirmeden kullanılabilir olmalıdır. Kullanıcıların yalnızca dili değiştirmek için configuration files düzenlemesi, source code değiştirmesi, developer tools yüklemesi veya undocumented behavior'a güvenmesi gerekmemelidir.
+Bir system, essential functionality’yi anlamak veya operate etmek için gerekli olan bilgide yalnızca visual position, color, shape, animation, icons veya layout’a güvenmemelidir.
 
-Language options gösterilirken sistem her dili hem o dili konuşan kullanıcılar hem de şu anda başka bir selected language kullanan kullanıcılar tarafından anlaşılabilecek şekilde tanımlamalıdır.
+## Ses Kullanılamadığında
 
-Örneğin bir language option şu şekilde gösterilebilir:
+Ses unavailable olduğunda system görme ve dokunma yoluyla makul ölçüde kullanılabilir kalmalıdır.
 
-```md
-English (English) (en-US)
-Español (Spanish) (es-ES)
-Français (French) (fr-FR)
-العربية (Arabic) (ar-SA)
-```
+Bu captions, transcripts, visual alerts, text equivalents, progress indicators, visible status messages, haptic feedback veya essential information’ı ileten başka bir reasonable non-auditory method içerebilir.
 
-Tam formatting değişebilir; ancak amaç aynı kalmalıdır: kullanıcılar kendi dillerini tanıyabilmeli, mümkün olduğunda şu anda gösterilen dil adını anlayabilmeli ve ilişkili locale code'u belirleyebilmelidir.
+Bir system, essential functionality’yi anlamak veya operate etmek için gerekli olan bilgide yalnızca sound effects, spoken instructions, alerts, alarms, music cues veya audio-only prompts’a güvenmemelidir.
 
-<a id="what-within-spec-means"></a>
+## Dokunma Kullanılamadığında
+
+Dokunma unavailable olduğunda system görme ve ses yoluyla makul ölçüde kullanılabilir kalmalıdır.
+
+Bu voice control, keyboard navigation, pointer alternatives, remote controls, gaze-compatible interaction, switch-compatible interaction, spoken prompts, visual confirmation veya touch-based interaction ya da tactile perception gerektirmeyen başka bir reasonable method içerebilir.
+
+Bir system, essential functionality’yi anlamak veya operate etmek için gerekli interaction’larda yalnızca touch gestures, haptic feedback, physical texture, vibration, force, pressure veya touch-only controls’a güvenmemelidir.
+
+## Ek Sensory Domains
+
+CatalystUI ayrıca **tat** ve **koku**yu sensory domains olarak tanır. System bunları anlamlı biçimde kullanıyorsa accessibility review sırasında dikkate alınabilirler.
+
+Tat ve koku verification için **inclusive** kabul edilir; yani meaningful alternate access veya ek context sağladıklarında accessibility review’u güçlendirebilir veya destekleyebilirler.
+
+Tat ve koku şu anda failure için **exclusive** değildir; yani bir system taste-based veya smell-based interaction sağlamadığı için tek başına Accessibility Verification’dan kalmaz.
+
+CatalystUI Accessibility Verification öncelikle system’ın görme, ses veya dokunma tek tek unavailable olduğunda makul ölçüde kullanılabilir kalıp kalmadığıyla ilgilenir.
+
 ## “Within Spec” Ne Anlama Gelir
 
-Bir system **within spec** kabul edildiğinde, CatalystUI Team'in sistemi manuel olarak review ettiği ve bu verification category tarafından açıklanan internationalization requirements'ı karşıladığı sonucuna varmayı makul bulduğu anlamına gelir.
+Bir system **within spec** kabul edildiğinde, CatalystUI Team’in system’ı manuel olarak incelediği ve bu verification category tarafından açıklanan accessibility requirements’ı karşıladığını makul biçimde sonuçlandırdığı anlamına gelir.
 
-Bu, tek bir katı implementation pattern gerektirmez. Bir system requirement'ı resource files, translation tables, locale-aware routing, compiled language assets, database-backed translations, runtime language packs veya sisteme uygun başka bir stable mechanism aracılığıyla karşılayabilir.
+Bu, tek bir katı implementation pattern gerektirmez. Bir system accessibility requirements’ı native platform accessibility APIs, semantic structure, alternate input methods, alternate output methods, assistive-technology support, built-in accessibility settings, device-level integration veya system’a uygun başka bir stable mechanism ile karşılayabilir.
 
-Verification, system'in tek bir belirli translation architecture kullanıp kullanmadığından çok kullanıcıların essential system'e required languages içinde pratik olarak erişebilmesiyle ilgilenir.
+Verification, system’ın belirli bir accessibility architecture kullanıp kullanmadığından çok, bir primary sense unavailable olduğunda users’ın essential system’a pratik olarak erişebilmesiyle ilgilenir.
 
-<a id="what-verification-does-not-mean"></a>
 ## Verification Ne Anlama Gelmez
 
-CatalystUI Verified for Internationalization her çevirinin mükemmel, edebî, idiomatic, culturally complete veya her region için legally sufficient olduğunu garanti etmez.
+CatalystUI Verified for Accessibility, her olası disability, device, assistive technology, medical condition, legal requirement, regional standard veya specialized use case’in tamamen incelendiğini garanti etmez.
 
-Ayrıca accessibility, typography, right-to-left layout, locale-specific formatting, currency formatting, date formatting, legal compliance veya regional business requirements'ı, bu konular reviewed internationalization scope içine dahil edilmedikçe otomatik olarak verify etmez.
+Ayrıca bu konular reviewed accessibility scope içine alınmadıkça internationalization, translation quality, typography, localization, regional compliance veya general design quality’yi otomatik olarak verify etmez.
 
-Bir system güçlü translation coverage sağlayabilir ve yine de accessibility, localization quality, regional compliance veya diğer specialized concerns için ayrı review gerektirebilir.
+Bir system CatalystUI’nin accessibility modeline göre makul ölçüde accessible olabilir ve yine de legal compliance, platform certification, specialized assistive technology support veya başka accessibility standards için ayrı review gerektirebilir.
 
-<a id="why-this-verification-exists"></a>
 ## Bu Verification Neden Var
 
-Bir user interface ancak kullanıcı ilettiği şeyi anlayabildiğinde yararlıdır.
+Bir user interface ancak users onu gerçekten kullanabildiğinde başarılıdır.
 
-Birçok system language support iddiasında bulunurken deneyimin yalnızca küçük bir bölümünü çevirir, language selection'ı gizler, önemli messages'ı atlar veya essential workflows'u kısmen çevrilmemiş bırakır. Bu durum confusion oluşturur ve kullanıcıların system'e güvenmesini engeller.
+Birçok system accessibility’yi human-computer interaction’ın temel bir parçası yerine afterthought, checklist veya dar bir technical requirement olarak ele alır. CatalystUI daha basit ve daha doğrudan bir approach benimser: Bir system human perception’a bağlıysa, bir primary sensory path unavailable olduğunda essential meaning’i korumalıdır.
 
-Internationalization Verification daha açık bir standart belirlemek için vardır. Required CatalystUI language set genelinde kullanıcıları desteklemek için ciddi ve pratik çaba gösteren ve kullanıcıların ihtiyaç duydukları dili seçmeleri için makul bir yol sağlayan sistemleri tanımlar.
+Accessibility Verification bu sorumluluğu ciddiye alan systems’ı belirlemek için vardır. Meaningful alternate access sağlayan, essential functionality’yi koruyan ve users’ı tek bir required sense arkasına hapsetmeyen systems’ı tanır.
 
-<a id="verification-scope"></a>
-## Verification Kapsamı
+## Verification Scope
 
-CatalystUI Verification for Internationalization, verification verildiği sırada var olduğu haliyle reviewed system, service, framework, application veya implementation için geçerlidir.
+CatalystUI Verification for Accessibility, verification verildiği anda mevcut olan reviewed system, service, framework, application, library veya implementation için geçerlidir.
 
-Verified system required languages için yeterli essential translation coverage sağlar. Her future page, feature, release, plugin, extension veya third-party integration'ın otomatik olarak within spec olduğunu garanti etmez.
+Verified system, reviewed conditions altında essential functionality’si için reasonable accessibility sağlar. Bu, her future page, feature, release, plugin, extension, third-party integration, device veya platform-specific version’ın otomatik olarak within spec olduğunu garanti etmez.
 
-Separate products, modules, services, language packs veya major revisions, istenen verification category'ye bağlı olarak kendi review'larını gerektirebilir.
+Separate products, modules, services, major revisions veya platform-specific builds, istenen verification category’ye bağlı olarak kendi review sürecini gerektirebilir.
 
-<a id="verification-validity"></a>
-## Verification Geçerliliği
+## Verification Validity
 
-CatalystUI Verification yalnızca verification'ın verildiği sıradaki reviewed state of the system için geçerlidir.
+CatalystUI Verification yalnızca verification verildiği anda system’ın reviewed state’i için geçerlidir.
 
-Bir system, verified internationalization foundation'ı koruduğu sürece sonraki updates boyunca verification'ını koruyabilir. Minor wording changes, added translations ve ordinary content updates verification'ı otomatik olarak geçersiz kılmaz.
+Bir system, verified accessibility foundation’ı koruduğu sürece sonraki updates boyunca verification’ını koruyabilir. Minor wording changes, visual refinements, performance improvements ve ordinary content updates verification’ı otomatik olarak geçersiz kılmaz.
 
-Bir system required language support'u kaldırırsa, language selection'ı bozarsa, essential translation coverage'ı önemli ölçüde azaltırsa veya internationalization architecture'ını verified behavior'ı etkileyen şekilde değiştirirse yeni review gerekebilir.
+System alternate access paths’i kaldırırsa, assistive-technology support’u bozarsa, essential navigation’ı substantial biçimde değiştirirse, required accessibility settings’i kaldırırsa veya interaction behavior’ı verified accessibility foundation’ı etkileyecek şekilde değiştirirse yeni review gerekebilir.
 
-Başka bir deyişle, translation support'u iyileştirmek genellikle sorun değildir. Verified multilingual base'i bozmak review gerektirebilir.
+Başka bir deyişle, accessibility’yi iyileştirmek genellikle sorun değildir. Verified access model’ı bozmak review gerektirebilir.
 
-<a id="verified-systems"></a>
 ## Verified Systems
 
-Internationalization için verified olduğu bilinen sistemler uygun CatalystUI Verified page üzerinde ayrı olarak listelenir.
+Accessibility için verified olduğu bilinen systems, ilgili CatalystUI Verified page üzerinde ayrı olarak listelenir.

@@ -1,7 +1,7 @@
-<!-- Цей переклад було створено ChatGPT, і його має переглянути перекладач-людина. -->
+<!-- Цей переклад створено ChatGPT, і його має перевірити людина-перекладач. -->
 
-<!-- Видаліть ці рядки у pull request після перевірки перекладу. -->
+<!-- Видаліть ці рядки в pull request після перевірки перекладу. -->
 
 # Reviewed Services
 
-Navigation view укажіть service, щоб переглянути review status цього service.
+Виберіть service у navigation view, щоб побачити review status цього service.

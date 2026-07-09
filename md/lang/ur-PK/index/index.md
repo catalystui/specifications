@@ -1,21 +1,19 @@
-<!-- یہ ترجمہ ChatGPT کے ذریعے تیار کیا گیا ہے اور اسے کسی انسانی مترجم سے نظرثانی کروانی چاہیے۔ -->
+<!-- یہ ترجمہ ChatGPT نے تیار کیا ہے اور کسی انسانی مترجم کو اس کا جائزہ لینا چاہیے۔ -->
 
-<!-- ترجمے کی تصدیق کے بعد pull request میں یہ سطریں ہٹا دیں۔ -->
+<!-- ترجمہ تصدیق ہونے کے بعد pull request میں یہ سطریں ہٹا دیں۔ -->
 
 # Verification Index
 
-<a id="verified-services"></a>
 ## Verified Services
 
-وہ services جو specification(s) کو meet کرنے کے لیے verified ہو چکی ہیں، نیچے listed ہیں۔ ان services نے defined standards کے ساتھ compliance ensure کرنے کے لیے necessary testing and validation مکمل کیا ہے۔
+وہ services جو specification(s) کو meet کرنے کے لیے verified ہیں نیچے listed ہیں۔ ان services نے defined standards کے ساتھ compliance ensure کرنے کے لیے required testing اور validation complete کی ہے۔
 
-| زبان | Specification(s) | تاریخ | |
+| Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
 
-<a id="reviewed-services"></a>
 ## Reviewed Services
 
-وہ services جن کا specification(s) کے ساتھ compliance کے لیے review کیا گیا ہے، نیچے listed ہیں۔ ان services نے initial review process مکمل کیا ہے، مگر وہ ابھی fully verified نہیں ہو سکتیں یا ان میں ایسے issues پائے گئے ہو سکتے ہیں جو resolve ہو بھی سکتے ہیں یا نہیں بھی۔ Full compliance حاصل کرنے کے لیے further testing and validation required ہو سکتی ہے۔
+وہ services جن کا specification(s) کے ساتھ compliance کے لیے review کیا گیا ہے نیچے listed ہیں۔ ان services نے initial review process complete کیا ہے، لیکن ہو سکتا ہے وہ ابھی fully verified نہ ہوں یا ان میں ایسے issues ہوں جو resolve ہو بھی سکتے ہیں یا نہیں بھی۔ Full compliance حاصل کرنے کے لیے additional testing اور validation required ہو سکتی ہے۔
 
-| زبان | Specification(s) | تاریخ | |
+| Language | Specification(s) | Date | |
 | -------- | ---------------- | ---- | ---- |
