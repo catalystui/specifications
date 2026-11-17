@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+Ang isang status code value ay kumakatawan sa kinalabasan ng isang nakumpletong operation. Ang kahulugan nito ay hindi nakadepende sa mga kaugnay na context, operation, at detail code value, at tinutukoy ng specification na ito.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-A context code value represents additional contextual information about a completed operation, as defined by the associated operation; it must be zero when the status code level is $\mathrm{Success}$, and is otherwise implementation-defined.
+Ang isang context code value ay tumutukoy sa context kung saan isinagawa ang isang operation. Ang kahulugan nito ay natatangi sa loob ng scope ng kaugnay na implementation; dapat itong maging zero kapag ang status code level ay $\mathrm{Success}$, at sa ibang pagkakataon ay tinutukoy ng implementation.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ An operation code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\
 
 #### Operation Code()
 
-An operation code value represents the operation associated with a result. Its meaning is defined by the corresponding operation and its documentation. Undefined values are considered unknown.
+Ang isang operation code value ay tumutukoy sa isang natatanging operation sa loob ng execution context. Ang kahulugan nito ay natatangi sa context na iyon, tinutukoy ng kaugnay na implementation, at kung hindi tinukoy ay hindi alam.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ A detail code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$, 
 
 #### Detail Code()
 
-A detail code value represents additional information about a completed operation; its meaning is defined by the associated status, context, or operation code (in that order), and is otherwise unknown.
+Ang isang detail code value ay kumakatawan sa karagdagang impormasyon tungkol sa isang nakumpletong operation. Ang kahulugan nito ay natatangi sa kaugnay na operation maliban kung tinutukoy ito ng kaugnay na status o context code, na may prayoridad sa ganoong pagkakasunod-sunod. Ang mga value na hindi tinukoy ay itinuturing na hindi alam.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

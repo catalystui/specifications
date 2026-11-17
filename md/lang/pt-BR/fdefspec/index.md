@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Código de status()
 
+Um valor de código de status representa o resultado de uma operação concluída. Seu significado é independente dos valores dos códigos de contexto, operação e detalhe associados e é definido por esta especificação.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Código de status Level()
@@ -367,7 +369,7 @@ Um código de contexto é qualquer $(b_0,\dots,b_7)$ tal que, para todo $i \in \
 
 #### Código de contexto()
 
-Um valor de código de contexto representa informações contextuais adicionais sobre uma operação concluída, conforme definido pela operação associada; ele deve ser zero quando o nível do código de status é $\mathrm{Success}$ e, caso contrário, é definido pela implementação.
+Um valor de código de contexto identifica o contexto em que uma operação foi realizada. Seu significado é único no escopo da implementação associada; ele deve ser zero quando o nível do código de status é $\mathrm{Success}$ e, caso contrário, é definido pela implementação.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ Um código de operação é qualquer $(b_0,\dots,b_7)$ tal que, para todo $i \in
 
 #### Código de operação()
 
-Um valor de código de operação representa a operação associada a um resultado. Seu significado é definido pela operação correspondente e por sua documentação. Valores indefinidos são considerados desconhecidos.
+Um valor de código de operação identifica uma operação distinta dentro de um contexto de execução. Seu significado é único nesse contexto, é definido pela implementação associada e, caso contrário, é desconhecido.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ Um código de detalhe é qualquer $(b_0,\dots,b_7)$ tal que, para todo $i \in \{
 
 #### Código de detalhe()
 
-Um valor de código de detalhe representa informações adicionais sobre uma operação concluída; seu significado é definido pelo status, contexto ou código de operação associado, nessa ordem, e caso contrário é desconhecido.
+Um valor de código de detalhe representa informações adicionais sobre uma operação concluída. Seu significado é próprio da operação associada, a menos que seja definido pelo código de status ou de contexto associado, que têm precedência nessa ordem. Valores indefinidos são considerados desconhecidos.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

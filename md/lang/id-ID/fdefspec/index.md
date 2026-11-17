@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Kode Status()
 
+Nilai kode status merepresentasikan hasil dari operasi yang telah selesai. Maknanya tidak bergantung pada nilai kode konteks, operasi, dan detail terkait, dan didefinisikan oleh spesifikasi ini.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Kode Status Level()
@@ -367,7 +369,7 @@ Kode konteks adalah setiap $(b_0,\dots,b_7)$ sedemikian sehingga untuk semua $i 
 
 #### Kode Konteks()
 
-Nilai kode konteks merepresentasikan informasi kontekstual tambahan tentang operasi yang telah selesai, sebagaimana didefinisikan oleh operasi terkait; nilainya harus nol ketika tingkat kode status adalah $\mathrm{Success}$, dan selain itu bersifat implementation-defined.
+Nilai kode konteks mengidentifikasi konteks tempat suatu operasi dilakukan. Maknanya unik dalam cakupan implementasi terkait; nilainya harus nol ketika tingkat kode status adalah $\mathrm{Success}$, dan selain itu bersifat implementation-defined.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ Kode operasi adalah setiap $(b_0,\dots,b_7)$ sedemikian sehingga untuk semua $i 
 
 #### Kode Operasi()
 
-Nilai kode operasi merepresentasikan operasi yang terkait dengan suatu result. Maknanya didefinisikan oleh operasi yang bersesuaian dan dokumentasinya. Nilai yang tidak didefinisikan dianggap unknown.
+Nilai kode operasi mengidentifikasi suatu operasi yang berbeda dalam konteks eksekusi. Maknanya unik dalam konteks tersebut, didefinisikan oleh implementasi terkait, dan selain itu unknown.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ Kode detail adalah setiap $(b_0,\dots,b_7)$ sedemikian sehingga untuk semua $i \
 
 #### Kode Detail()
 
-Nilai kode detail merepresentasikan informasi tambahan tentang operasi yang telah selesai; maknanya didefinisikan oleh status, konteks, atau kode operasi terkait (dalam urutan tersebut), dan selain itu unknown.
+Nilai kode detail merepresentasikan informasi tambahan tentang operasi yang telah selesai. Maknanya khusus untuk operasi terkait, kecuali jika didefinisikan oleh kode status atau konteks terkait, yang memiliki prioritas dalam urutan tersebut. Nilai yang tidak didefinisikan dianggap unknown.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+একটি status code value completed operation-এর outcome উপস্থাপন করে। এর meaning associated context, operation, এবং detail code values থেকে independent, এবং এই specification দ্বারা defined।
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ status code values-এর set হলো range $[0, 255]$, যা চারটি
 
 #### Context Code()
 
-একটি context code value completed operation সম্পর্কে অতিরিক্ত contextual information উপস্থাপন করে, যা associated operation দ্বারা defined; status code level $\mathrm{Success}$ হলে এটি zero হতে হবে, অন্যথায় এটি implementation-defined।
+একটি context code value যে context-এ একটি operation সম্পাদিত হয়েছে তা শনাক্ত করে। এর meaning associated implementation-এর scope-এর মধ্যে unique; status code level $\mathrm{Success}$ হলে এটি zero হতে হবে, অন্যথায় এটি implementation-defined।
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ status code values-এর set হলো range $[0, 255]$, যা চারটি
 
 #### Operation Code()
 
-একটি operation code value result-এর সঙ্গে associated operation উপস্থাপন করে। এর meaning corresponding operation এবং তার documentation দ্বারা defined। Undefined values unknown হিসেবে বিবেচিত হয়।
+একটি operation code value execution context-এর মধ্যে একটি স্বতন্ত্র operation শনাক্ত করে। এর meaning সেই context-এর মধ্যে unique, associated implementation দ্বারা defined, এবং অন্যথায় unknown।
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ status code values-এর set হলো range $[0, 255]$, যা চারটি
 
 #### Detail Code()
 
-একটি detail code value completed operation সম্পর্কে অতিরিক্ত information উপস্থাপন করে; তার meaning associated status, context, অথবা operation code দ্বারা defined হয়, সেই ক্রমে, এবং অন্যথায় unknown।
+একটি detail code value completed operation সম্পর্কে অতিরিক্ত information উপস্থাপন করে। এর meaning associated operation-এর জন্য unique, যদি না associated status বা context code দ্বারা defined হয়, যেগুলি সেই ক্রমে precedence পায়। Undefined values unknown হিসেবে বিবেচিত হয়।
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

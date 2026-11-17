@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+Een statuscodewaarde vertegenwoordigt de uitkomst van een voltooide bewerking. De betekenis ervan is onafhankelijk van de bijbehorende context-, operation- en detailcodewaarden en wordt door deze specificatie gedefinieerd.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-Een contextcodewaarde vertegenwoordigt aanvullende contextuele informatie over een voltooide bewerking, zoals gedefinieerd door de bijbehorende bewerking; zij moet nul zijn wanneer het statuscodeniveau $\mathrm{Success}$ is en is anders implementatiegedefinieerd.
+Een contextcodewaarde identificeert de context waarin een bewerking werd uitgevoerd. De betekenis ervan is uniek binnen het bereik van de bijbehorende implementatie; zij moet nul zijn wanneer het statuscodeniveau $\mathrm{Success}$ is en is anders implementatiegedefinieerd.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ An operation code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\
 
 #### Operation Code()
 
-Een operation-codewaarde vertegenwoordigt de bewerking die aan een resultaat is gekoppeld. De betekenis ervan wordt gedefinieerd door de overeenkomstige bewerking en de documentatie daarvan. Ongedefinieerde waarden worden als onbekend beschouwd.
+Een operation-codewaarde identificeert een afzonderlijke bewerking binnen een uitvoeringscontext. De betekenis ervan is uniek binnen die context, wordt gedefinieerd door de bijbehorende implementatie en is anders onbekend.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ A detail code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$, 
 
 #### Detail Code()
 
-Een detailcodewaarde vertegenwoordigt aanvullende informatie over een voltooide bewerking; de betekenis ervan wordt gedefinieerd door de bijbehorende status-, context- of operation-code (in die volgorde), en is anders onbekend.
+Een detailcodewaarde vertegenwoordigt aanvullende informatie over een voltooide bewerking. De betekenis ervan is eigen aan de bijbehorende bewerking, tenzij deze wordt gedefinieerd door de bijbehorende status- of contextcode, die in die volgorde voorrang hebben. Ongedefinieerde waarden worden als onbekend beschouwd.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

@@ -301,6 +301,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### 状态码()
 
+状态码值表示已完成操作的结果。其含义独立于关联的上下文码、操作码和细节码的值，并由本规范定义。
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### 状态码 Level()
@@ -368,7 +370,7 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### 上下文码()
 
-上下文码值表示与已完成操作相关的额外上下文信息，其含义由关联操作定义；当状态码级别为 $\mathrm{Success}$ 时，它必须为零，否则由实现定义。
+上下文码值标识执行操作的上下文。其含义在关联实现的范围内是唯一的；当状态码级别为 $\mathrm{Success}$ 时，它必须为零，否则由实现定义。
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -378,7 +380,7 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### 操作码()
 
-操作码值表示与某个结果相关联的操作。其含义由相应操作及其文档定义。未定义的值被视为未知。
+操作码值标识执行上下文中的一个独立操作。其含义在该上下文中是唯一的，由关联实现定义，否则视为未知。
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -388,7 +390,7 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### 细节码()
 
-细节码值表示关于已完成操作的额外信息；其含义依次由关联的状态码、上下文码或操作码定义，否则视为未知。
+细节码值表示关于已完成操作的额外信息。除非由关联的状态码或上下文码定义（两者依次具有优先权），其含义特定于关联操作。未定义的值被视为未知。
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

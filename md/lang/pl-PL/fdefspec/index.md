@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Kod\ Poziom} = \{\, \mathrm{Success}, \mathr
 
 #### Kod statusu()
 
+Wartość kodu statusu reprezentuje wynik ukończonej operacji. Jej znaczenie jest niezależne od wartości powiązanych kodów kontekstu, operacji i szczegółu oraz jest definiowane przez niniejszą specyfikację.
+
 > $\mathrm{Status\ Kod}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Kod statusu Poziom()
@@ -367,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ takie, że for all $i \in \{0,\dots,7\}$
 
 #### Kod kontekstu()
 
-Wartość kodu kontekstu reprezentuje dodatkowe informacje kontekstowe o ukończonej operacji zgodnie z definicją powiązanej operacji; musi wynosić zero, gdy poziom kodu statusu to $\mathrm{Success}$, a w przeciwnym razie jest zależna od implementacji.
+Wartość kodu kontekstu identyfikuje kontekst, w którym wykonano operację. Jej znaczenie jest unikalne w zakresie powiązanej implementacji; musi wynosić zero, gdy poziom kodu statusu to $\mathrm{Success}$, a w przeciwnym razie jest zależna od implementacji.
 
 > $\mathrm{Context\ Kod}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ An operation code is any $(b_0,\dots,b_7)$ takie, że for all $i \in \{0,\dots,7
 
 #### Kod operacji()
 
-Wartość kodu operacji reprezentuje operację powiązaną z wynikiem. Jej znaczenie jest definiowane przez odpowiednią operację i jej dokumentację. Niezdefiniowane wartości są uznawane za nieznane.
+Wartość kodu operacji identyfikuje odrębną operację w kontekście wykonania. Jej znaczenie jest unikalne w tym kontekście, jest definiowane przez powiązaną implementację, a w przeciwnym razie jest nieznane.
 
 > $\mathrm{Operation\ Kod}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ A detail code is any $(b_0,\dots,b_7)$ takie, że for all $i \in \{0,\dots,7\}$,
 
 #### Kod szczegółu()
 
-Wartość kodu szczegółu reprezentuje dodatkowe informacje o ukończonej operacji; jej znaczenie jest definiowane przez powiązany kod statusu, kontekstu lub operacji (w tej kolejności), a w przeciwnym razie jest nieznane.
+Wartość kodu szczegółu reprezentuje dodatkowe informacje o ukończonej operacji. Jej znaczenie jest właściwe dla powiązanej operacji, chyba że określa je powiązany kod statusu lub kontekstu, które mają pierwszeństwo w tej kolejności. Niezdefiniowane wartości są uznawane za nieznane.
 
 > $\mathrm{Szczegół\ Kod}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

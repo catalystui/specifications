@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+status code value は完了した operation の結果を表します。その意味は関連する context、operation、detail code の値から独立しており、この仕様によって定義されます。
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ context code は任意の $(b_0,\dots,b_7)$ であり、すべての $i \in \{0,
 
 #### Context Code()
 
-context code value は、関連する operation によって定義される、完了した operation に関する追加の contextual information を表します。status code level が $\mathrm{Success}$ の場合は zero でなければならず、それ以外の場合は implementation-defined です。
+context code value は operation が実行された context を識別します。その意味は関連する implementation の範囲内で一意です。status code level が $\mathrm{Success}$ の場合は zero でなければならず、それ以外の場合は implementation-defined です。
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ operation code は任意の $(b_0,\dots,b_7)$ であり、すべての $i \in \{
 
 #### Operation Code()
 
-operation code value は result に関連付けられた operation を表します。その意味は対応する operation とそのドキュメントによって定義されます。未定義の値は unknown と見なされます。
+operation code value は execution context 内の個別の operation を識別します。その意味はその context 内で一意であり、関連する implementation によって定義され、そうでない場合は unknown です。
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ detail code は任意の $(b_0,\dots,b_7)$ であり、すべての $i \in \{0,\
 
 #### Detail Code()
 
-detail code value は完了した operation に関する追加情報を表します。その意味は、関連する status、context、operation code の順で定義され、そうでない場合は unknown です。
+detail code value は完了した operation に関する追加情報を表します。その意味は関連する status code または context code によって定義されない限り、関連する operation に固有です。これらの code はこの順で優先されます。未定義の値は unknown と見なされます。
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

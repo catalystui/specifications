@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+یک مقدار status code نتیجهٔ یک عملیات کامل‌شده را نشان می‌دهد. معنای آن مستقل از مقدارهای context، operation و detail code وابسته است و توسط این مشخصات تعریف می‌شود.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Context Code()
 
-یک مقدار context code اطلاعات زمینه‌ای بیشتری دربارهٔ یک عملیات کامل‌شده ارائه می‌کند، همان‌گونه که توسط عملیات وابسته تعریف شده است؛ این مقدار وقتی سطح status code برابر $\mathrm{Success}$ است باید صفر باشد، و در غیر این صورت وابسته به پیاده‌سازی است.
+یک مقدار context code زمینه‌ای را که عملیات در آن انجام شده است مشخص می‌کند. معنای آن در محدودهٔ پیاده‌سازی وابسته یکتا است؛ وقتی سطح status code برابر $\mathrm{Success}$ است باید صفر باشد و در غیر این صورت وابسته به پیاده‌سازی است.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Operation Code()
 
-یک مقدار operation code عملیاتی را که با یک result مرتبط است نشان می‌دهد. معنای آن توسط عملیات متناظر و مستندات آن تعریف می‌شود. مقدارهای تعریف‌نشده unknown در نظر گرفته می‌شوند.
+یک مقدار operation code یک عملیات متمایز را در یک زمینهٔ اجرا مشخص می‌کند. معنای آن در همان زمینه یکتا است، توسط پیاده‌سازی وابسته تعریف می‌شود و در غیر این صورت unknown است.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Detail Code()
 
-یک مقدار detail code اطلاعات بیشتری دربارهٔ یک عملیات کامل‌شده نشان می‌دهد؛ معنای آن توسط status، context یا operation code وابسته، به همین ترتیب، تعریف می‌شود و در غیر این صورت unknown است.
+یک مقدار detail code اطلاعات بیشتری دربارهٔ یک عملیات کامل‌شده نشان می‌دهد. معنای آن مختص عملیات وابسته است، مگر آنکه توسط status code یا context code وابسته تعریف شده باشد، که به همین ترتیب اولویت دارند. مقدارهای تعریف‌نشده unknown در نظر گرفته می‌شوند.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Code d’état()
 
+Une valeur de code d’état représente l’issue d’une opération terminée. Son sens est indépendant des valeurs des codes de contexte, d’opération et de détail associés, et est défini par cette spécification.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Niveau de code d’état()
@@ -367,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Code de contexte()
 
-Une valeur de code de contexte représente des informations contextuelles supplémentaires sur une opération terminée, telles que définies par l’opération associée ; elle doit valoir zéro lorsque le niveau du code d’état est $\mathrm{Success}$, et elle est sinon définie par l’implémentation.
+Une valeur de code de contexte identifie le contexte dans lequel une opération a été effectuée. Son sens est unique dans le périmètre de l’implémentation associée ; elle doit valoir zéro lorsque le niveau du code d’état est $\mathrm{Success}$, et elle est sinon définie par l’implémentation.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ An operation code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\
 
 #### Code d’opération()
 
-Une valeur de code d’opération représente l’opération associée à un résultat. Son sens est défini par l’opération correspondante et sa documentation. Les valeurs non définies sont considérées comme inconnues.
+Une valeur de code d’opération identifie une opération distincte au sein d’un contexte d’exécution. Son sens est unique dans ce contexte, est défini par l’implémentation associée et est sinon inconnu.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ A detail code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$, 
 
 #### Code de détail()
 
-Une valeur de code de détail représente des informations supplémentaires sur une opération terminée ; son sens est défini par le code d’état, de contexte ou d’opération associé (dans cet ordre), et il est sinon inconnu.
+Une valeur de code de détail représente des informations supplémentaires sur une opération terminée. Son sens est propre à l’opération associée, sauf s’il est défini par le code d’état ou de contexte associé, qui ont priorité dans cet ordre. Les valeurs non définies sont considérées comme inconnues.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

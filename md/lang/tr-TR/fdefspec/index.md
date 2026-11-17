@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+Bir status code değeri, tamamlanmış bir işlemin sonucunu temsil eder. Anlamı, ilişkili context, operation ve detail code değerlerinden bağımsızdır ve bu spesifikasyon tarafından tanımlanır.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-A context code value represents additional contextual information about a completed operation, as defined by the associated operation; it must be zero when the status code level is $\mathrm{Success}$, and is otherwise implementation-defined.
+Bir context code değeri, işlemin gerçekleştirildiği bağlamı tanımlar. Anlamı, ilişkili implementasyonun kapsamı içinde benzersizdir; status code seviyesi $\mathrm{Success}$ olduğunda sıfır olmalıdır, aksi durumda implementasyon tarafından tanımlanır.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ An operation code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\
 
 #### Operation Code()
 
-An operation code value represents the operation associated with a result. Its meaning is defined by the corresponding operation and its documentation. Undefined values are considered unknown.
+Bir operation code değeri, bir yürütme bağlamı içindeki belirli bir işlemi tanımlar. Anlamı o bağlam içinde benzersizdir, ilişkili implementasyon tarafından tanımlanır ve aksi durumda bilinmiyor kabul edilir.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ A detail code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$, 
 
 #### Detail Code()
 
-A detail code value represents additional information about a completed operation; its meaning is defined by the associated status, context, or operation code (in that order), and is otherwise unknown.
+Bir detail code değeri, tamamlanmış bir işlem hakkında ek bilgi temsil eder. Anlamı, sırasıyla önceliğe sahip ilişkili status code veya context code tarafından tanımlanmadıkça ilişkili işleme özgüdür. Tanımlanmamış değerler bilinmiyor kabul edilir.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

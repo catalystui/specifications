@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Código de estado()
 
+Un valor de código de estado representa el resultado de una operación completada. Su significado es independiente de los valores de código de contexto, operación y detalle asociados, y está definido por esta especificación.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Nivel de código de estado()
@@ -367,7 +369,7 @@ Un código de contexto es cualquier $(b_0,\dots,b_7)$ tal que, para todo $i \in 
 
 #### Código de contexto()
 
-Un valor de código de contexto representa información contextual adicional sobre una operación completada, según lo definido por la operación asociada; debe ser cero cuando el nivel del código de estado es $\mathrm{Success}$ y, en caso contrario, queda definido por la implementación.
+Un valor de código de contexto identifica el contexto en el que se realizó una operación. Su significado es único dentro del ámbito de la implementación asociada; debe ser cero cuando el nivel del código de estado es $\mathrm{Success}$ y, en caso contrario, queda definido por la implementación.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ Un código de operación es cualquier $(b_0,\dots,b_7)$ tal que, para todo $i \i
 
 #### Código de operación()
 
-Un valor de código de operación representa la operación asociada con un resultado. Su significado lo definen la operación correspondiente y su documentación. Los valores no definidos se consideran desconocidos.
+Un valor de código de operación identifica una operación distinta dentro de un contexto de ejecución. Su significado es único dentro de ese contexto, está definido por la implementación asociada y, en caso contrario, es desconocido.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ Un código de detalle es cualquier $(b_0,\dots,b_7)$ tal que, para todo $i \in \
 
 #### Código de detalle()
 
-Un valor de código de detalle representa información adicional sobre una operación completada; su significado se define por el código de estado, contexto u operación asociado (en ese orden), y en caso contrario es desconocido.
+Un valor de código de detalle representa información adicional sobre una operación completada. Su significado es propio de la operación asociada, salvo que lo defina el código de estado o de contexto asociado, que tienen precedencia en ese orden. Los valores no definidos se consideran desconocidos.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

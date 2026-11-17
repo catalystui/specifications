@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Codice di stato()
 
+Un valore di codice di stato rappresenta l’esito di un’operazione completata. Il suo significato è indipendente dai valori dei codici di contesto, operazione e dettaglio associati ed è definito da questa specifica.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Livello del codice di stato()
@@ -367,7 +369,7 @@ Un codice di contesto è qualsiasi $(b_0,\dots,b_7)$ tale che per ogni $i \in \{
 
 #### Codice di contesto()
 
-Un valore di codice di contesto rappresenta informazioni contestuali aggiuntive su un’operazione completata, come definito dall’operazione associata; deve essere zero quando il livello del codice di stato è $\mathrm{Success}$, ed è altrimenti definito dall’implementazione.
+Un valore di codice di contesto identifica il contesto in cui è stata eseguita un’operazione. Il suo significato è univoco nell’ambito dell’implementazione associata; deve essere zero quando il livello del codice di stato è $\mathrm{Success}$, ed è altrimenti definito dall’implementazione.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ Un codice di operazione è qualsiasi $(b_0,\dots,b_7)$ tale che per ogni $i \in 
 
 #### Codice di operazione()
 
-Un valore di codice di operazione rappresenta l’operazione associata a un risultato. Il suo significato è definito dall’operazione corrispondente e dalla sua documentazione. I valori indefiniti sono considerati sconosciuti.
+Un valore di codice di operazione identifica una distinta operazione all’interno di un contesto di esecuzione. Il suo significato è univoco in quel contesto, è definito dall’implementazione associata ed è altrimenti sconosciuto.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ Un codice di dettaglio è qualsiasi $(b_0,\dots,b_7)$ tale che per ogni $i \in \
 
 #### Codice di dettaglio()
 
-Un valore di codice di dettaglio rappresenta informazioni aggiuntive su un’operazione completata; il suo significato è definito dal codice di stato, contesto o operazione associato, in quest’ordine, ed è altrimenti sconosciuto.
+Un valore di codice di dettaglio rappresenta informazioni aggiuntive su un’operazione completata. Il suo significato è specifico dell’operazione associata, a meno che non sia definito dal codice di stato o di contesto associato, che hanno precedenza in quest’ordine. I valori indefiniti sono considerati sconosciuti.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

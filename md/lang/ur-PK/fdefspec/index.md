@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+ایک status code value مکمل شدہ operation کے outcome کی نمائندگی کرتی ہے۔ اس کا مطلب متعلقہ context، operation، اور detail code values سے آزاد ہے اور اس specification کے ذریعے define ہوتا ہے۔
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-A context code value represents additional contextual information about a completed operation, as defined by the associated operation; it must be zero when the status code level is $\mathrm{Success}$, and is otherwise implementation-defined.
+ایک context code value اس context کی شناخت کرتی ہے جس میں operation انجام دیا گیا۔ اس کا مطلب متعلقہ implementation کے scope میں منفرد ہے؛ جب status code level $\mathrm{Success}$ ہو تو اس کی value صفر ہونی چاہیے، اور بصورتِ دیگر یہ implementation-defined ہے۔
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ An operation code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\
 
 #### Operation Code()
 
-An operation code value represents the operation associated with a result. Its meaning is defined by the corresponding operation and its documentation. Undefined values are considered unknown.
+ایک operation code value execution context کے اندر ایک منفرد operation کی شناخت کرتی ہے۔ اس کا مطلب اسی context کے اندر منفرد ہے، متعلقہ implementation کے ذریعے define ہوتا ہے، اور بصورتِ دیگر unknown ہے۔
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ A detail code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$, 
 
 #### Detail Code()
 
-A detail code value represents additional information about a completed operation; its meaning is defined by the associated status, context, or operation code (in that order), and is otherwise unknown.
+ایک detail code value مکمل شدہ operation کے بارے میں اضافی معلومات کی نمائندگی کرتی ہے۔ اس کا مطلب متعلقہ operation کے لیے مخصوص ہے، الا یہ کہ متعلقہ status یا context code اسے define کرے، جنہیں اسی ترتیب میں ترجیح حاصل ہے۔ Undefined values کو unknown سمجھا جاتا ہے۔
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

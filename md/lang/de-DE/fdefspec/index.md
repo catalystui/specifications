@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+Ein Statuscode-Wert stellt das Ergebnis einer abgeschlossenen Operation dar. Seine Bedeutung ist unabhängig von den zugehörigen Kontext-, Operations- und Detailcode-Werten und wird durch diese Spezifikation definiert.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ Ein Kontextcode ist jedes $(b_0,\dots,b_7)$, sodass für alle $i \in \{0,\dots,7
 
 #### Context Code()
 
-Ein Kontextcode-Wert stellt zusätzliche Kontextinformationen über eine abgeschlossene Operation dar, wie sie durch die zugehörige Operation definiert werden; er muss null sein, wenn die Statuscode-Ebene $\mathrm{Success}$ ist, und ist andernfalls implementierungsdefiniert.
+Ein Kontextcode-Wert identifiziert den Kontext, in dem eine Operation ausgeführt wurde. Seine Bedeutung ist innerhalb des Geltungsbereichs der zugehörigen Implementierung eindeutig; er muss null sein, wenn die Statuscode-Ebene $\mathrm{Success}$ ist, und ist andernfalls implementierungsdefiniert.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ Ein Operationscode ist jedes $(b_0,\dots,b_7)$, sodass für alle $i \in \{0,\dot
 
 #### Operation Code()
 
-Ein Operationscode-Wert stellt die Operation dar, die mit einem Ergebnis verbunden ist. Seine Bedeutung wird durch die entsprechende Operation und deren Dokumentation definiert. Undefinierte Werte gelten als unbekannt.
+Ein Operationscode-Wert identifiziert eine bestimmte Operation innerhalb eines Ausführungskontexts. Seine Bedeutung ist innerhalb dieses Kontexts eindeutig, wird durch die zugehörige Implementierung definiert und ist andernfalls unbekannt.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ Ein Detailcode ist jedes $(b_0,\dots,b_7)$, sodass für alle $i \in \{0,\dots,7\
 
 #### Detail Code()
 
-Ein Detailcode-Wert stellt zusätzliche Informationen über eine abgeschlossene Operation dar; seine Bedeutung wird durch den zugehörigen Status-, Kontext- oder Operationscode definiert, in dieser Reihenfolge, und ist andernfalls unbekannt.
+Ein Detailcode-Wert stellt zusätzliche Informationen über eine abgeschlossene Operation dar. Seine Bedeutung ist spezifisch für die zugehörige Operation, sofern sie nicht durch den zugehörigen Status- oder Kontextcode definiert wird, die in dieser Reihenfolge Vorrang haben. Undefinierte Werte gelten als unbekannt.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

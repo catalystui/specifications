@@ -300,6 +300,8 @@ $\displaystyle \quad\mathrm{Status\ Code\ Level} = \{\, \mathrm{Success}, \mathr
 
 #### Status Code()
 
+Một giá trị status code biểu thị kết quả của một operation đã hoàn tất. Ý nghĩa của nó độc lập với các giá trị context, operation và detail code liên quan, và được định nghĩa bởi đặc tả này.
+
 > $\mathrm{Status\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
 #### Status Code Level()
@@ -367,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-A context code value represents additional contextual information about a completed operation, as defined by the associated operation; it must be zero when the status code level is $\mathrm{Success}$, and is otherwise implementation-defined.
+Một giá trị context code xác định context mà trong đó một operation được thực hiện. Ý nghĩa của nó là duy nhất trong phạm vi implementation liên quan; giá trị phải bằng không khi status code level là $\mathrm{Success}$, và trong các trường hợp khác do implementation định nghĩa.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -377,7 +379,7 @@ An operation code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\
 
 #### Operation Code()
 
-An operation code value represents the operation associated with a result. Its meaning is defined by the corresponding operation and its documentation. Undefined values are considered unknown.
+Một giá trị operation code xác định một operation riêng biệt trong một execution context. Ý nghĩa của nó là duy nhất trong context đó, được định nghĩa bởi implementation liên quan, và nếu không được định nghĩa thì là unknown.
 
 > $\mathrm{Operation\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
@@ -387,7 +389,7 @@ A detail code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$, 
 
 #### Detail Code()
 
-A detail code value represents additional information about a completed operation; its meaning is defined by the associated status, context, or operation code (in that order), and is otherwise unknown.
+Một giá trị detail code biểu thị thông tin bổ sung về một operation đã hoàn tất. Ý nghĩa của nó là riêng cho operation liên quan, trừ khi được định nghĩa bởi status code hoặc context code liên quan, vốn được ưu tiên theo thứ tự đó. Các giá trị không được định nghĩa được coi là unknown.
 
 > $\mathrm{Detail\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
