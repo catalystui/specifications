@@ -369,7 +369,7 @@ context code は任意の $(b_0,\dots,b_7)$ であり、すべての $i \in \{0,
 
 #### Context Code()
 
-context code value は operation が実行された context を識別します。その意味は関連する implementation の範囲内で一意です。status code level が $\mathrm{Success}$ の場合は zero でなければならず、それ以外の場合は implementation-defined です。
+context code value は operation が実行された context を識別します。その意味は関連する implementation の範囲内で一意であり、その implementation によって定義されます。
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

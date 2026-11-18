@@ -369,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-Bir context code değeri, işlemin gerçekleştirildiği bağlamı tanımlar. Anlamı, ilişkili implementasyonun kapsamı içinde benzersizdir; status code seviyesi $\mathrm{Success}$ olduğunda sıfır olmalıdır, aksi durumda implementasyon tarafından tanımlanır.
+Bir context code değeri, işlemin gerçekleştirildiği bağlamı tanımlar. Anlamı, ilişkili implementasyonun kapsamı içinde benzersizdir ve söz konusu implementasyon tarafından tanımlanır.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

@@ -369,7 +369,7 @@ status code values-এর set হলো range $[0, 255]$, যা চারটি
 
 #### Context Code()
 
-একটি context code value যে context-এ একটি operation সম্পাদিত হয়েছে তা শনাক্ত করে। এর meaning associated implementation-এর scope-এর মধ্যে unique; status code level $\mathrm{Success}$ হলে এটি zero হতে হবে, অন্যথায় এটি implementation-defined।
+একটি context code value যে context-এ একটি operation সম্পাদিত হয়েছে তা শনাক্ত করে। এর meaning associated implementation-এর scope-এর মধ্যে unique, এবং সেই implementation দ্বারা defined।
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

@@ -369,7 +369,7 @@ context code는 모든 $i \in \{0,\dots,7\}$에 대해 $b_i \in \mathrm{Bit}$인
 
 #### Context Code()
 
-context code 값은 operation이 수행된 context를 식별합니다. 그 의미는 연결된 implementation의 범위 내에서 고유합니다. status code level이 $\mathrm{Success}$인 경우 0이어야 하며, 그 외의 경우에는 implementation-defined입니다.
+context code 값은 operation이 수행된 context를 식별합니다. 그 의미는 연결된 implementation의 범위 내에서 고유하며, 해당 implementation에 의해 정의됩니다.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

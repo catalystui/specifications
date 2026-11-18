@@ -369,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-Context code value उस context की पहचान करती है जिसमें कोई operation किया गया। इसका meaning associated implementation के scope में unique है; जब status code level $\mathrm{Success}$ हो तो यह zero होना चाहिए, और अन्यथा implementation-defined होता है।
+Context code value उस context की पहचान करती है जिसमें कोई operation किया गया। इसका meaning associated implementation के scope में unique है और उसी implementation द्वारा define होता है।
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

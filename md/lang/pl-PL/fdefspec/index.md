@@ -369,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ takie, że for all $i \in \{0,\dots,7\}$
 
 #### Kod kontekstu()
 
-Wartość kodu kontekstu identyfikuje kontekst, w którym wykonano operację. Jej znaczenie jest unikalne w zakresie powiązanej implementacji; musi wynosić zero, gdy poziom kodu statusu to $\mathrm{Success}$, a w przeciwnym razie jest zależna od implementacji.
+Wartość kodu kontekstu identyfikuje kontekst, w którym wykonano operację. Jej znaczenie jest unikalne w zakresie powiązanej implementacji i jest definiowane przez tę implementację.
 
 > $\mathrm{Context\ Kod}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

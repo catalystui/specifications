@@ -369,7 +369,7 @@ Un código de contexto es cualquier $(b_0,\dots,b_7)$ tal que, para todo $i \in 
 
 #### Código de contexto()
 
-Un valor de código de contexto identifica el contexto en el que se realizó una operación. Su significado es único dentro del ámbito de la implementación asociada; debe ser cero cuando el nivel del código de estado es $\mathrm{Success}$ y, en caso contrario, queda definido por la implementación.
+Un valor de código de contexto identifica el contexto en el que se realizó una operación. Su significado es único dentro del ámbito de la implementación asociada y está definido por dicha implementación.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

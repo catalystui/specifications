@@ -366,7 +366,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-A context code value identifies the context in which an operation was performed. Its meaning is unique within the scope of the associated implementation; it must be zero when the status code level is $\mathrm{Success}$, and is otherwise implementation-defined.
+A context code value identifies the context in which an operation was performed. Its meaning is unique within the scope of the associated implementation and is defined by that implementation.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

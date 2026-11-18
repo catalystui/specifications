@@ -369,7 +369,7 @@ Kode konteks adalah setiap $(b_0,\dots,b_7)$ sedemikian sehingga untuk semua $i 
 
 #### Kode Konteks()
 
-Nilai kode konteks mengidentifikasi konteks tempat suatu operasi dilakukan. Maknanya unik dalam cakupan implementasi terkait; nilainya harus nol ketika tingkat kode status adalah $\mathrm{Success}$, dan selain itu bersifat implementation-defined.
+Nilai kode konteks mengidentifikasi konteks tempat suatu operasi dilakukan. Maknanya unik dalam cakupan implementasi terkait dan didefinisikan oleh implementasi tersebut.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

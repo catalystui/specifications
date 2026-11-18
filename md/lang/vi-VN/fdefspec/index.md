@@ -369,7 +369,7 @@ A context code is any $(b_0,\dots,b_7)$ such that for all $i \in \{0,\dots,7\}$,
 
 #### Context Code()
 
-Một giá trị context code xác định context mà trong đó một operation được thực hiện. Ý nghĩa của nó là duy nhất trong phạm vi implementation liên quan; giá trị phải bằng không khi status code level là $\mathrm{Success}$, và trong các trường hợp khác do implementation định nghĩa.
+Một giá trị context code xác định context mà trong đó một operation được thực hiện. Ý nghĩa của nó là duy nhất trong phạm vi implementation liên quan và được định nghĩa bởi implementation đó.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 

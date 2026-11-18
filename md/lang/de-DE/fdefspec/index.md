@@ -369,7 +369,7 @@ Ein Kontextcode ist jedes $(b_0,\dots,b_7)$, sodass für alle $i \in \{0,\dots,7
 
 #### Context Code()
 
-Ein Kontextcode-Wert identifiziert den Kontext, in dem eine Operation ausgeführt wurde. Seine Bedeutung ist innerhalb des Geltungsbereichs der zugehörigen Implementierung eindeutig; er muss null sein, wenn die Statuscode-Ebene $\mathrm{Success}$ ist, und ist andernfalls implementierungsdefiniert.
+Ein Kontextcode-Wert identifiziert den Kontext, in dem eine Operation ausgeführt wurde. Seine Bedeutung ist innerhalb des Geltungsbereichs der zugehörigen Implementierung eindeutig und wird durch diese Implementierung definiert.
 
 > $\mathrm{Context\ Code}(b_0,\dots,b_7) = \sum_{i=0}^{7} b_i \cdot 2^{7-i}$
 
