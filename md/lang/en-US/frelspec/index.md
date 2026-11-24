@@ -3,8 +3,8 @@
 <br/>
 
 > **Foundational Relations Specification**<br/>
-> Revision 2<br/>
-> November 21st, 2026<br/>
+> Revision 2.1<br/>
+> November 24th, 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > All rights reserved.<br/>
@@ -27,6 +27,7 @@ By defining relationships between foundational concepts in a precise and stable 
   - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
   - [Revisions](#revisions)
+    - [Revision 2.1](#revision-21)
     - [Revision 2](#revision-2)
   - [Memory](#memory)
     - [Word](#word)
@@ -81,6 +82,12 @@ By defining relationships between foundational concepts in a precise and stable 
       - [Interface(r,o)](#interfacero)
 
 ## Revisions
+
+### Revision 2.1
+
+**November 24th, 2026**
+
+We refined the definition of File to establish metadata-governed data resolution and redefined Stream as an independent mechanism of sequential data generation or retrieval. These changes allow Streams to represent finite or infinite sequences without imposing additional constraints on other Collections.
 
 ### Revision 2
 
@@ -168,21 +175,25 @@ An array is any function $f_a : I \to V$ such that $I \subseteq \mathbb{N}$ is a
 
 ### File
 
-A file is any array $f_f : I \to B$ such that $I \subseteq \mathbb{N}$ is a finite, contiguous set of integer indices and $B$ is a set of words, where $f_f$ originates from a mechanism of persistent data storage.
+A file is any tuple $(f_m,d)$ such that $d$ is an array of words and $f_m : I \times \{d\} \to \mathrm{Array}$ is a metadata function represented by an array of words, where $I$ is a finite, contiguous set of integer indices and $f_m$ determines how data is resolved from $d$.
 
 #### File(i)
 
-> $\forall i \in I, \exists b \in B : f_f(i) = b$
+> Let $(f_m,d)$ be a file.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a sequence of words, where $f_c$ is an array, $I \subseteq \mathbb{N}$ is a finite, contiguous set of integer indices, $B$ is a set of words, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $c$ in a finite or infinite sequence, where $f_s$ establishes a mechanism of sequential data generation or retrieval.
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k$-th application of $f_s$.
+> Let $f_c : K \to C$ be a chunk-resolution function, where $K \subseteq \mathbb{N}$ is a contiguous set of integer indices and $C$ is a set of chunks.
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k$-th application.
+> Let $k \in K$ be the index of the next chunk.
+>
+> $\mathrm{Stream}() = f_s() = f_c(k)$, advancing $k$ after each application.
 
 ## Operations
 
@@ -333,4 +344,3 @@ An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set o
 > Let $f_v : M \times M \to \{0,1\}$ be a validation rule which determines whether a member satisfies another member's requirements.
 >
 > $\mathrm{Interface}(r,o)$ holds when $K_r \subseteq K$ and $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.
-

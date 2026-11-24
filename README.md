@@ -36,9 +36,9 @@ Programming Language Verification is a manual CatalystUI Team review. The review
 The current programming language verification baseline is:
 
 * FDEFSPEC (Rev. 1)
-* FRELSPEC (Rev. 2)
+* FRELSPEC (Rev. 2.1)
 
-Existing language verification records retain the specification revisions against which they were originally reviewed; publishing FRELSPEC Rev. 2 does not retroactively reverify those languages. The [FRELSPEC Rev. 1 archive](md/lang/en-US/frelspec/revision-1.md) remains available for reference.
+Existing language verification records retain the specification revisions against which they were originally reviewed; publishing FRELSPEC Rev. 2.1 does not retroactively reverify those languages. The [FRELSPEC Rev. 1 archive](md/lang/en-US/frelspec/revision-1.md) and [FRELSPEC Rev. 2 archive](md/lang/en-US/frelspec/revision-2.md) remain available for reference.
 
 Verification considers whether each required provision is supported, unsupported, or supported with warnings. A language does not need to express every concept in the same way as another language, but the required meaning must be representable clearly, reliably, and consistently.
 
