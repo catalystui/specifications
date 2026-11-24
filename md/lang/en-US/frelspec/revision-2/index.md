@@ -1,0 +1,336 @@
+# FRELSPEC
+
+<br/>
+
+> **Foundational Relations Specification**<br/>
+> Revision 2<br/>
+> November 21st, 2026<br/>
+> <br/>
+> Copyright © 2026 CatalystUI LLC. <br/>
+> All rights reserved.<br/>
+> <br/>
+> The definitions and concepts presented herein describe fundamental mathematical constructs and may be freely re-expressed.
+
+## Introduction
+
+The **Foundational Relations Specification (FRELSPEC)** establishes the core relational structures that underpin the CatalystUI ecosystem. Its purpose is to provide a unified understanding of how memory, collections, operations, and composites are associated across documentation, specifications, implementations, and verification reviews, ensuring consistency, clarity, and alignment.
+
+By defining relationships between foundational concepts in a precise and stable form, FRELSPEC provides a common reference point for higher-level specifications while allowing individual implementations to establish their own rules and behaviors. This allows developers, reviewers, and implementers to reason from the same foundation when determining whether a language, service, framework, or system can represent the relational constructs required to be considered within spec.
+
+> [!IMPORTANT]
+>
+> We express definitions using a derived form of [set theory](https://en.wikipedia.org/wiki/Set_theory) notation. This approach provides precise, unambiguous definitions while maintaining clarity and conciseness. We structure these definitions to support easy reference, clear interpretation, and a consistent conceptual hierarchy.
+
+## Table of Contents
+
+- [FRELSPEC](#frelspec)
+  - [Introduction](#introduction)
+  - [Table of Contents](#table-of-contents)
+  - [Revisions](#revisions)
+    - [Revision 2](#revision-2)
+  - [Memory](#memory)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [Collections](#collections)
+    - [Set](#set)
+      - [Set()](#set-1)
+    - [Map](#map)
+      - [Map(k)](#mapk)
+    - [Array](#array)
+      - [Array(i)](#arrayi)
+    - [File](#file)
+      - [File(i)](#filei)
+    - [Stream](#stream)
+      - [Stream()](#stream-1)
+  - [Operations](#operations)
+    - [Instruction](#instruction)
+    - [Procedure](#procedure)
+      - [Procedure(k)](#procedurek)
+    - [Function](#function)
+      - [Function(k)](#functionk)
+  - [Threading](#threading)
+    - [Process](#process)
+    - [Thread](#thread)
+      - [Thread(p)](#threadp)
+    - [Dispatcher](#dispatcher)
+      - [Dispatcher(t)](#dispatchert)
+  - [Composites](#composites)
+    - [Member](#member)
+    - [Object](#object)
+      - [Object(k)](#objectk)
+    - [Field](#field)
+      - [Field(o,k)](#fieldok)
+    - [Method](#method)
+      - [Method(o,k)](#methodok)
+    - [Property](#property)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
+    - [Structure](#structure)
+      - [Structure(s,k)](#structuresk)
+    - [Class](#class)
+      - [Class(c,a)](#classca)
+    - [Interface](#interface)
+      - [Interface(r,o)](#interfacero)
+
+## Revisions
+
+### Revision 2
+
+**November 21st, 2026**
+
+We identified inconsistencies in how memory and stored values were represented using bytes and byte arrays. We established Word as the foundational memory representation, unifying relationships across Memory, Operations, and Composites.
+
+We found inconsistencies in array indexing and the relationships between Collections. We standardized finite, contiguous indices and clarified how Arrays, Files, and Streams relate to one another.
+
+We identified redundancies and ambiguities in execution and composite relationships. We refined Procedures, Functions, Dispatchers, and object relationships to resolve these issues while preserving implementation independence.
+
+## Memory
+
+### Word
+
+A word is any sequence of bits $w \in \mathrm{Bit}^n$ stored in memory, such that $n \in \mathbb{N}^+$.
+
+### Address
+
+An address is any word $a \in A$, where $A$ is a set of words, such that $a$ uniquely identifies a location within a specified memory structure.
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of words, where each application of $f_p$ evaluates the word stored at the memory location identified by $a$.
+
+#### Pointer()
+
+> Let $f_m : A \to B$ be a memory map.
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of words, where the variable extends a pointer by binding a key to an address and evaluating the word stored at that address.
+
+#### Variable(k)
+
+> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
+>
+> Let $f_p : \{a\} \to B$ be a pointer.
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of words, where the word associated with $k$ cannot be changed after it is assigned.
+
+#### Constant(k)
+
+> Let $b_0 \in B$ be the word assigned to $k$.
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
+
+## Collections
+
+### Set
+
+A set is any finite, unordered collection of distinct words.
+
+#### Set()
+
+> Let $B$ be a set of words.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
+
+### Map
+
+A map is any function $f_m : K \to V$ such that $K$ is a set of keys and $V$ is a set of values, where each key is associated with exactly one value.
+
+#### Map(k)
+
+> $\forall k \in K, \exists v \in V : f_m(k) = v$
+
+### Array
+
+An array is any function $f_a : I \to V$ such that $I \subseteq \mathbb{N}$ is a finite, contiguous set of integer indices and $V$ is a set of words, where each index identifies exactly one value.
+
+#### Array(i)
+
+> $\forall i \in I, \exists v \in V : f_a(i) = v$
+
+### File
+
+A file is any array $f_f : I \to B$ such that $I \subseteq \mathbb{N}$ is a finite, contiguous set of integer indices and $B$ is a set of words, where $f_f$ originates from a mechanism of persistent data storage.
+
+#### File(i)
+
+> $\forall i \in I, \exists b \in B : f_f(i) = b$
+
+### Stream
+
+A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a sequence of words, where $f_c$ is an array, $I \subseteq \mathbb{N}$ is a finite, contiguous set of integer indices, $B$ is a set of words, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+
+#### Stream()
+
+> Let $c_k : I_k \to B$ be the chunk returned by the $k$-th application of $f_s$.
+>
+> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k$-th application.
+
+## Operations
+
+### Instruction
+
+An instruction is any word or finite tuple of words $i \in B$ such that $B$ is a set of words or finite tuples of words, where each instruction represents a single computational operation to be performed.
+
+### Procedure
+
+A procedure is any variable $f_{proc} : \{k\} \to B$ such that $f_{proc}(k)$ represents an array of instructions $f_a : I \to V$, where executing the procedure performs each instruction in its indexed order.
+
+#### Procedure(k)
+
+> $\mathrm{Procedure}(k)$ is the execution of each $f_a(i)$ in ascending order of $i \in I$.
+
+### Function
+
+A function is any procedure $f_{func} : \{k\} \to B$ such that executing the function returns an address $a_r \in A$ identifying the resulting word or the first word of an array of words representing the result.
+
+#### Function(k)
+
+> Let $f_m : A \to B$ be a memory map, where $a_r \in A$ identifies the resulting word $r \in B$.
+>
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
+
+## Threading
+
+### Process
+
+A process is any bounded flow of execution which accepts input, executes one or more procedures or functions, and produces output, where the process represents a distinct unit of transformation within a system.
+
+### Thread
+
+A thread is any flow of execution contained within a process, where the thread provides one path by which procedures or functions belonging to that process may be executed.
+
+#### Thread(p)
+
+> Let $p$ be a process.
+>
+> Let $(w_0, \dots, w_n)$ be a finite tuple of procedures or functions belonging to $p$.
+>
+> $\mathrm{Thread}(p)$ is the execution of each $w_j$ in ascending order of $j$ within $p$.
+
+### Dispatcher
+
+A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+
+#### Dispatcher(t)
+
+> Let $t$ be a thread.
+>
+> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+>
+> Let $f_d : \mathcal{P}^+(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+>
+> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$, $W' \neq \varnothing$, and $f_d(W') \in W'$.
+
+## Composites
+
+### Member
+
+A member is any element $m \in M$ such that $M$ is a set of elements and $f_o : K \to M$ is an object's member map, where $m = f_o(k)$ for some key $k \in K$.
+
+### Object
+
+An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of elements, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+
+#### Object(k)
+
+> $\forall k \in K,\ \exists m \in M : f_o(k) = m$
+
+### Field
+
+A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$ is a key, and $m = f_o(k)$ is a member, where the field represents one keyed member resolved from the object's member map.
+
+#### Field(o,k)
+
+> Let $o = (a,K,f_o)$ be an object.
+>
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
+
+### Method
+
+A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where the method represents a keyed executable member of an object.
+
+#### Method(o,k)
+
+> Let $(o,k,m)$ be a field.
+>
+> $\mathrm{Method}(o,k) = (o,k,m)$, where $m$ is a procedure or function.
+
+### Property
+
+A property is any field $(o,k,m)$ such that $m = (X,f_a)$ is an accessor map, $X = \{\mathrm{Get}, \mathrm{Set}\}$, and $f_a : X \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+
+#### Property(o,k)
+
+> Let $(o,k,m)$ be a field, where $m = (X,f_a)$ is an accessor map.
+>
+> $\mathrm{Property}(o,k) = (o,k,m)$
+
+#### Get(o,k)
+
+> Let $(o,k,(X,f_a))$ be a property.
+>
+> $\mathrm{Get}(o,k)$ is the application of $f_a(\mathrm{Get})$.
+
+#### Set(o,k)
+
+> Let $(o,k,(X,f_a))$ be a property.
+>
+> $\mathrm{Set}(o,k)$ is the application of $f_a(\mathrm{Set})$.
+
+### Structure
+
+A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map whose keys cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+
+#### Structure(s,k)
+
+> Let $s = (a,K,f_s)$ be a structure.
+>
+> $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
+
+### Class
+
+A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+
+#### Class(c,a)
+
+> Let $c = (a_c,K_c,f_c)$ be a class.
+>
+> Let $a \in A$ be an address assigned to an object produced from $c$.
+>
+> Let $f_o : K_c \to M$ be a member map following the definitions of $f_c$.
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
+
+### Interface
+
+An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+
+#### Interface(r,o)
+
+> Let $r = (a_r,K_r,f_r)$ be an interface.
+>
+> Let $o = (a,K,f_o)$ be an object.
+>
+> Let $f_v : M \times M \to \{0,1\}$ be a validation rule which determines whether a member satisfies another member's requirements.
+>
+> $\mathrm{Interface}(r,o)$ holds when $K_r \subseteq K$ and $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.
+
