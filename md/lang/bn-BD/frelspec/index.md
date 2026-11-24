@@ -1,36 +1,50 @@
-<!-- এই অনুবাদটি ChatGPT দ্বারা তৈরি করা হয়েছে এবং একজন মানব অনুবাদকের দ্বারা পর্যালোচনা করা উচিত। -->
-<!-- অনুবাদটি যাচাই হওয়ার পরে একটি pull request-এ এই লাইনগুলো সরিয়ে ফেলুন। -->
+<!-- এই অনুবাদটি ChatGPT দ্বারা তৈরি করা হয়েছে এবং একজন মানব অনুবাদকের পর্যালোচনা প্রয়োজন। -->
+<!-- অনুবাদ যাচাইয়ের পরে একটি পুল রিকোয়েস্টের মাধ্যমে এই লাইনগুলি সরান। -->
 
 # FRELSPEC
 
 <br/>
 
-> **ভিত্তিগত সম্পর্ক নির্দিষ্টকরণ**<br/>
-> Revision 1<br/>
-> July 7th, 2026<br/>
+> **মৌলিক সম্পর্কের নির্দিষ্টকরণ**<br/>
+> সংশোধন 2.1<br/>
+> ২৪ নভেম্বর ২০২৬<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
-> All rights reserved.<br/>
+> সর্বস্বত্ব সংরক্ষিত।<br/>
 > <br/>
-> এখানে উপস্থাপিত সংজ্ঞা ও ধারণাগুলি ভিত্তিগত গাণিতিক গঠন বর্ণনা করে এবং এগুলি স্বাধীনভাবে পুনরায় প্রকাশ করা যেতে পারে।
+> এখানে উপস্থাপিত সংজ্ঞা ও ধারণাগুলি মৌলিক গাণিতিক কাঠামো বর্ণনা করে এবং স্বাধীনভাবে পুনর্ব্যক্ত করা যেতে পারে।
 
 ## ভূমিকা
 
-**Foundational Relations Specification (FRELSPEC)** CatalystUI ইকোসিস্টেমের ভিত্তি হিসেবে থাকা core relational structures প্রতিষ্ঠা করে। এর উদ্দেশ্য হলো values, memory, operations, এবং composites কীভাবে documentation, specifications, implementations, এবং verification reviews জুড়ে সম্পর্কিত থাকে সে বিষয়ে একটি একীভূত বোঝাপড়া প্রদান করা, যাতে consistency, clarity, এবং alignment বজায় থাকে।
+**মৌলিক সম্পর্কের নির্দিষ্টকরণ (FRELSPEC)** CatalystUI বাস্তুতন্ত্রের ভিত্তি গঠনকারী প্রধান সম্পর্কমূলক কাঠামোগুলি প্রতিষ্ঠা করে। এর উদ্দেশ্য হলো নথিপত্র, নির্দিষ্টকরণ, বাস্তবায়ন ও যাচাই পর্যালোচনায় মেমরি, সংগ্রহ, ক্রিয়াকলাপ ও যৌগিক কাঠামোর সম্পর্ক সম্পর্কে একটি সমন্বিত ধারণা প্রদান করা, যাতে সামঞ্জস্য, স্পষ্টতা ও সংহতি নিশ্চিত হয়।
 
-ভিত্তিগত concepts-এর মধ্যে সম্পর্কগুলি নির্ভুল এবং স্থিতিশীল আকারে সংজ্ঞায়িত করার মাধ্যমে, FRELSPEC উচ্চতর স্তরের specifications-এর জন্য একটি সাধারণ reference point প্রদান করে। এর ফলে developer, reviewer, এবং implementer-রা একই foundation থেকে বিচার করতে পারেন যে কোনো language, service, framework, বা system spec-এর মধ্যে বিবেচিত হওয়ার জন্য প্রয়োজনীয় relational constructs represent করতে পারে কি না।
+মৌলিক ধারণাগুলির সম্পর্ক নির্ভুল ও স্থিতিশীলভাবে সংজ্ঞায়িত করে FRELSPEC উচ্চতর স্তরের নির্দিষ্টকরণের জন্য একটি সাধারণ তথ্যসূত্র প্রদান করে, পাশাপাশি পৃথক বাস্তবায়নকে নিজস্ব নিয়ম ও আচরণ নির্ধারণের সুযোগ দেয়। এর ফলে ডেভেলপার, পর্যালোচক ও বাস্তবায়নকারীরা একই ভিত্তি থেকে নির্ধারণ করতে পারেন কোনো ভাষা, সেবা, ফ্রেমওয়ার্ক বা সিস্টেম নির্দিষ্টকরণ মেনে চলার জন্য প্রয়োজনীয় সম্পর্কমূলক কাঠামো উপস্থাপন করতে সক্ষম কি না।
 
 > [!IMPORTANT]
 >
-> আমরা [set theory](https://en.wikipedia.org/wiki/Set_theory) notation-এর একটি derived form ব্যবহার করে definitions প্রকাশ করি। এই পদ্ধতি clarity এবং conciseness বজায় রেখে precise, unambiguous definitions প্রদান করে। আমরা এই definitions সাজাই যাতে easy reference, clear interpretation, এবং consistent conceptual hierarchy সমর্থিত হয়।
+> আমরা [সেট তত্ত্ব](https://en.wikipedia.org/wiki/Set_theory)-এর প্রতীকায়ন থেকে উদ্ভূত একটি রূপ ব্যবহার করে সংজ্ঞাগুলি প্রকাশ করি। এই পদ্ধতি স্পষ্টতা ও সংক্ষিপ্ততা বজায় রেখে নির্ভুল ও দ্ব্যর্থহীন সংজ্ঞা প্রদান করে। সহজে উল্লেখ, স্পষ্ট ব্যাখ্যা এবং সামঞ্জস্যপূর্ণ ধারণাগত স্তরবিন্যাসের জন্য সংজ্ঞাগুলি সাজানো হয়।
 
 ## সূচিপত্র
 
 - [FRELSPEC](#frelspec)
   - [ভূমিকা](#ভূমিকা)
   - [সূচিপত্র](#সূচিপত্র)
-  - [Collections](#collections)
+  - [সংশোধনসমূহ](#সংশোধনসমূহ)
+    - [সংশোধন 2.1](#সংশোধন-21)
+    - [সংশোধন 2](#সংশোধন-2)
+  - [মেমরি](#মেমরি)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [সংগ্রহ](#সংগ্রহ)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,54 +53,116 @@
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [ক্রিয়াকলাপ](#ক্রিয়াকলাপ)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
-  - [Threading](#threading)
+  - [থ্রেডিং](#থ্রেডিং)
     - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [যৌগিক কাঠামো](#যৌগিক-কাঠামো)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Collections
+## সংশোধনসমূহ
+
+### সংশোধন 2.1
+
+**২৪ নভেম্বর ২০২৬**
+
+আমরা মেটাডেটা-নিয়ন্ত্রিত ডেটা নির্ধারণ প্রতিষ্ঠার জন্য File-এর সংজ্ঞা পরিমার্জন করেছি এবং Stream-কে ক্রমানুসারে ডেটা উৎপাদন বা পুনরুদ্ধারের একটি স্বাধীন প্রক্রিয়া হিসেবে পুনঃসংজ্ঞায়িত করেছি। এই পরিবর্তনগুলি অন্য সংগ্রহের ওপর অতিরিক্ত সীমাবদ্ধতা আরোপ না করে স্ট্রিমকে সসীম বা অসীম অনুক্রম উপস্থাপন করতে দেয়।
+
+### সংশোধন 2
+
+**২১ নভেম্বর ২০২৬**
+
+বাইট ও বাইট অ্যারে ব্যবহার করে মেমরি ও সঞ্চিত মান উপস্থাপনের ক্ষেত্রে আমরা অসামঞ্জস্য শনাক্ত করেছি। আমরা Word-কে মেমরির মৌলিক উপস্থাপনা হিসেবে প্রতিষ্ঠা করে মেমরি, ক্রিয়াকলাপ ও যৌগিক কাঠামোর সম্পর্ক একীভূত করেছি।
+
+আমরা অ্যারে সূচকায়ন ও সংগ্রহগুলির পারস্পরিক সম্পর্কে অসামঞ্জস্য শনাক্ত করেছি। সসীম, পরপর থাকা সূচকগুলিকে মানসম্মত করেছি এবং Array, File ও Stream-এর সম্পর্ক স্পষ্ট করেছি।
+
+আমরা নির্বাহ ও সংযোজনের সম্পর্কে অপ্রয়োজনীয় পুনরাবৃত্তি ও অস্পষ্টতা শনাক্ত করেছি। বাস্তবায়ন-স্বাধীনতা বজায় রেখে সমস্যাগুলি সমাধানের জন্য প্রসিডিউর, ফাংশন, ডিসপ্যাচার ও অবজেক্টের সম্পর্ক পরিমার্জন করেছি।
+
+## মেমরি
+
+### Word
+
+ওয়ার্ড হলো মেমরিতে সঞ্চিত বিটের যেকোনো অনুক্রম $w \in \mathrm{Bit}^n$, এমন যে $n \in \mathbb{N}^+$।
+
+### Address
+
+ঠিকানা হলো যেকোনো ওয়ার্ড $a \in A$, যেখানে $A$ ওয়ার্ডের একটি সেট, এমন যে $a$ নির্দিষ্ট মেমরি কাঠামোর একটি অবস্থানকে অনন্যভাবে শনাক্ত করে।
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+পয়েন্টার হলো যেকোনো ফাংশন $f_p : \{a\} \to B$, এমন যে $a \in A$ একটি ঠিকানা এবং $B$ ওয়ার্ডের একটি সেট; $f_p$-এর প্রতিটি প্রয়োগ $a$ দ্বারা শনাক্ত মেমরি অবস্থানে সঞ্চিত ওয়ার্ডের মান নির্ণয় করে।
+
+#### Pointer()
+
+> ধরা যাক $f_m : A \to B$ একটি মেমরি ম্যাপ।
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+ভেরিয়েবল হলো যেকোনো ফাংশন $f_v : \{k\} \to B$, এমন যে $k$ একটি কী এবং $B$ ওয়ার্ডের একটি সেট; ভেরিয়েবল কী-কে ঠিকানার সঙ্গে আবদ্ধ করে এবং সেই ঠিকানায় সঞ্চিত ওয়ার্ডের মান নির্ণয় করে পয়েন্টারকে সম্প্রসারিত করে।
+
+#### Variable(k)
+
+> ধরা যাক $f_b : \{k\} \to \{a\}$ ভেরিয়েবলের বন্ধন ফাংশন।
+>
+> ধরা যাক $f_p : \{a\} \to B$ একটি পয়েন্টার।
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+কনস্ট্যান্ট হলো যেকোনো ভেরিয়েবল $f_c : \{k\} \to B$, এমন যে $k$ একটি কী এবং $B$ ওয়ার্ডের একটি সেট; $k$-এর সঙ্গে সম্পর্কিত ওয়ার্ড নির্ধারণ করার পরে পরিবর্তন করা যায় না।
+
+#### Constant(k)
+
+> ধরা যাক $b_0 \in B$ হলো সেই ওয়ার্ড যা $k$-কে বরাদ্দ করা হয়েছে।
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$, $b_0$ বরাদ্দ করার পরে।
+
+## সংগ্রহ
 
 ### Set
 
-একটি set হলো distinct elements-এর যেকোনো collection।
+সেট হলো ভিন্ন ভিন্ন ওয়ার্ডের যেকোনো সসীম ও অক্রমিত সংগ্রহ।
+
+#### Set()
+
+> ধরা যাক $B$ ওয়ার্ডের একটি সেট।
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-একটি map হলো যেকোনো function $f_m : K \to V$, যেখানে $K$ হলো keys-এর একটি set এবং $V$ হলো values-এর একটি set।
+ম্যাপ হলো যেকোনো ফাংশন $f_m : K \to V$, এমন যে $K$ কী-এর একটি সেট এবং $V$ মানের একটি সেট; প্রতিটি কী ঠিক একটি মানের সঙ্গে যুক্ত।
 
 #### Map(k)
 
@@ -94,7 +170,7 @@
 
 ### Array
 
-একটি array হলো যেকোনো function $f_a : I \to V$, যেখানে $I \subset \mathbb{N}$, $I$ হলো integers-এর একটি finite, contiguous set, এবং $V$ হলো values-এর একটি set।
+অ্যারে হলো যেকোনো ফাংশন $f_a : I \to V$, এমন যে $I \subseteq \mathbb{N}$ পরপর থাকা পূর্ণসংখ্যা সূচকের একটি সসীম সেট এবং $V$ ওয়ার্ডের একটি সেট; প্রতিটি সূচক ঠিক একটি মানকে শনাক্ত করে।
 
 #### Array(i)
 
@@ -102,137 +178,91 @@
 
 ### File
 
-একটি file হলো যেকোনো function $f_f : I \to B$, যেখানে $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ হলো integers-এর একটি finite, contiguous set এবং $B$ হলো bytes-এর একটি set, এবং $f_f$ persistent data storage-এর একটি mechanism থেকে originate করে।
+ফাইল হলো যেকোনো টাপল $(f_m,d)$, এমন যে $d$ ওয়ার্ডের একটি অ্যারে এবং $f_m : I \times \{d\} \to \mathrm{Array}$ ওয়ার্ডের একটি অ্যারে দ্বারা উপস্থাপিত মেটাডেটা ফাংশন, যেখানে $I$ পরপর থাকা পূর্ণসংখ্যা সূচকের একটি সসীম সেট এবং $f_m$ নির্ধারণ করে কীভাবে $d$ থেকে ডেটা নির্ণীত হয়।
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> ধরা যাক $(f_m,d)$ একটি ফাইল।
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-একটি stream হলো যেকোনো function $f_s$, যেখানে $f_s$-এর প্রতিটি application byte sequence-এর পরবর্তী chunk $f_c : I \to B$ yield করে; এখানে $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ হলো integers-এর একটি finite, contiguous set, $B$ হলো bytes-এর একটি set, এবং $f_s$ sequential data generation বা retrieval-এর একটি mechanism থেকে originate করে।
+স্ট্রিম হলো যেকোনো ফাংশন $f_s$, এমন যে $f_s$-এর প্রতিটি প্রয়োগ সসীম বা অসীম অনুক্রমের পরবর্তী খণ্ড $c$ প্রদান করে, যেখানে $f_s$ ক্রমানুসারে ডেটা উৎপাদন বা পুনরুদ্ধারের একটি প্রক্রিয়া প্রতিষ্ঠা করে।
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> ধরা যাক $f_c : K \to C$ একটি খণ্ড-নির্ধারণ ফাংশন, যেখানে $K \subseteq \mathbb{N}$ পরপর থাকা পূর্ণসংখ্যা সূচকের একটি সেট এবং $C$ খণ্ডের একটি সেট।
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## Memory
-
-### Address
-
-একটি address হলো যেকোনো element $a \in A$, যেখানে $A$ হলো addresses-এর একটি set, এবং প্রতিটি address $a$ memory structure-এর একটি location-কে uniquely identify করে।
-
-### Pointer
-
-একটি pointer হলো যেকোনো function $f_p : \{a\} \to B$, যেখানে $a \in A$ একটি address এবং $B$ হলো byte arrays-এর একটি set; $f_p$-এর প্রতিটি application তার bound address দ্বারা identified memory location-এ stored byte array evaluate করে।
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> ধরা যাক $k \in K$ পরবর্তী খণ্ডের সূচক।
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
+> $\mathrm{Stream}() = f_s() = f_c(k)$, প্রতিটি প্রয়োগের পরে $k$ এগিয়ে নিয়ে।
 
-### Variable
-
-একটি variable হলো যেকোনো function $f_v : \{k\} \to B$, যেখানে $k$ একটি key এবং $B$ হলো byte arrays-এর একটি set; variable একটি key-কে একটি address-এর সঙ্গে bind করে এবং সেই address দ্বারা identified memory location-এ stored byte array evaluate করে pointer-কে extend করে।
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-একটি constant হলো যেকোনো variable $f_c : \{k\} \to B$, যেখানে $k$ একটি key এবং $B$ হলো byte arrays-এর একটি set; $k$-এর সঙ্গে associated byte array assign হওয়ার পরে আর পরিবর্তন করা যায় না।
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
-## Operations
+## ক্রিয়াকলাপ
 
 ### Instruction
 
-একটি instruction হলো যেকোনো array of bytes $i \in B$, যেখানে $B$ হলো byte arrays-এর একটি set; প্রতিটি instruction সম্পাদনের জন্য একটি single computational operation represent করে।
+ইনস্ট্রাকশন হলো যেকোনো ওয়ার্ড বা ওয়ার্ডের সসীম টাপল $i \in B$, এমন যে $B$ ওয়ার্ড বা ওয়ার্ডের সসীম টাপলের একটি সেট; প্রতিটি ইনস্ট্রাকশন সম্পাদনযোগ্য একটি গণনামূলক ক্রিয়া উপস্থাপন করে।
 
 ### Procedure
 
-একটি procedure হলো যেকোনো variable $f_{proc} : \{k\} \to B$, যেখানে $k$ একটি key এবং $B$ হলো byte arrays-এর একটি set; procedure-এর প্রতিটি application $k$-এর সঙ্গে associated byte array-কে instructions-এর finite ordered sequence হিসেবে evaluate করে এবং returned value define না করে সেই instructions তাদের represented order-এ execute করে।
+প্রসিডিউর হলো যেকোনো ভেরিয়েবল $f_{proc} : \{k\} \to B$, এমন যে $f_{proc}(k)$ ইনস্ট্রাকশনের অ্যারে $f_a : I \to V$ উপস্থাপন করে; প্রসিডিউর নির্বাহ করলে প্রতিটি ইনস্ট্রাকশন সূচকের ক্রমানুসারে সম্পাদিত হয়।
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> $\mathrm{Procedure}(k)$ হলো প্রতিটি $f_a(i)$-এর $i \in I$-এর ঊর্ধ্বক্রমে নির্বাহ।
 
 ### Function
 
-একটি function হলো যেকোনো procedure $f_{func} : \{k\} \to B$, যেখানে $k$ একটি key এবং $B$ হলো byte arrays-এর একটি set; function-এর প্রতিটি application $k$-এর সঙ্গে associated byte array-কে instructions-এর finite ordered sequence হিসেবে evaluate করে, সেই instructions তাদের represented order-এ execute করে, এবং execution completed হওয়ার পরে memory-র কোনো address-এ একটি resulting byte array assign করে, যা function-এর returned value হিসেবে evaluate করা যেতে পারে।
+ফাংশন হলো যেকোনো প্রসিডিউর $f_{func} : \{k\} \to B$, যার নির্বাহ একটি ঠিকানা $a_r \in A$ ফেরত দেয় যা ফলাফল ওয়ার্ড অথবা ফলাফল উপস্থাপনকারী ওয়ার্ডের অ্যারের প্রথম ওয়ার্ডকে শনাক্ত করে।
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> ধরা যাক $f_m : A \to B$ একটি মেমরি ম্যাপ, যেখানে $a_r \in A$ ফলাফল ওয়ার্ড $r \in B$-কে শনাক্ত করে।
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
-## Threading
+## থ্রেডিং
 
 ### Process
 
-একটি process হলো execution-এর যেকোনো bounded flow, যা input গ্রহণ করে, এক বা একাধিক instruction execute করে, এবং output উৎপন্ন করে; process একটি system-এর মধ্যে transformation-এর একটি distinct unit represent করে।
+প্রসেস হলো নির্বাহের যেকোনো সীমাবদ্ধ প্রবাহ যা ইনপুট গ্রহণ করে, এক বা একাধিক প্রসিডিউর বা ফাংশন নির্বাহ করে এবং আউটপুট উৎপন্ন করে; প্রসেস একটি সিস্টেমের মধ্যে রূপান্তরের একটি স্বতন্ত্র একক উপস্থাপন করে।
 
 ### Thread
 
-একটি thread হলো process-এর মধ্যে contained execution-এর যেকোনো flow; thread এমন একটি path প্রদান করে যার মাধ্যমে সেই process-এর ordered sequences of instructions execute করা যেতে পারে।
+থ্রেড হলো কোনো প্রসেসের অন্তর্ভুক্ত নির্বাহের যেকোনো প্রবাহ, যা সেই প্রসেসের অন্তর্ভুক্ত প্রসিডিউর বা ফাংশন নির্বাহের একটি পথ প্রদান করে।
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> ধরা যাক $p$ একটি প্রসেস।
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> ধরা যাক $(w_0, \dots, w_n)$ হলো প্রসিডিউর বা ফাংশনের একটি সসীম টাপল যা $p$-এর অন্তর্ভুক্ত।
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> $\mathrm{Thread}(p)$ হলো প্রতিটি $w_j$-এর $j$-এর ঊর্ধ্বক্রমে $p$-এর মধ্যে নির্বাহ।
 
 ### Dispatcher
 
-একটি dispatcher হলো যেকোনো tuple $(t,W,f_d)$, যেখানে $t$ একটি thread, $W$ হলো work হিসেবে accepted procedures বা functions-এর একটি set, এবং $f_d$ হলো একটি dispatch rule যা $W$ থেকে work select করে; dispatcher selected work-কে dispatch rule অনুযায়ী $t$-এ execute করায়।
+ডিসপ্যাচার হলো যেকোনো টাপল $(t,W,f_d)$, এমন যে $t$ একটি থ্রেড, $W$ কাজ হিসেবে গৃহীত প্রসিডিউর বা ফাংশনের একটি সেট, এবং $f_d$ একটি ডিসপ্যাচ নিয়ম যা $W$ থেকে কাজ নির্বাচন করে; ডিসপ্যাচার সেই নিয়ম অনুযায়ী নির্বাচিত কাজ $t$-এ নির্বাহ করায়।
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> ধরা যাক $t$ একটি থ্রেড।
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> ধরা যাক $W$ ডিসপ্যাচার কর্তৃক গৃহীত প্রসিডিউর বা ফাংশনের একটি সেট, যেখানে $\forall w \in W$, $w$ একটি প্রসিডিউর বা ফাংশন।
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> ধরা যাক $f_d : \mathcal{P}^+(W) \to W$ একটি ডিসপ্যাচ নিয়ম যা গৃহীত কাজের অশূন্য উপসেট থেকে কাজ নির্বাচন করে।
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ হলো প্রতিটি নির্বাচিত $f_d(W')$-এর $t$-এ নির্বাহ, যেখানে $W' \subseteq W$, $W' \neq \varnothing$ এবং $f_d(W') \in W'$।
 
-## Composites
+## যৌগিক কাঠামো
 
 ### Member
 
-একটি member হলো যেকোনো element $m \in M$, যেখানে $M$ হলো members-এর একটি set; একটি member হলো এমন value যা object-এর member map-এর মধ্যে একটি key-তে assign করা যেতে পারে।
+মেম্বার হলো যেকোনো উপাদান $m \in M$, এমন যে $M$ উপাদানের একটি সেট এবং $f_o : K \to M$ একটি অবজেক্টের মেম্বার ম্যাপ, যেখানে $m = f_o(k)$ কোনো কী $k \in K$-এর জন্য সত্য।
 
 ### Object
 
-একটি object হলো যেকোনো tuple $(a,K,f_o)$, যেখানে $a \in A$ একটি address, $K$ হলো keys-এর একটি set, এবং $f_o : K \to M$ একটি member map, যেখানে $M$ হলো members-এর একটি set; এটি object-কে এমন একটি addressable composite represent করতে দেয় যার members $f_o$-এর মাধ্যমে keys-এ assign করা হয়।
+অবজেক্ট হলো যেকোনো টাপল $(a,K,f_o)$, এমন যে $a \in A$ একটি ঠিকানা, $K$ কী-এর একটি সেট এবং $f_o : K \to M$ একটি মেম্বার ম্যাপ, যেখানে $M$ উপাদানের একটি সেট; এর ফলে অবজেক্ট এমন একটি ঠিকানাযোগ্য যৌগিক কাঠামো উপস্থাপন করতে পারে যার মেম্বারগুলি $f_o$-এর মাধ্যমে কী-তে বরাদ্দ করা হয়।
 
 #### Object(k)
 
@@ -240,92 +270,80 @@ $\forall i \in I, \exists b \in B : f_f(i) = b$
 
 ### Field
 
-একটি field হলো যেকোনো tuple $(o,k,m)$, যেখানে $o = (a,K,f_o)$ একটি object, $k \in K$ একটি key, $m \in M$ একটি member, এবং $f_o(k) = m$; field object-এর member map থেকে resolved একটি keyed member represent করে।
+ফিল্ড হলো যেকোনো টাপল $(o,k,m)$, এমন যে $o = (a,K,f_o)$ একটি অবজেক্ট, $k \in K$ একটি কী এবং $m = f_o(k)$ একটি মেম্বার; ফিল্ড অবজেক্টের মেম্বার ম্যাপ থেকে নির্ণীত একটি কী-যুক্ত মেম্বার উপস্থাপন করে।
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> ধরা যাক $o = (a,K,f_o)$ একটি অবজেক্ট।
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-একটি method হলো যেকোনো field $(o,k,m)$, যেখানে $m$ একটি procedure বা function; method একটি object-এর keyed executable member represent করে।
+মেথড হলো যেকোনো ফিল্ড $(o,k,m)$, এমন যে $m$ একটি প্রসিডিউর বা ফাংশন; মেথড অবজেক্টের একটি কী-যুক্ত নির্বাহযোগ্য মেম্বার উপস্থাপন করে।
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> ধরা যাক $(o,k,m)$ একটি ফিল্ড।
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$, যেখানে $m$ একটি প্রসিডিউর বা ফাংশন।
 
 ### Property
 
-একটি property হলো যেকোনো field $(o,k,m)$, যেখানে $m = (A,f_a)$ একটি accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, এবং $f_a : A \to M$ প্রতিটি accessor-কে একটি member-এ map করে; এখানে $f_a(\mathrm{Get})$ একটি function এবং $f_a(\mathrm{Set})$ একটি procedure, যার ফলে property একটি keyed member-এর retrieval ও assignment behavior উভয়ই define করতে পারে।
+প্রপার্টি হলো যেকোনো ফিল্ড $(o,k,m)$, এমন যে $m = (X,f_a)$ একটি অ্যাক্সেসর ম্যাপ, $X = \{\mathrm{Get}, \mathrm{Set}\}$, এবং $f_a : X \to M$ প্রতিটি অ্যাক্সেসরকে একটি মেম্বারের সঙ্গে ম্যাপ করে, যেখানে $f_a(\mathrm{Get})$ একটি ফাংশন এবং $f_a(\mathrm{Set})$ একটি প্রসিডিউর; এর ফলে প্রপার্টি কী-যুক্ত মেম্বারের পুনরুদ্ধার ও বরাদ্দ উভয়ের আচরণ সংজ্ঞায়িত করতে পারে।
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> ধরা যাক $(o,k,m)$ একটি ফিল্ড, যেখানে $m = (X,f_a)$ একটি অ্যাক্সেসর ম্যাপ।
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> ধরা যাক $(o,k,(X,f_a))$ একটি প্রপার্টি।
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> $\mathrm{Get}(o,k)$ হলো $f_a(\mathrm{Get})$-এর প্রয়োগ।
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> ধরা যাক $(o,k,(X,f_a))$ একটি প্রপার্টি।
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> $\mathrm{Set}(o,k)$ হলো $f_a(\mathrm{Set})$-এর প্রয়োগ।
 
 ### Structure
 
-একটি structure (প্রায়ই `struct` হিসেবে সংক্ষিপ্ত) হলো যেকোনো object $s = (a,K,f_s)$, যেখানে $K$ keys-এর একটি finite set এবং $f_s : K \to M$ হলো এমন member map যা struct assign হওয়ার পরে পরিবর্তন করা যায় না; struct হলো একটি specialized object যার keyed member layout fixed।
+স্ট্রাকচার (প্রায়ই `struct` নামে সংক্ষিপ্ত করা হয়) হলো যেকোনো অবজেক্ট $s = (a,K,f_s)$, এমন যে $K$ কী-এর একটি সসীম সেট এবং $f_s : K \to M$ এমন একটি মেম্বার ম্যাপ যার কী-গুলি স্ট্রাকচার বরাদ্দ করার পরে পরিবর্তন করা যায় না; স্ট্রাকচার হলো কী-যুক্ত মেম্বারগুলির স্থির বিন্যাসসম্পন্ন একটি বিশেষায়িত অবজেক্ট।
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> ধরা যাক $s = (a,K,f_s)$ একটি স্ট্রাকচার।
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-একটি class হলো যেকোনো object $c = (a_c,K_c,f_c)$, যেখানে $K_c$ keys-এর একটি finite set এবং $f_c : K_c \to M$ একটি member-definition map; class হলো একটি specialized object যার keyed members অন্য objects produce করতে ব্যবহৃত member layout define করে।
+ক্লাস হলো যেকোনো অবজেক্ট $c = (a_c,K_c,f_c)$, এমন যে $K_c$ কী-এর একটি সসীম সেট এবং $f_c : K_c \to M$ মেম্বার-সংজ্ঞার একটি ম্যাপ; ক্লাস হলো একটি বিশেষায়িত অবজেক্ট যার কী-যুক্ত মেম্বারগুলি অন্য অবজেক্ট উৎপাদনে ব্যবহৃত মেম্বার বিন্যাস নির্ধারণ করে।
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> ধরা যাক $c = (a_c,K_c,f_c)$ একটি ক্লাস।
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> ধরা যাক $a \in A$ হলো $c$ থেকে উৎপাদিত একটি অবজেক্টে বরাদ্দ করা ঠিকানা।
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> ধরা যাক $f_o : K_c \to M$ একটি মেম্বার ম্যাপ যা $f_c$-এর সংজ্ঞাগুলি অনুসরণ করে।
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-একটি interface হলো যেকোনো object $r = (a_r,K_r,f_r)$, যেখানে $K_r$ keys-এর একটি finite set এবং $f_r : K_r \to M$ একটি member-requirement map; interface হলো একটি specialized object যার keyed members অন্য object দ্বারা প্রদান করা আবশ্যক members define করে।
+ইন্টারফেস হলো যেকোনো অবজেক্ট $r = (a_r,K_r,f_r)$, এমন যে $K_r$ কী-এর একটি সসীম সেট এবং $f_r : K_r \to M$ মেম্বার-প্রয়োজনীয়তার একটি ম্যাপ; ইন্টারফেস হলো একটি বিশেষায়িত অবজেক্ট যার কী-যুক্ত মেম্বারগুলি নির্ধারণ করে অন্য একটি অবজেক্টকে কোন মেম্বারগুলি প্রদান করতে হবে।
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> ধরা যাক $r = (a_r,K_r,f_r)$ একটি ইন্টারফেস।
 >
-> Let $o = (a,K,f_o)$ be an object.
+> ধরা যাক $o = (a,K,f_o)$ একটি অবজেক্ট।
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> ধরা যাক $f_v : M \times M \to \{0,1\}$ একটি যাচাই নিয়ম যা নির্ধারণ করে কোনো মেম্বার অন্য মেম্বারের প্রয়োজনীয়তা পূরণ করে কি না।
+>
+> $\mathrm{Interface}(r,o)$ সত্য যখন $K_r \subseteq K$ এবং $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$।

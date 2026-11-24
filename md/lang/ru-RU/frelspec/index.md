@@ -1,4 +1,4 @@
-<!-- Этот перевод был создан ChatGPT и должен быть проверен человеком-переводчиком. -->
+<!-- Этот перевод создан ChatGPT и должен быть проверен человеком-переводчиком. -->
 <!-- Удалите эти строки в pull request после проверки перевода. -->
 
 # FRELSPEC
@@ -6,31 +6,45 @@
 <br/>
 
 > **Спецификация фундаментальных отношений**<br/>
-> Ревизия 1<br/>
-> 7 июля 2026 г.<br/>
+> Редакция 2.1<br/>
+> 24 ноября 2026 г.<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > Все права защищены.<br/>
 > <br/>
-> Представленные здесь определения и понятия описывают фундаментальные математические конструкции и могут быть свободно переизложены.
+> Представленные здесь определения и понятия описывают фундаментальные математические конструкции и могут свободно переформулироваться.
 
 ## Введение
 
-**Спецификация фундаментальных отношений (FRELSPEC)** устанавливает основные реляционные структуры, лежащие в основе экосистемы CatalystUI. Ее цель — предоставить единое понимание того, как значения, память, операции и составные конструкции связаны между собой в документации, спецификациях, реализациях и проверочных обзорах, обеспечивая согласованность, ясность и выравнивание.
+**Спецификация фундаментальных отношений (FRELSPEC)** устанавливает основные реляционные структуры, лежащие в основе экосистемы CatalystUI. Её цель — обеспечить единое понимание отношений между памятью, коллекциями, операциями и составными структурами в документации, спецификациях, реализациях и проверках соответствия, обеспечивая согласованность, ясность и единство подхода.
 
-Определяя отношения между фундаментальными понятиями в точной и стабильной форме, FRELSPEC предоставляет общую точку отсчета для спецификаций более высокого уровня. Это позволяет разработчикам, рецензентам и реализаторам рассуждать от одной основы при определении того, может ли язык, служба, фреймворк или система представлять реляционные конструкции, необходимые для признания соответствия спецификации.
+Определяя отношения между фундаментальными понятиями точно и устойчиво, FRELSPEC предоставляет общую точку отсчёта для спецификаций более высокого уровня, позволяя отдельным реализациям устанавливать собственные правила и поведение. Это позволяет разработчикам, проверяющим и реализаторам исходить из одной основы при определении того, способен ли язык, сервис, фреймворк или система представлять реляционные конструкции, необходимые для соответствия спецификации.
 
 > [!IMPORTANT]
 >
-> We express definitions using a derived form of [set theory](https://en.wikipedia.org/wiki/Set_theory) notation. This approach provides precise, unambiguous definitions while maintaining clarity and conciseness. We structure these definitions to support easy reference, clear interpretation, and a consistent conceptual hierarchy.
+> Мы выражаем определения с помощью производной формы нотации [теории множеств](https://en.wikipedia.org/wiki/Set_theory). Такой подход обеспечивает точность и однозначность определений при сохранении ясности и краткости. Мы структурируем их для удобства обращения, ясной интерпретации и согласованной концептуальной иерархии.
 
 ## Содержание
 
 - [FRELSPEC](#frelspec)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Collections](#collections)
+  - [Введение](#введение)
+  - [Содержание](#содержание)
+  - [Редакции](#редакции)
+    - [Редакция 2.1](#редакция-21)
+    - [Редакция 2](#редакция-2)
+  - [Память](#память)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [Коллекции](#коллекции)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,54 +53,116 @@
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [Операции](#операции)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
-  - [Threading](#threading)
+  - [Потоки выполнения](#потоки-выполнения)
     - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [Составные структуры](#составные-структуры)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Collections
+## Редакции
+
+### Редакция 2.1
+
+**24 ноября 2026 г.**
+
+Мы уточнили определение File, установив разрешение данных на основе метаданных, и переопределили Stream как независимый механизм последовательной генерации или извлечения данных. Это позволяет потокам представлять конечные или бесконечные последовательности без дополнительных ограничений для других коллекций.
+
+### Редакция 2
+
+**21 ноября 2026 г.**
+
+Мы выявили несогласованность в представлении памяти и хранимых значений байтами и массивами байтов. Мы установили Word как фундаментальное представление памяти, унифицировав отношения между памятью, операциями и составными структурами.
+
+Мы выявили несогласованность в индексации массивов и отношениях между коллекциями. Мы стандартизировали конечные непрерывные индексы и уточнили отношения между Array, File и Stream.
+
+Мы выявили избыточность и неоднозначность в отношениях выполнения и композиции. Мы уточнили процедуры, функции, диспетчеры и отношения объектов, устранив эти проблемы и сохранив независимость от реализации.
+
+## Память
+
+### Word
+
+Слово — любая последовательность битов $w \in \mathrm{Bit}^n$, хранящаяся в памяти, такая, что $n \in \mathbb{N}^+$.
+
+### Address
+
+Адрес — любое слово $a \in A$, где $A$ — множество слов, такое, что $a$ однозначно определяет местоположение в заданной структуре памяти.
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+Указатель — любая функция $f_p : \{a\} \to B$, такая, что $a \in A$ — адрес, а $B$ — множество слов, причём каждое применение $f_p$ вычисляет слово, хранящееся в ячейке памяти, определённой $a$.
+
+#### Pointer()
+
+> Пусть $f_m : A \to B$ — отображение памяти.
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+Переменная — любая функция $f_v : \{k\} \to B$, такая, что $k$ — ключ, а $B$ — множество слов, причём переменная расширяет указатель, связывая ключ с адресом и вычисляя хранящееся по нему слово.
+
+#### Variable(k)
+
+> Пусть $f_b : \{k\} \to \{a\}$ — функция связывания переменной.
+>
+> Пусть $f_p : \{a\} \to B$ — указатель.
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+Константа — любая переменная $f_c : \{k\} \to B$, такая, что $k$ — ключ, а $B$ — множество слов, причём слово, связанное с $k$, не может изменяться после присваивания.
+
+#### Constant(k)
+
+> Пусть $b_0 \in B$ — слово, присвоенное $k$.
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ после присваивания $b_0$.
+
+## Коллекции
 
 ### Set
 
-Множество — это любая коллекция различных элементов.
+Множество — любая конечная неупорядоченная коллекция различных слов.
+
+#### Set()
+
+> Пусть $B$ — множество слов.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-Отображение — это любая функция $f_m : K \to V$ такая, что $K$ является множеством ключей, а $V$ — множеством значений.
+Отображение — любая функция $f_m : K \to V$, такая, что $K$ — множество ключей, а $V$ — множество значений, причём каждому ключу соответствует ровно одно значение.
 
 #### Map(k)
 
@@ -94,7 +170,7 @@
 
 ### Array
 
-Массив — это любая функция $f_a : I \to V$ такая, что $I \subset \mathbb{N}$, $I$ является конечным непрерывным множеством целых чисел, а $V$ — множеством значений.
+Массив — любая функция $f_a : I \to V$, такая, что $I \subseteq \mathbb{N}$ — конечное непрерывное множество целочисленных индексов, а $V$ — множество слов, причём каждый индекс определяет ровно одно значение.
 
 #### Array(i)
 
@@ -102,138 +178,91 @@
 
 ### File
 
-A file is any function $f_f : I \to B$ such that $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers and $b$ is a set of bytes, where $f_f$ originates from a mechanism of persistent data storage.
+Файл — любой кортеж $(f_m,d)$, такой, что $d$ — массив слов, а $f_m : I \times \{d\} \to \mathrm{Array}$ — функция метаданных, представленная массивом слов, где $I$ — конечное непрерывное множество целочисленных индексов, а $f_m$ определяет способ разрешения данных из $d$.
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> Пусть $(f_m,d)$ — файл.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, where $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+Поток — любая функция $f_s$, такая, что каждое применение $f_s$ выдаёт следующий фрагмент $c$ конечной или бесконечной последовательности, где $f_s$ устанавливает механизм последовательной генерации или извлечения данных.
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> Пусть $f_c : K \to C$ — функция разрешения фрагментов, где $K \subseteq \mathbb{N}$ — непрерывное множество целочисленных индексов, а $C$ — множество фрагментов.
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## Memory
-
-### Address
-
-An address is any element $a \in A$ such that $A$ is a set of addresses, where each address $a$ uniquely identifies a location in a memory structure.
-
-### Pointer
-
-A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> Пусть $k \in K$ — индекс следующего фрагмента.
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
+> $\mathrm{Stream}() = f_s() = f_c(k)$, с продвижением $k$ после каждого применения.
 
-### Variable
-
-A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
-
-## Operations
+## Операции
 
 ### Instruction
 
-An instruction is any array of bytes $i \in B$ such that $B$ is a set of byte arrays, where each instruction represents a single computational operation to be performed.
+Инструкция — любое слово или конечный кортеж слов $i \in B$, такие, что $B$ — множество слов или конечных кортежей слов, причём каждая инструкция представляет одну вычислительную операцию, которую необходимо выполнить.
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+Процедура — любая переменная $f_{proc} : \{k\} \to B$, такая, что $f_{proc}(k)$ представляет массив инструкций $f_a : I \to V$, причём выполнение процедуры выполняет каждую инструкцию в порядке индексов.
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> $\mathrm{Procedure}(k)$ — выполнение каждого $f_a(i)$ в порядке возрастания $i \in I$.
 
 ### Function
 
-A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+Функция — любая процедура $f_{func} : \{k\} \to B$, выполнение которой возвращает адрес $a_r \in A$, определяющий результирующее слово или первое слово массива слов, представляющего результат.
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> Пусть $f_m : A \to B$ — отображение памяти, где $a_r \in A$ определяет результирующее слово $r \in B$.
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
-## Threading
+## Потоки выполнения
 
 ### Process
 
-A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, where the process represents a distinct unit of transformation within a system.
+Процесс — любой ограниченный поток выполнения, принимающий входные данные, выполняющий одну или несколько процедур или функций и выдающий результат, причём процесс представляет отдельную единицу преобразования внутри системы.
 
 ### Thread
 
-A thread is any flow of execution contained within a process, where the thread provides one path by which ordered sequences of instructions belonging to that process may be executed.
+Поток выполнения — любой поток выполнения, содержащийся в процессе и предоставляющий один путь выполнения процедур или функций, принадлежащих этому процессу.
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> Пусть $p$ — процесс.
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> Пусть $(w_0, \dots, w_n)$ — конечный кортеж процедур или функций, принадлежащих $p$.
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> $\mathrm{Thread}(p)$ — выполнение каждого $w_j$ в порядке возрастания $j$ внутри $p$.
 
 ### Dispatcher
 
-A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+Диспетчер — любой кортеж $(t,W,f_d)$, такой, что $t$ — поток выполнения, $W$ — множество процедур или функций, принятых в качестве работы, а $f_d$ — правило диспетчеризации, выбирающее работу из $W$, причём диспетчер обеспечивает выполнение выбранной работы в $t$ согласно этому правилу.
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> Пусть $t$ — поток выполнения.
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> Пусть $W$ — множество процедур или функций, принятых диспетчером, где $\forall w \in W$, $w$ — процедура или функция.
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> Пусть $f_d : \mathcal{P}^+(W) \to W$ — правило диспетчеризации, выбирающее работу из непустого подмножества принятой работы.
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ — выполнение каждого выбранного $f_d(W')$ в $t$, где $W' \subseteq W$, $W' \neq \varnothing$ и $f_d(W') \in W'$.
 
-## Composites
+## Составные структуры
 
 ### Member
 
-A member is any element $m \in M$ such that $M$ is a set of members, where a member is a value which may be assigned to a key within the member map of an object.
+Член — любой элемент $m \in M$, такой, что $M$ — множество элементов, а $f_o : K \to M$ — отображение членов объекта, где $m = f_o(k)$ для некоторого ключа $k \in K$.
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+Объект — любой кортеж $(a,K,f_o)$, такой, что $a \in A$ — адрес, $K$ — множество ключей, а $f_o : K \to M$ — отображение членов, где $M$ — множество элементов, что позволяет объекту представлять адресуемую составную структуру, члены которой сопоставляются ключам через $f_o$.
 
 #### Object(k)
 
@@ -241,92 +270,80 @@ An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a s
 
 ### Field
 
-A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$ is a key, $m \in M$ is a member, and $f_o(k) = m$, where the field represents one keyed member resolved from the member map of an object.
+Поле — любой кортеж $(o,k,m)$, такой, что $o = (a,K,f_o)$ — объект, $k \in K$ — ключ, а $m = f_o(k)$ — член, причём поле представляет один член, определённый ключом из отображения членов объекта.
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> Пусть $o = (a,K,f_o)$ — объект.
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where the method represents a keyed executable member of an object.
+Метод — любое поле $(o,k,m)$, такое, что $m$ — процедура или функция, причём метод представляет исполняемый член объекта, определённый ключом.
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> Пусть $(o,k,m)$ — поле.
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$, где $m$ — процедура или функция.
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+Свойство — любое поле $(o,k,m)$, такое, что $m = (X,f_a)$ — отображение аксессоров, $X = \{\mathrm{Get}, \mathrm{Set}\}$, и $f_a : X \to M$ сопоставляет каждый аксессор члену, где $f_a(\mathrm{Get})$ — функция, а $f_a(\mathrm{Set})$ — процедура, позволяя свойству определять как получение, так и присваивание члена, определённого ключом.
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> Пусть $(o,k,m)$ — поле, где $m = (X,f_a)$ — отображение аксессоров.
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> Пусть $(o,k,(X,f_a))$ — свойство.
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> $\mathrm{Get}(o,k)$ — применение $f_a(\mathrm{Get})$.
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> Пусть $(o,k,(X,f_a))$ — свойство.
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> $\mathrm{Set}(o,k)$ — применение $f_a(\mathrm{Set})$.
 
 ### Structure
 
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+Структура (часто сокращённо `struct`) — любой объект $s = (a,K,f_s)$, такой, что $K$ — конечное множество ключей, а $f_s : K \to M$ — отображение членов, ключи которого не могут изменяться после присваивания структуры, причём структура — специализированный объект с фиксированной компоновкой членов, определённых ключами.
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> Пусть $s = (a,K,f_s)$ — структура.
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+Класс — любой объект $c = (a_c,K_c,f_c)$, такой, что $K_c$ — конечное множество ключей, а $f_c : K_c \to M$ — отображение определений членов, причём класс — специализированный объект, члены которого, определённые ключами, задают компоновку членов для создания других объектов.
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> Пусть $c = (a_c,K_c,f_c)$ — класс.
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> Пусть $a \in A$ — адрес, присвоенный объекту, созданному из $c$.
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> Пусть $f_o : K_c \to M$ — отображение членов, соответствующее определениям $f_c$.
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+Интерфейс — любой объект $r = (a_r,K_r,f_r)$, такой, что $K_r$ — конечное множество ключей, а $f_r : K_r \to M$ — отображение требований к членам, причём интерфейс — специализированный объект, члены которого, определённые ключами, задают члены, которые должен предоставлять другой объект.
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> Пусть $r = (a_r,K_r,f_r)$ — интерфейс.
 >
-> Let $o = (a,K,f_o)$ be an object.
+> Пусть $o = (a,K,f_o)$ — объект.
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> Пусть $f_v : M \times M \to \{0,1\}$ — правило проверки, определяющее, удовлетворяет ли член требованиям другого члена.
+>
+> $\mathrm{Interface}(r,o)$ выполняется, когда $K_r \subseteq K$ и $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.

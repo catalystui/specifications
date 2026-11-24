@@ -1,332 +1,349 @@
-<!-- To tłumaczenie zostało wygenerowane przez ChatGPT i powinno zostać sprawdzone przez tłumacza-człowieka. -->
+<!-- To tłumaczenie zostało wygenerowane przez ChatGPT i powinno zostać sprawdzone przez tłumacza. -->
 <!-- Usuń te wiersze w pull requeście po zweryfikowaniu tłumaczenia. -->
 
 # FRELSPEC
 
 <br/>
 
-> **Specyfikacja relacji podstawowych**<br/>
-> Rewizja 1<br/>
-> 7 lipca 2026<br/>
+> **Specyfikacja relacji fundamentalnych**<br/>
+> Rewizja 2.1<br/>
+> 24 listopada 2026 r.<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > Wszelkie prawa zastrzeżone.<br/>
 > <br/>
-> Przedstawione tutaj definicje i pojęcia opisują podstawowe konstrukcje matematyczne i mogą być swobodnie wyrażane ponownie.
+> Przedstawione tu definicje i pojęcia opisują fundamentalne konstrukcje matematyczne i mogą być swobodnie przeformułowywane.
 
 ## Wprowadzenie
 
-**Foundational Relations Specification (FRELSPEC)** ustanawia podstawowe struktury relacyjne, które stanowią fundament ekosystemu CatalystUI. Jej celem jest zapewnienie wspólnego rozumienia tego, jak wartości, pamięć, operacje i kompozyty są ze sobą powiązane w dokumentacji, specyfikacjach, implementacjach oraz przeglądach weryfikacyjnych, tak aby zachować spójność, jasność i zgodność.
+**Specyfikacja relacji fundamentalnych (FRELSPEC)** ustanawia podstawowe struktury relacyjne leżące u podstaw ekosystemu CatalystUI. Jej celem jest zapewnienie jednolitego rozumienia powiązań między pamięcią, kolekcjami, operacjami i strukturami złożonymi w dokumentacji, specyfikacjach, implementacjach i przeglądach weryfikacyjnych, zapewniając spójność, jasność i zgodność.
 
-Definiując relacje między podstawowymi pojęciami w precyzyjnej, stabilnej formie, FRELSPEC zapewnia wspólny punkt odniesienia dla specyfikacji wyższego poziomu. Dzięki temu deweloperzy, recenzenci i implementatorzy mogą opierać swoje rozumowanie na tym samym fundamencie, gdy ustalają, czy język, usługa, framework albo system może reprezentować konstrukcje relacyjne wymagane do uznania go za zgodny ze specyfikacją.
+Definiując relacje między podstawowymi pojęciami w precyzyjny i stabilny sposób, FRELSPEC zapewnia wspólny punkt odniesienia dla specyfikacji wyższego poziomu, pozwalając poszczególnym implementacjom określać własne reguły i zachowania. Dzięki temu programiści, recenzenci i implementatorzy mogą rozumować na tej samej podstawie, ustalając, czy język, usługa, framework lub system może reprezentować konstrukcje relacyjne wymagane do zgodności ze specyfikacją.
 
 > [!IMPORTANT]
 >
-> Definicje wyrażamy za pomocą pochodnej formy zapisu [teorii zbiorów](https://en.wikipedia.org/wiki/Set_theory). Takie podejście zapewnia precyzyjne, jednoznaczne definicje, zachowując jednocześnie jasność i zwięzłość. Strukturyzujemy te definicje tak, aby wspierały łatwe odwoływanie się, jasną interpretację i spójną hierarchię pojęciową.
+> Wyrażamy definicje za pomocą pochodnej postaci notacji [teorii mnogości](https://en.wikipedia.org/wiki/Set_theory). Podejście to zapewnia precyzyjne i jednoznaczne definicje przy zachowaniu jasności i zwięzłości. Porządkujemy je, aby ułatwić odwoływanie się do nich, jasną interpretację i spójną hierarchię pojęciową.
 
 ## Spis treści
 
 - [FRELSPEC](#frelspec)
-  - [Wprowadzenie](#introduction)
-  - [Spis treści](#table-of-contents)
-  - [Kolekcje](#collections)
-    - [Zbiór](#set)
-    - [Mapa](#map)
-      - [Map(k)](#mapk)
-    - [Tablica](#array)
-      - [Array(i)](#arrayi)
-    - [Plik](#file)
-      - [File(i)](#filei)
-    - [Strumień](#stream)
-      - [Stream()](#stream-1)
-  - [Pamięć](#memory)
-    - [Adres](#address)
-    - [Wskaźnik](#pointer)
+  - [Wprowadzenie](#wprowadzenie)
+  - [Spis treści](#spis-treści)
+  - [Rewizje](#rewizje)
+    - [Rewizja 2.1](#rewizja-21)
+    - [Rewizja 2](#rewizja-2)
+  - [Pamięć](#pamięć)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
       - [Pointer()](#pointer-1)
-    - [Zmienna](#variable)
+    - [Variable](#variable)
       - [Variable(k)](#variablek)
-    - [Stała](#constant)
+    - [Constant](#constant)
       - [Constant(k)](#constantk)
-  - [Operacje](#operations)
-    - [Instrukcja](#instruction)
-    - [Procedura](#procedure)
+  - [Kolekcje](#kolekcje)
+    - [Set](#set)
+      - [Set()](#set-1)
+    - [Map](#map)
+      - [Map(k)](#mapk)
+    - [Array](#array)
+      - [Array(i)](#arrayi)
+    - [File](#file)
+      - [File(i)](#filei)
+    - [Stream](#stream)
+      - [Stream()](#stream-1)
+  - [Operacje](#operacje)
+    - [Instruction](#instruction)
+    - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
-    - [Funkcja](#function)
+    - [Function](#function)
       - [Function(k)](#functionk)
-  - [Wątki](#threading)
-    - [Proces](#process)
-    - [Wątek](#thread)
+  - [Wątkowanie](#wątkowanie)
+    - [Process](#process)
+    - [Thread](#thread)
       - [Thread(p)](#threadp)
-    - [Dyspozytor](#dispatcher)
+    - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Kompozyty](#composites)
-    - [Element członkowski](#member)
-    - [Obiekt](#object)
+  - [Struktury złożone](#struktury-złożone)
+    - [Member](#member)
+    - [Object](#object)
       - [Object(k)](#objectk)
-    - [Pole](#field)
-      - [Field(k)](#fieldk)
-    - [Metoda](#method)
-      - [Method(k)](#methodk)
-    - [Właściwość](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
-    - [Struktura](#structure)
-      - [Structure(k)](#structurek)
-    - [Klasa](#class)
-      - [Class(a)](#classa)
-    - [Interfejs](#interface)
-      - [Interface(o)](#interfaceo)
+    - [Field](#field)
+      - [Field(o,k)](#fieldok)
+    - [Method](#method)
+      - [Method(o,k)](#methodok)
+    - [Property](#property)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
+    - [Structure](#structure)
+      - [Structure(s,k)](#structuresk)
+    - [Class](#class)
+      - [Class(c,a)](#classca)
+    - [Interface](#interface)
+      - [Interface(r,o)](#interfacero)
 
-## Kolekcje
+## Rewizje
 
-### Zbiór
+### Rewizja 2.1
 
-Zbiór to dowolna kolekcja odrębnych elementów.
+**24 listopada 2026 r.**
 
-### Mapa
+Doprecyzowaliśmy definicję File, ustanawiając rozwiązywanie danych sterowane metadanymi, i na nowo zdefiniowaliśmy Stream jako niezależny mechanizm sekwencyjnego generowania lub pobierania danych. Zmiany te pozwalają strumieniom reprezentować skończone lub nieskończone ciągi bez nakładania dodatkowych ograniczeń na inne kolekcje.
 
-Mapa to dowolna funkcja $f_m : K \to V$ taka, że $K$ jest zbiorem kluczy, a $V$ zbiorem wartości.
+### Rewizja 2
 
-#### Mapa(k)
+**21 listopada 2026 r.**
 
-> $\forall k \in K, \exists v \in V : f_m(k) = v$
+Zidentyfikowaliśmy niespójności w reprezentowaniu pamięci i przechowywanych wartości za pomocą bajtów i tablic bajtów. Ustanowiliśmy Word jako fundamentalną reprezentację pamięci, ujednolicając relacje między pamięcią, operacjami i strukturami złożonymi.
 
-### Tablica
+Zidentyfikowaliśmy niespójności w indeksowaniu tablic i relacjach między kolekcjami. Ustandaryzowaliśmy skończone, ciągłe indeksy i wyjaśniliśmy relacje między Array, File i Stream.
 
-Tablica to dowolna funkcja $f_a : I \to V$ taka, że $I \subset \mathbb{N}$, $I$ jest skończonym, ciągłym zbiorem liczb całkowitych, a $V$ jest zbiorem wartości.
-
-#### Tablica(i)
-
-> $\forall i \in I, \exists v \in V : f_a(i) = v$
-
-### Plik
-
-Plik to dowolna funkcja $f_f : I \to B$ taka, że $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ jest skończonym, ciągłym zbiorem liczb całkowitych, a $b$ jest zbiorem bajtów, przy czym $f_f$ pochodzi z mechanizmu trwałego przechowywania danych.
-
-#### Plik(i)
-
-$\forall i \in I, \exists b \in B : f_f(i) = b$
-
-### Strumień
-
-A stream is any function $f_s$ takie, że each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, gdzie $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
-
-#### Strumień()
-
-> Niech $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
->
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
+Zidentyfikowaliśmy nadmiarowości i niejednoznaczności w relacjach wykonania i kompozycji. Doprecyzowaliśmy procedury, funkcje, dyspozytory i relacje obiektów, rozwiązując te problemy z zachowaniem niezależności od implementacji.
 
 ## Pamięć
 
-### Adres
+### Word
 
-An address is any element $a \in A$ takie, że $A$ is a set of addresses, gdzie each address $a$ uniquely identifies a location in a memory structure.
+Słowo to dowolny ciąg bitów $w \in \mathrm{Bit}^n$ przechowywany w pamięci, taki, że $n \in \mathbb{N}^+$.
 
-### Wskaźnik
+### Address
 
-A pointer is any function $f_p : \{a\} \to B$ takie, że $a \in A$ is an address and $B$ is a set of byte arrays, gdzie each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
+Adres to dowolne słowo $a \in A$, gdzie $A$ jest zbiorem słów, takie, że $a$ jednoznacznie identyfikuje miejsce w określonej strukturze pamięci.
 
-#### Wskaźnik()
+#### Address()
 
-> Niech $f_m : A \to B$ be a memory map.
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+Wskaźnik to dowolna funkcja $f_p : \{a\} \to B$, taka, że $a \in A$ jest adresem, a $B$ zbiorem słów, przy czym każde zastosowanie $f_p$ oblicza słowo przechowywane w miejscu pamięci określonym przez $a$.
+
+#### Pointer()
+
+> Niech $f_m : A \to B$ będzie odwzorowaniem pamięci.
 >
 > $\exists b \in B : f_p(a) = f_m(a) = b$
 
-### Zmienna
+### Variable
 
-A variable is any function $f_v : \{k\} \to B$ takie, że $k$ is a key and $B$ is a set of byte arrays, gdzie the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
+Zmienna to dowolna funkcja $f_v : \{k\} \to B$, taka, że $k$ jest kluczem, a $B$ zbiorem słów, przy czym zmienna rozszerza wskaźnik przez związanie klucza z adresem i obliczenie słowa przechowywanego pod tym adresem.
 
-#### Zmienna(k)
+#### Variable(k)
 
-> Niech $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
+> Niech $f_b : \{k\} \to \{a\}$ będzie funkcją wiążącą zmiennej.
 >
-> Niech $f_p : \{a\} \to B$ be a pointer.
+> Niech $f_p : \{a\} \to B$ będzie wskaźnikiem.
 >
 > $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
 
-### Stała
+### Constant
 
-A constant is any variable $f_c : \{k\} \to B$ takie, że $k$ is a key and $B$ is a set of byte arrays, gdzie the byte array associated with $k$ cannot be changed after it is assigned.
+Stała to dowolna zmienna $f_c : \{k\} \to B$, taka, że $k$ jest kluczem, a $B$ zbiorem słów, przy czym słowa powiązanego z $k$ nie można zmienić po przypisaniu.
 
-#### Stała(k)
+#### Constant(k)
 
-> Niech $b_0 \in B$ be the byte array assigned to $k$.
+> Niech $b_0 \in B$ będzie słowem przypisanym do $k$.
 >
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ po przypisaniu $b_0$.
 
+## Kolekcje
+
+### Set
+
+Zbiór to dowolna skończona, nieuporządkowana kolekcja różnych słów.
+
+#### Set()
+
+> Niech $B$ będzie zbiorem słów.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
+
+### Map
+
+Mapa to dowolna funkcja $f_m : K \to V$, taka, że $K$ jest zbiorem kluczy, a $V$ zbiorem wartości, przy czym każdemu kluczowi odpowiada dokładnie jedna wartość.
+
+#### Map(k)
+
+> $\forall k \in K, \exists v \in V : f_m(k) = v$
+
+### Array
+
+Tablica to dowolna funkcja $f_a : I \to V$, taka, że $I \subseteq \mathbb{N}$ jest skończonym, ciągłym zbiorem indeksów całkowitych, a $V$ zbiorem słów, przy czym każdy indeks identyfikuje dokładnie jedną wartość.
+
+#### Array(i)
+
+> $\forall i \in I, \exists v \in V : f_a(i) = v$
+
+### File
+
+Plik to dowolna krotka $(f_m,d)$, taka, że $d$ jest tablicą słów, a $f_m : I \times \{d\} \to \mathrm{Array}$ funkcją metadanych reprezentowaną przez tablicę słów, gdzie $I$ jest skończonym, ciągłym zbiorem indeksów całkowitych, a $f_m$ określa sposób rozwiązywania danych z $d$.
+
+#### File(i)
+
+> Niech $(f_m,d)$ będzie plikiem.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
+
+### Stream
+
+Strumień to dowolna funkcja $f_s$, taka, że każde zastosowanie $f_s$ zwraca kolejny fragment $c$ skończonego lub nieskończonego ciągu, gdzie $f_s$ ustanawia mechanizm sekwencyjnego generowania lub pobierania danych.
+
+#### Stream()
+
+> Niech $f_c : K \to C$ będzie funkcją rozwiązywania fragmentów, gdzie $K \subseteq \mathbb{N}$ jest ciągłym zbiorem indeksów całkowitych, a $C$ zbiorem fragmentów.
+>
+> Niech $k \in K$ będzie indeksem kolejnego fragmentu.
+>
+> $\mathrm{Stream}() = f_s() = f_c(k)$, przesuwając $k$ po każdym zastosowaniu.
 
 ## Operacje
 
-### Instrukcja
+### Instruction
 
-An instruction is any array of bytes $i \in B$ takie, że $B$ is a set of byte arrays, gdzie each instruction represents a single computational operation to be performed.
+Instrukcja to dowolne słowo lub skończona krotka słów $i \in B$, takie, że $B$ jest zbiorem słów lub skończonych krotek słów, przy czym każda instrukcja reprezentuje pojedynczą operację obliczeniową do wykonania.
 
-### Procedura
+### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ takie, że $k$ is a key and $B$ is a set of byte arrays, gdzie each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+Procedura to dowolna zmienna $f_{proc} : \{k\} \to B$, taka, że $f_{proc}(k)$ reprezentuje tablicę instrukcji $f_a : I \to V$, przy czym wykonanie procedury wykonuje każdą instrukcję w kolejności indeksów.
 
-#### Procedura(k)
+#### Procedure(k)
 
-> Niech $b \in B$ takie, że $f_{proc}(k) = b$.
+> $\mathrm{Procedure}(k)$ jest wykonaniem każdego $f_a(i)$ w rosnącej kolejności $i \in I$.
+
+### Function
+
+Funkcja to dowolna procedura $f_{func} : \{k\} \to B$, której wykonanie zwraca adres $a_r \in A$ identyfikujący słowo wynikowe lub pierwsze słowo tablicy słów reprezentującej wynik.
+
+#### Function(k)
+
+> Niech $f_m : A \to B$ będzie odwzorowaniem pamięci, gdzie $a_r \in A$ identyfikuje słowo wynikowe $r \in B$.
 >
-> Niech $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, gdzie $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
+
+## Wątkowanie
+
+### Process
+
+Proces to dowolny ograniczony przepływ wykonania, który przyjmuje dane wejściowe, wykonuje jedną lub więcej procedur lub funkcji i wytwarza dane wyjściowe, przy czym proces reprezentuje odrębną jednostkę transformacji w systemie.
+
+### Thread
+
+Wątek to dowolny przepływ wykonania zawarty w procesie, zapewniający jedną ścieżkę, na której mogą być wykonywane procedury lub funkcje należące do tego procesu.
+
+#### Thread(p)
+
+> Niech $p$ będzie procesem.
 >
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
-
-### Funkcja
-
-A function is any procedure $f_{func} : \{k\} \to B$ takie, że $k$ is a key and $B$ is a set of byte arrays, gdzie each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
-
-#### Funkcja(k)
-
-> Niech $b \in B$ takie, że $f_{func}(k) = b$.
+> Niech $(w_0, \dots, w_n)$ będzie skończoną krotką procedur lub funkcji należących do $p$.
 >
-> Niech $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, gdzie $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
+> $\mathrm{Thread}(p)$ jest wykonaniem każdego $w_j$ w rosnącej kolejności $j$ w ramach $p$.
+
+### Dispatcher
+
+Dyspozytor to dowolna krotka $(t,W,f_d)$, taka, że $t$ jest wątkiem, $W$ zbiorem procedur lub funkcji przyjętych jako praca, a $f_d$ regułą dyspozycji wybierającą pracę z $W$, przy czym dyspozytor powoduje wykonanie wybranej pracy w $t$ zgodnie z tą regułą.
+
+#### Dispatcher(t)
+
+> Niech $t$ będzie wątkiem.
 >
-> Niech $a_r \in A$ be an address assigned after execution is completed.
+> Niech $W$ będzie zbiorem procedur lub funkcji przyjętych przez dyspozytor, gdzie $\forall w \in W$, $w$ jest procedurą lub funkcją.
 >
-> Niech $f_m : A \to B$ be a memory map.
+> Niech $f_d : \mathcal{P}^+(W) \to W$ będzie regułą dyspozycji wybierającą pracę z niepustego podzbioru przyjętej pracy.
 >
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, gdzie $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Dispatcher}(t)$ jest wykonaniem każdego wybranego $f_d(W')$ w $t$, gdzie $W' \subseteq W$, $W' \neq \varnothing$ i $f_d(W') \in W'$.
 
-## Wątki
+## Struktury złożone
 
-### Proces
+### Member
 
-A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, gdzie the process represents a distinct unit of transformation within a system.
+Składowa to dowolny element $m \in M$, taki, że $M$ jest zbiorem elementów, a $f_o : K \to M$ odwzorowaniem składowych obiektu, gdzie $m = f_o(k)$ dla pewnego klucza $k \in K$.
 
-### Wątek
+### Object
 
-A thread is any flow of execution contained within a process, gdzie the thread provides one path by which ordered sequences of instructions belonging to that process may be executed.
+Obiekt to dowolna krotka $(a,K,f_o)$, taka, że $a \in A$ jest adresem, $K$ zbiorem kluczy, a $f_o : K \to M$ odwzorowaniem składowych, gdzie $M$ jest zbiorem elementów, co pozwala obiektowi reprezentować adresowalną strukturę złożoną, której składowe są przypisane do kluczy przez $f_o$.
 
-#### Wątek(p)
-
-> Niech $p$ be a process.
->
-> Niech $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
->
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
-
-### Dyspozytor
-
-A dispatcher is any tuple $(t,W,f_d)$ takie, że $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, gdzie the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
-
-#### Dyspozytor(t)
-
-> Niech $t$ be a thread.
->
-> Niech $W$ be a set of procedures or functions accepted by the dispatcher, gdzie $\forall w \in W$, $w$ is a procedure or function.
->
-> Niech $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
->
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, gdzie $W' \subseteq W$ and $W' \neq \varnothing$.
-
-## Kompozyty
-
-### Element członkowski
-
-A member is any element $m \in M$ takie, że $M$ is a set of members, gdzie a member is a value which may be assigned to a key within the member map of an object.
-
-### Obiekt
-
-An object is any tuple $(a,K,f_o)$ takie, że $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, gdzie $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
-
-#### Obiekt(k)
+#### Object(k)
 
 > $\forall k \in K,\ \exists m \in M : f_o(k) = m$
 
-### Pole
+### Field
 
-A field is any tuple $(o,k,m)$ takie, że $o = (a,K,f_o)$ is an object, $k \in K$ is a key, $m \in M$ is a member, and $f_o(k) = m$, gdzie the field represents one keyed member resolved from the member map of an object.
+Pole to dowolna krotka $(o,k,m)$, taka, że $o = (a,K,f_o)$ jest obiektem, $k \in K$ kluczem, a $m = f_o(k)$ składową, przy czym pole reprezentuje jedną składową określoną kluczem i rozwiązaną z odwzorowania składowych obiektu.
 
-#### Pole(k)
+#### Field(o,k)
 
-> Niech $o = (a,K,f_o)$ be an object.
+> Niech $o = (a,K,f_o)$ będzie obiektem.
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
-### Metoda
+### Method
 
-A method is any field $(o,k,m)$ takie, że $m$ is a procedure or function, gdzie the method represents a keyed executable member of an object.
+Metoda to dowolne pole $(o,k,m)$, takie, że $m$ jest procedurą lub funkcją, przy czym metoda reprezentuje wykonywalną składową obiektu określoną kluczem.
 
-#### Metoda(k)
+#### Method(o,k)
 
-> Niech $o = (a,K,f_o)$ be an object.
+> Niech $(o,k,m)$ będzie polem.
 >
-> Niech $k \in K$ be a key.
+> $\mathrm{Method}(o,k) = (o,k,m)$, gdzie $m$ jest procedurą lub funkcją.
+
+### Property
+
+Właściwość to dowolne pole $(o,k,m)$, takie, że $m = (X,f_a)$ jest odwzorowaniem akcesorów, $X = \{\mathrm{Get}, \mathrm{Set}\}$, a $f_a : X \to M$ przyporządkowuje każdy akcesor składowej, gdzie $f_a(\mathrm{Get})$ jest funkcją, a $f_a(\mathrm{Set})$ procedurą, umożliwiając właściwości określenie zarówno pobierania, jak i przypisywania składowej określonej kluczem.
+
+#### Property(o,k)
+
+> Niech $(o,k,m)$ będzie polem, gdzie $m = (X,f_a)$ jest odwzorowaniem akcesorów.
 >
-> Niech $m \in M$ be a member takie, że $f_o(k) = m$.
+> $\mathrm{Property}(o,k) = (o,k,m)$
+
+#### Get(o,k)
+
+> Niech $(o,k,(X,f_a))$ będzie właściwością.
 >
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Get}(o,k)$ jest zastosowaniem $f_a(\mathrm{Get})$.
 
-### Właściwość
+#### Set(o,k)
 
-A property is any field $(o,k,m)$ takie, że $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, gdzie $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
-
-#### Właściwość(k)
-
-> Niech $(o,k,m)$ be a field.
+> Niech $(o,k,(X,f_a))$ będzie właściwością.
 >
-> Niech $m = (A,f_a)$ be an accessor map.
->
-> Niech $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, gdzie $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, gdzie $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Set}(o,k)$ jest zastosowaniem $f_a(\mathrm{Set})$.
 
-#### Get(k)
+### Structure
 
-> Niech $(o,k,(A,f_a))$ be a property.
->
-> Niech $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+Struktura (często skracana do `struct`) to dowolny obiekt $s = (a,K,f_s)$, taki, że $K$ jest skończonym zbiorem kluczy, a $f_s : K \to M$ odwzorowaniem składowych, którego kluczy nie można zmienić po przypisaniu struktury, przy czym struktura jest wyspecjalizowanym obiektem o stałym układzie składowych określonych kluczami.
 
-#### Zbiór(k)
+#### Structure(s,k)
 
-> Niech $(o,k,(A,f_a))$ be a property.
->
-> Niech $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
-
-### Struktura
-
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ takie, że $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, gdzie the struct is a specialized object whose keyed member layout is fixed.
-
-#### Struktura(k)
-
-> Niech $s = (a,K,f_s)$ be a structure.
+> Niech $s = (a,K,f_s)$ będzie strukturą.
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
-### Klasa
+### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ takie, że $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, gdzie the class is a specialized object whose keyed members define the member layout used to produce other objects.
+Klasa to dowolny obiekt $c = (a_c,K_c,f_c)$, taki, że $K_c$ jest skończonym zbiorem kluczy, a $f_c : K_c \to M$ odwzorowaniem definicji składowych, przy czym klasa jest wyspecjalizowanym obiektem, którego składowe określone kluczami definiują układ składowych używany do tworzenia innych obiektów.
 
-#### Klasa(a)
+#### Class(c,a)
 
-> Niech $c = (a_c,K_c,f_c)$ be a class.
+> Niech $c = (a_c,K_c,f_c)$ będzie klasą.
 >
-> Niech $a \in A$ be an address assigned to an object produced from $c$.
+> Niech $a \in A$ będzie adresem przypisanym obiektowi utworzonemu z $c$.
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
-
-### Interfejs
-
-An interface is any object $r = (a_r,K_r,f_r)$ takie, że $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, gdzie the interface is a specialized object whose keyed members define the members required to be provided by another object.
-
-#### Interfejs(o)
-
-> Niech $r = (a_r,K_r,f_r)$ be an interface.
+> Niech $f_o : K_c \to M$ będzie odwzorowaniem składowych zgodnym z definicjami $f_c$.
 >
-> Niech $o = (a,K,f_o)$ be an object.
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
+
+### Interface
+
+Interfejs to dowolny obiekt $r = (a_r,K_r,f_r)$, taki, że $K_r$ jest skończonym zbiorem kluczy, a $f_r : K_r \to M$ odwzorowaniem wymagań składowych, przy czym interfejs jest wyspecjalizowanym obiektem, którego składowe określone kluczami definiują składowe wymagane od innego obiektu.
+
+#### Interface(r,o)
+
+> Niech $r = (a_r,K_r,f_r)$ będzie interfejsem.
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> Niech $o = (a,K,f_o)$ będzie obiektem.
+>
+> Niech $f_v : M \times M \to \{0,1\}$ będzie regułą walidacji określającą, czy składowa spełnia wymagania innej składowej.
+>
+> $\mathrm{Interface}(r,o)$ zachodzi, gdy $K_r \subseteq K$ i $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.

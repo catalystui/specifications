@@ -1,37 +1,50 @@
 <!-- 此翻译由 ChatGPT 生成，应由人工译者审核。 -->
-
-# 在翻译经验证后，请在拉取请求中删除这些行。
+<!-- 翻译经验证后，请在拉取请求中删除这些行。 -->
 
 # FRELSPEC
 
 <br/>
 
 > **基础关系规范**<br/>
-> 修订版 1<br/>
-> July 7th, 2026<br/>
+> 修订版 2.1<br/>
+> 2026年11月24日<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > 保留所有权利。<br/>
 > <br/>
-> The definitions and concepts presented herein describe fundamental mathematical constructs and may be freely re-expressed.
+> 本文所述定义和概念描述基本数学构造，可以自由地重新表述。
 
 ## 引言
 
-The **Foundational Relations Specification (FRELSPEC)** establishes the core relational structures that underpin the CatalystUI ecosystem. Its purpose is to provide a unified understanding of how values, memory, operations, and composites are associated across documentation, specifications, implementations, and verification reviews, ensuring consistency, clarity, and alignment.
+**基础关系规范（FRELSPEC）**确立了支撑 CatalystUI 生态系统的核心关系结构。其目的是在文档、规范、实现及验证审查中统一对内存、集合结构、操作和复合结构之间关系的理解，确保一致性、清晰性和协调性。
 
-By defining relationships between foundational concepts in a precise and stable form, FRELSPEC provides a common reference point for higher-level specifications. This allows developers, reviewers, and implementers to reason from the same foundation when determining whether a language, service, framework, or system can represent the relational constructs required to be considered within spec.
+通过以精确且稳定的形式定义基础概念之间的关系，FRELSPEC 为更高层级的规范提供共同参照，同时允许各个实现制定自身的规则和行为。这使开发者、审查者和实现者能够从同一基础出发，判断语言、服务、框架或系统是否能够表示符合规范所需的关系构造。
 
 > [!IMPORTANT]
 >
-> We express definitions using a derived form of [set theory](https://en.wikipedia.org/wiki/Set_theory) notation. This approach provides precise, unambiguous definitions while maintaining clarity and conciseness. We structure these definitions to support easy reference, clear interpretation, and a consistent conceptual hierarchy.
+> 我们使用一种由[集合论](https://en.wikipedia.org/wiki/Set_theory)记法衍生而来的记法表达定义。这种方法在保持清晰和简洁的同时，提供精确且无歧义的定义。我们对定义进行结构化组织，以便查阅、清晰理解并保持一致的概念层次。
 
 ## 目录
 
 - [FRELSPEC](#frelspec)
-  - [引言](#introduction)
-  - [目录](#table-of-contents)
-  - [集合](#collections)
+  - [引言](#引言)
+  - [目录](#目录)
+  - [修订记录](#修订记录)
+    - [修订版 2.1](#修订版-21)
+    - [修订版 2](#修订版-2)
+  - [内存](#内存)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [集合结构](#集合结构)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -40,54 +53,116 @@ By defining relationships between foundational concepts in a precise and stable 
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [内存](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [操作](#operations)
+  - [操作](#操作)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
-  - [线程](#threading)
+  - [线程机制](#线程机制)
     - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [复合结构](#composites)
+  - [复合结构](#复合结构)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## 集合
+## 修订记录
+
+### 修订版 2.1
+
+**2026年11月24日**
+
+我们完善了 File 的定义，以确立由元数据决定的数据解析方式，并将 Stream 重新定义为一种独立的顺序数据生成或检索机制。这些变更使流能够表示有限或无限序列，而无需对其他集合结构施加额外约束。
+
+### 修订版 2
+
+**2026年11月21日**
+
+我们发现使用字节及字节数组表示内存和存储值时存在不一致之处。我们将 Word 确立为基础内存表示，统一了内存、操作和复合结构之间的关系。
+
+我们发现数组索引及集合结构之间的关系存在不一致之处。我们统一了有限、连续索引的要求，并明确了 Array、File 和 Stream 之间的关系。
+
+我们发现执行关系与复合关系中存在冗余和歧义。我们完善了过程、函数、调度器和对象关系，以解决这些问题并保持实现独立性。
+
+## 内存
+
+### Word
+
+字是存储在内存中的任意位序列 $w \in \mathrm{Bit}^n$，满足 $n \in \mathbb{N}^+$。
+
+### Address
+
+地址是任意字 $a \in A$，其中 $A$ 是字的集合，且 $a$ 唯一标识指定内存结构中的一个位置。
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+指针是任意函数 $f_p : \{a\} \to B$，其中 $a \in A$ 是地址，$B$ 是字的集合；每次应用 $f_p$ 都会求得由 $a$ 标识的内存位置中存储的字。
+
+#### Pointer()
+
+> 设 $f_m : A \to B$ 为内存映射。
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+变量是任意函数 $f_v : \{k\} \to B$，其中 $k$ 是键，$B$ 是字的集合；变量通过将键绑定到地址并求得该地址存储的字来扩展指针。
+
+#### Variable(k)
+
+> 设 $f_b : \{k\} \to \{a\}$ 为变量的绑定函数。
+>
+> 设 $f_p : \{a\} \to B$ 为指针。
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+常量是任意变量 $f_c : \{k\} \to B$，其中 $k$ 是键，$B$ 是字的集合；与 $k$ 关联的字在赋值后不可更改。
+
+#### Constant(k)
+
+> 设 $b_0 \in B$ 为赋给 $k$ 的字。
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$，在 $b_0$ 被赋值之后。
+
+## 集合结构
 
 ### Set
 
-集合（set）是任意由互异元素组成的集合体。
+集合是由互不相同的字组成的任意有限、无序的集合结构。
+
+#### Set()
+
+> 设 $B$ 为字的集合。
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-A map is any function $f_m : K \to V$ such that $K$ is a set of keys and $V$ is a set of values.
+映射是任意函数 $f_m : K \to V$，其中 $K$ 是键的集合，$V$ 是值的集合；每个键恰好关联一个值。
 
 #### Map(k)
 
@@ -95,7 +170,7 @@ A map is any function $f_m : K \to V$ such that $K$ is a set of keys and $V$ is 
 
 ### Array
 
-An array is any function $f_a : I \to V$ such that $I \subset \mathbb{N}$, $I$ is a finite, contiguous set of integers, and $V$ is a set of values.
+数组是任意函数 $f_a : I \to V$，其中 $I \subseteq \mathbb{N}$ 是有限、连续的整数索引集合，$V$ 是字的集合；每个索引恰好标识一个值。
 
 #### Array(i)
 
@@ -103,138 +178,91 @@ An array is any function $f_a : I \to V$ such that $I \subset \mathbb{N}$, $I$ i
 
 ### File
 
-A file is any function $f_f : I \to B$ such that $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers and $b$ is a set of bytes, where $f_f$ originates from a mechanism of persistent data storage.
+文件是任意元组 $(f_m,d)$，其中 $d$ 是字数组，$f_m : I \times \{d\} \to \mathrm{Array}$ 是以字数组表示的元数据函数；$I$ 是有限、连续的整数索引集合，$f_m$ 决定如何从 $d$ 解析数据。
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> 设 $(f_m,d)$ 为文件。
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, where $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+流是任意函数 $f_s$，每次应用 $f_s$ 都产生有限或无限序列中的下一个数据块 $c$，其中 $f_s$ 建立顺序生成或检索数据的机制。
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> 设 $f_c : K \to C$ 为数据块解析函数，其中 $K \subseteq \mathbb{N}$ 是连续的整数索引集合，$C$ 是数据块的集合。
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## 内存
-
-### Address
-
-地址（address）是任意元素 $a \in A$，其中 $A$ 是地址集合，并且每个地址 $a$ 都唯一标识内存结构中的一个位置。
-
-### Pointer
-
-A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> 设 $k \in K$ 为下一个数据块的索引。
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
-
-### Variable
-
-A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
+> $\mathrm{Stream}() = f_s() = f_c(k)$，每次应用后推进 $k$。
 
 ## 操作
 
 ### Instruction
 
-指令（instruction）是任意字节数组 $i \in B$，其中 $B$ 是字节数组集合，而每条指令表示要执行的单个计算操作。
+指令是任意字或有限字元组 $i \in B$，其中 $B$ 是字或有限字元组的集合；每条指令表示一个待执行的计算操作。
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+过程是任意变量 $f_{proc} : \{k\} \to B$，其中 $f_{proc}(k)$ 表示指令数组 $f_a : I \to V$；执行该过程时，按照索引顺序执行每条指令。
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> $\mathrm{Procedure}(k)$ 表示执行每个 $f_a(i)$，顺序为 $i \in I$ 的升序。
 
 ### Function
 
-A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+函数是任意过程 $f_{func} : \{k\} \to B$，执行该函数会返回地址 $a_r \in A$，该地址标识结果字或表示结果的字数组中的第一个字。
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> 设 $f_m : A \to B$ 为内存映射，其中 $a_r \in A$ 标识结果字 $r \in B$。
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
-## 线程
+## 线程机制
 
 ### Process
 
-进程（process）是任意有界执行流，它接收输入、执行一条或多条指令并产生输出；该进程表示系统中的一个独立变换单元。
+进程是任意有界的执行流，它接受输入、执行一个或多个过程或函数并产生输出；进程表示系统中独立的转换单元。
 
 ### Thread
 
-线程（thread）是包含在某个进程中的任意执行流；线程提供了一条路径，用于执行属于该进程的有序指令序列。
+线程是进程中包含的任意执行流，它提供一条执行该进程所属过程或函数的路径。
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> 设 $p$ 为进程。
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> 设 $(w_0, \dots, w_n)$ 为属于 $p$ 的过程或函数的有限元组。
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> $\mathrm{Thread}(p)$ 表示执行每个 $w_j$，顺序为 $j$ 的升序，且执行发生在 $p$ 内。
 
 ### Dispatcher
 
-调度器（dispatcher）是任意元组 $(t,W,f_d)$，其中 $t$ 是一个线程，$W$ 是被接受为工作的过程或函数集合，$f_d$ 是从 $W$ 中选择工作的调度规则；调度器会根据该规则使被选中的工作在 $t$ 上执行。
+调度器是任意元组 $(t,W,f_d)$，其中 $t$ 是线程，$W$ 是被接受为工作的过程或函数的集合，$f_d$ 是从 $W$ 中选择工作的调度规则；调度器依据该规则使选定工作在 $t$ 上执行。
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> 设 $t$ 为线程。
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> 设 $W$ 为调度器接受的过程或函数的集合，其中 $\forall w \in W$，$w$ 为过程或函数。
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> 设 $f_d : \mathcal{P}^+(W) \to W$ 为从已接受工作的非空子集中选择工作的调度规则。
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ 表示将每个选定的 $f_d(W')$ 在 $t$ 上执行，其中 $W' \subseteq W$、$W' \neq \varnothing$ 且 $f_d(W') \in W'$。
 
 ## 复合结构
 
 ### Member
 
-成员（member）是任意元素 $m \in M$，其中 $M$ 是成员集合，而成员是可以被赋给对象成员映射中某个键的值。
+成员是任意元素 $m \in M$，其中 $M$ 是元素的集合，$f_o : K \to M$ 是对象的成员映射，且 $m = f_o(k)$ 对某个键 $k \in K$ 成立。
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+对象是任意元组 $(a,K,f_o)$，其中 $a \in A$ 是地址，$K$ 是键的集合，$f_o : K \to M$ 是成员映射，$M$ 是元素的集合；对象因此可表示可寻址的复合结构，其成员通过 $f_o$ 分配给键。
 
 #### Object(k)
 
@@ -242,92 +270,80 @@ An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a s
 
 ### Field
 
-字段（field）是任意元组 $(o,k,m)$，其中 $o = (a,K,f_o)$ 是一个对象，$k \in K$ 是一个键，$m \in M$ 是一个成员，且 $f_o(k) = m$；字段表示从对象成员映射中解析出的一个键控成员。
+字段是任意元组 $(o,k,m)$，其中 $o = (a,K,f_o)$ 是对象，$k \in K$ 是键，$m = f_o(k)$ 是成员；字段表示从对象的成员映射中解析出的一个带键成员。
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> 设 $o = (a,K,f_o)$ 为对象。
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-方法（method）是任意字段 $(o,k,m)$，其中 $m$ 是一个过程或函数；方法表示对象的一个可执行键控成员。
+方法是任意字段 $(o,k,m)$，其中 $m$ 是过程或函数；方法表示对象的一个带键可执行成员。
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> 设 $(o,k,m)$ 为字段。
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$，其中 $m$ 是过程或函数。
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+属性是任意字段 $(o,k,m)$，其中 $m = (X,f_a)$ 是访问器映射，$X = \{\mathrm{Get}, \mathrm{Set}\}$，且 $f_a : X \to M$ 将各访问器映射到成员，其中 $f_a(\mathrm{Get})$ 是函数，$f_a(\mathrm{Set})$ 是过程；属性因而可定义带键成员的获取与赋值行为。
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> 设 $(o,k,m)$ 为字段，其中 $m = (X,f_a)$ 为访问器映射。
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> 设 $(o,k,(X,f_a))$ 为属性。
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> $\mathrm{Get}(o,k)$ 表示对 $f_a(\mathrm{Get})$ 的应用。
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> 设 $(o,k,(X,f_a))$ 为属性。
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> $\mathrm{Set}(o,k)$ 表示对 $f_a(\mathrm{Set})$ 的应用。
 
 ### Structure
 
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+结构（通常缩写为 `struct`）是任意对象 $s = (a,K,f_s)$，其中 $K$ 是有限的键集合，$f_s : K \to M$ 是成员映射，其键在结构被赋值后不可更改；结构是一种带键成员布局固定的专用对象。
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> 设 $s = (a,K,f_s)$ 为结构。
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+类是任意对象 $c = (a_c,K_c,f_c)$，其中 $K_c$ 是有限的键集合，$f_c : K_c \to M$ 是成员定义映射；类是一种专用对象，其带键成员定义用于生成其他对象的成员布局。
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> 设 $c = (a_c,K_c,f_c)$ 为类。
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> 设 $a \in A$ 为分配给由 $c$ 生成的对象的地址。
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> 设 $f_o : K_c \to M$ 为遵循 $f_c$ 中定义的成员映射。
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+接口是任意对象 $r = (a_r,K_r,f_r)$，其中 $K_r$ 是有限的键集合，$f_r : K_r \to M$ 是成员要求映射；接口是一种专用对象，其带键成员定义另一对象必须提供的成员。
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> 设 $r = (a_r,K_r,f_r)$ 为接口。
 >
-> Let $o = (a,K,f_o)$ be an object.
+> 设 $o = (a,K,f_o)$ 为对象。
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> 设 $f_v : M \times M \to \{0,1\}$ 为验证规则，用于判断一个成员是否满足另一成员的要求。
+>
+> $\mathrm{Interface}(r,o)$ 成立，当 $K_r \subseteq K$ 且 $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$。

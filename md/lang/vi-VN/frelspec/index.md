@@ -1,36 +1,50 @@
-<!-- Bản dịch này được tạo bởi ChatGPT và nên được một người dịch xem xét lại. -->
-<!-- Hãy xóa các dòng này trong pull request sau khi bản dịch đã được xác minh. -->
+<!-- Bản dịch này được ChatGPT tạo ra và cần được người dịch xem xét. -->
+<!-- Xóa các dòng này trong một pull request sau khi bản dịch được xác minh. -->
 
 # FRELSPEC
 
 <br/>
 
 > **Đặc tả quan hệ nền tảng**<br/>
-> Bản sửa đổi 1<br/>
-> Ngày 7 tháng 7 năm 2026<br/>
+> Bản sửa đổi 2.1<br/>
+> Ngày 24 tháng 11 năm 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > Bảo lưu mọi quyền.<br/>
 > <br/>
-> Các định nghĩa và khái niệm được trình bày ở đây mô tả những cấu trúc toán học nền tảng và có thể được diễn đạt lại một cách tự do.
+> Các định nghĩa và khái niệm được trình bày ở đây mô tả các cấu trúc toán học nền tảng và có thể được diễn đạt lại tự do.
 
 ## Giới thiệu
 
-**Foundational Relations Specification (FRELSPEC)** thiết lập các cấu trúc quan hệ cốt lõi làm nền cho hệ sinh thái CatalystUI. Mục đích của nó là cung cấp cách hiểu thống nhất về cách value, memory, operation và composite được liên kết trong tài liệu, đặc tả, implementation và verification review, bảo đảm tính nhất quán, rõ ràng và đồng bộ.
+**Đặc tả quan hệ nền tảng (FRELSPEC)** thiết lập các cấu trúc quan hệ cốt lõi làm nền tảng cho hệ sinh thái CatalystUI. Mục đích là cung cấp cách hiểu thống nhất về quan hệ giữa bộ nhớ, các tập hợp dữ liệu, thao tác và cấu trúc hợp thành trong tài liệu, đặc tả, triển khai và đánh giá xác minh, bảo đảm tính nhất quán, rõ ràng và đồng bộ.
 
-Bằng cách định nghĩa quan hệ giữa các khái niệm nền tảng ở dạng chính xác và ổn định, FRELSPEC cung cấp một điểm tham chiếu chung cho các đặc tả cấp cao hơn. Điều này cho phép developer, reviewer và implementer suy luận từ cùng một nền tảng khi xác định liệu một ngôn ngữ, service, framework hoặc system có thể biểu diễn các cấu trúc quan hệ cần thiết để được xem là within spec hay không.
+Bằng cách định nghĩa chính xác và ổn định các quan hệ giữa những khái niệm nền tảng, FRELSPEC cung cấp điểm tham chiếu chung cho các đặc tả cấp cao hơn, đồng thời cho phép từng triển khai thiết lập quy tắc và hành vi riêng. Nhờ đó, nhà phát triển, người đánh giá và người triển khai có thể suy luận trên cùng một cơ sở khi xác định liệu ngôn ngữ, dịch vụ, framework hay hệ thống có biểu diễn được các cấu trúc quan hệ cần thiết để phù hợp với đặc tả hay không.
 
 > [!IMPORTANT]
 >
-> Chúng tôi diễn đạt định nghĩa bằng một dạng dẫn xuất của ký hiệu [lý thuyết tập hợp](https://en.wikipedia.org/wiki/Set_theory). Cách tiếp cận này cung cấp các định nghĩa chính xác, không mơ hồ trong khi vẫn giữ sự rõ ràng và ngắn gọn. Chúng tôi cấu trúc các định nghĩa này để hỗ trợ việc tra cứu dễ dàng, diễn giải rõ ràng và một hệ phân cấp khái niệm nhất quán.
+> Chúng tôi biểu đạt các định nghĩa bằng một dạng ký pháp dẫn xuất từ [lý thuyết tập hợp](https://en.wikipedia.org/wiki/Set_theory). Cách tiếp cận này cung cấp định nghĩa chính xác, không mơ hồ, đồng thời duy trì tính rõ ràng và súc tích. Các định nghĩa được tổ chức để dễ tham chiếu, diễn giải rõ ràng và có hệ thống phân cấp khái niệm nhất quán.
 
 ## Mục lục
 
 - [FRELSPEC](#frelspec)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Collections](#collections)
+  - [Giới thiệu](#giới-thiệu)
+  - [Mục lục](#mục-lục)
+  - [Các bản sửa đổi](#các-bản-sửa-đổi)
+    - [Bản sửa đổi 2.1](#bản-sửa-đổi-21)
+    - [Bản sửa đổi 2](#bản-sửa-đổi-2)
+  - [Bộ nhớ](#bộ-nhớ)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [Tập hợp dữ liệu](#tập-hợp-dữ-liệu)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,54 +53,116 @@ Bằng cách định nghĩa quan hệ giữa các khái niệm nền tảng ở 
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [Thao tác](#thao-tác)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
-  - [Threading](#threading)
+  - [Luồng thực thi](#luồng-thực-thi)
     - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [Cấu trúc hợp thành](#cấu-trúc-hợp-thành)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Tập hợp
+## Các bản sửa đổi
+
+### Bản sửa đổi 2.1
+
+**Ngày 24 tháng 11 năm 2026**
+
+Chúng tôi tinh chỉnh định nghĩa File để thiết lập cơ chế phân giải dữ liệu do siêu dữ liệu chi phối và định nghĩa lại Stream như một cơ chế độc lập để tạo hoặc truy xuất dữ liệu tuần tự. Những thay đổi này cho phép luồng biểu diễn dãy hữu hạn hoặc vô hạn mà không áp đặt thêm ràng buộc lên các tập hợp dữ liệu khác.
+
+### Bản sửa đổi 2
+
+**Ngày 21 tháng 11 năm 2026**
+
+Chúng tôi phát hiện sự thiếu nhất quán trong cách biểu diễn bộ nhớ và giá trị lưu trữ bằng byte và mảng byte. Chúng tôi thiết lập Word làm biểu diễn bộ nhớ nền tảng, thống nhất quan hệ giữa Bộ nhớ, Thao tác và Cấu trúc hợp thành.
+
+Chúng tôi phát hiện sự thiếu nhất quán trong việc đánh chỉ số mảng và quan hệ giữa các tập hợp dữ liệu. Chúng tôi chuẩn hóa các chỉ số hữu hạn, liên tiếp và làm rõ quan hệ giữa Array, File và Stream.
+
+Chúng tôi phát hiện sự dư thừa và mơ hồ trong quan hệ thực thi và hợp thành. Chúng tôi tinh chỉnh thủ tục, hàm, bộ điều phối và quan hệ đối tượng để giải quyết các vấn đề này, đồng thời duy trì tính độc lập với triển khai.
+
+## Bộ nhớ
+
+### Word
+
+Một từ là bất kỳ dãy bit $w \in \mathrm{Bit}^n$ nào được lưu trong bộ nhớ, sao cho $n \in \mathbb{N}^+$.
+
+### Address
+
+Một địa chỉ là bất kỳ từ $a \in A$ nào, trong đó $A$ là tập hợp các từ, sao cho $a$ xác định duy nhất một vị trí trong cấu trúc bộ nhớ được chỉ định.
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+Một con trỏ là bất kỳ hàm $f_p : \{a\} \to B$ nào sao cho $a \in A$ là địa chỉ và $B$ là tập hợp các từ, trong đó mỗi lần áp dụng $f_p$ sẽ tính giá trị từ được lưu tại vị trí bộ nhớ do $a$ xác định.
+
+#### Pointer()
+
+> Giả sử $f_m : A \to B$ là ánh xạ bộ nhớ.
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+Một biến là bất kỳ hàm $f_v : \{k\} \to B$ nào sao cho $k$ là khóa và $B$ là tập hợp các từ, trong đó biến mở rộng con trỏ bằng cách liên kết khóa với địa chỉ và tính giá trị từ được lưu tại địa chỉ đó.
+
+#### Variable(k)
+
+> Giả sử $f_b : \{k\} \to \{a\}$ là hàm liên kết của biến.
+>
+> Giả sử $f_p : \{a\} \to B$ là con trỏ.
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+Một hằng là bất kỳ biến $f_c : \{k\} \to B$ nào sao cho $k$ là khóa và $B$ là tập hợp các từ, trong đó từ liên kết với $k$ không thể thay đổi sau khi được gán.
+
+#### Constant(k)
+
+> Giả sử $b_0 \in B$ là từ được gán cho $k$.
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ sau khi $b_0$ được gán.
+
+## Tập hợp dữ liệu
 
 ### Set
 
-Set là bất kỳ collection nào gồm các phần tử phân biệt.
+Một tập hợp là bất kỳ bộ sưu tập hữu hạn, không có thứ tự gồm các từ phân biệt.
+
+#### Set()
+
+> Giả sử $B$ là tập hợp các từ.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-Map là bất kỳ function $f_m : K \to V$ nào sao cho $K$ là tập key và $V$ là tập value.
+Một ánh xạ là bất kỳ hàm $f_m : K \to V$ nào sao cho $K$ là tập hợp khóa và $V$ là tập hợp giá trị, trong đó mỗi khóa liên kết với đúng một giá trị.
 
 #### Map(k)
 
@@ -94,7 +170,7 @@ Map là bất kỳ function $f_m : K \to V$ nào sao cho $K$ là tập key và $
 
 ### Array
 
-Array là bất kỳ function $f_a : I \to V$ nào sao cho $I \subset \mathbb{N}$, $I$ là một tập số nguyên hữu hạn liên tiếp, và $V$ là tập value.
+Một mảng là bất kỳ hàm $f_a : I \to V$ nào sao cho $I \subseteq \mathbb{N}$ là tập hợp hữu hạn, liên tiếp các chỉ số nguyên và $V$ là tập hợp các từ, trong đó mỗi chỉ số xác định đúng một giá trị.
 
 #### Array(i)
 
@@ -102,138 +178,91 @@ Array là bất kỳ function $f_a : I \to V$ nào sao cho $I \subset \mathbb{N}
 
 ### File
 
-A file is any function $f_f : I \to B$ such that $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers and $b$ is a set of bytes, where $f_f$ originates from a mechanism of persistent data storage.
+Một tệp là bất kỳ bộ $(f_m,d)$ nào sao cho $d$ là mảng các từ và $f_m : I \times \{d\} \to \mathrm{Array}$ là hàm siêu dữ liệu được biểu diễn bằng mảng các từ, trong đó $I$ là tập hợp hữu hạn, liên tiếp các chỉ số nguyên và $f_m$ xác định cách phân giải dữ liệu từ $d$.
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> Giả sử $(f_m,d)$ là tệp.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, where $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+Một luồng là bất kỳ hàm $f_s$ nào sao cho mỗi lần áp dụng $f_s$ sinh ra đoạn tiếp theo $c$ trong dãy hữu hạn hoặc vô hạn, trong đó $f_s$ thiết lập cơ chế tạo hoặc truy xuất dữ liệu tuần tự.
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> Giả sử $f_c : K \to C$ là hàm phân giải đoạn, trong đó $K \subseteq \mathbb{N}$ là tập hợp liên tiếp các chỉ số nguyên và $C$ là tập hợp các đoạn.
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## Bộ nhớ
-
-### Address
-
-An address is any element $a \in A$ such that $A$ is a set of addresses, where each address $a$ uniquely identifies a location in a memory structure.
-
-### Pointer
-
-A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> Giả sử $k \in K$ là chỉ số của đoạn tiếp theo.
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
-
-### Variable
-
-A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
+> $\mathrm{Stream}() = f_s() = f_c(k)$, tiến $k$ sau mỗi lần áp dụng.
 
 ## Thao tác
 
 ### Instruction
 
-An instruction is any array of bytes $i \in B$ such that $B$ is a set of byte arrays, where each instruction represents a single computational operation to be performed.
+Một lệnh là bất kỳ từ hoặc bộ hữu hạn các từ $i \in B$ nào sao cho $B$ là tập hợp các từ hoặc bộ hữu hạn các từ, trong đó mỗi lệnh biểu diễn một thao tác tính toán duy nhất cần thực hiện.
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+Một thủ tục là bất kỳ biến $f_{proc} : \{k\} \to B$ nào sao cho $f_{proc}(k)$ biểu diễn mảng lệnh $f_a : I \to V$, trong đó việc thực thi thủ tục thực hiện từng lệnh theo thứ tự chỉ số.
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> $\mathrm{Procedure}(k)$ là việc thực thi mỗi $f_a(i)$ theo thứ tự tăng dần của $i \in I$.
 
 ### Function
 
-A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+Một hàm là bất kỳ thủ tục $f_{func} : \{k\} \to B$ nào mà khi thực thi trả về địa chỉ $a_r \in A$ xác định từ kết quả hoặc từ đầu tiên của mảng từ biểu diễn kết quả.
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> Giả sử $f_m : A \to B$ là ánh xạ bộ nhớ, trong đó $a_r \in A$ xác định từ kết quả $r \in B$.
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
-## Luồng
+## Luồng thực thi
 
 ### Process
 
-A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, where the process represents a distinct unit of transformation within a system.
+Một tiến trình là bất kỳ luồng thực thi có giới hạn nào nhận đầu vào, thực thi một hay nhiều thủ tục hoặc hàm và tạo đầu ra, trong đó tiến trình biểu diễn một đơn vị biến đổi riêng biệt trong hệ thống.
 
 ### Thread
 
-A thread is any flow of execution contained within a process, where the thread provides one path by which ordered sequences of instructions belonging to that process may be executed.
+Một luồng thực thi (thread) là bất kỳ dòng thực thi nào nằm trong tiến trình, cung cấp một đường thực thi các thủ tục hoặc hàm thuộc tiến trình đó.
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> Giả sử $p$ là tiến trình.
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> Giả sử $(w_0, \dots, w_n)$ là bộ hữu hạn các thủ tục hoặc hàm thuộc $p$.
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> $\mathrm{Thread}(p)$ là việc thực thi mỗi $w_j$ theo thứ tự tăng dần của $j$ trong $p$.
 
 ### Dispatcher
 
-A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+Một bộ điều phối là bất kỳ bộ $(t,W,f_d)$ nào sao cho $t$ là luồng thực thi, $W$ là tập hợp thủ tục hoặc hàm được chấp nhận làm công việc, và $f_d$ là quy tắc điều phối chọn công việc từ $W$, trong đó bộ điều phối làm cho công việc đã chọn được thực thi trên $t$ theo quy tắc đó.
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> Giả sử $t$ là luồng thực thi.
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> Giả sử $W$ là tập hợp thủ tục hoặc hàm được bộ điều phối chấp nhận, trong đó $\forall w \in W$, $w$ là thủ tục hoặc hàm.
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> Giả sử $f_d : \mathcal{P}^+(W) \to W$ là quy tắc điều phối chọn công việc từ tập con khác rỗng của công việc đã chấp nhận.
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ là việc thực thi mỗi $f_d(W')$ được chọn trên $t$, trong đó $W' \subseteq W$, $W' \neq \varnothing$ và $f_d(W') \in W'$.
 
-## Cấu trúc tổng hợp
+## Cấu trúc hợp thành
 
 ### Member
 
-A member is any element $m \in M$ such that $M$ is a set of members, where a member is a value which may be assigned to a key within the member map of an object.
+Một thành viên là bất kỳ phần tử $m \in M$ nào sao cho $M$ là tập hợp phần tử và $f_o : K \to M$ là ánh xạ thành viên của đối tượng, trong đó $m = f_o(k)$ với một khóa $k \in K$ nào đó.
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+Một đối tượng là bất kỳ bộ $(a,K,f_o)$ nào sao cho $a \in A$ là địa chỉ, $K$ là tập hợp khóa và $f_o : K \to M$ là ánh xạ thành viên, trong đó $M$ là tập hợp phần tử, cho phép đối tượng biểu diễn cấu trúc hợp thành có thể định địa chỉ mà các thành viên được gán cho khóa thông qua $f_o$.
 
 #### Object(k)
 
@@ -241,92 +270,80 @@ An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a s
 
 ### Field
 
-A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$ is a key, $m \in M$ is a member, and $f_o(k) = m$, where the field represents one keyed member resolved from the member map of an object.
+Một trường là bất kỳ bộ $(o,k,m)$ nào sao cho $o = (a,K,f_o)$ là đối tượng, $k \in K$ là khóa và $m = f_o(k)$ là thành viên, trong đó trường biểu diễn một thành viên có khóa được phân giải từ ánh xạ thành viên của đối tượng.
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> Giả sử $o = (a,K,f_o)$ là đối tượng.
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where the method represents a keyed executable member of an object.
+Một phương thức là bất kỳ trường $(o,k,m)$ nào sao cho $m$ là thủ tục hoặc hàm, trong đó phương thức biểu diễn thành viên có khóa và có thể thực thi của đối tượng.
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> Giả sử $(o,k,m)$ là trường.
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$, trong đó $m$ là thủ tục hoặc hàm.
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+Một thuộc tính là bất kỳ trường $(o,k,m)$ nào sao cho $m = (X,f_a)$ là ánh xạ bộ truy cập, $X = \{\mathrm{Get}, \mathrm{Set}\}$, và $f_a : X \to M$ ánh xạ mỗi bộ truy cập tới thành viên, trong đó $f_a(\mathrm{Get})$ là hàm và $f_a(\mathrm{Set})$ là thủ tục, cho phép thuộc tính định nghĩa cả hành vi truy xuất và gán của thành viên có khóa.
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> Giả sử $(o,k,m)$ là trường, trong đó $m = (X,f_a)$ là ánh xạ bộ truy cập.
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> Giả sử $(o,k,(X,f_a))$ là thuộc tính.
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> $\mathrm{Get}(o,k)$ là việc áp dụng $f_a(\mathrm{Get})$.
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> Giả sử $(o,k,(X,f_a))$ là thuộc tính.
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> $\mathrm{Set}(o,k)$ là việc áp dụng $f_a(\mathrm{Set})$.
 
 ### Structure
 
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+Một cấu trúc (thường viết tắt là `struct`) là bất kỳ đối tượng $s = (a,K,f_s)$ nào sao cho $K$ là tập hợp khóa hữu hạn và $f_s : K \to M$ là ánh xạ thành viên có các khóa không thể thay đổi sau khi cấu trúc được gán, trong đó cấu trúc là đối tượng chuyên biệt có bố cục thành viên theo khóa cố định.
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> Giả sử $s = (a,K,f_s)$ là cấu trúc.
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+Một lớp là bất kỳ đối tượng $c = (a_c,K_c,f_c)$ nào sao cho $K_c$ là tập hợp khóa hữu hạn và $f_c : K_c \to M$ là ánh xạ định nghĩa thành viên, trong đó lớp là đối tượng chuyên biệt có các thành viên theo khóa định nghĩa bố cục thành viên dùng để tạo các đối tượng khác.
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> Giả sử $c = (a_c,K_c,f_c)$ là lớp.
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> Giả sử $a \in A$ là địa chỉ được gán cho đối tượng tạo từ $c$.
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> Giả sử $f_o : K_c \to M$ là ánh xạ thành viên tuân theo các định nghĩa của $f_c$.
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+Một giao diện là bất kỳ đối tượng $r = (a_r,K_r,f_r)$ nào sao cho $K_r$ là tập hợp khóa hữu hạn và $f_r : K_r \to M$ là ánh xạ yêu cầu thành viên, trong đó giao diện là đối tượng chuyên biệt có các thành viên theo khóa định nghĩa những thành viên mà đối tượng khác phải cung cấp.
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> Giả sử $r = (a_r,K_r,f_r)$ là giao diện.
 >
-> Let $o = (a,K,f_o)$ be an object.
+> Giả sử $o = (a,K,f_o)$ là đối tượng.
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> Giả sử $f_v : M \times M \to \{0,1\}$ là quy tắc xác thực xác định liệu một thành viên có đáp ứng yêu cầu của thành viên khác hay không.
+>
+> $\mathrm{Interface}(r,o)$ đúng khi $K_r \subseteq K$ và $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.

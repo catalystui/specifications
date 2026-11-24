@@ -1,36 +1,50 @@
-<!-- Ang saling ito ay ginawa ng ChatGPT at dapat suriin ng isang taong tagapagsalin. -->
-<!-- Alisin ang mga linyang ito sa isang pull request pagkatapos mapatunayan ang salin. -->
+<!-- Ang saling ito ay ginawa ng ChatGPT at dapat suriin ng isang taong tagasalin. -->
+<!-- Alisin ang mga linyang ito sa isang pull request matapos mapatunayan ang salin. -->
 
 # FRELSPEC
 
 <br/>
 
-> **Espesipikasyon ng mga Pundasyong Ugnayan**<br/>
-> Rebisyon 1<br/>
-> Hulyo 7, 2026<br/>
+> **Espesipikasyon ng mga Pundamental na Ugnayan**<br/>
+> Rebisyon 2.1<br/>
+> Nobyembre 24, 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > Nakalaan ang lahat ng karapatan.<br/>
 > <br/>
-> Ang mga depinisyon at konseptong ipinapakita rito ay naglalarawan ng mga pundasyong matematikal na konstrukto at maaaring malayang ipahayag muli.
+> Inilalarawan ng mga depinisyon at konseptong inilahad dito ang mga pundamental na matematikal na konstruksyon at maaari itong malayang ipahayag muli.
 
 ## Panimula
 
-Itinatatag ng **Foundational Relations Specification (FRELSPEC)** ang mga pangunahing relasyonal na istrukturang nasa pundasyon ng CatalystUI ecosystem. Layunin nitong magbigay ng pinag-isang pagkaunawa kung paano nauugnay ang values, memory, operations, at composites sa documentation, specifications, implementations, at verification reviews, upang matiyak ang consistency, linaw, at alignment.
+Itinatatag ng **Espesipikasyon ng mga Pundamental na Ugnayan (FRELSPEC)** ang mga pangunahing estrukturang relasyonal na pundasyon ng ekosistema ng CatalystUI. Layunin nitong magbigay ng iisang pag-unawa sa mga ugnayan ng memorya, mga koleksiyon, mga operasyon, at mga komposit sa dokumentasyon, mga espesipikasyon, mga implementasyon, at mga pagsusuri sa beripikasyon, upang matiyak ang pagkakapare-pareho, kalinawan, at pagkakatugma.
 
-Sa pamamagitan ng pagtukoy sa mga ugnayan sa pagitan ng mga pundasyong konsepto sa tiyak at matatag na anyo, nagbibigay ang FRELSPEC ng karaniwang reference point para sa mas mataas na antas ng specifications. Pinapayagan nito ang developers, reviewers, at implementers na mangatuwiran mula sa parehong pundasyon kapag tinutukoy kung ang isang wika, serbisyo, framework, o sistema ay kayang katawanin ang mga relasyonal na construct na kinakailangan upang maituring na within spec.
+Sa pamamagitan ng tumpak at matatag na pagtukoy sa mga ugnayan ng mga pundamental na konsepto, nagbibigay ang FRELSPEC ng karaniwang sanggunian para sa mga espesipikasyon sa mas mataas na antas habang pinahihintulutan ang bawat implementasyon na magtakda ng sariling mga tuntunin at pag-uugali. Dahil dito, makapagsusuri ang mga developer, tagasuri, at tagapagpatupad mula sa parehong batayan kung kayang katawanin ng isang wika, serbisyo, framework, o sistema ang mga relasyonal na konstruksyong kailangan upang umayon sa espesipikasyon.
 
 > [!IMPORTANT]
 >
-> We express definitions using a derived form of [set theory](https://en.wikipedia.org/wiki/Set_theory) notation. This approach provides precise, unambiguous definitions while maintaining clarity and conciseness. We structure these definitions to support easy reference, clear interpretation, and a consistent conceptual hierarchy.
+> Ipinapahayag namin ang mga depinisyon gamit ang isang hinangong anyo ng notasyon ng [teorya ng mga set](https://en.wikipedia.org/wiki/Set_theory). Nagbibigay ito ng tumpak at di-malabong mga depinisyon habang pinananatili ang kalinawan at kaiklian. Inaayos namin ang mga ito upang madaling sangguniin, malinaw na bigyang-kahulugan, at magkaroon ng pare-parehong konseptuwal na hirarkiya.
 
-## Talaan ng Nilalaman
+## Talaan ng nilalaman
 
 - [FRELSPEC](#frelspec)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Collections](#collections)
+  - [Panimula](#panimula)
+  - [Talaan ng nilalaman](#talaan-ng-nilalaman)
+  - [Mga rebisyon](#mga-rebisyon)
+    - [Rebisyon 2.1](#rebisyon-21)
+    - [Rebisyon 2](#rebisyon-2)
+  - [Memorya](#memorya)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [Mga koleksiyon](#mga-koleksiyon)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,15 +53,7 @@ Sa pamamagitan ng pagtukoy sa mga ugnayan sa pagitan ng mga pundasyong konsepto 
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [Mga operasyon](#mga-operasyon)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
@@ -59,34 +65,104 @@ Sa pamamagitan ng pagtukoy sa mga ugnayan sa pagitan ng mga pundasyong konsepto 
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [Mga komposit](#mga-komposit)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Collections
+## Mga rebisyon
+
+### Rebisyon 2.1
+
+**Nobyembre 24, 2026**
+
+Pinino namin ang depinisyon ng File upang itatag ang resolusyon ng data na pinamamahalaan ng metadata at muling dinepinisa ang Stream bilang independiyenteng mekanismo ng sunud-sunod na pagbuo o pagkuha ng data. Pinahihintulutan ng mga pagbabagong ito ang mga stream na kumatawan sa may hangganan o walang hangganang mga sequence nang hindi nagdaragdag ng mga limitasyon sa ibang koleksiyon.
+
+### Rebisyon 2
+
+**Nobyembre 21, 2026**
+
+Natukoy namin ang mga hindi pagkakapare-pareho sa representasyon ng memorya at nakaimbak na mga value gamit ang mga byte at byte array. Itinatag namin ang Word bilang pundamental na representasyon ng memorya, pinag-iisa ang mga ugnayan sa Memorya, mga Operasyon, at mga Komposit.
+
+Natukoy namin ang mga hindi pagkakapare-pareho sa pag-index ng array at sa mga ugnayan ng mga koleksiyon. Ginawang pamantayan ang may hangganan at magkakasunod na mga index at nilinaw ang mga ugnayan ng Array, File, at Stream.
+
+Natukoy namin ang mga kalabisan at kalabuan sa mga ugnayan ng execution at komposisyon. Pinino namin ang mga procedure, function, dispatcher, at mga ugnayan ng object upang malutas ang mga ito habang pinananatili ang kalayaan mula sa implementasyon.
+
+## Memorya
+
+### Word
+
+Ang word ay anumang sequence ng mga bit $w \in \mathrm{Bit}^n$ na nakaimbak sa memorya, na tumutupad sa $n \in \mathbb{N}^+$.
+
+### Address
+
+Ang address ay anumang word $a \in A$, kung saan ang $A$ ay set ng mga word, at natatanging tinutukoy ng $a$ ang isang lokasyon sa itinakdang estruktura ng memorya.
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+Ang pointer ay anumang function $f_p : \{a\} \to B$ kung saan ang $a \in A$ ay address at ang $B$ ay set ng mga word, at ang bawat aplikasyon ng $f_p$ ay nag-eevaluate sa word na nakaimbak sa lokasyon ng memorya na tinutukoy ng $a$.
+
+#### Pointer()
+
+> Ipagpalagay na ang $f_m : A \to B$ ay memory map.
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+Ang variable ay anumang function $f_v : \{k\} \to B$ kung saan ang $k$ ay key at ang $B$ ay set ng mga word, at pinalalawak ng variable ang pointer sa pagbibigkis ng key sa address at pag-evaluate sa word na nakaimbak sa address na iyon.
+
+#### Variable(k)
+
+> Ipagpalagay na ang $f_b : \{k\} \to \{a\}$ ay binding function ng variable.
+>
+> Ipagpalagay na ang $f_p : \{a\} \to B$ ay pointer.
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+Ang constant ay anumang variable $f_c : \{k\} \to B$ kung saan ang $k$ ay key at ang $B$ ay set ng mga word, at ang word na nauugnay sa $k$ ay hindi maaaring baguhin matapos itong maitalaga.
+
+#### Constant(k)
+
+> Ipagpalagay na ang $b_0 \in B$ ay word na itinalaga sa $k$.
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ matapos maitalaga ang $b_0$.
+
+## Mga koleksiyon
 
 ### Set
 
-Ang set ay anumang koleksiyon ng magkakaibang element.
+Ang set ay anumang may hangganan at walang pagkakasunod-sunod na koleksiyon ng magkakaibang word.
+
+#### Set()
+
+> Ipagpalagay na ang $B$ ay set ng mga word.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-Ang map ay anumang function $f_m : K \to V$ kung saan ang $K$ ay set ng keys at ang $V$ ay set ng values.
+Ang map ay anumang function $f_m : K \to V$ kung saan ang $K$ ay set ng mga key at ang $V$ ay set ng mga value, at bawat key ay nauugnay sa eksaktong isang value.
 
 #### Map(k)
 
@@ -94,7 +170,7 @@ Ang map ay anumang function $f_m : K \to V$ kung saan ang $K$ ay set ng keys at 
 
 ### Array
 
-Ang array ay anumang function $f_a : I \to V$ kung saan ang $I \subset \mathbb{N}$, ang $I$ ay finite at contiguous na set ng integers, at ang $V$ ay set ng values.
+Ang array ay anumang function $f_a : I \to V$ kung saan ang $I \subseteq \mathbb{N}$ ay may hangganan at magkakasunod na set ng mga integer index at ang $V$ ay set ng mga word, at bawat index ay tumutukoy sa eksaktong isang value.
 
 #### Array(i)
 
@@ -102,138 +178,91 @@ Ang array ay anumang function $f_a : I \to V$ kung saan ang $I \subset \mathbb{N
 
 ### File
 
-A file is any function $f_f : I \to B$ such that $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers and $b$ is a set of bytes, where $f_f$ originates from a mechanism of persistent data storage.
+Ang file ay anumang tuple $(f_m,d)$ kung saan ang $d$ ay array ng mga word at ang $f_m : I \times \{d\} \to \mathrm{Array}$ ay metadata function na kinakatawan ng array ng mga word, at ang $I$ ay may hangganan at magkakasunod na set ng mga integer index, at tinutukoy ng $f_m$ kung paano nireresolba ang data mula sa $d$.
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> Ipagpalagay na ang $(f_m,d)$ ay file.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, where $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+Ang stream ay anumang function $f_s$ kung saan ang bawat aplikasyon ng $f_s$ ay nagbubunga ng susunod na chunk $c$ sa may hangganan o walang hangganang sequence, at itinatatag ng $f_s$ ang mekanismo ng sunud-sunod na pagbuo o pagkuha ng data.
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> Ipagpalagay na ang $f_c : K \to C$ ay chunk-resolution function, kung saan ang $K \subseteq \mathbb{N}$ ay magkakasunod na set ng mga integer index at ang $C$ ay set ng mga chunk.
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## Memory
-
-### Address
-
-An address is any element $a \in A$ such that $A$ is a set of addresses, where each address $a$ uniquely identifies a location in a memory structure.
-
-### Pointer
-
-A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> Ipagpalagay na ang $k \in K$ ay index ng susunod na chunk.
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
+> $\mathrm{Stream}() = f_s() = f_c(k)$, na isinusulong ang $k$ pagkatapos ng bawat aplikasyon.
 
-### Variable
-
-A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
-
-## Operations
+## Mga operasyon
 
 ### Instruction
 
-An instruction is any array of bytes $i \in B$ such that $B$ is a set of byte arrays, where each instruction represents a single computational operation to be performed.
+Ang instruction ay anumang word o may hangganang tuple ng mga word $i \in B$ kung saan ang $B$ ay set ng mga word o may hangganang tuple ng mga word, at bawat instruction ay kumakatawan sa isang computational operation na isasagawa.
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+Ang procedure ay anumang variable $f_{proc} : \{k\} \to B$ kung saan ang $f_{proc}(k)$ ay kumakatawan sa array ng mga instruction $f_a : I \to V$, at ang pag-execute sa procedure ay nagsasagawa ng bawat instruction ayon sa pagkakasunod-sunod ng index.
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> Ang $\mathrm{Procedure}(k)$ ay ang execution ng bawat $f_a(i)$ sa pataas na pagkakasunod-sunod ng $i \in I$.
 
 ### Function
 
-A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+Ang function ay anumang procedure $f_{func} : \{k\} \to B$ na kapag in-execute ay nagbabalik ng address $a_r \in A$ na tumutukoy sa resultang word o sa unang word ng array ng mga word na kumakatawan sa resulta.
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> Ipagpalagay na ang $f_m : A \to B$ ay memory map, kung saan tinutukoy ng $a_r \in A$ ang resultang word $r \in B$.
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
 ## Threading
 
 ### Process
 
-A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, where the process represents a distinct unit of transformation within a system.
+Ang process ay anumang may hangganang daloy ng execution na tumatanggap ng input, nag-eexecute ng isa o higit pang procedure o function, at nagbubunga ng output, kung saan ang process ay kumakatawan sa isang natatanging yunit ng transpormasyon sa loob ng sistema.
 
 ### Thread
 
-A thread is any flow of execution contained within a process, where the thread provides one path by which ordered sequences of instructions belonging to that process may be executed.
+Ang thread ay anumang daloy ng execution na nakapaloob sa process, na nagbibigay ng isang landas kung saan maaaring i-execute ang mga procedure o function na kabilang sa process na iyon.
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> Ipagpalagay na ang $p$ ay process.
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> Ipagpalagay na ang $(w_0, \dots, w_n)$ ay may hangganang tuple ng mga procedure o function na kabilang sa $p$.
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> Ang $\mathrm{Thread}(p)$ ay ang execution ng bawat $w_j$ sa pataas na pagkakasunod-sunod ng $j$ sa loob ng $p$.
 
 ### Dispatcher
 
-A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+Ang dispatcher ay anumang tuple $(t,W,f_d)$ kung saan ang $t$ ay thread, ang $W$ ay set ng mga procedure o function na tinatanggap bilang gawain, at ang $f_d$ ay dispatch rule na pumipili ng gawain mula sa $W$, at ipinapa-execute ng dispatcher ang napiling gawain sa $t$ ayon sa tuntunin.
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> Ipagpalagay na ang $t$ ay thread.
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> Ipagpalagay na ang $W$ ay set ng mga procedure o function na tinatanggap ng dispatcher, kung saan $\forall w \in W$, ang $w$ ay procedure o function.
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> Ipagpalagay na ang $f_d : \mathcal{P}^+(W) \to W$ ay dispatch rule na pumipili ng gawain mula sa di-bakanteng subset ng tinanggap na gawain.
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> Ang $\mathrm{Dispatcher}(t)$ ay ang execution ng bawat napiling $f_d(W')$ sa $t$, kung saan $W' \subseteq W$, $W' \neq \varnothing$, at $f_d(W') \in W'$.
 
-## Composites
+## Mga komposit
 
 ### Member
 
-A member is any element $m \in M$ such that $M$ is a set of members, where a member is a value which may be assigned to a key within the member map of an object.
+Ang member ay anumang elemento $m \in M$ kung saan ang $M$ ay set ng mga elemento at ang $f_o : K \to M$ ay member map ng object, kung saan $m = f_o(k)$ para sa isang key $k \in K$.
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+Ang object ay anumang tuple $(a,K,f_o)$ kung saan ang $a \in A$ ay address, ang $K$ ay set ng mga key, at ang $f_o : K \to M$ ay member map, kung saan ang $M$ ay set ng mga elemento, na nagpapahintulot sa object na kumatawan sa isang addressable na komposit na ang mga member ay itinatalaga sa mga key sa pamamagitan ng $f_o$.
 
 #### Object(k)
 
@@ -241,92 +270,80 @@ An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a s
 
 ### Field
 
-A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$ is a key, $m \in M$ is a member, and $f_o(k) = m$, where the field represents one keyed member resolved from the member map of an object.
+Ang field ay anumang tuple $(o,k,m)$ kung saan ang $o = (a,K,f_o)$ ay object, ang $k \in K$ ay key, at ang $m = f_o(k)$ ay member, at ang field ay kumakatawan sa isang member na may key na nireresolba mula sa member map ng object.
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> Ipagpalagay na ang $o = (a,K,f_o)$ ay object.
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where the method represents a keyed executable member of an object.
+Ang method ay anumang field $(o,k,m)$ kung saan ang $m$ ay procedure o function, at ang method ay kumakatawan sa executable na member ng object na may key.
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> Ipagpalagay na ang $(o,k,m)$ ay field.
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$, kung saan ang $m$ ay procedure o function.
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+Ang property ay anumang field $(o,k,m)$ kung saan ang $m = (X,f_a)$ ay accessor map, $X = \{\mathrm{Get}, \mathrm{Set}\}$, at iminamapa ng $f_a : X \to M$ ang bawat accessor sa isang member, kung saan ang $f_a(\mathrm{Get})$ ay function at ang $f_a(\mathrm{Set})$ ay procedure, na nagpapahintulot sa property na tukuyin ang pagkuha at pagtatalaga ng member na may key.
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> Ipagpalagay na ang $(o,k,m)$ ay field, kung saan ang $m = (X,f_a)$ ay accessor map.
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> Ipagpalagay na ang $(o,k,(X,f_a))$ ay property.
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> Ang $\mathrm{Get}(o,k)$ ay aplikasyon ng $f_a(\mathrm{Get})$.
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> Ipagpalagay na ang $(o,k,(X,f_a))$ ay property.
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> Ang $\mathrm{Set}(o,k)$ ay aplikasyon ng $f_a(\mathrm{Set})$.
 
 ### Structure
 
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+Ang structure (madalas pinaikli bilang `struct`) ay anumang object $s = (a,K,f_s)$ kung saan ang $K$ ay may hangganang set ng mga key at ang $f_s : K \to M$ ay member map na ang mga key ay hindi maaaring baguhin matapos maitalaga ang structure, at ang structure ay isang espesyalisadong object na may nakapirming layout ng mga member na may key.
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> Ipagpalagay na ang $s = (a,K,f_s)$ ay structure.
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+Ang class ay anumang object $c = (a_c,K_c,f_c)$ kung saan ang $K_c$ ay may hangganang set ng mga key at ang $f_c : K_c \to M$ ay map ng mga depinisyon ng member, at ang class ay isang espesyalisadong object na ang mga member na may key ay tumutukoy sa layout na ginagamit sa paglikha ng ibang object.
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> Ipagpalagay na ang $c = (a_c,K_c,f_c)$ ay class.
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> Ipagpalagay na ang $a \in A$ ay address na itinalaga sa object na ginawa mula sa $c$.
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> Ipagpalagay na ang $f_o : K_c \to M$ ay member map na sumusunod sa mga depinisyon ng $f_c$.
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+Ang interface ay anumang object $r = (a_r,K_r,f_r)$ kung saan ang $K_r$ ay may hangganang set ng mga key at ang $f_r : K_r \to M$ ay map ng mga requirement ng member, at ang interface ay isang espesyalisadong object na ang mga member na may key ay tumutukoy sa mga member na dapat ibigay ng ibang object.
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> Ipagpalagay na ang $r = (a_r,K_r,f_r)$ ay interface.
 >
-> Let $o = (a,K,f_o)$ be an object.
+> Ipagpalagay na ang $o = (a,K,f_o)$ ay object.
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> Ipagpalagay na ang $f_v : M \times M \to \{0,1\}$ ay validation rule na tumutukoy kung natutugunan ng isang member ang mga requirement ng ibang member.
+>
+> Ang $\mathrm{Interface}(r,o)$ ay totoo kapag $K_r \subseteq K$ at $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.

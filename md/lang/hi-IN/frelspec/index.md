@@ -1,36 +1,50 @@
-<!-- यह अनुवाद ChatGPT द्वारा जनरेट किया गया था और किसी मानव अनुवादक द्वारा इसकी समीक्षा की जानी चाहिए। -->
-<!-- अनुवाद सत्यापित हो जाने के बाद पुल रिक्वेस्ट में इन पंक्तियों को हटा दें। -->
+<!-- यह अनुवाद ChatGPT द्वारा तैयार किया गया है और इसकी समीक्षा किसी मानव अनुवादक द्वारा की जानी चाहिए। -->
+<!-- अनुवाद के सत्यापन के बाद इन पंक्तियों को पुल रिक्वेस्ट के माध्यम से हटाएँ। -->
 
 # FRELSPEC
 
 <br/>
 
-> **Foundational Relations Specification**<br/>
-> Revision 1<br/>
-> July 7th, 2026<br/>
+> **आधारभूत संबंध विनिर्देश**<br/>
+> संशोधन 2.1<br/>
+> 24 नवंबर 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > सर्वाधिकार सुरक्षित।<br/>
 > <br/>
-> यहाँ प्रस्तुत definitions और concepts fundamental mathematical constructs का वर्णन करते हैं और इन्हें स्वतंत्र रूप से दोबारा व्यक्त किया जा सकता है।
+> यहाँ प्रस्तुत परिभाषाएँ और अवधारणाएँ आधारभूत गणितीय संरचनाओं का वर्णन करती हैं और इन्हें स्वतंत्र रूप से पुनः व्यक्त किया जा सकता है।
 
 ## परिचय
 
-**Foundational Relations Specification (FRELSPEC)** CatalystUI ecosystem को आधार देने वाली core relational structures स्थापित करता है। इसका उद्देश्य documentation, specifications, implementations, और verification reviews में values, memory, operations, और composites कैसे जुड़े होते हैं, इसकी unified understanding प्रदान करना है, ताकि consistency, clarity, और alignment सुनिश्चित हो सके।
+**आधारभूत संबंध विनिर्देश (FRELSPEC)** CatalystUI पारितंत्र को आधार प्रदान करने वाली प्रमुख संबंधात्मक संरचनाओं को स्थापित करता है। इसका उद्देश्य दस्तावेज़ों, विनिर्देशों, कार्यान्वयनों और सत्यापन समीक्षाओं में मेमोरी, संग्रहों, संक्रियाओं और संयुक्त संरचनाओं के संबंधों की एकीकृत समझ प्रदान करना है, जिससे संगति, स्पष्टता और सामंजस्य सुनिश्चित हो सके।
 
-Foundational concepts के बीच relationships को precise और stable form में define करके, FRELSPEC higher-level specifications के लिए common reference point प्रदान करता है। इससे developers, reviewers, और implementers उसी foundation से reason कर सकते हैं जब वे यह निर्धारित करते हैं कि कोई language, service, framework, या system within spec माने जाने के लिए आवश्यक relational constructs को represent कर सकता है या नहीं।
+आधारभूत अवधारणाओं के संबंधों को सटीक और स्थिर रूप में परिभाषित करके FRELSPEC उच्च-स्तरीय विनिर्देशों के लिए एक साझा संदर्भ प्रदान करता है, साथ ही प्रत्येक कार्यान्वयन को अपने नियम और व्यवहार निर्धारित करने की अनुमति देता है। इससे विकासकर्ता, समीक्षक और कार्यान्वयनकर्ता एक ही आधार पर यह निर्धारित कर सकते हैं कि कोई भाषा, सेवा, फ्रेमवर्क या प्रणाली विनिर्देश के अनुरूप होने के लिए आवश्यक संबंधात्मक संरचनाओं का प्रतिनिधित्व कर सकती है या नहीं।
 
 > [!IMPORTANT]
 >
-> हम definitions को [set theory](https://en.wikipedia.org/wiki/Set_theory) notation के derived form का उपयोग करके व्यक्त करते हैं। यह approach clarity और conciseness बनाए रखते हुए precise और unambiguous definitions प्रदान करती है। हम इन definitions को easy reference, clear interpretation, और consistent conceptual hierarchy का समर्थन करने के लिए structure करते हैं।
+> हम परिभाषाओं को [समुच्चय सिद्धांत](https://en.wikipedia.org/wiki/Set_theory) के संकेतन से व्युत्पन्न रूप में व्यक्त करते हैं। यह दृष्टिकोण स्पष्टता और संक्षिप्तता बनाए रखते हुए सटीक और असंदिग्ध परिभाषाएँ प्रदान करता है। हम इन्हें आसान संदर्भ, स्पष्ट व्याख्या और सुसंगत अवधारणात्मक पदानुक्रम के लिए व्यवस्थित करते हैं।
 
 ## विषय-सूची
 
 - [FRELSPEC](#frelspec)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Collections](#collections)
+  - [परिचय](#परिचय)
+  - [विषय-सूची](#विषय-सूची)
+  - [संशोधन](#संशोधन)
+    - [संशोधन 2.1](#संशोधन-21)
+    - [संशोधन 2](#संशोधन-2)
+  - [मेमोरी](#मेमोरी)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [संग्रह](#संग्रह)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,54 +53,116 @@ Foundational concepts के बीच relationships को precise और stabl
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [संक्रियाएँ](#संक्रियाएँ)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
-  - [Threading](#threading)
+  - [थ्रेडिंग](#थ्रेडिंग)
     - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [संयुक्त संरचनाएँ](#संयुक्त-संरचनाएँ)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Collections
+## संशोधन
+
+### संशोधन 2.1
+
+**24 नवंबर 2026**
+
+हमने File की परिभाषा को परिष्कृत करके मेटाडेटा द्वारा नियंत्रित डेटा निर्धारण स्थापित किया और Stream को क्रमिक डेटा उत्पादन या पुनर्प्राप्ति के स्वतंत्र तंत्र के रूप में पुनर्परिभाषित किया। ये परिवर्तन स्ट्रीम को अन्य संग्रहों पर अतिरिक्त प्रतिबंध लगाए बिना परिमित या अपरिमित अनुक्रमों का प्रतिनिधित्व करने देते हैं।
+
+### संशोधन 2
+
+**21 नवंबर 2026**
+
+हमने बाइट और बाइट ऐरे द्वारा मेमोरी तथा संग्रहीत मानों के प्रतिनिधित्व में असंगतियाँ पहचानीं। हमने Word को मेमोरी के आधारभूत प्रतिनिधित्व के रूप में स्थापित करके मेमोरी, संक्रियाओं और संयुक्त संरचनाओं के संबंधों को एकीकृत किया।
+
+हमने ऐरे की अनुक्रमणिका और संग्रहों के संबंधों में असंगतियाँ पहचानीं। हमने परिमित, क्रमागत सूचकांकों का मानकीकरण किया और Array, File तथा Stream के संबंधों को स्पष्ट किया।
+
+हमने निष्पादन और संयोजन के संबंधों में अनावश्यक पुनरावृत्ति तथा अस्पष्टता पहचानी। हमने कार्यान्वयन से स्वतंत्रता बनाए रखते हुए प्रक्रियाओं, फलनों, डिस्पैचरों और ऑब्जेक्ट के संबंधों को परिष्कृत किया ताकि ये समस्याएँ दूर हों।
+
+## मेमोरी
+
+### Word
+
+वर्ड मेमोरी में संग्रहीत बिटों का कोई भी अनुक्रम $w \in \mathrm{Bit}^n$ है, ऐसा कि $n \in \mathbb{N}^+$।
+
+### Address
+
+पता कोई भी वर्ड $a \in A$ है, जहाँ $A$ वर्डों का समुच्चय है, ऐसा कि $a$ निर्दिष्ट मेमोरी संरचना में किसी स्थान की अद्वितीय पहचान करता है।
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+पॉइंटर कोई भी फलन $f_p : \{a\} \to B$ है, ऐसा कि $a \in A$ एक पता और $B$ वर्डों का समुच्चय है; $f_p$ का प्रत्येक अनुप्रयोग उस मेमोरी स्थान में संग्रहीत वर्ड का मूल्यांकन करता है जिसकी पहचान $a$ से होती है।
+
+#### Pointer()
+
+> मान लें $f_m : A \to B$ एक मेमोरी मैप है।
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+चर कोई भी फलन $f_v : \{k\} \to B$ है, ऐसा कि $k$ एक कुंजी और $B$ वर्डों का समुच्चय है; चर कुंजी को पते से बाँधकर और उस पते पर संग्रहीत वर्ड का मूल्यांकन करके पॉइंटर का विस्तार करता है।
+
+#### Variable(k)
+
+> मान लें $f_b : \{k\} \to \{a\}$ चर का बंधन फलन है।
+>
+> मान लें $f_p : \{a\} \to B$ एक पॉइंटर है।
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+स्थिरांक कोई भी चर $f_c : \{k\} \to B$ है, ऐसा कि $k$ एक कुंजी और $B$ वर्डों का समुच्चय है; $k$ से संबद्ध वर्ड को आवंटित किए जाने के बाद बदला नहीं जा सकता।
+
+#### Constant(k)
+
+> मान लें $b_0 \in B$ वह वर्ड है जो $k$ को आवंटित किया गया है।
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$, $b_0$ के आवंटन के बाद।
+
+## संग्रह
 
 ### Set
 
-A set is any collection of distinct elements.
+समुच्चय भिन्न वर्डों का कोई भी परिमित और अक्रमित संग्रह है।
+
+#### Set()
+
+> मान लें $B$ वर्डों का समुच्चय है।
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-A map is any function $f_m : K \to V$ such that $K$ is a set of keys and $V$ is a set of values.
+मैप कोई भी फलन $f_m : K \to V$ है, ऐसा कि $K$ कुंजियों का समुच्चय और $V$ मानों का समुच्चय है; प्रत्येक कुंजी ठीक एक मान से संबद्ध है।
 
 #### Map(k)
 
@@ -94,7 +170,7 @@ A map is any function $f_m : K \to V$ such that $K$ is a set of keys and $V$ is 
 
 ### Array
 
-An array is any function $f_a : I \to V$ such that $I \subset \mathbb{N}$, $I$ is a finite, contiguous set of integers, and $V$ is a set of values.
+ऐरे कोई भी फलन $f_a : I \to V$ है, ऐसा कि $I \subseteq \mathbb{N}$ क्रमागत पूर्णांक सूचकांकों का परिमित समुच्चय और $V$ वर्डों का समुच्चय है; प्रत्येक सूचकांक ठीक एक मान की पहचान करता है।
 
 #### Array(i)
 
@@ -102,138 +178,91 @@ An array is any function $f_a : I \to V$ such that $I \subset \mathbb{N}$, $I$ i
 
 ### File
 
-A file is any function $f_f : I \to B$ such that $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers and $b$ is a set of bytes, where $f_f$ originates from a mechanism of persistent data storage.
+फ़ाइल कोई भी टपल $(f_m,d)$ है, ऐसा कि $d$ वर्डों का ऐरे है और $f_m : I \times \{d\} \to \mathrm{Array}$ वर्डों के ऐरे द्वारा निरूपित मेटाडेटा फलन है, जहाँ $I$ क्रमागत पूर्णांक सूचकांकों का परिमित समुच्चय है और $f_m$ निर्धारित करता है कि $d$ से डेटा का निर्धारण कैसे होगा।
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> मान लें $(f_m,d)$ एक फ़ाइल है।
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, where $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+स्ट्रीम कोई भी फलन $f_s$ है, ऐसा कि $f_s$ का प्रत्येक अनुप्रयोग परिमित या अपरिमित अनुक्रम का अगला खंड $c$ प्रदान करता है, जहाँ $f_s$ क्रमिक डेटा उत्पादन या पुनर्प्राप्ति का तंत्र स्थापित करता है।
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> मान लें $f_c : K \to C$ एक खंड-निर्धारण फलन है, जहाँ $K \subseteq \mathbb{N}$ क्रमागत पूर्णांक सूचकांकों का समुच्चय और $C$ खंडों का समुच्चय है।
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## Memory
-
-### Address
-
-An address is any element $a \in A$ such that $A$ is a set of addresses, where each address $a$ uniquely identifies a location in a memory structure.
-
-### Pointer
-
-A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> मान लें $k \in K$ अगले खंड का सूचकांक है।
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
+> $\mathrm{Stream}() = f_s() = f_c(k)$, प्रत्येक अनुप्रयोग के बाद $k$ को आगे बढ़ाते हुए।
 
-### Variable
-
-A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
-
-## Operations
+## संक्रियाएँ
 
 ### Instruction
 
-An instruction is any array of bytes $i \in B$ such that $B$ is a set of byte arrays, where each instruction represents a single computational operation to be performed.
+निर्देश कोई भी वर्ड या वर्डों का परिमित टपल $i \in B$ है, ऐसा कि $B$ वर्डों या वर्डों के परिमित टपलों का समुच्चय है; प्रत्येक निर्देश की जाने वाली एक संगणकीय संक्रिया को दर्शाता है।
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+प्रक्रिया (procedure) कोई भी चर $f_{proc} : \{k\} \to B$ है, ऐसा कि $f_{proc}(k)$ निर्देशों के ऐरे $f_a : I \to V$ का प्रतिनिधित्व करता है; प्रक्रिया का निष्पादन प्रत्येक निर्देश को उसके सूचकांक के क्रम में करता है।
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> $\mathrm{Procedure}(k)$ प्रत्येक $f_a(i)$ का $i \in I$ के आरोही क्रम में निष्पादन है।
 
 ### Function
 
-A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+फलन कोई भी प्रक्रिया $f_{func} : \{k\} \to B$ है, जिसके निष्पादन से एक पता $a_r \in A$ लौटता है जो परिणामी वर्ड या परिणाम का प्रतिनिधित्व करने वाले वर्डों के ऐरे के प्रथम वर्ड की पहचान करता है।
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> मान लें $f_m : A \to B$ मेमोरी मैप है, जहाँ $a_r \in A$ परिणामी वर्ड $r \in B$ की पहचान करता है।
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
-## Threading
+## थ्रेडिंग
 
 ### Process
 
-A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, where the process represents a distinct unit of transformation within a system.
+प्रोसेस निष्पादन का कोई भी सीमाबद्ध प्रवाह है जो इनपुट स्वीकार करता है, एक या अधिक प्रक्रियाओं या फलनों का निष्पादन करता है और आउटपुट उत्पन्न करता है; प्रोसेस किसी प्रणाली में रूपांतरण की एक पृथक इकाई का प्रतिनिधित्व करता है।
 
 ### Thread
 
-Thread process के भीतर contained execution का कोई भी flow है, जहाँ thread वह path प्रदान करता है जिसके द्वारा उस process से संबंधित ordered sequences of instructions execute किए जा सकते हैं।
+थ्रेड किसी प्रोसेस में निहित निष्पादन का कोई भी प्रवाह है, जो उस प्रोसेस की प्रक्रियाओं या फलनों के निष्पादन के लिए एक मार्ग प्रदान करता है।
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> मान लें $p$ एक प्रोसेस है।
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> मान लें $(w_0, \dots, w_n)$ प्रक्रियाओं या फलनों का परिमित टपल है जो $p$ से संबंधित हैं।
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> $\mathrm{Thread}(p)$ प्रत्येक $w_j$ का $j$ के आरोही क्रम में $p$ के भीतर निष्पादन है।
 
 ### Dispatcher
 
-A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+डिस्पैचर कोई भी टपल $(t,W,f_d)$ है, ऐसा कि $t$ एक थ्रेड, $W$ कार्य के रूप में स्वीकृत प्रक्रियाओं या फलनों का समुच्चय और $f_d$ एक प्रेषण नियम है जो $W$ से कार्य चुनता है; डिस्पैचर उस नियम के अनुसार चुने हुए कार्य का निष्पादन $t$ पर करवाता है।
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> मान लें $t$ एक थ्रेड है।
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> मान लें $W$ डिस्पैचर द्वारा स्वीकृत प्रक्रियाओं या फलनों का समुच्चय है, जहाँ $\forall w \in W$, $w$ एक प्रक्रिया या फलन है।
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> मान लें $f_d : \mathcal{P}^+(W) \to W$ एक प्रेषण नियम है जो स्वीकृत कार्य के अरिक्त उपसमुच्चय से कार्य चुनता है।
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ प्रत्येक चयनित $f_d(W')$ का $t$ पर निष्पादन है, जहाँ $W' \subseteq W$, $W' \neq \varnothing$ और $f_d(W') \in W'$।
 
-## Composites
+## संयुक्त संरचनाएँ
 
 ### Member
 
-Member कोई भी element $m \in M$ है, जहाँ $M$ members का set है, और member वह value है जिसे object के member map में किसी key को assign किया जा सकता है।
+सदस्य कोई भी अवयव $m \in M$ है, ऐसा कि $M$ अवयवों का समुच्चय है और $f_o : K \to M$ किसी ऑब्जेक्ट का सदस्य मैप है, जहाँ $m = f_o(k)$ किसी कुंजी $k \in K$ के लिए सत्य है।
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+ऑब्जेक्ट कोई भी टपल $(a,K,f_o)$ है, ऐसा कि $a \in A$ एक पता, $K$ कुंजियों का समुच्चय और $f_o : K \to M$ सदस्य मैप है, जहाँ $M$ अवयवों का समुच्चय है; इससे ऑब्जेक्ट ऐसी पता-योग्य संयुक्त संरचना का प्रतिनिधित्व कर सकता है जिसके सदस्य $f_o$ द्वारा कुंजियों को आवंटित होते हैं।
 
 #### Object(k)
 
@@ -241,92 +270,80 @@ An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a s
 
 ### Field
 
-A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$ is a key, $m \in M$ is a member, and $f_o(k) = m$, where the field represents one keyed member resolved from the member map of an object.
+फ़ील्ड कोई भी टपल $(o,k,m)$ है, ऐसा कि $o = (a,K,f_o)$ एक ऑब्जेक्ट, $k \in K$ एक कुंजी और $m = f_o(k)$ एक सदस्य है; फ़ील्ड ऑब्जेक्ट के सदस्य मैप से निर्धारित एक कुंजीबद्ध सदस्य का प्रतिनिधित्व करता है।
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> मान लें $o = (a,K,f_o)$ एक ऑब्जेक्ट है।
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-Method कोई भी field $(o,k,m)$ है जहाँ $m$ procedure या function है, और method object के keyed executable member को represent करता है।
+मेथड कोई भी फ़ील्ड $(o,k,m)$ है, ऐसा कि $m$ एक प्रक्रिया या फलन है; मेथड ऑब्जेक्ट के कुंजीबद्ध निष्पादन-योग्य सदस्य का प्रतिनिधित्व करता है।
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> मान लें $(o,k,m)$ एक फ़ील्ड है।
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$, जहाँ $m$ एक प्रक्रिया या फलन है।
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+प्रॉपर्टी कोई भी फ़ील्ड $(o,k,m)$ है, ऐसा कि $m = (X,f_a)$ एक ऐक्सेसर मैप है, $X = \{\mathrm{Get}, \mathrm{Set}\}$, और $f_a : X \to M$ प्रत्येक ऐक्सेसर को एक सदस्य से मैप करता है, जहाँ $f_a(\mathrm{Get})$ एक फलन और $f_a(\mathrm{Set})$ एक प्रक्रिया है; इससे प्रॉपर्टी कुंजीबद्ध सदस्य की पुनर्प्राप्ति और आवंटन दोनों का व्यवहार परिभाषित कर सकती है।
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> मान लें $(o,k,m)$ एक फ़ील्ड है, जहाँ $m = (X,f_a)$ ऐक्सेसर मैप है।
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> मान लें $(o,k,(X,f_a))$ एक प्रॉपर्टी है।
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> $\mathrm{Get}(o,k)$, $f_a(\mathrm{Get})$ का अनुप्रयोग है।
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> मान लें $(o,k,(X,f_a))$ एक प्रॉपर्टी है।
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> $\mathrm{Set}(o,k)$, $f_a(\mathrm{Set})$ का अनुप्रयोग है।
 
 ### Structure
 
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+स्ट्रक्चर (जिसे प्रायः `struct` कहा जाता है) कोई भी ऑब्जेक्ट $s = (a,K,f_s)$ है, ऐसा कि $K$ कुंजियों का परिमित समुच्चय और $f_s : K \to M$ ऐसा सदस्य मैप है जिसकी कुंजियाँ स्ट्रक्चर के आवंटन के बाद बदली नहीं जा सकतीं; स्ट्रक्चर एक विशिष्ट ऑब्जेक्ट है जिसके कुंजीबद्ध सदस्यों का विन्यास स्थिर है।
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> मान लें $s = (a,K,f_s)$ एक स्ट्रक्चर है।
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+क्लास कोई भी ऑब्जेक्ट $c = (a_c,K_c,f_c)$ है, ऐसा कि $K_c$ कुंजियों का परिमित समुच्चय और $f_c : K_c \to M$ सदस्य-परिभाषाओं का मैप है; क्लास एक विशिष्ट ऑब्जेक्ट है जिसके कुंजीबद्ध सदस्य अन्य ऑब्जेक्ट उत्पन्न करने के लिए प्रयुक्त सदस्य विन्यास को परिभाषित करते हैं।
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> मान लें $c = (a_c,K_c,f_c)$ एक क्लास है।
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> मान लें $a \in A$ ऐसा पता है जो $c$ से उत्पन्न ऑब्जेक्ट को आवंटित किया गया है।
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> मान लें $f_o : K_c \to M$ सदस्य मैप है जो $f_c$ की परिभाषाओं का अनुसरण करता है।
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+इंटरफ़ेस कोई भी ऑब्जेक्ट $r = (a_r,K_r,f_r)$ है, ऐसा कि $K_r$ कुंजियों का परिमित समुच्चय और $f_r : K_r \to M$ सदस्य-आवश्यकताओं का मैप है; इंटरफ़ेस एक विशिष्ट ऑब्जेक्ट है जिसके कुंजीबद्ध सदस्य उन सदस्यों को परिभाषित करते हैं जिन्हें दूसरे ऑब्जेक्ट को प्रदान करना होगा।
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> मान लें $r = (a_r,K_r,f_r)$ एक इंटरफ़ेस है।
 >
-> Let $o = (a,K,f_o)$ be an object.
+> मान लें $o = (a,K,f_o)$ एक ऑब्जेक्ट है।
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> मान लें $f_v : M \times M \to \{0,1\}$ एक सत्यापन नियम है जो निर्धारित करता है कि कोई सदस्य दूसरे सदस्य की आवश्यकताओं को पूरा करता है या नहीं।
+>
+> $\mathrm{Interface}(r,o)$ तब सत्य है जब $K_r \subseteq K$ और $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$।

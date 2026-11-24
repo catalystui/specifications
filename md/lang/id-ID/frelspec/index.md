@@ -1,36 +1,50 @@
-<!-- Terjemahan ini dibuat oleh ChatGPT dan harus ditinjau oleh penerjemah manusia. -->
+<!-- Terjemahan ini dihasilkan oleh ChatGPT dan perlu ditinjau oleh penerjemah manusia. -->
 <!-- Hapus baris-baris ini dalam pull request setelah terjemahan diverifikasi. -->
 
 # FRELSPEC
 
 <br/>
 
-> **Spesifikasi Relasi Dasar**<br/>
-> Revisi 1<br/>
-> 7 Juli 2026<br/>
+> **Spesifikasi Relasi Fundamental**<br/>
+> Revisi 2.1<br/>
+> 24 November 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
-> Hak cipta dilindungi undang-undang.<br/>
+> Seluruh hak dilindungi.<br/>
 > <br/>
-> Definisi dan konsep yang disajikan di sini menjelaskan konstruksi matematis dasar dan dapat diungkapkan kembali secara bebas.
+> Definisi dan konsep yang disajikan di sini menjelaskan konstruksi matematika fundamental dan dapat diungkapkan kembali secara bebas.
 
 ## Pendahuluan
 
-**Foundational Relations Specification (FRELSPEC)** menetapkan struktur relasional inti yang menopang ekosistem CatalystUI. Tujuannya adalah memberikan pemahaman terpadu tentang bagaimana nilai, memori, operasi, dan komposit dikaitkan di seluruh dokumentasi, spesifikasi, implementasi, dan peninjauan verifikasi, sehingga konsistensi, kejelasan, dan keselarasan tetap terjaga.
+**Spesifikasi Relasi Fundamental (FRELSPEC)** menetapkan struktur relasional inti yang mendasari ekosistem CatalystUI. Tujuannya adalah memberikan pemahaman terpadu tentang hubungan antara memori, koleksi, operasi, dan komposit di seluruh dokumentasi, spesifikasi, implementasi, dan tinjauan verifikasi, dengan memastikan konsistensi, kejelasan, dan keselarasan.
 
-Dengan mendefinisikan hubungan antara konsep-konsep dasar dalam bentuk yang presisi dan stabil, FRELSPEC menyediakan titik acuan bersama bagi spesifikasi tingkat lebih tinggi. Hal ini memungkinkan pengembang, peninjau, dan implementer berpikir dari fondasi yang sama ketika menentukan apakah suatu bahasa, service, framework, atau sistem dapat merepresentasikan konstruksi relasional yang diperlukan agar dianggap within spec.
+Dengan mendefinisikan hubungan antar konsep fundamental secara tepat dan stabil, FRELSPEC menyediakan acuan bersama untuk spesifikasi tingkat lebih tinggi sekaligus memungkinkan tiap implementasi menetapkan aturan dan perilakunya sendiri. Pengembang, peninjau, dan pelaksana implementasi dapat bertolak dari dasar yang sama dalam menentukan apakah suatu bahasa, layanan, kerangka kerja, atau sistem dapat merepresentasikan konstruksi relasional yang diperlukan untuk memenuhi spesifikasi.
 
 > [!IMPORTANT]
 >
-> Kami mengekspresikan definisi menggunakan bentuk turunan dari notasi [teori himpunan](https://en.wikipedia.org/wiki/Set_theory). Pendekatan ini menyediakan definisi yang presisi dan tidak ambigu sambil tetap menjaga kejelasan dan keringkasan. Kami menyusun definisi ini agar mendukung referensi yang mudah, interpretasi yang jelas, dan hierarki konseptual yang konsisten.
+> Kami menyatakan definisi menggunakan bentuk turunan dari notasi [teori himpunan](https://en.wikipedia.org/wiki/Set_theory). Pendekatan ini memberikan definisi yang tepat dan tidak ambigu dengan tetap menjaga kejelasan dan keringkasan. Definisi disusun agar mudah dirujuk, ditafsirkan dengan jelas, dan memiliki hierarki konseptual yang konsisten.
 
-## Daftar Isi
+## Daftar isi
 
 - [FRELSPEC](#frelspec)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Collections](#collections)
+  - [Pendahuluan](#pendahuluan)
+  - [Daftar isi](#daftar-isi)
+  - [Revisi](#revisi)
+    - [Revisi 2.1](#revisi-21)
+    - [Revisi 2](#revisi-2)
+  - [Memori](#memori)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [Koleksi](#koleksi)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,15 +53,7 @@ Dengan mendefinisikan hubungan antara konsep-konsep dasar dalam bentuk yang pres
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [Operasi](#operasi)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
@@ -59,88 +65,74 @@ Dengan mendefinisikan hubungan antara konsep-konsep dasar dalam bentuk yang pres
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [Komposit](#komposit)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Koleksi
+## Revisi
 
-### Set
+### Revisi 2.1
 
-Set adalah koleksi apa pun dari elemen-elemen yang berbeda.
+**24 November 2026**
 
-### Map
+Kami menyempurnakan definisi File untuk menetapkan resolusi data yang diatur oleh metadata dan mendefinisikan ulang Stream sebagai mekanisme independen untuk menghasilkan atau mengambil data secara berurutan. Perubahan ini memungkinkan stream merepresentasikan urutan berhingga atau tak berhingga tanpa memberi batasan tambahan pada koleksi lain.
 
-Map adalah setiap fungsi $f_m : K \to V$ sedemikian sehingga $K$ adalah set kunci dan $V$ adalah set nilai.
+### Revisi 2
 
-#### Map(k)
+**21 November 2026**
 
-> $\forall k \in K, \exists v \in V : f_m(k) = v$
+Kami menemukan inkonsistensi dalam representasi memori dan nilai tersimpan menggunakan byte dan array byte. Kami menetapkan Word sebagai representasi memori fundamental, menyatukan hubungan di antara Memori, Operasi, dan Komposit.
 
-### Array
+Kami menemukan inkonsistensi dalam pengindeksan array dan hubungan antarkoleksi. Kami menstandarkan indeks berhingga dan berurutan tanpa celah serta memperjelas hubungan antara Array, File, dan Stream.
 
-Array adalah setiap fungsi $f_a : I \to V$ sedemikian sehingga $I \subset \mathbb{N}$, $I$ adalah set integer yang finite dan contiguous, dan $V$ adalah set nilai.
-
-#### Array(i)
-
-> $\forall i \in I, \exists v \in V : f_a(i) = v$
-
-### File
-
-File adalah setiap fungsi $f_f : I \to B$ sedemikian sehingga $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ adalah set integer yang finite dan contiguous, dan $b$ adalah set byte, di mana $f_f$ berasal dari mekanisme penyimpanan data persisten.
-
-#### File(i)
-
-$\forall i \in I, \exists b \in B : f_f(i) = b$
-
-### Stream
-
-Stream adalah setiap fungsi $f_s$ sedemikian sehingga setiap penerapan $f_s$ menghasilkan chunk berikutnya $f_c : I \to B$ dalam urutan byte, di mana $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ adalah set integer yang finite dan contiguous, $B$ adalah set byte, dan $f_s$ berasal dari mekanisme pembuatan atau pengambilan data berurutan.
-
-#### Stream()
-
-> Misalkan $c_k : I_k \to B$ adalah chunk yang dikembalikan oleh penerapan ke-$k$ dari $f_s$.
->
-> $\forall k \in \mathbb{N}, f_s() = c_k$ pada penerapan ke-$k$.
+Kami menemukan redundansi dan ambiguitas dalam hubungan eksekusi dan komposisi. Kami menyempurnakan prosedur, fungsi, dispatcher, dan hubungan objek untuk mengatasi masalah tersebut dengan mempertahankan independensi implementasi.
 
 ## Memori
 
+### Word
+
+Word adalah sembarang urutan bit $w \in \mathrm{Bit}^n$ yang disimpan dalam memori, sedemikian sehingga $n \in \mathbb{N}^+$.
+
 ### Address
 
-Address adalah setiap elemen $a \in A$ sedemikian sehingga $A$ adalah set address, di mana setiap address $a$ mengidentifikasi secara unik suatu lokasi dalam struktur memori.
+Alamat adalah sembarang word $a \in A$, dengan $A$ merupakan himpunan word, sedemikian sehingga $a$ mengidentifikasi secara unik suatu lokasi dalam struktur memori tertentu.
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
 
 ### Pointer
 
-Pointer adalah setiap fungsi $f_p : \{a\} \to B$ sedemikian sehingga $a \in A$ adalah address dan $B$ adalah set byte array, di mana setiap penerapan $f_p$ mengevaluasi byte array yang disimpan pada lokasi memori yang diidentifikasi oleh address yang terikat padanya.
+Pointer adalah sembarang fungsi $f_p : \{a\} \to B$ dengan $a \in A$ merupakan alamat dan $B$ merupakan himpunan word, di mana setiap penerapan $f_p$ mengevaluasi word yang disimpan di lokasi memori yang diidentifikasi oleh $a$.
 
 #### Pointer()
 
-> Misalkan $f_m : A \to B$ adalah memory map.
+> Misalkan $f_m : A \to B$ adalah peta memori.
 >
 > $\exists b \in B : f_p(a) = f_m(a) = b$
 
 ### Variable
 
-Variable adalah setiap fungsi $f_v : \{k\} \to B$ sedemikian sehingga $k$ adalah key dan $B$ adalah set byte array, di mana variable memperluas pointer dengan mengikat satu key ke satu address dan mengevaluasi byte array yang disimpan pada lokasi memori yang diidentifikasi oleh address tersebut.
+Variabel adalah sembarang fungsi $f_v : \{k\} \to B$ dengan $k$ merupakan kunci dan $B$ merupakan himpunan word, di mana variabel memperluas pointer dengan mengikat kunci pada alamat dan mengevaluasi word yang tersimpan pada alamat tersebut.
 
 #### Variable(k)
 
-> Misalkan $f_b : \{k\} \to \{a\}$ adalah fungsi binding milik variable.
+> Misalkan $f_b : \{k\} \to \{a\}$ adalah fungsi pengikatan variabel.
 >
 > Misalkan $f_p : \{a\} \to B$ adalah pointer.
 >
@@ -148,92 +140,129 @@ Variable adalah setiap fungsi $f_v : \{k\} \to B$ sedemikian sehingga $k$ adalah
 
 ### Constant
 
-Constant adalah setiap variable $f_c : \{k\} \to B$ sedemikian sehingga $k$ adalah key dan $B$ adalah set byte array, di mana byte array yang terkait dengan $k$ tidak dapat diubah setelah ditetapkan.
+Konstanta adalah sembarang variabel $f_c : \{k\} \to B$ dengan $k$ merupakan kunci dan $B$ merupakan himpunan word, di mana word yang terkait dengan $k$ tidak dapat diubah setelah ditetapkan.
 
 #### Constant(k)
 
-> Misalkan $b_0 \in B$ adalah byte array yang ditetapkan ke $k$.
+> Misalkan $b_0 \in B$ adalah word yang ditetapkan pada $k$.
 >
 > $\forall b \in B,\ f_c(k) = b \implies b = b_0$ setelah $b_0$ ditetapkan.
 
+## Koleksi
+
+### Set
+
+Himpunan adalah sembarang koleksi berhingga dan tidak berurutan yang terdiri atas word berbeda.
+
+#### Set()
+
+> Misalkan $B$ adalah himpunan word.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
+
+### Map
+
+Map adalah sembarang fungsi $f_m : K \to V$ dengan $K$ merupakan himpunan kunci dan $V$ merupakan himpunan nilai, di mana setiap kunci terkait dengan tepat satu nilai.
+
+#### Map(k)
+
+> $\forall k \in K, \exists v \in V : f_m(k) = v$
+
+### Array
+
+Array adalah sembarang fungsi $f_a : I \to V$ dengan $I \subseteq \mathbb{N}$ merupakan himpunan indeks bilangan bulat berhingga dan berurutan tanpa celah, dan $V$ merupakan himpunan word, di mana setiap indeks mengidentifikasi tepat satu nilai.
+
+#### Array(i)
+
+> $\forall i \in I, \exists v \in V : f_a(i) = v$
+
+### File
+
+File adalah sembarang tupel $(f_m,d)$ dengan $d$ merupakan array word dan $f_m : I \times \{d\} \to \mathrm{Array}$ merupakan fungsi metadata yang direpresentasikan oleh array word, di mana $I$ merupakan himpunan indeks bilangan bulat berhingga dan berurutan tanpa celah, dan $f_m$ menentukan cara data diresolusi dari $d$.
+
+#### File(i)
+
+> Misalkan $(f_m,d)$ adalah file.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
+
+### Stream
+
+Stream adalah sembarang fungsi $f_s$ sedemikian sehingga setiap penerapan $f_s$ menghasilkan potongan berikutnya $c$ dalam urutan berhingga atau tak berhingga, di mana $f_s$ menetapkan mekanisme pembangkitan atau pengambilan data secara berurutan.
+
+#### Stream()
+
+> Misalkan $f_c : K \to C$ adalah fungsi resolusi potongan, dengan $K \subseteq \mathbb{N}$ merupakan himpunan indeks bilangan bulat berurutan tanpa celah dan $C$ merupakan himpunan potongan.
+>
+> Misalkan $k \in K$ adalah indeks potongan berikutnya.
+>
+> $\mathrm{Stream}() = f_s() = f_c(k)$, dengan memajukan $k$ setelah setiap penerapan.
 
 ## Operasi
 
 ### Instruction
 
-Instruction adalah setiap array byte $i \in B$ sedemikian sehingga $B$ adalah set byte array, di mana setiap instruction merepresentasikan satu operasi komputasional yang akan dilakukan.
+Instruksi adalah sembarang word atau tupel berhingga word $i \in B$ dengan $B$ merupakan himpunan word atau tupel berhingga word, di mana setiap instruksi merepresentasikan satu operasi komputasi yang akan dilakukan.
 
 ### Procedure
 
-Procedure adalah setiap variable $f_{proc} : \{k\} \to B$ sedemikian sehingga $k$ adalah key dan $B$ adalah set byte array, di mana setiap penerapan procedure mengevaluasi byte array yang terkait dengan $k$ sebagai urutan instruction yang finite dan ordered, lalu menjalankan instruction tersebut sesuai urutan representasinya tanpa mendefinisikan nilai return.
+Prosedur adalah sembarang variabel $f_{proc} : \{k\} \to B$ dengan $f_{proc}(k)$ merepresentasikan array instruksi $f_a : I \to V$, di mana eksekusi prosedur menjalankan setiap instruksi sesuai urutan indeksnya.
 
 #### Procedure(k)
 
-> Misalkan $b \in B$ sedemikian sehingga $f_{proc}(k) = b$.
->
-> Misalkan $(i_0,\dots,i_n)$ adalah urutan instruction yang finite dan ordered yang direpresentasikan oleh $b$, di mana $\forall j \in \{0,\dots,n\}, i_j$ adalah instruction.
->
-> $\mathrm{Procedure}(k)$ adalah eksekusi setiap $i_j$ dalam urutan naik berdasarkan $j$.
+> $\mathrm{Procedure}(k)$ adalah eksekusi setiap $f_a(i)$ dalam urutan menaik $i \in I$.
 
 ### Function
 
-Function adalah setiap procedure $f_{func} : \{k\} \to B$ sedemikian sehingga $k$ adalah key dan $B$ adalah set byte array, di mana setiap penerapan function mengevaluasi byte array yang terkait dengan $k$ sebagai urutan instruction yang finite dan ordered, menjalankan instruction tersebut sesuai urutan representasinya, dan setelah eksekusi selesai, menetapkan byte array hasil ke suatu address dalam memori yang dapat dievaluasi sebagai nilai return function.
+Fungsi adalah sembarang prosedur $f_{func} : \{k\} \to B$ yang jika dieksekusi mengembalikan alamat $a_r \in A$ yang mengidentifikasi word hasil atau word pertama dari array word yang merepresentasikan hasil.
 
 #### Function(k)
 
-> Misalkan $b \in B$ sedemikian sehingga $f_{func}(k) = b$.
+> Misalkan $f_m : A \to B$ adalah peta memori, dengan $a_r \in A$ mengidentifikasi word hasil $r \in B$.
 >
-> Misalkan $(i_0,\dots,i_n)$ adalah urutan instruction yang finite dan ordered yang direpresentasikan oleh $b$, di mana $\forall j \in \{0,\dots,n\}, i_j$ adalah instruction.
->
-> Misalkan $a_r \in A$ adalah address yang ditetapkan setelah eksekusi selesai.
->
-> Misalkan $f_m : A \to B$ adalah memory map.
->
-> $\mathrm{Function}(k)$ adalah eksekusi setiap $i_j$ dalam urutan naik berdasarkan $j$, di mana $\exists b_r \in B : f_m(a_r) = b_r$ setelah eksekusi selesai.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
 ## Threading
 
 ### Process
 
-Process adalah alur eksekusi berbatas yang menerima input, menjalankan satu atau lebih instruction, dan menghasilkan output, di mana process merepresentasikan unit transformasi yang berbeda di dalam sistem.
+Proses adalah sembarang aliran eksekusi terbatas yang menerima masukan, mengeksekusi satu atau lebih prosedur atau fungsi, dan menghasilkan keluaran, di mana proses merepresentasikan unit transformasi tersendiri dalam suatu sistem.
 
 ### Thread
 
-Thread adalah alur eksekusi apa pun yang berada di dalam process, di mana thread menyediakan satu jalur untuk mengeksekusi urutan instruction milik process tersebut.
+Thread adalah sembarang aliran eksekusi yang terdapat dalam suatu proses, menyediakan satu jalur bagi eksekusi prosedur atau fungsi milik proses tersebut.
 
 #### Thread(p)
 
-> Misalkan $p$ adalah process.
+> Misalkan $p$ adalah proses.
 >
-> Misalkan $(i_0,\dots,i_n)$ adalah urutan instruction yang finite dan ordered milik $p$.
+> Misalkan $(w_0, \dots, w_n)$ adalah tupel berhingga prosedur atau fungsi milik $p$.
 >
-> $\mathrm{Thread}(p)$ adalah eksekusi setiap $i_j$ dalam urutan naik berdasarkan $j$ di dalam $p$.
+> $\mathrm{Thread}(p)$ adalah eksekusi setiap $w_j$ dalam urutan menaik $j$ di dalam $p$.
 
 ### Dispatcher
 
-Dispatcher adalah setiap tuple $(t,W,f_d)$ sedemikian sehingga $t$ adalah thread, $W$ adalah set procedure atau function yang diterima sebagai work, dan $f_d$ adalah aturan dispatch yang memilih work dari $W$, di mana dispatcher menyebabkan work yang dipilih dieksekusi pada $t$ sesuai aturan dispatch.
+Dispatcher adalah sembarang tupel $(t,W,f_d)$ dengan $t$ merupakan thread, $W$ merupakan himpunan prosedur atau fungsi yang diterima sebagai pekerjaan, dan $f_d$ merupakan aturan dispatch yang memilih pekerjaan dari $W$, di mana dispatcher menyebabkan pekerjaan terpilih dieksekusi pada $t$ menurut aturan tersebut.
 
 #### Dispatcher(t)
 
 > Misalkan $t$ adalah thread.
 >
-> Misalkan $W$ adalah set procedure atau function yang diterima oleh dispatcher, di mana $\forall w \in W$, $w$ adalah procedure atau function.
+> Misalkan $W$ adalah himpunan prosedur atau fungsi yang diterima dispatcher, dengan $\forall w \in W$, $w$ merupakan prosedur atau fungsi.
 >
-> Misalkan $f_d : \mathcal{P}(W) \to W$ adalah aturan dispatch yang memilih work dari subset tidak kosong dari work yang diterima.
+> Misalkan $f_d : \mathcal{P}^+(W) \to W$ adalah aturan dispatch yang memilih pekerjaan dari subset tidak kosong pekerjaan yang diterima.
 >
-> $\mathrm{Dispatcher}(t)$ adalah eksekusi dari setiap $f_d(W')$ pada $t$, di mana $W' \subseteq W$ dan $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ adalah eksekusi setiap $f_d(W')$ yang dipilih pada $t$, dengan $W' \subseteq W$, $W' \neq \varnothing$, dan $f_d(W') \in W'$.
 
 ## Komposit
 
 ### Member
 
-Member adalah setiap elemen $m \in M$ sedemikian sehingga $M$ adalah set member, di mana member adalah nilai yang dapat ditetapkan ke key di dalam member map suatu object.
+Anggota adalah sembarang elemen $m \in M$ dengan $M$ merupakan himpunan elemen dan $f_o : K \to M$ merupakan map anggota objek, di mana $m = f_o(k)$ untuk suatu kunci $k \in K$.
 
 ### Object
 
-Object adalah setiap tuple $(a,K,f_o)$ sedemikian sehingga $a \in A$ adalah address, $K$ adalah set key, dan $f_o : K \to M$ adalah member map, di mana $M$ adalah set member, sehingga object dapat merepresentasikan komposit addressable yang member-nya ditetapkan ke key melalui $f_o$.
+Objek adalah sembarang tupel $(a,K,f_o)$ dengan $a \in A$ merupakan alamat, $K$ merupakan himpunan kunci, dan $f_o : K \to M$ merupakan map anggota, di mana $M$ merupakan himpunan elemen, sehingga objek dapat merepresentasikan komposit yang dapat dialamati dan anggotanya ditetapkan pada kunci melalui $f_o$.
 
 #### Object(k)
 
@@ -241,92 +270,80 @@ Object adalah setiap tuple $(a,K,f_o)$ sedemikian sehingga $a \in A$ adalah addr
 
 ### Field
 
-Field adalah setiap tuple $(o,k,m)$ sedemikian sehingga $o = (a,K,f_o)$ adalah object, $k \in K$ adalah key, $m \in M$ adalah member, dan $f_o(k) = m$, di mana field merepresentasikan satu keyed member yang diselesaikan dari member map suatu object.
+Field adalah sembarang tupel $(o,k,m)$ dengan $o = (a,K,f_o)$ merupakan objek, $k \in K$ merupakan kunci, dan $m = f_o(k)$ merupakan anggota, di mana field merepresentasikan satu anggota berkunci yang diresolusi dari map anggota objek.
 
-#### Field(k)
+#### Field(o,k)
 
-> Misalkan $o = (a,K,f_o)$ adalah object.
+> Misalkan $o = (a,K,f_o)$ adalah objek.
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-Method adalah setiap field $(o,k,m)$ sedemikian sehingga $m$ adalah procedure atau function, di mana method merepresentasikan executable member berkunci milik object.
+Metode adalah sembarang field $(o,k,m)$ dengan $m$ merupakan prosedur atau fungsi, di mana metode merepresentasikan anggota objek berkunci yang dapat dieksekusi.
 
-#### Method(k)
-
-> Misalkan $o = (a,K,f_o)$ adalah object.
->
-> Misalkan $k \in K$ adalah key.
->
-> Misalkan $m \in M$ adalah member sedemikian sehingga $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ ketika $m$ adalah procedure atau function.
-
-### Property
-
-Property adalah setiap field $(o,k,m)$ sedemikian sehingga $m = (A,f_a)$ adalah accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, dan $f_a : A \to M$ memetakan setiap accessor ke member, di mana $f_a(\mathrm{Get})$ adalah function dan $f_a(\mathrm{Set})$ adalah procedure, sehingga property dapat mendefinisikan perilaku pengambilan dan penetapan dari keyed member.
-
-#### Property(k)
+#### Method(o,k)
 
 > Misalkan $(o,k,m)$ adalah field.
 >
-> Misalkan $m = (A,f_a)$ adalah accessor map.
->
-> Misalkan $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, di mana $g$ adalah function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, di mana $s$ adalah procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Method}(o,k) = (o,k,m)$, dengan $m$ merupakan prosedur atau fungsi.
 
-#### Get(k)
+### Property
 
-> Misalkan $(o,k,(A,f_a))$ adalah property.
->
-> Misalkan $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ adalah penerapan $g$.
+Properti adalah sembarang field $(o,k,m)$ dengan $m = (X,f_a)$ merupakan map aksesor, $X = \{\mathrm{Get}, \mathrm{Set}\}$, dan $f_a : X \to M$ memetakan setiap aksesor ke anggota, dengan $f_a(\mathrm{Get})$ merupakan fungsi dan $f_a(\mathrm{Set})$ merupakan prosedur, sehingga properti dapat menentukan perilaku pengambilan maupun penetapan anggota berkunci.
 
-#### Set(k)
+#### Property(o,k)
 
-> Misalkan $(o,k,(A,f_a))$ adalah property.
+> Misalkan $(o,k,m)$ adalah field, dengan $m = (X,f_a)$ merupakan map aksesor.
 >
-> Misalkan $s = f_a(\mathrm{Set})$.
+> $\mathrm{Property}(o,k) = (o,k,m)$
+
+#### Get(o,k)
+
+> Misalkan $(o,k,(X,f_a))$ adalah properti.
 >
-> $\mathrm{Set}(k)$ adalah penerapan $s$.
+> $\mathrm{Get}(o,k)$ adalah penerapan $f_a(\mathrm{Get})$.
+
+#### Set(o,k)
+
+> Misalkan $(o,k,(X,f_a))$ adalah properti.
+>
+> $\mathrm{Set}(o,k)$ adalah penerapan $f_a(\mathrm{Set})$.
 
 ### Structure
 
-Structure (sering disingkat `struct`) adalah setiap object $s = (a,K,f_s)$ sedemikian sehingga $K$ adalah set key yang finite dan $f_s : K \to M$ adalah member map yang tidak dapat diubah setelah struct ditetapkan, di mana struct adalah object khusus dengan layout keyed member yang tetap.
+Struktur (sering disingkat `struct`) adalah sembarang objek $s = (a,K,f_s)$ dengan $K$ merupakan himpunan kunci berhingga dan $f_s : K \to M$ merupakan map anggota yang kuncinya tidak dapat diubah setelah struktur ditetapkan, di mana struktur merupakan objek khusus dengan susunan anggota berkunci yang tetap.
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Misalkan $s = (a,K,f_s)$ adalah structure.
+> Misalkan $s = (a,K,f_s)$ adalah struktur.
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-Class adalah setiap object $c = (a_c,K_c,f_c)$ sedemikian sehingga $K_c$ adalah set key yang finite dan $f_c : K_c \to M$ adalah member-definition map, di mana class adalah object khusus yang keyed member-nya mendefinisikan layout member yang digunakan untuk menghasilkan object lain.
+Kelas adalah sembarang objek $c = (a_c,K_c,f_c)$ dengan $K_c$ merupakan himpunan kunci berhingga dan $f_c : K_c \to M$ merupakan map definisi anggota, di mana kelas merupakan objek khusus dengan anggota berkunci yang menentukan susunan anggota untuk menghasilkan objek lain.
 
-#### Class(a)
+#### Class(c,a)
 
-> Misalkan $c = (a_c,K_c,f_c)$ adalah class.
+> Misalkan $c = (a_c,K_c,f_c)$ adalah kelas.
 >
-> Misalkan $a \in A$ adalah address yang ditetapkan kepada object yang dihasilkan dari $c$.
+> Misalkan $a \in A$ adalah alamat yang ditetapkan pada objek yang dihasilkan dari $c$.
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> Misalkan $f_o : K_c \to M$ adalah map anggota yang mengikuti definisi $f_c$.
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-Interface adalah setiap object $r = (a_r,K_r,f_r)$ sedemikian sehingga $K_r$ adalah set key yang finite dan $f_r : K_r \to M$ adalah member-requirement map, di mana interface adalah object khusus yang keyed member-nya mendefinisikan member yang harus disediakan oleh object lain.
+Antarmuka adalah sembarang objek $r = (a_r,K_r,f_r)$ dengan $K_r$ merupakan himpunan kunci berhingga dan $f_r : K_r \to M$ merupakan map persyaratan anggota, di mana antarmuka merupakan objek khusus dengan anggota berkunci yang menentukan anggota yang harus disediakan oleh objek lain.
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Misalkan $r = (a_r,K_r,f_r)$ adalah interface.
+> Misalkan $r = (a_r,K_r,f_r)$ adalah antarmuka.
 >
-> Misalkan $o = (a,K,f_o)$ adalah object.
+> Misalkan $o = (a,K,f_o)$ adalah objek.
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> Misalkan $f_v : M \times M \to \{0,1\}$ adalah aturan validasi yang menentukan apakah suatu anggota memenuhi persyaratan anggota lain.
+>
+> $\mathrm{Interface}(r,o)$ berlaku ketika $K_r \subseteq K$ dan $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.

@@ -6,327 +6,344 @@
 <br/>
 
 > **Especificação de Relações Fundamentais**<br/>
-> Revisão 1<br/>
-> 7 de julho de 2026<br/>
+> Revisão 2.1<br/>
+> 24 de novembro de 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > Todos os direitos reservados.<br/>
 > <br/>
-> As definições e os conceitos apresentados aqui descrevem construções matemáticas fundamentais e podem ser reexpressos livremente.
+> As definições e os conceitos apresentados aqui descrevem construções matemáticas fundamentais e podem ser reformulados livremente.
 
 ## Introdução
 
-A **Foundational Relations Specification (FRELSPEC)** estabelece as estruturas relacionais centrais que sustentam o ecossistema CatalystUI. Seu propósito é fornecer um entendimento unificado de como valores, memória, operações e compostos se associam em documentações, especificações, implementações e revisões de verificação, garantindo consistência, clareza e alinhamento.
+A **Especificação de Relações Fundamentais (FRELSPEC)** estabelece as estruturas relacionais centrais que sustentam o ecossistema CatalystUI. Seu propósito é fornecer uma compreensão unificada das relações entre memória, coleções, operações e compostos na documentação, nas especificações, nas implementações e nas revisões de verificação, garantindo consistência, clareza e alinhamento.
 
-Ao definir relações entre conceitos fundamentais de forma precisa e estável, a FRELSPEC fornece um ponto de referência comum para especificações de nível superior. Isso permite que desenvolvedores, revisores e implementadores raciocinem a partir da mesma base ao determinar se uma linguagem, serviço, framework ou sistema consegue representar as construções relacionais exigidas para ser considerado dentro da especificação.
+Ao definir relações entre conceitos fundamentais de forma precisa e estável, a FRELSPEC fornece um ponto de referência comum para especificações de nível superior, permitindo que cada implementação estabeleça suas próprias regras e comportamentos. Assim, desenvolvedores, revisores e implementadores podem raciocinar a partir da mesma base para determinar se uma linguagem, serviço, framework ou sistema consegue representar as construções relacionais necessárias à conformidade com a especificação.
 
 > [!IMPORTANT]
 >
-> Expressamos as definições usando uma forma derivada da notação de [teoria dos conjuntos](https://en.wikipedia.org/wiki/Set_theory). Essa abordagem fornece definições precisas e não ambíguas, mantendo clareza e concisão. Estruturamos essas definições para apoiar referência fácil, interpretação clara e uma hierarquia conceitual consistente.
+> Expressamos as definições usando uma forma derivada da notação da [teoria dos conjuntos](https://en.wikipedia.org/wiki/Set_theory). Essa abordagem fornece definições precisas e inequívocas, preservando clareza e concisão. Estruturamos as definições para facilitar a consulta, a interpretação clara e uma hierarquia conceitual consistente.
 
 ## Sumário
 
 - [FRELSPEC](#frelspec)
-  - [Introdução](#introduction)
-  - [Sumário](#table-of-contents)
-  - [Coleções](#collections)
-    - [Conjunto](#set)
-    - [Mapa](#map)
+  - [Introdução](#introdução)
+  - [Sumário](#sumário)
+  - [Revisões](#revisões)
+    - [Revisão 2.1](#revisão-21)
+    - [Revisão 2](#revisão-2)
+  - [Memória](#memória)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [Coleções](#coleções)
+    - [Set](#set)
+      - [Set()](#set-1)
+    - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
       - [Array(i)](#arrayi)
-    - [Arquivo](#file)
+    - [File](#file)
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memória](#memory)
-    - [Endereço](#address)
-    - [Ponteiro](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variável](#variable)
-      - [Variable(k)](#variablek)
-    - [Constante](#constant)
-      - [Constant(k)](#constantk)
-  - [Operações](#operations)
-    - [Instrução](#instruction)
-    - [Procedimento](#procedure)
+  - [Operações](#operações)
+    - [Instruction](#instruction)
+    - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
-    - [Função](#function)
+    - [Function](#function)
       - [Function(k)](#functionk)
-  - [Encadeamento](#threading)
-    - [Processo](#process)
+  - [Encadeamento](#encadeamento)
+    - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Compostos](#composites)
-    - [Membro](#member)
-    - [Objeto](#object)
+  - [Compostos](#compostos)
+    - [Member](#member)
+    - [Object](#object)
       - [Object(k)](#objectk)
-    - [Campo](#field)
-      - [Field(k)](#fieldk)
-    - [Método](#method)
-      - [Method(k)](#methodk)
-    - [Propriedade](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
-    - [Estrutura](#structure)
-      - [Structure(k)](#structurek)
-    - [Classe](#class)
-      - [Class(a)](#classa)
+    - [Field](#field)
+      - [Field(o,k)](#fieldok)
+    - [Method](#method)
+      - [Method(o,k)](#methodok)
+    - [Property](#property)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
+    - [Structure](#structure)
+      - [Structure(s,k)](#structuresk)
+    - [Class](#class)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Coleções
+## Revisões
 
-### Conjunto
+### Revisão 2.1
 
-Um conjunto é qualquer coleção de elementos distintos.
+**24 de novembro de 2026**
 
-### Mapa
+Refinamos a definição de File para estabelecer a resolução de dados regida por metadados e redefinimos Stream como um mecanismo independente de geração ou recuperação sequencial de dados. Essas mudanças permitem que fluxos representem sequências finitas ou infinitas sem impor restrições adicionais às demais coleções.
 
-Um mapa é qualquer função $f_m : K \to V$ tal que $K$ é um conjunto de chaves e $V$ é um conjunto de valores.
+### Revisão 2
 
-#### Mapa(k)
+**21 de novembro de 2026**
 
-> $\forall k \in K, \exists v \in V : f_m(k) = v$
+Identificamos inconsistências na representação da memória e dos valores armazenados por bytes e arrays de bytes. Estabelecemos Word como representação fundamental da memória, unificando as relações entre Memória, Operações e Compostos.
 
-### Array
+Identificamos inconsistências na indexação de arrays e nas relações entre coleções. Padronizamos índices finitos e contíguos e esclarecemos as relações entre Array, File e Stream.
 
-Um array é qualquer função $f_a : I \to V$ tal que $I \subset \mathbb{N}$, $I$ é um conjunto finito e contíguo de inteiros, e $V$ é um conjunto de valores.
-
-#### Array(i)
-
-> $\forall i \in I, \exists v \in V : f_a(i) = v$
-
-### Arquivo
-
-Um arquivo é qualquer função $f_f : I \to B$ tal que $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ é um conjunto finito e contíguo de inteiros, e $b$ é um conjunto de bytes, em que $f_f$ se origina de um mecanismo de armazenamento persistente de dados.
-
-#### Arquivo(i)
-
-$\forall i \in I, \exists b \in B : f_f(i) = b$
-
-### Stream
-
-Um stream é qualquer função $f_s$ tal que cada aplicação de $f_s$ produz o próximo bloco $f_c : I \to B$ em uma sequência de bytes, em que $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ é um conjunto finito e contíguo de inteiros, $B$ é um conjunto de bytes, e $f_s$ se origina de um mecanismo de geração ou recuperação sequencial de dados.
-
-#### Stream()
-
-> Seja $c_k : I_k \to B$ o bloco retornado pela $k\text{-th}$ application of $f_s$.
->
-> $\forall k \in \mathbb{N}, f_s() = c_k$ na $k$-ésima aplicação.
+Identificamos redundâncias e ambiguidades nas relações de execução e composição. Refinamos procedimentos, funções, despachantes e relações entre objetos para resolver esses problemas, preservando a independência de implementação.
 
 ## Memória
 
-### Endereço
+### Word
 
-Um endereço é qualquer elemento $a \in A$ tal que $A$ é um conjunto de endereços, em que cada endereço $a$ identifica de forma única uma localização em uma estrutura de memória.
+Uma palavra é qualquer sequência de bits $w \in \mathrm{Bit}^n$ armazenada na memória, tal que $n \in \mathbb{N}^+$.
 
-### Ponteiro
+### Address
 
-Um ponteiro é qualquer função $f_p : \{a\} \to B$ tal que $a \in A$ é um endereço e $B$ é um conjunto de arrays de bytes, em que cada aplicação de $f_p$ avalia o array de bytes armazenado na localização de memória identificada por seu endereço vinculado.
+Um endereço é qualquer palavra $a \in A$, em que $A$ é um conjunto de palavras, tal que $a$ identifica unicamente uma localização em uma estrutura de memória especificada.
 
-#### Ponteiro()
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+Um ponteiro é qualquer função $f_p : \{a\} \to B$ tal que $a \in A$ é um endereço e $B$ é um conjunto de palavras, em que cada aplicação de $f_p$ avalia a palavra armazenada na localização de memória identificada por $a$.
+
+#### Pointer()
 
 > Seja $f_m : A \to B$ um mapa de memória.
 >
 > $\exists b \in B : f_p(a) = f_m(a) = b$
 
-### Variável
+### Variable
 
-Uma variável é qualquer função $f_v : \{k\} \to B$ tal que $k$ é uma chave e $B$ é um conjunto de arrays de bytes, em que a variável estende um ponteiro ao vincular uma chave a um endereço e avaliar o array de bytes armazenado na localização de memória identificada por esse endereço.
+Uma variável é qualquer função $f_v : \{k\} \to B$ tal que $k$ é uma chave e $B$ é um conjunto de palavras, em que a variável estende um ponteiro vinculando uma chave a um endereço e avaliando a palavra armazenada nesse endereço.
 
-#### Variável(k)
+#### Variable(k)
 
-> Seja $f_b : \{k\} \to \{a\}$ be a função de vínculo da variável.
+> Seja $f_b : \{k\} \to \{a\}$ a função de vinculação da variável.
 >
 > Seja $f_p : \{a\} \to B$ um ponteiro.
 >
 > $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
 
-### Constante
+### Constant
 
-Uma constante é qualquer variável $f_c : \{k\} \to B$ tal que $k$ é uma chave e $B$ é um conjunto de arrays de bytes, em que o array de bytes associado a $k$ não pode ser alterado depois de atribuído.
+Uma constante é qualquer variável $f_c : \{k\} \to B$ tal que $k$ é uma chave e $B$ é um conjunto de palavras, em que a palavra associada a $k$ não pode ser alterada depois de atribuída.
 
-#### Constante(k)
+#### Constant(k)
 
-> Seja $b_0 \in B$ o array de bytes atribuído a $k$.
+> Seja $b_0 \in B$ a palavra atribuída a $k$.
 >
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ depois que $b_0$ é atribuído.
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ após a atribuição de $b_0$.
 
+## Coleções
+
+### Set
+
+Um conjunto é qualquer coleção finita e não ordenada de palavras distintas.
+
+#### Set()
+
+> Seja $B$ um conjunto de palavras.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
+
+### Map
+
+Um mapa é qualquer função $f_m : K \to V$ tal que $K$ é um conjunto de chaves e $V$ é um conjunto de valores, em que cada chave é associada a exatamente um valor.
+
+#### Map(k)
+
+> $\forall k \in K, \exists v \in V : f_m(k) = v$
+
+### Array
+
+Um array é qualquer função $f_a : I \to V$ tal que $I \subseteq \mathbb{N}$ é um conjunto finito e contíguo de índices inteiros e $V$ é um conjunto de palavras, em que cada índice identifica exatamente um valor.
+
+#### Array(i)
+
+> $\forall i \in I, \exists v \in V : f_a(i) = v$
+
+### File
+
+Um arquivo é qualquer tupla $(f_m,d)$ tal que $d$ é um array de palavras e $f_m : I \times \{d\} \to \mathrm{Array}$ é uma função de metadados representada por um array de palavras, em que $I$ é um conjunto finito e contíguo de índices inteiros e $f_m$ determina como os dados são resolvidos a partir de $d$.
+
+#### File(i)
+
+> Seja $(f_m,d)$ um arquivo.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
+
+### Stream
+
+Um fluxo é qualquer função $f_s$ tal que cada aplicação de $f_s$ produz o próximo fragmento $c$ em uma sequência finita ou infinita, em que $f_s$ estabelece um mecanismo de geração ou recuperação sequencial de dados.
+
+#### Stream()
+
+> Seja $f_c : K \to C$ uma função de resolução de fragmentos, em que $K \subseteq \mathbb{N}$ é um conjunto contíguo de índices inteiros e $C$ é um conjunto de fragmentos.
+>
+> Seja $k \in K$ o índice do próximo fragmento.
+>
+> $\mathrm{Stream}() = f_s() = f_c(k)$, avançando $k$ após cada aplicação.
 
 ## Operações
 
-### Instrução
+### Instruction
 
-Uma instrução é qualquer array de bytes $i \in B$ tal que $B$ é um conjunto de arrays de bytes, em que cada instrução representa uma única operação computacional a ser executada.
+Uma instrução é qualquer palavra ou tupla finita de palavras $i \in B$ tal que $B$ é um conjunto de palavras ou tuplas finitas de palavras, em que cada instrução representa uma única operação computacional a ser realizada.
 
-### Procedimento
+### Procedure
 
-Um procedimento é qualquer variável $f_{proc} : \{k\} \to B$ tal que $k$ é uma chave e $B$ é um conjunto de arrays de bytes, em que cada aplicação do procedimento avalia o array de bytes associado a $k$ como uma sequência finita e ordenada de instruções e executa essas instruções na ordem representada sem definir um valor retornado.
+Um procedimento é qualquer variável $f_{proc} : \{k\} \to B$ tal que $f_{proc}(k)$ representa um array de instruções $f_a : I \to V$, em que a execução do procedimento realiza cada instrução na ordem dos índices.
 
-#### Procedimento(k)
+#### Procedure(k)
 
-> Seja $b \in B$ tal que $f_{proc}(k) = b$.
+> $\mathrm{Procedure}(k)$ é a execução de cada $f_a(i)$ em ordem crescente de $i \in I$.
+
+### Function
+
+Uma função é qualquer procedimento $f_{func} : \{k\} \to B$ tal que sua execução retorna um endereço $a_r \in A$ que identifica a palavra resultante ou a primeira palavra de um array de palavras que representa o resultado.
+
+#### Function(k)
+
+> Seja $f_m : A \to B$ um mapa de memória, em que $a_r \in A$ identifica a palavra resultante $r \in B$.
 >
-> Seja $(i_0,\dots,i_n)$ a sequência finita e ordenada de instruções representada por $b$, em que $\forall j \in \{0,\dots,n\}, i_j$ é uma instrução.
->
-> $\mathrm{Procedure}(k)$ é a execução de cada $i_j$ em ordem crescente de $j$.
-
-### Função
-
-Uma função é qualquer procedimento $f_{func} : \{k\} \to B$ tal que $k$ é uma chave e $B$ é um conjunto de arrays de bytes, em que cada aplicação da função avalia o array de bytes associado a $k$ como uma sequência finita e ordenada de instruções, executa essas instruções na ordem representada e, depois que a execução é concluída, atribui um array de bytes resultante a algum endereço na memória que pode ser avaliado como o valor retornado pela função.
-
-#### Função(k)
-
-> Seja $b \in B$ tal que $f_{func}(k) = b$.
->
-> Seja $(i_0,\dots,i_n)$ a sequência finita e ordenada de instruções representada por $b$, em que $\forall j \in \{0,\dots,n\}, i_j$ é uma instrução.
->
-> Seja $a_r \in A$ um endereço atribuído depois que a execução é concluída.
->
-> Seja $f_m : A \to B$ um mapa de memória.
->
-> $\mathrm{Function}(k)$ é a execução de cada $i_j$ em ordem crescente de $j$, em que $\exists b_r \in B : f_m(a_r) = b_r$ depois que a execução é concluída.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
 ## Encadeamento
 
-### Processo
+### Process
 
-Um processo é qualquer fluxo de execução limitado que aceita entrada, executa uma ou mais instruções e produz saída, em que o processo representa uma unidade distinta de transformação dentro de um sistema.
+Um processo é qualquer fluxo de execução delimitado que recebe entrada, executa um ou mais procedimentos ou funções e produz saída, representando uma unidade distinta de transformação dentro de um sistema.
 
 ### Thread
 
-Uma thread é qualquer fluxo de execução contido em um processo, em que a thread fornece um caminho pelo qual sequências ordenadas de instruções pertencentes a esse processo podem ser executadas.
+Uma thread é qualquer fluxo de execução contido em um processo, fornecendo um caminho pelo qual os procedimentos ou funções desse processo podem ser executados.
 
 #### Thread(p)
 
 > Seja $p$ um processo.
 >
-> Seja $(i_0,\dots,i_n)$ uma sequência finita e ordenada de instruções pertencente a $p$.
+> Seja $(w_0, \dots, w_n)$ uma tupla finita de procedimentos ou funções pertencentes a $p$.
 >
-> $\mathrm{Thread}(p)$ é a execução de cada $i_j$ em ordem crescente de $j$ dentro de $p$.
+> $\mathrm{Thread}(p)$ é a execução de cada $w_j$ em ordem crescente de $j$ dentro de $p$.
 
 ### Dispatcher
 
-Um dispatcher é qualquer tupla $(t,W,f_d)$ tal que $t$ é uma thread, $W$ é um conjunto de procedimentos ou funções aceitos como trabalho, e $f_d$ é uma regra de despacho que seleciona trabalho de $W$, em que o dispatcher faz o trabalho selecionado ser executado em $t$ de acordo com a regra de despacho.
+Um despachante é qualquer tupla $(t,W,f_d)$ tal que $t$ é uma thread, $W$ é um conjunto de procedimentos ou funções aceitos como trabalho e $f_d$ é uma regra de despacho que seleciona trabalho de $W$, em que o despachante faz o trabalho selecionado ser executado em $t$ de acordo com essa regra.
 
 #### Dispatcher(t)
 
 > Seja $t$ uma thread.
 >
-> Seja $W$ um conjunto de procedimentos ou funções aceitos pelo dispatcher, em que $\forall w \in W$, $w$ é um procedimento ou função.
+> Seja $W$ um conjunto de procedimentos ou funções aceitos pelo despachante, em que $\forall w \in W$, $w$ é um procedimento ou função.
 >
-> Seja $f_d : \mathcal{P}(W) \to W$ uma regra de despacho que seleciona trabalho de um subconjunto não vazio de trabalho aceito.
+> Seja $f_d : \mathcal{P}^+(W) \to W$ uma regra de despacho que seleciona trabalho de um subconjunto não vazio do trabalho aceito.
 >
-> $\mathrm{Dispatcher}(t)$ é a execução de cada selected $f_d(W')$ on $t$, em que $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ é a execução de cada $f_d(W')$ selecionado em $t$, em que $W' \subseteq W$, $W' \neq \varnothing$ e $f_d(W') \in W'$.
 
 ## Compostos
 
-### Membro
+### Member
 
-Um membro é qualquer elemento $m \in M$ tal que $M$ é um conjunto de membros, em que um membro é um valor que pode ser atribuído a uma chave dentro do mapa de membros de um objeto.
+Um membro é qualquer elemento $m \in M$ tal que $M$ é um conjunto de elementos e $f_o : K \to M$ é o mapa de membros de um objeto, em que $m = f_o(k)$ para alguma chave $k \in K$.
 
-### Objeto
+### Object
 
-Um objeto é qualquer tupla $(a,K,f_o)$ tal que $a \in A$ é um endereço, $K$ é um conjunto de chaves, e $f_o : K \to M$ é um mapa de membros, em que $M$ é um conjunto de membros, permitindo que o objeto represente um composto endereçável cujos membros são atribuídos a chaves por meio de $f_o$.
+Um objeto é qualquer tupla $(a,K,f_o)$ tal que $a \in A$ é um endereço, $K$ é um conjunto de chaves e $f_o : K \to M$ é um mapa de membros, em que $M$ é um conjunto de elementos, permitindo que o objeto represente um composto endereçável cujos membros são atribuídos a chaves por meio de $f_o$.
 
-#### Objeto(k)
+#### Object(k)
 
 > $\forall k \in K,\ \exists m \in M : f_o(k) = m$
 
-### Campo
+### Field
 
-Um campo é qualquer tupla $(o,k,m)$ tal que $o = (a,K,f_o)$ é um objeto, $k \in K$ é uma chave, $m \in M$ é um membro, e $f_o(k) = m$, em que o campo representa um membro com chave resolvido a partir do mapa de membros de um objeto.
+Um campo é qualquer tupla $(o,k,m)$ tal que $o = (a,K,f_o)$ é um objeto, $k \in K$ é uma chave e $m = f_o(k)$ é um membro, em que o campo representa um membro identificado por chave e resolvido a partir do mapa de membros do objeto.
 
-#### Campo(k)
-
-> Seja $o = (a,K,f_o)$ um objeto.
->
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
-
-### Método
-
-Um método é qualquer campo $(o,k,m)$ tal que $m$ é um procedimento ou função, em que o método representa um membro executável com chave de um objeto.
-
-#### Método(k)
+#### Field(o,k)
 
 > Seja $o = (a,K,f_o)$ um objeto.
 >
-> Seja $k \in K$ uma chave.
->
-> Seja $m \in M$ um membro tal que $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ quando $m$ é um procedimento ou função.
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
-### Propriedade
+### Method
 
-Uma propriedade é qualquer campo $(o,k,m)$ tal que $m = (A,f_a)$ é um mapa de acessores, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, e $f_a : A \to M$ mapeia cada acessor para um membro, em que $f_a(\mathrm{Get})$ é uma função e $f_a(\mathrm{Set})$ é um procedimento, permitindo que a propriedade defina tanto o comportamento de recuperação quanto o de atribuição de um membro com chave.
+Um método é qualquer campo $(o,k,m)$ tal que $m$ é um procedimento ou função, em que o método representa um membro executável de um objeto identificado por chave.
 
-#### Propriedade(k)
+#### Method(o,k)
 
 > Seja $(o,k,m)$ um campo.
 >
-> Seja $m = (A,f_a)$ um mapa de acessores.
->
-> Seja $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, em que $g$ é uma função.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, em que $s$ é um procedimento.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Method}(o,k) = (o,k,m)$, em que $m$ é um procedimento ou função.
 
-#### Get(k)
+### Property
 
-> Seja $(o,k,(A,f_a))$ uma propriedade.
+Uma propriedade é qualquer campo $(o,k,m)$ tal que $m = (X,f_a)$ é um mapa de acessores, $X = \{\mathrm{Get}, \mathrm{Set}\}$, e $f_a : X \to M$ mapeia cada acessor a um membro, em que $f_a(\mathrm{Get})$ é uma função e $f_a(\mathrm{Set})$ é um procedimento, permitindo à propriedade definir tanto o comportamento de recuperação quanto o de atribuição de um membro identificado por chave.
+
+#### Property(o,k)
+
+> Seja $(o,k,m)$ um campo, em que $m = (X,f_a)$ é um mapa de acessores.
 >
-> Seja $g = f_a(\mathrm{Get})$.
+> $\mathrm{Property}(o,k) = (o,k,m)$
+
+#### Get(o,k)
+
+> Seja $(o,k,(X,f_a))$ uma propriedade.
 >
-> $\mathrm{Get}(k)$ é a aplicação de $g$.
+> $\mathrm{Get}(o,k)$ é a aplicação de $f_a(\mathrm{Get})$.
 
-#### Conjunto(k)
+#### Set(o,k)
 
-> Seja $(o,k,(A,f_a))$ uma propriedade.
+> Seja $(o,k,(X,f_a))$ uma propriedade.
 >
-> Seja $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ é a aplicação de $s$.
+> $\mathrm{Set}(o,k)$ é a aplicação de $f_a(\mathrm{Set})$.
 
-### Estrutura
+### Structure
 
-Uma estrutura (frequentemente abreviada como `struct`) é qualquer objeto $s = (a,K,f_s)$ tal que $K$ é um conjunto finito de chaves e $f_s : K \to M$ é um mapa de membros que não pode ser alterado depois que a struct é atribuída, em que a struct é um objeto especializado cujo layout de membros com chave é fixo.
+Uma estrutura (frequentemente abreviada como `struct`) é qualquer objeto $s = (a,K,f_s)$ tal que $K$ é um conjunto finito de chaves e $f_s : K \to M$ é um mapa de membros cujas chaves não podem ser alteradas após a atribuição da estrutura, que é um objeto especializado com disposição fixa de membros identificados por chave.
 
-#### Estrutura(k)
+#### Structure(s,k)
 
 > Seja $s = (a,K,f_s)$ uma estrutura.
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
-### Classe
+### Class
 
-Uma classe é qualquer objeto $c = (a_c,K_c,f_c)$ tal que $K_c$ é um conjunto finito de chaves e $f_c : K_c \to M$ é um mapa de definição de membros, em que a classe é um objeto especializado cujos membros com chave definem o layout de membros usado para produzir outros objetos.
+Uma classe é qualquer objeto $c = (a_c,K_c,f_c)$ tal que $K_c$ é um conjunto finito de chaves e $f_c : K_c \to M$ é um mapa de definições de membros, em que a classe é um objeto especializado cujos membros identificados por chave definem a disposição de membros usada para produzir outros objetos.
 
-#### Classe(a)
+#### Class(c,a)
 
 > Seja $c = (a_c,K_c,f_c)$ uma classe.
 >
-> Seja $a \in A$ be an address assigned to an object produced from $c$.
+> Seja $a \in A$ um endereço atribuído a um objeto produzido a partir de $c$.
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> Seja $f_o : K_c \to M$ um mapa de membros que segue as definições de $f_c$.
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-Uma interface é qualquer objeto $r = (a_r,K_r,f_r)$ tal que $K_r$ é um conjunto finito de chaves e $f_r : K_r \to M$ é um mapa de requisitos de membros, em que a interface é um objeto especializado cujos membros com chave definem os membros que devem ser fornecidos por outro objeto.
+Uma interface é qualquer objeto $r = (a_r,K_r,f_r)$ tal que $K_r$ é um conjunto finito de chaves e $f_r : K_r \to M$ é um mapa de requisitos de membros, em que a interface é um objeto especializado cujos membros identificados por chave definem os membros que outro objeto deve fornecer.
 
-#### Interface(o)
+#### Interface(r,o)
 
 > Seja $r = (a_r,K_r,f_r)$ uma interface.
 >
 > Seja $o = (a,K,f_o)$ um objeto.
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> Seja $f_v : M \times M \to \{0,1\}$ uma regra de validação que determina se um membro satisfaz os requisitos de outro membro.
+>
+> $\mathrm{Interface}(r,o)$ é válido quando $K_r \subseteq K$ e $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$.

@@ -1,13 +1,13 @@
 <!-- Bu çeviri ChatGPT tarafından oluşturulmuştur ve bir insan çevirmen tarafından gözden geçirilmelidir. -->
-<!-- Çeviri doğrulandıktan sonra bu satırları bir pull request içinde kaldırın. -->
+<!-- Çeviri doğrulandıktan sonra bu satırları bir pull request ile kaldırın. -->
 
 # FRELSPEC
 
 <br/>
 
 > **Temel İlişkiler Spesifikasyonu**<br/>
-> Revizyon 1<br/>
-> 7 Temmuz 2026<br/>
+> Revizyon 2.1<br/>
+> 24 Kasım 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > Tüm hakları saklıdır.<br/>
@@ -16,21 +16,35 @@
 
 ## Giriş
 
-**Foundational Relations Specification (FRELSPEC)**, CatalystUI ekosisteminin temelini oluşturan ana ilişkisel yapıları belirler. Amacı, değerlerin, belleğin, işlemlerin ve bileşiklerin belgeler, spesifikasyonlar, uygulamalar ve doğrulama incelemeleri boyunca nasıl ilişkilendirildiğine dair birleşik bir anlayış sağlayarak tutarlılık, açıklık ve uyum oluşturmaktır.
+**Temel İlişkiler Spesifikasyonu (FRELSPEC)** CatalystUI ekosisteminin temelini oluşturan çekirdek ilişkisel yapıları belirler. Amacı, bellek, koleksiyonlar, işlemler ve bileşik yapıların dokümantasyon, spesifikasyonlar, uygulamalar ve doğrulama incelemeleri boyunca nasıl ilişkili olduğuna dair ortak bir anlayış sağlamak ve tutarlılığı, açıklığı ve uyumu güvence altına almaktır.
 
-FRELSPEC, temel kavramlar arasındaki ilişkileri kesin ve kararlı bir biçimde tanımlayarak daha üst düzey spesifikasyonlar için ortak bir başvuru noktası sağlar. Bu, geliştiricilerin, inceleyicilerin ve uygulayıcıların bir dilin, hizmetin, framework'ün veya sistemin within spec kabul edilmesi için gereken ilişkisel yapıları temsil edip edemeyeceğini belirlerken aynı temelden akıl yürütmesine olanak tanır.
+FRELSPEC, temel kavramlar arasındaki ilişkileri kesin ve istikrarlı bir biçimde tanımlayarak üst düzey spesifikasyonlar için ortak bir referans noktası sağlar ve ayrı uygulamaların kendi kural ve davranışlarını belirlemesine olanak tanır. Böylece geliştiriciler, inceleyenler ve uygulayıcılar bir dilin, hizmetin, çerçevenin veya sistemin spesifikasyona uygunluk için gerekli ilişkisel yapıları temsil edip edemediğini aynı temelden değerlendirebilir.
 
 > [!IMPORTANT]
 >
-> Tanımları [küme teorisi](https://en.wikipedia.org/wiki/Set_theory) gösteriminin türetilmiş bir biçimiyle ifade ederiz. Bu yaklaşım, açıklığı ve kısalığı korurken kesin ve belirsiz olmayan tanımlar sağlar. Bu tanımları kolay başvuru, açık yorumlama ve tutarlı bir kavramsal hiyerarşiyi destekleyecek şekilde yapılandırırız.
+> Tanımları [küme teorisi](https://en.wikipedia.org/wiki/Set_theory) gösteriminden türetilmiş bir biçimle ifade ediyoruz. Bu yaklaşım açıklığı ve özlülüğü koruyarak kesin ve belirsizlik içermeyen tanımlar sağlar. Tanımları kolay başvuru, açık yorumlama ve tutarlı kavramsal hiyerarşi için yapılandırıyoruz.
 
 ## İçindekiler
 
 - [FRELSPEC](#frelspec)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Collections](#collections)
+  - [Giriş](#giriş)
+  - [İçindekiler](#i̇çindekiler)
+  - [Revizyonlar](#revizyonlar)
+    - [Revizyon 2.1](#revizyon-21)
+    - [Revizyon 2](#revizyon-2)
+  - [Bellek](#bellek)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [Koleksiyonlar](#koleksiyonlar)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,54 +53,116 @@ FRELSPEC, temel kavramlar arasındaki ilişkileri kesin ve kararlı bir biçimde
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [İşlemler](#i̇şlemler)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
-  - [Threading](#threading)
+  - [İş parçacıkları](#i̇ş-parçacıkları)
     - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [Bileşik yapılar](#bileşik-yapılar)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
+
+## Revizyonlar
+
+### Revizyon 2.1
+
+**24 Kasım 2026**
+
+File tanımını üstveriler tarafından yönetilen veri çözümlemesini belirleyecek şekilde geliştirdik ve Stream'i bağımsız bir sıralı veri üretme veya alma mekanizması olarak yeniden tanımladık. Bu değişiklikler akışların diğer koleksiyonlara ek kısıtlamalar getirmeden sonlu veya sonsuz dizileri temsil etmesini sağlar.
+
+### Revizyon 2
+
+**21 Kasım 2026**
+
+Belleğin ve saklanan değerlerin baytlar ve bayt dizileriyle temsilinde tutarsızlıklar belirledik. Word'ü temel bellek temsili olarak belirleyerek Bellek, İşlemler ve Bileşik yapılar arasındaki ilişkileri birleştirdik.
+
+Dizi indeksleme ve koleksiyonlar arasındaki ilişkilerde tutarsızlıklar belirledik. Sonlu, bitişik indeksleri standartlaştırdık ve Array, File ve Stream arasındaki ilişkileri açıklığa kavuşturduk.
+
+Yürütme ve bileşim ilişkilerinde fazlalıklar ve belirsizlikler belirledik. Uygulama bağımsızlığını koruyarak bu sorunları çözmek için prosedürleri, fonksiyonları, dağıtıcıları ve nesne ilişkilerini geliştirdik.
+
+## Bellek
+
+### Word
+
+Sözcük, bellekte saklanan herhangi bir bit dizisi $w \in \mathrm{Bit}^n$ olup $n \in \mathbb{N}^+$ koşulunu sağlar.
+
+### Address
+
+Adres, herhangi bir sözcük $a \in A$ olup $A$ bir sözcük kümesidir ve $a$ belirtilen bir bellek yapısı içindeki konumu benzersiz olarak tanımlar.
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+İşaretçi, herhangi bir fonksiyon $f_p : \{a\} \to B$ olup $a \in A$ bir adres ve $B$ bir sözcük kümesidir; $f_p$ fonksiyonunun her uygulanması $a$ tarafından tanımlanan bellek konumunda saklanan sözcüğü değerlendirir.
+
+#### Pointer()
+
+> $f_m : A \to B$ bir bellek eşlemesi olsun.
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+Değişken, herhangi bir fonksiyon $f_v : \{k\} \to B$ olup $k$ bir anahtar ve $B$ bir sözcük kümesidir; değişken anahtarı adrese bağlayıp o adreste saklanan sözcüğü değerlendirerek işaretçiyi genişletir.
+
+#### Variable(k)
+
+> $f_b : \{k\} \to \{a\}$ değişkenin bağlama fonksiyonu olsun.
+>
+> $f_p : \{a\} \to B$ bir işaretçi olsun.
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+Sabit, herhangi bir değişken $f_c : \{k\} \to B$ olup $k$ bir anahtar ve $B$ bir sözcük kümesidir; $k$ ile ilişkili sözcük atandıktan sonra değiştirilemez.
+
+#### Constant(k)
+
+> $b_0 \in B$, $k$ anahtarına atanan sözcük olsun.
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$, $b_0$ atandıktan sonra.
 
 ## Koleksiyonlar
 
 ### Set
 
-Küme, birbirinden farklı öğelerin herhangi bir koleksiyonudur.
+Küme, farklı sözcüklerden oluşan herhangi bir sonlu ve sırasız koleksiyondur.
+
+#### Set()
+
+> $B$ bir sözcük kümesi olsun.
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-Map, $K$ bir anahtarlar kümesi ve $V$ bir değerler kümesi olacak şekilde herhangi bir $f_m : K \to V$ fonksiyonudur.
+Eşleme, herhangi bir fonksiyon $f_m : K \to V$ olup $K$ bir anahtar kümesi ve $V$ bir değer kümesidir; her anahtar tam olarak bir değerle ilişkilendirilir.
 
 #### Map(k)
 
@@ -94,7 +170,7 @@ Map, $K$ bir anahtarlar kümesi ve $V$ bir değerler kümesi olacak şekilde her
 
 ### Array
 
-Array, $I \subset \mathbb{N}$ olacak, $I$ sonlu ve bitişik bir tamsayılar kümesi olacak ve $V$ bir değerler kümesi olacak şekilde herhangi bir $f_a : I \to V$ fonksiyonudur.
+Dizi, herhangi bir fonksiyon $f_a : I \to V$ olup $I \subseteq \mathbb{N}$ sonlu, bitişik bir tamsayı indeksleri kümesi ve $V$ bir sözcük kümesidir; her indeks tam olarak bir değeri tanımlar.
 
 #### Array(i)
 
@@ -102,138 +178,91 @@ Array, $I \subset \mathbb{N}$ olacak, $I$ sonlu ve bitişik bir tamsayılar küm
 
 ### File
 
-A file is any function $f_f : I \to B$ such that $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers and $b$ is a set of bytes, where $f_f$ originates from a mechanism of persistent data storage.
+Dosya, herhangi bir demet $(f_m,d)$ olup $d$ bir sözcük dizisi ve $f_m : I \times \{d\} \to \mathrm{Array}$ bir sözcük dizisiyle temsil edilen üstveri fonksiyonudur; $I$ sonlu, bitişik bir tamsayı indeksleri kümesidir ve $f_m$ verilerin $d$ üzerinden nasıl çözümlendiğini belirler.
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> $(f_m,d)$ bir dosya olsun.
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, where $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+Akış, herhangi bir fonksiyon $f_s$ olup $f_s$ fonksiyonunun her uygulanması sonlu veya sonsuz bir dizideki bir sonraki parçayı $c$ üretir ve $f_s$ sıralı veri üretme veya alma mekanizmasını belirler.
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> $f_c : K \to C$ bir parça çözümleme fonksiyonu olsun; $K \subseteq \mathbb{N}$ bitişik bir tamsayı indeksleri kümesi ve $C$ bir parça kümesidir.
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## Bellek
-
-### Address
-
-An address is any element $a \in A$ such that $A$ is a set of addresses, where each address $a$ uniquely identifies a location in a memory structure.
-
-### Pointer
-
-A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> $k \in K$ bir sonraki parçanın indeksi olsun.
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
-
-### Variable
-
-A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
+> $\mathrm{Stream}() = f_s() = f_c(k)$, her uygulamadan sonra $k$ ilerletilir.
 
 ## İşlemler
 
 ### Instruction
 
-An instruction is any array of bytes $i \in B$ such that $B$ is a set of byte arrays, where each instruction represents a single computational operation to be performed.
+Komut, herhangi bir sözcük veya sonlu sözcük demeti $i \in B$ olup $B$ bir sözcükler veya sonlu sözcük demetleri kümesidir; her komut gerçekleştirilecek tek bir hesaplama işlemini temsil eder.
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+Prosedür, herhangi bir değişken $f_{proc} : \{k\} \to B$ olup $f_{proc}(k)$ bir komut dizisini $f_a : I \to V$ temsil eder; prosedür yürütüldüğünde her komut indeks sırasına göre gerçekleştirilir.
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> $\mathrm{Procedure}(k)$, her $f_a(i)$ öğesinin $i \in I$ artan sırasında yürütülmesidir.
 
 ### Function
 
-A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+Fonksiyon, herhangi bir prosedür $f_{func} : \{k\} \to B$ olup yürütülmesi sonuç sözcüğünü veya sonucu temsil eden sözcük dizisinin ilk sözcüğünü tanımlayan bir adres $a_r \in A$ döndürür.
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> $f_m : A \to B$ bir bellek eşlemesi olsun; $a_r \in A$ sonuç sözcüğünü $r \in B$ tanımlar.
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
-## İş Parçacığı
+## İş parçacıkları
 
 ### Process
 
-A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, where the process represents a distinct unit of transformation within a system.
+Süreç, girdi alan, bir veya daha fazla prosedür veya fonksiyon yürüten ve çıktı üreten herhangi bir sınırlı yürütme akışıdır; süreç bir sistem içindeki ayrı bir dönüştürme birimini temsil eder.
 
 ### Thread
 
-A thread is any flow of execution contained within a process, where the thread provides one path by which ordered sequences of instructions belonging to that process may be executed.
+İş parçacığı, bir süreç içinde bulunan herhangi bir yürütme akışıdır ve o sürece ait prosedürlerin veya fonksiyonların yürütülebileceği bir yol sağlar.
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> $p$ bir süreç olsun.
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> $(w_0, \dots, w_n)$, $p$ sürecine ait prosedür veya fonksiyonların sonlu bir demeti olsun.
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> $\mathrm{Thread}(p)$, her $w_j$ öğesinin $j$ artan sırasında $p$ içinde yürütülmesidir.
 
 ### Dispatcher
 
-A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+Dağıtıcı, herhangi bir demet $(t,W,f_d)$ olup $t$ bir iş parçacığı, $W$ iş olarak kabul edilen prosedür veya fonksiyonların kümesi ve $f_d$, $W$ kümesinden iş seçen bir dağıtım kuralıdır; dağıtıcı seçilen işin kurala göre $t$ üzerinde yürütülmesini sağlar.
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> $t$ bir iş parçacığı olsun.
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> $W$ dağıtıcının kabul ettiği prosedür veya fonksiyonların kümesi olsun; $\forall w \in W$ için $w$ bir prosedür veya fonksiyondur.
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> $f_d : \mathcal{P}^+(W) \to W$ kabul edilen işlerin boş olmayan bir alt kümesinden iş seçen bir dağıtım kuralı olsun.
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$, seçilen her $f_d(W')$ öğesinin $t$ üzerinde yürütülmesidir; $W' \subseteq W$, $W' \neq \varnothing$ ve $f_d(W') \in W'$ koşulları geçerlidir.
 
-## Bileşikler
+## Bileşik yapılar
 
 ### Member
 
-A member is any element $m \in M$ such that $M$ is a set of members, where a member is a value which may be assigned to a key within the member map of an object.
+Üye, herhangi bir öğe $m \in M$ olup $M$ bir öğe kümesi ve $f_o : K \to M$ bir nesnenin üye eşlemesidir; $m = f_o(k)$ bir $k \in K$ anahtarı için geçerlidir.
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+Nesne, herhangi bir demet $(a,K,f_o)$ olup $a \in A$ bir adres, $K$ bir anahtar kümesi ve $f_o : K \to M$ bir üye eşlemesidir; $M$ bir öğe kümesidir ve nesne üyeleri $f_o$ aracılığıyla anahtarlara atanan adreslenebilir bir bileşik yapıyı temsil edebilir.
 
 #### Object(k)
 
@@ -241,92 +270,80 @@ An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a s
 
 ### Field
 
-A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$ is a key, $m \in M$ is a member, and $f_o(k) = m$, where the field represents one keyed member resolved from the member map of an object.
+Alan, herhangi bir demet $(o,k,m)$ olup $o = (a,K,f_o)$ bir nesne, $k \in K$ bir anahtar ve $m = f_o(k)$ bir üyedir; alan nesnenin üye eşlemesinden çözümlenen anahtarlı bir üyeyi temsil eder.
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> $o = (a,K,f_o)$ bir nesne olsun.
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where the method represents a keyed executable member of an object.
+Metot, herhangi bir alan $(o,k,m)$ olup $m$ bir prosedür veya fonksiyondur; metot bir nesnenin anahtarlı, yürütülebilir üyesini temsil eder.
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> $(o,k,m)$ bir alan olsun.
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$; $m$ bir prosedür veya fonksiyondur.
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+Özellik, herhangi bir alan $(o,k,m)$ olup $m = (X,f_a)$ bir erişimci eşlemesidir, $X = \{\mathrm{Get}, \mathrm{Set}\}$ ve $f_a : X \to M$ her erişimciyi bir üyeye eşler; $f_a(\mathrm{Get})$ bir fonksiyon ve $f_a(\mathrm{Set})$ bir prosedürdür, böylece özellik anahtarlı üyenin hem alma hem atama davranışını tanımlayabilir.
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> $(o,k,m)$ bir alan olsun; $m = (X,f_a)$ bir erişimci eşlemesidir.
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> $(o,k,(X,f_a))$ bir özellik olsun.
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> $\mathrm{Get}(o,k)$, $f_a(\mathrm{Get})$ fonksiyonunun uygulanmasıdır.
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> $(o,k,(X,f_a))$ bir özellik olsun.
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> $\mathrm{Set}(o,k)$, $f_a(\mathrm{Set})$ prosedürünün uygulanmasıdır.
 
 ### Structure
 
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+Yapı (genellikle `struct` olarak kısaltılır), herhangi bir nesne $s = (a,K,f_s)$ olup $K$ sonlu bir anahtar kümesi ve $f_s : K \to M$ yapı atandıktan sonra anahtarları değiştirilemeyen üye eşlemesidir; yapı anahtarlı üyelerinin yerleşimi sabit olan özel bir nesnedir.
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> $s = (a,K,f_s)$ bir yapı olsun.
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+Sınıf, herhangi bir nesne $c = (a_c,K_c,f_c)$ olup $K_c$ sonlu bir anahtar kümesi ve $f_c : K_c \to M$ bir üye tanımları eşlemesidir; sınıf, anahtarlı üyeleri diğer nesneleri üretmek için kullanılan üye yerleşimini tanımlayan özel bir nesnedir.
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> $c = (a_c,K_c,f_c)$ bir sınıf olsun.
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> $a \in A$, $c$ sınıfından üretilen nesneye atanmış adres olsun.
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> $f_o : K_c \to M$, $f_c$ tanımlarına uyan bir üye eşlemesi olsun.
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+Arayüz, herhangi bir nesne $r = (a_r,K_r,f_r)$ olup $K_r$ sonlu bir anahtar kümesi ve $f_r : K_r \to M$ bir üye gereksinimleri eşlemesidir; arayüz, anahtarlı üyeleri başka bir nesnenin sağlaması gereken üyeleri tanımlayan özel bir nesnedir.
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> $r = (a_r,K_r,f_r)$ bir arayüz olsun.
 >
-> Let $o = (a,K,f_o)$ be an object.
+> $o = (a,K,f_o)$ bir nesne olsun.
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> $f_v : M \times M \to \{0,1\}$ bir üyenin başka bir üyenin gereksinimlerini karşılayıp karşılamadığını belirleyen doğrulama kuralı olsun.
+>
+> $\mathrm{Interface}(r,o)$, $K_r \subseteq K$ ve $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$ olduğunda geçerlidir.

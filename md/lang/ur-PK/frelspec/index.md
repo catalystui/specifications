@@ -1,36 +1,50 @@
-<!-- یہ ترجمہ ChatGPT کے ذریعے بنایا گیا ہے اور اسے ایک انسانی مترجم سے جائزہ لینا چاہیے۔ -->
-<!-- ترجمہ کی تصدیق کے بعد ان سطروں کو pull request میں ہٹا دیں۔ -->
+<!-- یہ ترجمہ ChatGPT نے تیار کیا ہے اور اسے کسی انسانی مترجم سے جانچوانا چاہیے۔ -->
+<!-- ترجمے کی تصدیق کے بعد یہ سطریں پل ریکویسٹ کے ذریعے حذف کریں۔ -->
 
 # FRELSPEC
 
 <br/>
 
-> **بنیادی تعلقات کی Specification**<br/>
-> Revision 1<br/>
-> 7 جولائی 2026<br/>
+> **بنیادی تعلقات کی تصریح**<br/>
+> نظرثانی 2.1<br/>
+> 24 نومبر 2026<br/>
 > <br/>
 > Copyright © 2026 CatalystUI LLC. <br/>
 > جملہ حقوق محفوظ ہیں۔<br/>
 > <br/>
-> یہاں پیش کی گئی تعریفیں اور تصورات بنیادی ریاضیاتی structures کو بیان کرتے ہیں اور انہیں آزادانہ طور پر دوبارہ بیان کیا جا سکتا ہے۔
+> یہاں پیش کردہ تعریفیں اور تصورات بنیادی ریاضیاتی ساختوں کو بیان کرتے ہیں اور انہیں آزادانہ طور پر نئے الفاظ میں بیان کیا جا سکتا ہے۔
 
 ## تعارف
 
-**Foundational Relations Specification (FRELSPEC)** وہ core relational structures establish کرتی ہے جو CatalystUI ecosystem کی بنیاد ہیں۔ اس کا مقصد یہ unified understanding فراہم کرنا ہے کہ values، memory، operations، اور composites documentation، specifications، implementations، اور verification reviews میں کس طرح associated ہیں، تاکہ consistency، clarity، اور alignment برقرار رہے۔
+**بنیادی تعلقات کی تصریح (FRELSPEC)** ان بنیادی تعلقاتی ساختوں کو متعین کرتی ہے جن پر CatalystUI کا ماحولیاتی نظام قائم ہے۔ اس کا مقصد دستاویزات، تصریحات، نفاذ اور تصدیقی جائزوں میں میموری، مجموعوں، عملیات اور مرکب ساختوں کے باہمی تعلقات کی یکساں تفہیم فراہم کرنا ہے تاکہ ہم آہنگی، وضاحت اور مطابقت یقینی بنائی جا سکے۔
 
-foundational concepts کے درمیان relationships کو precise اور stable form میں define کر کے FRELSPEC higher-level specifications کے لیے common reference point فراہم کرتی ہے۔ اس سے developers، reviewers، اور implementers ایک ہی foundation سے reason کر سکتے ہیں جب یہ determine کرنا ہو کہ کوئی language، service، framework، یا system within spec سمجھے جانے کے لیے required relational constructs represent کر سکتا ہے یا نہیں۔
+بنیادی تصورات کے تعلقات کو درست اور مستحکم صورت میں متعین کرکے FRELSPEC اعلیٰ سطح کی تصریحات کے لیے مشترکہ حوالہ فراہم کرتی ہے، جبکہ ہر نفاذ کو اپنے قواعد اور رویے طے کرنے کی اجازت دیتی ہے۔ اس سے ڈویلپر، جائزہ کار اور نفاذ کنندہ ایک ہی بنیاد پر یہ طے کر سکتے ہیں کہ کوئی زبان، خدمت، فریم ورک یا نظام تصریح کی تعمیل کے لیے مطلوبہ تعلقاتی ساختوں کی نمائندگی کر سکتا ہے یا نہیں۔
 
 > [!IMPORTANT]
 >
-> ہم definitions کو [set theory](https://en.wikipedia.org/wiki/Set_theory) notation کی derived form سے express کرتے ہیں۔ یہ approach clarity اور conciseness برقرار رکھتے ہوئے precise اور unambiguous definitions فراہم کرتی ہے۔ ہم ان definitions کو easy reference، clear interpretation، اور consistent conceptual hierarchy کی support کے لیے structure کرتے ہیں۔
+> ہم تعریفوں کو [نظریۂ مجموعات](https://en.wikipedia.org/wiki/Set_theory) کے علامتی نظام سے اخذ کردہ صورت میں بیان کرتے ہیں۔ یہ طریقہ وضاحت اور اختصار کو برقرار رکھتے ہوئے درست اور غیر مبہم تعریفیں فراہم کرتا ہے۔ ہم انہیں آسان حوالہ، واضح تشریح اور مربوط تصوراتی درجہ بندی کے لیے ترتیب دیتے ہیں۔
 
-## فہرستِ مضامین
+## فہرست مضامین
 
 - [FRELSPEC](#frelspec)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Collections](#collections)
+  - [تعارف](#تعارف)
+  - [فہرست مضامین](#فہرست-مضامین)
+  - [نظرثانیاں](#نظرثانیاں)
+    - [نظرثانی 2.1](#نظرثانی-21)
+    - [نظرثانی 2](#نظرثانی-2)
+  - [میموری](#میموری)
+    - [Word](#word)
+    - [Address](#address)
+      - [Address()](#address-1)
+    - [Pointer](#pointer)
+      - [Pointer()](#pointer-1)
+    - [Variable](#variable)
+      - [Variable(k)](#variablek)
+    - [Constant](#constant)
+      - [Constant(k)](#constantk)
+  - [مجموعے](#مجموعے)
     - [Set](#set)
+      - [Set()](#set-1)
     - [Map](#map)
       - [Map(k)](#mapk)
     - [Array](#array)
@@ -39,54 +53,116 @@ foundational concepts کے درمیان relationships کو precise اور stable
       - [File(i)](#filei)
     - [Stream](#stream)
       - [Stream()](#stream-1)
-  - [Memory](#memory)
-    - [Address](#address)
-    - [Pointer](#pointer)
-      - [Pointer()](#pointer-1)
-    - [Variable](#variable)
-      - [Variable(k)](#variablek)
-    - [Constant](#constant)
-      - [Constant(k)](#constantk)
-  - [Operations](#operations)
+  - [عملیات](#عملیات)
     - [Instruction](#instruction)
     - [Procedure](#procedure)
       - [Procedure(k)](#procedurek)
     - [Function](#function)
       - [Function(k)](#functionk)
-  - [Threading](#threading)
+  - [تھریڈنگ](#تھریڈنگ)
     - [Process](#process)
     - [Thread](#thread)
       - [Thread(p)](#threadp)
     - [Dispatcher](#dispatcher)
       - [Dispatcher(t)](#dispatchert)
-  - [Composites](#composites)
+  - [مرکب ساختیں](#مرکب-ساختیں)
     - [Member](#member)
     - [Object](#object)
       - [Object(k)](#objectk)
     - [Field](#field)
-      - [Field(k)](#fieldk)
+      - [Field(o,k)](#fieldok)
     - [Method](#method)
-      - [Method(k)](#methodk)
+      - [Method(o,k)](#methodok)
     - [Property](#property)
-      - [Property(k)](#propertyk)
-      - [Get(k)](#getk)
-      - [Set(k)](#setk)
+      - [Property(o,k)](#propertyok)
+      - [Get(o,k)](#getok)
+      - [Set(o,k)](#setok)
     - [Structure](#structure)
-      - [Structure(k)](#structurek)
+      - [Structure(s,k)](#structuresk)
     - [Class](#class)
-      - [Class(a)](#classa)
+      - [Class(c,a)](#classca)
     - [Interface](#interface)
-      - [Interface(o)](#interfaceo)
+      - [Interface(r,o)](#interfacero)
 
-## Collections
+## نظرثانیاں
+
+### نظرثانی 2.1
+
+**24 نومبر 2026**
+
+ہم نے File کی تعریف کو بہتر بنایا تاکہ میٹا ڈیٹا کے زیر انتظام ڈیٹا کے تعین کا طریقہ قائم ہو، اور Stream کو ڈیٹا کی ترتیب وار تخلیق یا بازیافت کے آزاد طریقے کے طور پر ازسرنو متعین کیا۔ یہ تبدیلیاں دیگر مجموعوں پر اضافی پابندیاں عائد کیے بغیر اسٹریمز کو متناہی یا لامتناہی سلسلوں کی نمائندگی کرنے دیتی ہیں۔
+
+### نظرثانی 2
+
+**21 نومبر 2026**
+
+ہم نے بائٹس اور بائٹ اریز کے ذریعے میموری اور ذخیرہ شدہ قدروں کی نمائندگی میں عدم مطابقتیں دریافت کیں۔ ہم نے Word کو میموری کی بنیادی نمائندگی قرار دے کر میموری، عملیات اور مرکب ساختوں کے تعلقات کو یکجا کیا۔
+
+ہم نے اریز کی اشاریہ بندی اور مجموعوں کے باہمی تعلقات میں عدم مطابقتیں دریافت کیں۔ ہم نے متناہی، مسلسل اشاریوں کو معیاری بنایا اور Array، File اور Stream کے تعلقات واضح کیے۔
+
+ہم نے اجرا اور ترکیب کے تعلقات میں تکرار اور ابہام دریافت کیے۔ ہم نے نفاذ سے آزادی برقرار رکھتے ہوئے پروسیجرز، فنکشنز، ڈسپیچرز اور آبجیکٹ کے تعلقات کو بہتر کیا تاکہ یہ مسائل حل ہوں۔
+
+## میموری
+
+### Word
+
+ورڈ بٹس کا کوئی بھی سلسلہ $w \in \mathrm{Bit}^n$ ہے جو میموری میں ذخیرہ ہو، اس طرح کہ $n \in \mathbb{N}^+$۔
+
+### Address
+
+ایڈریس کوئی بھی ورڈ $a \in A$ ہے، جہاں $A$ ورڈز کا مجموعہ ہے، اس طرح کہ $a$ مخصوص میموری ساخت میں کسی مقام کی منفرد شناخت کرتا ہے۔
+
+#### Address()
+
+> $\mathrm{Address}(b_0,\dots,b_{n-1}) = \sum_{i=0}^{n-1} b_i \cdot 2^{n-1-i} \in \{m \in \mathbb{Z} \mid 0 \leq m \leq 2^n-1\}$
+
+### Pointer
+
+پوائنٹر کوئی بھی فنکشن $f_p : \{a\} \to B$ ہے، جس میں $a \in A$ ایڈریس اور $B$ ورڈز کا مجموعہ ہے؛ $f_p$ کی ہر تطبیق اس ورڈ کی قدر معلوم کرتی ہے جو $a$ کے شناخت کردہ میموری مقام پر ذخیرہ ہے۔
+
+#### Pointer()
+
+> فرض کریں $f_m : A \to B$ میموری میپ ہے۔
+>
+> $\exists b \in B : f_p(a) = f_m(a) = b$
+
+### Variable
+
+ویری ایبل کوئی بھی فنکشن $f_v : \{k\} \to B$ ہے، جس میں $k$ کلید اور $B$ ورڈز کا مجموعہ ہے؛ ویری ایبل کلید کو ایڈریس سے باندھ کر اور اس ایڈریس پر ذخیرہ شدہ ورڈ کی قدر معلوم کرکے پوائنٹر کو توسیع دیتا ہے۔
+
+#### Variable(k)
+
+> فرض کریں $f_b : \{k\} \to \{a\}$ ویری ایبل کا بائنڈنگ فنکشن ہے۔
+>
+> فرض کریں $f_p : \{a\} \to B$ پوائنٹر ہے۔
+>
+> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
+
+### Constant
+
+کانسٹنٹ کوئی بھی ویری ایبل $f_c : \{k\} \to B$ ہے، جس میں $k$ کلید اور $B$ ورڈز کا مجموعہ ہے؛ $k$ سے وابستہ ورڈ کو تفویض کے بعد تبدیل نہیں کیا جا سکتا۔
+
+#### Constant(k)
+
+> فرض کریں $b_0 \in B$ وہ ورڈ ہے جو $k$ کو تفویض کیا گیا ہے۔
+>
+> $\forall b \in B,\ f_c(k) = b \implies b = b_0$، $b_0$ کی تفویض کے بعد۔
+
+## مجموعے
 
 ### Set
 
-Set distinct elements کا کوئی بھی collection ہے۔
+سیٹ مختلف ورڈز کا کوئی بھی متناہی، غیر مرتب مجموعہ ہے۔
+
+#### Set()
+
+> فرض کریں $B$ ورڈز کا سیٹ ہے۔
+>
+> $S \subseteq B, |S| \in \mathbb{N}_0$
 
 ### Map
 
-Map کوئی بھی function $f_m : K \to V$ ہے جس میں $K$ keys کا set اور $V$ values کا set ہو۔
+میپ کوئی بھی فنکشن $f_m : K \to V$ ہے، جس میں $K$ کلیدوں کا سیٹ اور $V$ قدروں کا سیٹ ہے؛ ہر کلید عین ایک قدر سے وابستہ ہے۔
 
 #### Map(k)
 
@@ -94,7 +170,7 @@ Map کوئی بھی function $f_m : K \to V$ ہے جس میں $K$ keys کا set 
 
 ### Array
 
-Array کوئی بھی function $f_a : I \to V$ ہے جس میں $I \subset \mathbb{N}$ ہو، $I$ integers کا finite contiguous set ہو، اور $V$ values کا set ہو۔
+ارے کوئی بھی فنکشن $f_a : I \to V$ ہے، جس میں $I \subseteq \mathbb{N}$ مسلسل صحیح عددی اشاریوں کا متناہی سیٹ اور $V$ ورڈز کا سیٹ ہے؛ ہر اشاریہ عین ایک قدر کی شناخت کرتا ہے۔
 
 #### Array(i)
 
@@ -102,138 +178,91 @@ Array کوئی بھی function $f_a : I \to V$ ہے جس میں $I \subset \math
 
 ### File
 
-A file is any function $f_f : I \to B$ such that $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers and $b$ is a set of bytes, where $f_f$ originates from a mechanism of persistent data storage.
+فائل کوئی بھی ٹیپل $(f_m,d)$ ہے، جس میں $d$ ورڈز کا ارے اور $f_m : I \times \{d\} \to \mathrm{Array}$ ورڈز کے ارے سے ظاہر کردہ میٹا ڈیٹا فنکشن ہے، جہاں $I$ مسلسل صحیح عددی اشاریوں کا متناہی سیٹ ہے اور $f_m$ طے کرتا ہے کہ $d$ سے ڈیٹا کیسے متعین کیا جاتا ہے۔
 
 #### File(i)
 
-$\forall i \in I, \exists b \in B : f_f(i) = b$
+> فرض کریں $(f_m,d)$ فائل ہے۔
+>
+> $\mathrm{File}(i) = f_m(i,d),\quad i \in I$
 
 ### Stream
 
-A stream is any function $f_s$ such that each application of $f_s$ yields the next chunk $f_c : I \to B$ in a byte sequence, where $I = \{ x \in \mathbb{Z} : m \leq x \leq n \}$ is a finite, contiguous set of integers, $B$ is a set of bytes, and $f_s$ originates from a mechanism of sequential data generation or retrieval.
+اسٹریم کوئی بھی فنکشن $f_s$ ہے جس میں $f_s$ کی ہر تطبیق متناہی یا لامتناہی سلسلے کا اگلا حصہ $c$ پیدا کرتی ہے، جہاں $f_s$ ڈیٹا کی ترتیب وار تخلیق یا بازیافت کا طریقہ قائم کرتا ہے۔
 
 #### Stream()
 
-> Let $c_k : I_k \to B$ be the chunk returned by the $k\text{-th}$ application of $f_s$.
+> فرض کریں $f_c : K \to C$ حصے کے تعین کا فنکشن ہے، جہاں $K \subseteq \mathbb{N}$ مسلسل صحیح عددی اشاریوں کا سیٹ اور $C$ حصوں کا سیٹ ہے۔
 >
-> $\forall k \in \mathbb{N}, f_s() = c_k$ on the $k\text{-th}$ application.
-
-## Memory
-
-### Address
-
-An address is any element $a \in A$ such that $A$ is a set of addresses, where each address $a$ uniquely identifies a location in a memory structure.
-
-### Pointer
-
-A pointer is any function $f_p : \{a\} \to B$ such that $a \in A$ is an address and $B$ is a set of byte arrays, where each application of $f_p$ evaluates the byte array stored at the memory location identified by its bound address.
-
-#### Pointer()
-
-> Let $f_m : A \to B$ be a memory map.
+> فرض کریں $k \in K$ اگلے حصے کا اشاریہ ہے۔
 >
-> $\exists b \in B : f_p(a) = f_m(a) = b$
+> $\mathrm{Stream}() = f_s() = f_c(k)$، ہر تطبیق کے بعد $k$ کو آگے بڑھاتے ہوئے۔
 
-### Variable
-
-A variable is any function $f_v : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the variable extends a pointer by binding one key to one address and evaluating the byte array stored at the memory location identified by that address.
-
-#### Variable(k)
-
-> Let $f_b : \{k\} \to \{a\}$ be the variable’s binding function.
->
-> Let $f_p : \{a\} \to B$ be a pointer.
->
-> $\exists b \in B : f_v(k) = f_p(f_b(k)) = b$
-
-### Constant
-
-A constant is any variable $f_c : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where the byte array associated with $k$ cannot be changed after it is assigned.
-
-#### Constant(k)
-
-> Let $b_0 \in B$ be the byte array assigned to $k$.
->
-> $\forall b \in B,\ f_c(k) = b \implies b = b_0$ after $b_0$ is assigned.
-
-
-## Operations
+## عملیات
 
 ### Instruction
 
-An instruction is any array of bytes $i \in B$ such that $B$ is a set of byte arrays, where each instruction represents a single computational operation to be performed.
+انسٹرکشن کوئی بھی ورڈ یا ورڈز کا متناہی ٹیپل $i \in B$ ہے، جس میں $B$ ورڈز یا ورڈز کے متناہی ٹیپلز کا سیٹ ہے؛ ہر انسٹرکشن انجام دی جانے والی ایک حسابی کارروائی کی نمائندگی کرتی ہے۔
 
 ### Procedure
 
-A procedure is any variable $f_{proc} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the procedure evaluates the byte array associated with $k$ as a finite ordered sequence of instructions and executes those instructions in their represented order without defining a returned value.
+پروسیجر کوئی بھی ویری ایبل $f_{proc} : \{k\} \to B$ ہے، جس میں $f_{proc}(k)$ انسٹرکشنز کے ارے $f_a : I \to V$ کی نمائندگی کرتا ہے؛ پروسیجر چلانے سے ہر انسٹرکشن اشاریوں کی ترتیب میں انجام پاتی ہے۔
 
 #### Procedure(k)
 
-> Let $b \in B$ such that $f_{proc}(k) = b$.
->
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> $\mathrm{Procedure}(k)$ is the execution of each $i_j$ in ascending order of $j$.
+> $\mathrm{Procedure}(k)$ ہر $f_a(i)$ کا $i \in I$ کی صعودی ترتیب میں اجرا ہے۔
 
 ### Function
 
-A function is any procedure $f_{func} : \{k\} \to B$ such that $k$ is a key and $B$ is a set of byte arrays, where each application of the function evaluates the byte array associated with $k$ as a finite ordered sequence of instructions, executes those instructions in their represented order, and, after execution is completed, assigns a resulting byte array to some address in memory which may be evaluated as the function’s returned value.
+فنکشن کوئی بھی پروسیجر $f_{func} : \{k\} \to B$ ہے جسے چلانے سے ایڈریس $a_r \in A$ واپس ملتا ہے جو نتیجے کے ورڈ یا نتیجے کی نمائندگی کرنے والے ورڈز کے ارے کے پہلے ورڈ کی شناخت کرتا ہے۔
 
 #### Function(k)
 
-> Let $b \in B$ such that $f_{func}(k) = b$.
+> فرض کریں $f_m : A \to B$ میموری میپ ہے، جہاں $a_r \in A$ نتیجے کے ورڈ $r \in B$ کی شناخت کرتا ہے۔
 >
-> Let $(i_0,\dots,i_n)$ be the finite ordered sequence of instructions represented by $b$, where $\forall j \in \{0,\dots,n\}, i_j$ is an instruction.
->
-> Let $a_r \in A$ be an address assigned after execution is completed.
->
-> Let $f_m : A \to B$ be a memory map.
->
-> $\mathrm{Function}(k)$ is the execution of each $i_j$ in ascending order of $j$, where $\exists b_r \in B : f_m(a_r) = b_r$ after execution is completed.
->
-> $\mathrm{Function}(k) = b_r$
+> $\mathrm{Function}(k) = a_r, f_m(a_r) = r$
 
-## Threading
+## تھریڈنگ
 
 ### Process
 
-A process is any bounded flow of execution which accepts input, executes one or more instructions, and produces output, where the process represents a distinct unit of transformation within a system.
+پروسیس اجرا کا کوئی بھی محدود بہاؤ ہے جو ان پٹ قبول کرتا ہے، ایک یا زیادہ پروسیجرز یا فنکشنز چلاتا ہے اور آؤٹ پٹ پیدا کرتا ہے؛ پروسیس نظام کے اندر تبدیلی کی ایک الگ اکائی کی نمائندگی کرتا ہے۔
 
 ### Thread
 
-A thread is any flow of execution contained within a process, where the thread provides one path by which ordered sequences of instructions belonging to that process may be executed.
+تھریڈ اجرا کا کوئی بھی بہاؤ ہے جو پروسیس کے اندر موجود ہو اور اس پروسیس سے تعلق رکھنے والے پروسیجرز یا فنکشنز چلانے کے لیے ایک راستہ فراہم کرے۔
 
 #### Thread(p)
 
-> Let $p$ be a process.
+> فرض کریں $p$ پروسیس ہے۔
 >
-> Let $(i_0,\dots,i_n)$ be a finite ordered sequence of instructions belonging to $p$.
+> فرض کریں $(w_0, \dots, w_n)$ ایسے پروسیجرز یا فنکشنز کا متناہی ٹیپل ہے جو $p$ سے تعلق رکھتے ہیں۔
 >
-> $\mathrm{Thread}(p)$ is the execution of each $i_j$ in ascending order of $j$ within $p$.
+> $\mathrm{Thread}(p)$ ہر $w_j$ کا $j$ کی صعودی ترتیب میں $p$ کے اندر اجرا ہے۔
 
 ### Dispatcher
 
-A dispatcher is any tuple $(t,W,f_d)$ such that $t$ is a thread, $W$ is a set of procedures or functions accepted as work, and $f_d$ is a dispatch rule which selects work from $W$, where the dispatcher causes selected work to execute on $t$ according to the dispatch rule.
+ڈسپیچر کوئی بھی ٹیپل $(t,W,f_d)$ ہے، جس میں $t$ تھریڈ، $W$ کام کے طور پر قبول کردہ پروسیجرز یا فنکشنز کا سیٹ، اور $f_d$ ڈسپیچ کا ایسا قاعدہ ہے جو $W$ سے کام منتخب کرتا ہے؛ ڈسپیچر اس قاعدے کے مطابق منتخب کام کو $t$ پر چلواتا ہے۔
 
 #### Dispatcher(t)
 
-> Let $t$ be a thread.
+> فرض کریں $t$ تھریڈ ہے۔
 >
-> Let $W$ be a set of procedures or functions accepted by the dispatcher, where $\forall w \in W$, $w$ is a procedure or function.
+> فرض کریں $W$ ڈسپیچر کے قبول کردہ پروسیجرز یا فنکشنز کا سیٹ ہے، جہاں $\forall w \in W$، $w$ پروسیجر یا فنکشن ہے۔
 >
-> Let $f_d : \mathcal{P}(W) \to W$ be a dispatch rule which selects work from a non-empty subset of accepted work.
+> فرض کریں $f_d : \mathcal{P}^+(W) \to W$ ڈسپیچ کا ایسا قاعدہ ہے جو قبول کردہ کام کے غیر خالی ذیلی سیٹ سے کام منتخب کرتا ہے۔
 >
-> $\mathrm{Dispatcher}(t)$ is the execution of each selected $f_d(W')$ on $t$, where $W' \subseteq W$ and $W' \neq \varnothing$.
+> $\mathrm{Dispatcher}(t)$ ہر منتخب $f_d(W')$ کا $t$ پر اجرا ہے، جہاں $W' \subseteq W$، $W' \neq \varnothing$ اور $f_d(W') \in W'$۔
 
-## Composites
+## مرکب ساختیں
 
 ### Member
 
-A member is any element $m \in M$ such that $M$ is a set of members, where a member is a value which may be assigned to a key within the member map of an object.
+ممبر کوئی بھی عنصر $m \in M$ ہے، جس میں $M$ عناصر کا سیٹ اور $f_o : K \to M$ آبجیکٹ کا ممبر میپ ہے، جہاں $m = f_o(k)$ کسی کلید $k \in K$ کے لیے درست ہے۔
 
 ### Object
 
-An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a set of keys, and $f_o : K \to M$ is a member map, where $M$ is a set of members, allowing the object to represent an addressable composite whose members are assigned to keys through $f_o$.
+آبجیکٹ کوئی بھی ٹیپل $(a,K,f_o)$ ہے، جس میں $a \in A$ ایڈریس، $K$ کلیدوں کا سیٹ، اور $f_o : K \to M$ ممبر میپ ہے، جہاں $M$ عناصر کا سیٹ ہے؛ اس طرح آبجیکٹ ایک قابلِ پتہ مرکب ساخت کی نمائندگی کر سکتا ہے جس کے ممبرز $f_o$ کے ذریعے کلیدوں کو تفویض کیے جاتے ہیں۔
 
 #### Object(k)
 
@@ -241,92 +270,80 @@ An object is any tuple $(a,K,f_o)$ such that $a \in A$ is an address, $K$ is a s
 
 ### Field
 
-A field is any tuple $(o,k,m)$ such that $o = (a,K,f_o)$ is an object, $k \in K$ is a key, $m \in M$ is a member, and $f_o(k) = m$, where the field represents one keyed member resolved from the member map of an object.
+فیلڈ کوئی بھی ٹیپل $(o,k,m)$ ہے، جس میں $o = (a,K,f_o)$ آبجیکٹ، $k \in K$ کلید اور $m = f_o(k)$ ممبر ہے؛ فیلڈ آبجیکٹ کے ممبر میپ سے متعین ہونے والے ایک کلید دار ممبر کی نمائندگی کرتی ہے۔
 
-#### Field(k)
+#### Field(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> فرض کریں $o = (a,K,f_o)$ آبجیکٹ ہے۔
 >
-> $\forall k \in K,\ \exists m \in M : \mathrm{Field}(o,k) = (o,k,f_o(k)) = (o,k,m)$
+> $\mathrm{Field}(o,k) = (o,k,f_o(k)), k \in K$
 
 ### Method
 
-A method is any field $(o,k,m)$ such that $m$ is a procedure or function, where the method represents a keyed executable member of an object.
+میتھڈ کوئی بھی فیلڈ $(o,k,m)$ ہے، جس میں $m$ پروسیجر یا فنکشن ہے؛ میتھڈ آبجیکٹ کے ایک کلید دار قابلِ اجرا ممبر کی نمائندگی کرتا ہے۔
 
-#### Method(k)
+#### Method(o,k)
 
-> Let $o = (a,K,f_o)$ be an object.
+> فرض کریں $(o,k,m)$ فیلڈ ہے۔
 >
-> Let $k \in K$ be a key.
->
-> Let $m \in M$ be a member such that $f_o(k) = m$.
->
-> $\mathrm{Method}(o,k) = (o,k,m)$ when $m$ is a procedure or function.
+> $\mathrm{Method}(o,k) = (o,k,m)$، جہاں $m$ پروسیجر یا فنکشن ہے۔
 
 ### Property
 
-A property is any field $(o,k,m)$ such that $m = (A,f_a)$ is an accessor map, $A = \{ \mathrm{Get}, \mathrm{Set} \}$, and $f_a : A \to M$ maps each accessor to a member, where $f_a(\mathrm{Get})$ is a function and $f_a(\mathrm{Set})$ is a procedure, allowing the property to define both the retrieval and assignment behavior of a keyed member.
+پراپرٹی کوئی بھی فیلڈ $(o,k,m)$ ہے، جس میں $m = (X,f_a)$ ایکسیسر میپ ہے، $X = \{\mathrm{Get}, \mathrm{Set}\}$، اور $f_a : X \to M$ ہر ایکسیسر کو ممبر سے ملاتا ہے، جہاں $f_a(\mathrm{Get})$ فنکشن اور $f_a(\mathrm{Set})$ پروسیجر ہے؛ اس طرح پراپرٹی کلید دار ممبر کی بازیافت اور تفویض دونوں کے رویے کو متعین کر سکتی ہے۔
 
-#### Property(k)
+#### Property(o,k)
 
-> Let $(o,k,m)$ be a field.
+> فرض کریں $(o,k,m)$ فیلڈ ہے، جہاں $m = (X,f_a)$ ایکسیسر میپ ہے۔
 >
-> Let $m = (A,f_a)$ be an accessor map.
->
-> Let $A = \{ \mathrm{Get}, \mathrm{Set} \}$.
->
-> $\exists g \in M : f_a(\mathrm{Get}) = g$, where $g$ is a function.
->
-> $\exists s \in M : f_a(\mathrm{Set}) = s$, where $s$ is a procedure.
->
-> $\mathrm{Property}(o,k) = (o,k,(A,f_a))$
+> $\mathrm{Property}(o,k) = (o,k,m)$
 
-#### Get(k)
+#### Get(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> فرض کریں $(o,k,(X,f_a))$ پراپرٹی ہے۔
 >
-> Let $g = f_a(\mathrm{Get})$.
->
-> $\mathrm{Get}(k)$ is the application of $g$.
+> $\mathrm{Get}(o,k)$، $f_a(\mathrm{Get})$ کی تطبیق ہے۔
 
-#### Set(k)
+#### Set(o,k)
 
-> Let $(o,k,(A,f_a))$ be a property.
+> فرض کریں $(o,k,(X,f_a))$ پراپرٹی ہے۔
 >
-> Let $s = f_a(\mathrm{Set})$.
->
-> $\mathrm{Set}(k)$ is the application of $s$.
+> $\mathrm{Set}(o,k)$، $f_a(\mathrm{Set})$ کی تطبیق ہے۔
 
 ### Structure
 
-A structure (often abbreviated to `struct`) is any object $s = (a,K,f_s)$ such that $K$ is a finite set of keys and $f_s : K \to M$ is a member map which cannot be changed after the struct is assigned, where the struct is a specialized object whose keyed member layout is fixed.
+اسٹرکچر (جسے اکثر `struct` کہا جاتا ہے) کوئی بھی آبجیکٹ $s = (a,K,f_s)$ ہے، جس میں $K$ کلیدوں کا متناہی سیٹ اور $f_s : K \to M$ ممبر میپ ہے جس کی کلیدوں کو اسٹرکچر کی تفویض کے بعد تبدیل نہیں کیا جا سکتا؛ اسٹرکچر ایک مخصوص آبجیکٹ ہے جس میں کلید دار ممبرز کی ترتیب مقرر ہے۔
 
-#### Structure(k)
+#### Structure(s,k)
 
-> Let $s = (a,K,f_s)$ be a structure.
+> فرض کریں $s = (a,K,f_s)$ اسٹرکچر ہے۔
 >
 > $\forall k \in K,\ \exists m \in M : \mathrm{Structure}(s,k) = f_s(k) = m$
 
 ### Class
 
-A class is any object $c = (a_c,K_c,f_c)$ such that $K_c$ is a finite set of keys and $f_c : K_c \to M$ is a member-definition map, where the class is a specialized object whose keyed members define the member layout used to produce other objects.
+کلاس کوئی بھی آبجیکٹ $c = (a_c,K_c,f_c)$ ہے، جس میں $K_c$ کلیدوں کا متناہی سیٹ اور $f_c : K_c \to M$ ممبرز کی تعریفوں کا میپ ہے؛ کلاس ایک مخصوص آبجیکٹ ہے جس کے کلید دار ممبرز دوسرے آبجیکٹس بنانے کے لیے استعمال ہونے والی ممبر ترتیب کو متعین کرتے ہیں۔
 
-#### Class(a)
+#### Class(c,a)
 
-> Let $c = (a_c,K_c,f_c)$ be a class.
+> فرض کریں $c = (a_c,K_c,f_c)$ کلاس ہے۔
 >
-> Let $a \in A$ be an address assigned to an object produced from $c$.
+> فرض کریں $a \in A$ ایسا ایڈریس ہے جو $c$ سے بنائے گئے آبجیکٹ کو تفویض کیا گیا ہے۔
 >
-> $\mathrm{Class}(c,a) = (a,K_c,f_c)$
+> فرض کریں $f_o : K_c \to M$ ایسا ممبر میپ ہے جو $f_c$ کی تعریفوں کی پیروی کرتا ہے۔
+>
+> $\mathrm{Class}(c,a) = (a,K_c,f_o)$
 
 ### Interface
 
-An interface is any object $r = (a_r,K_r,f_r)$ such that $K_r$ is a finite set of keys and $f_r : K_r \to M$ is a member-requirement map, where the interface is a specialized object whose keyed members define the members required to be provided by another object.
+انٹرفیس کوئی بھی آبجیکٹ $r = (a_r,K_r,f_r)$ ہے، جس میں $K_r$ کلیدوں کا متناہی سیٹ اور $f_r : K_r \to M$ ممبرز کی ضروریات کا میپ ہے؛ انٹرفیس ایک مخصوص آبجیکٹ ہے جس کے کلید دار ممبرز ان ممبرز کو متعین کرتے ہیں جو دوسرے آبجیکٹ کو فراہم کرنے ہوں گے۔
 
-#### Interface(o)
+#### Interface(r,o)
 
-> Let $r = (a_r,K_r,f_r)$ be an interface.
+> فرض کریں $r = (a_r,K_r,f_r)$ انٹرفیس ہے۔
 >
-> Let $o = (a,K,f_o)$ be an object.
+> فرض کریں $o = (a,K,f_o)$ آبجیکٹ ہے۔
 >
-> $\mathrm{Interface}(r,o)$ holds when $\forall k \in K_r,\ \exists m \in M : f_o(k) = m$
+> فرض کریں $f_v : M \times M \to \{0,1\}$ تصدیقی قاعدہ ہے جو طے کرتا ہے کہ کوئی ممبر دوسرے ممبر کی ضروریات پوری کرتا ہے یا نہیں۔
+>
+> $\mathrm{Interface}(r,o)$ درست ہے جب $K_r \subseteq K$ اور $\forall k \in K_r,\ f_v(f_o(k),f_r(k)) = 1$۔
